@@ -1,4 +1,4 @@
-#Web Publication Manifest
+#Readium Web Publication Manifest
 
 ## Example
 
