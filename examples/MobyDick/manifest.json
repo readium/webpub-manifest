@@ -1,0 +1,40 @@
+{
+  "@context": "http://readium.org/webpub/default.jsonld",
+
+  "metadata": {
+    "@type": "http://schema.org/EBook",
+    "title": "Moby-Dick",
+    "author": "Herman Melville",
+    "identifier": "urn:isbn:9780000000001",
+    "language": "en",
+    "modified": "2015-09-29T17:00:00Z"
+  },
+
+  "links": [
+    {"rel": "cover", "href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797}, 
+    {"rel": "self", "href": "https://hadriengardeur.github.io/webpub-manifest/examples/MobyDick/manifest.json", "type": "application/webpub+json"},
+    {"rel": "alternate", "href": "https://hadriengardeur.github.io/webpub-manifest/examples/MobyDick/MobyDick.webpub", "type": "application/webpub+zip"}
+  ],
+
+  "spine": [
+    {"href": "index.html", "type": "text/html", "title": "Title Page"},
+    {"href": "html/copyright.html", "type": "text/html", "title": "Copyright"},
+    {"href": "html/introduction.html", "type": "text/html", "title": "Etymology"},
+    {"href": "html/epigraph.html", "type": "text/html", "title": "Extracts"}, 
+    {"href": "html/c001.html", "type": "text/html", "title": "Chapter 1 - Loomings"}, 
+    {"href": "html/c002.html", "type": "text/html", "title": "Chapter 2 - The Carpet-Bad"}, 
+    {"href": "html/c003.html", "type": "text/html", "title": "Chapter 3 - The Spouter-Inn"}, 
+    {"href": "html/c004.html", "type": "text/html", "title": "Chapter 4 - The Counterpane"}, 
+    {"href": "html/c005.html", "type": "text/html", "title": "Chapter 5 - Breakfast"}, 
+    {"href": "html/c006.html", "type": "text/html", "title": "Chapter 6 - The Street"}
+  ],
+
+  "resources": [
+    {"href": "html/toc.html", "rel": "contents", "type": "text/html", "title": "Table of Contents"}, 
+    {"href": "css/mobydick.css", "type": "text/css"},
+    {"href": "fonts/STIXGeneral.otf", "type": "application/vnd.ms-opentype"},
+    {"href": "fonts/STIXGeneralBol.otf", "type": "application/vnd.ms-opentype"},
+    {"href": "fonts/STIXGeneralBolIta.otf", "type": "application/vnd.ms-opentype"},
+    {"href": "fonts/STIXGeneralItalic.otf", "type": "application/vnd.ms-opentype"}
+  ]
+}
