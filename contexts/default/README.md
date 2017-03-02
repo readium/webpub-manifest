@@ -6,8 +6,9 @@ The Web Publication Manifest defines a shared external context document hosted b
 
 This context is meant primarily to:
 
-- provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
 - align the Web Publication Manifest with the Web by adopting schema.org and its extensions
+- provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
+
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
@@ -32,7 +33,6 @@ Default Context | http://readium.org/webpub/default.jsonld  | Default context de
 | [modified](definitions.md#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [	published](definitions.md#publication-date)   | http://schema.org/datePublished  | dc:date |
 | [	description](definitions.md#description)  | http://schema.org/description  | dc:description |
-| epub-type  | None  | dc:type |
 | numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
 
 
@@ -60,28 +60,6 @@ Here's an example of metadata for both collections and series:
     "name": "Harry Potter",
     "position": 4
   }
-}
-```
-
-## Rendition Properties
-
-All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
-
-| Key  | URI |
-| ---- | --- |
-| overflow  | http://www.idpf.org/vocab/rendition/#flow |
-| layout  | http://www.idpf.org/vocab/rendition/#layout |
-| orientation  | http://www.idpf.org/vocab/rendition/#orientation |
-| spread  | http://www.idpf.org/vocab/rendition/#spread |
-
-Here's an example of metadata for a fixed layout document:
-
-```json
-"rendition": {
-  "overflow": "paginated",
-  "layout": "fixed",
-  "orientation": "landscape",
-  "spread": "none"
 }
 ```
 
