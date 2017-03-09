@@ -4,6 +4,8 @@
 
 ```json
 {
+  "@context": "http://readium.org/webpub/default.jsonld",
+  
   "metadata": {
     "title": "Moby-Dick",
     "author": "Herman Melville",
@@ -103,7 +105,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 | ---- | ----------- | ------------- | --------- |
 [Default Context](contexts/default/) | http://readium.org/webpub/default.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
 
-The full up-to-date registry is [available directly on Github](contexts/).
+Context documents are all defined and listed in the [registry for context documents](contexts/).
 
 ###The Link Object
 
@@ -115,7 +117,7 @@ It requires at least the presence of `href` and `type`:
 | href  | link location  | URI  | Yes  |
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | title  | title of the linked resource  | text  | No  |
-| rel  | relationship  | [registry of relationship values](relationships.md) or URI for an extension  | No  |
+| rel  | relationship  | [link relationship](relationships.md) or URI for an extension  | No  |
 | properties  | properties associated with the linked resource  | [Properties Object](properties.md)  | No  |
 | height  | indicates the height of the linked resource in pixels  | integer where the value is greater than zero | No  |
 | width  | indicates the width of the linked resource in pixels  | integer where the value is greater than zero | No  |
@@ -135,6 +137,8 @@ This link must point to the canonical location of the manifest using an absolute
 ]
 ```
 A manifest may also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
+
+Link relationships that are currently used in this specification and its extensions are listed in the [Link Relationships registry](roles.md).
 
 ## Content Documents
 
