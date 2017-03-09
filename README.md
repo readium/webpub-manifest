@@ -134,7 +134,7 @@ This link must point to the canonical location of the manifest using an absolute
 ```
 A manifest may also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
 
-Link relationships that are currently used in this specification and its extensions are listed in the [Link Relationships registry](roles.md).
+Link relationships that are currently used in this specification and its extensions are listed in the [Link Relationships registry](relationships.md).
 
 ## Content Documents
 
