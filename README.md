@@ -85,7 +85,7 @@ This specification defines two collection roles that are the building blocks of 
 | spine  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
 | resources  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
 
-Additional collection roles are defined in the [EPUB Collection Roles Registry](http://idpf.github.io/epub-registries/roles/).
+Additional collection roles are defined in the [Collection Roles registry](roles.md).
 
 Extensions to these collection roles must use a URI as their JSON key.
 
