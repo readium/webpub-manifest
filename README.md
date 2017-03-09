@@ -37,33 +37,29 @@
 
 ##Introduction
 
-EPUB exists because the web doesn't allow us to easily speak about
-collections of documents. Web documents can link to each other, and link
-relations let you say a few things about what's on the other end of a
-link. But you can't say two documents are part of a larger entity. You
-can't say this metadata applies to a group of documents.
+While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together can represent a publication.
 
-EPUB has filled that gap with the package file, which includes publication metadata, a list of files that make up the publication ("manifest"), and information about their ordering ("spine"). However, there's a lot of duplication and indirection involved in the XML, and we believe a simpler conceptual model is possible. 
+Publication formats such as EPUB or CBZ/CBR group these documents together using a container format, making them easier to archive or transmit as a whole. But they also break an important promise of the Web: the resources of a publication are not available through HTTP to any client that would like to access them.
 
-We can describe everything we need to know about the bundle of documents that forms a publication with a relatively simple JSON structure. It consists of:
+W3C has recently provided a definition for a [Web Publication](https://w3c.github.io/dpub-pwp-ucr/):
 
-1. Metadata about the publication as a whole.
+> A **Web Publication (WP)** is a collection of one or more constituent resources, organized together in a uniquely identifiable grouping, and presented using standard Open Web Platform technologies.
 
-2. Links to related resources, including one mandatory link ("self") to the canonical location of the manifest.
+It also provides a definition for a manifest in the context of a Web Publication:
+> [...] **manifest** refers to an abstract means to contain information necessary to the proper management, rendering, and so on, of a publication. This is opposed to metadata that contains information on the content of the publication like author, publication date, and so on. The precise format of how such a manifest is stored is not considered in this document.
 
-3. A spine that enumerates the components of the publication, their ordering, and their properties.
+Readium Web Publication Manifest is an attempt to standardize a JSON based manifest format that follows both definitions.
 
-4. Additional resources that are not part of the spine but used by the publication (CSS, images, fonts).
-
+To facilitate the interoperability between EPUB and Web Publications, this document also defines a number of extension points to fully support EPUB specific features.
 
 ## The Web Publication Manifest Document
 
 ### Data Model
 
 The manifest itself is a collection.
-A collection is essentially a related group of resources, with a role and optional metadata.
+A collection is a group of resources, with a role and optional metadata.
 
-In our serialization consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
+In our serialization, it consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
 
 ```
 role
