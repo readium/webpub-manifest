@@ -59,9 +59,9 @@ We can describe everything we need to know about the bundle of documents that fo
 ### Data Model
 
 The manifest itself is a collection.
-EPUB 3.0.1 defines a collection as "a related group of resources."
+A collection is essentially a related group of resources, with a role and optional metadata.
 
-A collection consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
+In our serialization consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
 
 ```
 role
@@ -138,7 +138,7 @@ A manifest may also contain other links, such as a `alternate` link to an EPUB 3
 
 ## Content Documents
 
-Web Publication Manifest content documents follow the usual rules of EPUB 3.1, but also allows HTML in addition to XHTML.
+A Readium Web Publication Manifest can point to any text, image, video or audio format that can be used in a Web browser.
 
 ## Discovering a Manifest
 
