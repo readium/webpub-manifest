@@ -115,7 +115,7 @@ It requires at least the presence of `href` and `type`:
 | href  | link location  | URI  | Yes  |
 | type  | MIME type of resource  | MIME media type  | Yes  |
 | title  | title of the linked resource  | text  | No  |
-| rel  | relationship  | [list of rel values](http://www.idpf.org/epub/vocab/package/link/) or URI for an extension  | No  |
+| rel  | relationship  | [registry of relationship values](relationships.md) or URI for an extension  | No  |
 | properties  | properties associated with the linked resource  | [Properties Object](properties.md)  | No  |
 | height  | indicates the height of the linked resource in pixels  | integer where the value is greater than zero | No  |
 | width  | indicates the width of the linked resource in pixels  | integer where the value is greater than zero | No  |
