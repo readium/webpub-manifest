@@ -59,20 +59,21 @@ To facilitate the interoperability between EPUB and Web Publications, this docum
 The manifest itself is a collection.
 A collection is a group of resources, with a role and optional metadata.
 
-In our serialization, it consists of `metadata`, `links`, and subcollections. The key for a collection is the role of that collection:
+In our serialization, the key for a collection is the role of that collection:
 
 ```
 role
   metadata
   links
-  [subcollections]
+  [sub-collections]
 ```
 
 A manifest must have one `spine` collection where the components of the publications are listed in the linear reading order. 
-Other resources are listed in a `resources` collection. 
+
+Other resources that are required to interact with the publication are listed in a `resources` collection. 
 
 Collections that do not contain any metadata or subcollections (also called "compact collections"), 
-can use a more compact syntax where they simply contain an array of Link Objects. 
+can use a more compact syntax where they simply contain an array of [Link Objects](#the-link-object). 
 
 ###Collection Roles
 
@@ -101,7 +102,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 | ---- | ----------- | ------------- | --------- |
 [Default Context](contexts/default/) | http://readium.org/webpub/default.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
 
-Context documents are all defined and listed in the [registry for context documents](contexts/).
+Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
 ###The Link Object
 
@@ -115,9 +116,9 @@ It requires at least the presence of `href` and `type`:
 | title  | title of the linked resource  | text  | No  |
 | rel  | relationship  | [link relationship](relationships.md) or URI for an extension  | No  |
 | properties  | properties associated with the linked resource  | [Properties Object](properties.md)  | No  |
-| height  | indicates the height of the linked resource in pixels  | integer where the value is greater than zero | No  |
-| width  | indicates the width of the linked resource in pixels  | integer where the value is greater than zero | No  |
-| duration  | indicates the length of the linked resource in seconds  | ISO 8601 duration | No  |
+| height  | indicates the height of the linked resource in pixels  | integer  | No  |
+| width  | indicates the width of the linked resource in pixels  | integer | No  |
+| duration  | indicates the length of the linked resource in seconds  | float| No  |
 | templated  | indicates linked resource is a URI template  | boolean, defaults to false  | No  |
 
 ###Links

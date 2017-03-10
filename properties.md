@@ -4,19 +4,26 @@ Each Link Object may contain a Properties Object, containing a number of relevan
 
 This document is meant to provide an exhaustive list of properties that can be associated to a Link Object, along with their semantics and usage.
 
-
+## Core Properties
 
 | Key  | Semantics | Type | Values |
 | ----- | --------- | -------- | --------- |
-| [contains](#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  |
-| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  |
-| [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  |
 | [orientation](#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  |
-| [overflow](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  |
 | [page](#page)  | Indicates how the linked resource should be displayed in a reading application that displays synthetic spreads.  | String  | `left`, `right` or `center`  |
-| [spread](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  |
 
-## contains
+## Extensions
+
+| Key   | Semantics | Type     | Values    | Reference |
+| ----- | --------- | -------- | --------- | --------- |
+| [contains](#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | EPUB extension |
+| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | EPUB extension |
+| [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | EPUB extension |
+| [overflow](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | EPUB extension |
+| [spread](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | EPUB extension |
+
+## Definitions
+
+### contains
 
 While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient enough:
 
@@ -43,7 +50,7 @@ While the media type is the main way to identify the nature of a resource in a L
 }
 ```
 
-## layout
+### layout
 
 The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
 
@@ -58,7 +65,7 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 }
 ```
 
-## media-overlay
+### media-overlay
 
 ```
 {
@@ -69,7 +76,7 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 }
 ```
 
-## orientation
+### orientation
 
 The `orientation` property defaults to `auto` and is mostly relevant for fixed layout resources, where the orientation has an actual impact on how the resource is displayed.
 
@@ -83,7 +90,7 @@ The `orientation` property defaults to `auto` and is mostly relevant for fixed l
 }
 ```
 
-## overflow
+### overflow
 
 ```
 {
@@ -94,30 +101,28 @@ The `orientation` property defaults to `auto` and is mostly relevant for fixed l
 }
 ```
 
-## page
+### page
 
 
 
 ```
 [
   {
-    "href": "page1.html", "type": "text/html",
+    "href": "page1.jpg", "type": "image/jpeg",
     "properties": {
-      "layout": "fixed",
       "page": "left"
     }
   },
   {
-    "href": "page2.html", "type": "text/html",
+    "href": "page2.jpg", "type": "image/jpeg",
     "properties": {
-      "layout": "fixed",
       "page": "right"
     }
   }
 ]
 ```
 
-## spread
+### spread
 
 
 ```
