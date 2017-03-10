@@ -9,7 +9,7 @@ This document is meant to provide an exhaustive list of properties that can be a
 | Key  | Semantics | Type | Values |
 | ----- | --------- | -------- | --------- |
 | [orientation](#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  |
-| [page](#page)  | Indicates how the linked resource should be displayed in a reading application that displays synthetic spreads.  | String  | `left`, `right` or `center`  |
+| [page](#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  |
 
 ## Extensions
 
