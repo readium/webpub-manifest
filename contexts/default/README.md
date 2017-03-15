@@ -1,4 +1,4 @@
-#Default Context for the Web Publication Manifest
+# Default Context for the Web Publication Manifest
 
 >**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 

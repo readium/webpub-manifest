@@ -1,6 +1,6 @@
 # Default Context Definitions
 
-##Identifier
+## Identifier
 
 A Web Publication Manifest must contain an identifier. The identifier must be a valid URN:
 
@@ -14,7 +14,7 @@ Publications can be updated and to identify each specific version, the manifest 
 "modified": "2016-02-22T11:31:38Z"
 ```
 
-##Title
+## Title
 
 A Web Publication Manifest must contain a single title using the `title` element:
 
@@ -41,7 +41,7 @@ The manifest may also contain a `sort_as` element to provide a single sortable s
 "sort_as": "Tale of Two Cities, A"
 ```
 
-##Contributors
+## Contributors
 
 The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `artist`, `illustrator`, `letterer`, `penciler`, `colorist`, `inker` and `narrator`.
 
@@ -166,7 +166,7 @@ A Web Publication Manifest may contain a publication date using the `published` 
 "published": "2016-09-02"
 ```
 
-##Subjects
+## Subjects
 
 A Web Publication Manifest may also provide one or more subjects using the `subject` element:
 
@@ -204,7 +204,7 @@ To indicate that a subject belongs to a particular scheme, the `scheme` element 
 }
 ```
 
-##Collections & Series
+## Collections & Series
 
 A Web Publication Manifest may indicate that it belongs to one or multiple collections/series.
 

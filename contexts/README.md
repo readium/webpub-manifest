@@ -1,4 +1,4 @@
-#Context Documents Registry
+# Context Documents Registry
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
