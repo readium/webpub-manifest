@@ -1,4 +1,4 @@
-#Readium Web Publication Manifest
+# Readium Web Publication Manifest
 
 ## Example
 
@@ -35,7 +35,7 @@
 }
 ```
 
-##Introduction
+## Introduction
 
 While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together can represent a publication.
 
@@ -75,7 +75,7 @@ Other resources that are required to interact with the publication are listed in
 Collections that do not contain any metadata or subcollections (also called "compact collections"), 
 can use a more compact syntax where they simply contain an array of [Link Objects](#the-link-object). 
 
-###Collection Roles
+### Collection Roles
 
 This specification defines two collection roles that are the building blocks of any manifest:
 
@@ -104,7 +104,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
-###The Link Object
+### The Link Object
 
 The Link Object is used in `links` and in compact collections to list resources associated to a collection. 
 It requires at least the presence of `href` and `type`:
@@ -121,7 +121,7 @@ It requires at least the presence of `href` and `type`:
 | duration  | indicates the length of the linked resource in seconds  | float| No  |
 | templated  | indicates linked resource is a URI template  | boolean, defaults to false  | No  |
 
-###Links
+### Links
 
 A manifest must contain at least one link using the `self` relationship.
 This link must point to the canonical location of the manifest using an absolute URI:
