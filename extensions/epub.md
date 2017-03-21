@@ -4,7 +4,7 @@ While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publicat
 
 Thanks to the various extension points in place, this document defines a number of new properties that are for the most part exclusive to EPUB.
 
-## Rendition Properties
+## Renditions
 
 | Key  | URI |
 | ---- | --- |
@@ -13,10 +13,113 @@ Thanks to the various extension points in place, this document defines a number 
 | orientation  | http://www.idpf.org/vocab/rendition/#orientation |
 | spread  | http://www.idpf.org/vocab/rendition/#spread |
 
+> These properties are used for both metadata and the Properties Object.
+
+## Properties
+
+| Key   | Semantics | Type     | Values    | 
+| ----- | --------- | -------- | --------- | 
+| [contains](#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
+| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
+| [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
+| [overflow](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | 
+| [spread](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | 
+
+### contains
+
+While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient enough:
+
+* a number of metadata standards either rely on XML and JSON without defining a specific media type (ONIX, XMP)
+* the media type doesn't indicate if an HTML/XHTML resource relies on MathML, SVG or Javascript, or if some of it resources are not available in the package (purely for a packaged version of a publication)
+
+`contains` is meant to convey that information in the Properties Object using an array of string values.
+
+```
+{
+  "href": "record.xml", "rel": "record", "type": "application/xml",
+  "properties": {
+    "contains": ["onix"]
+  }
+}
+```
+
+```
+{
+  "href": "chapter1.html", "type": "text/html",
+  "properties": {
+    "contains": ["svg", "remote-resources"]
+  }
+}
+```
+
+### layout
+
+The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
+
+Using `fixed` it can also indicate that an HTML document has a viewport with a fixed size.
+
+```
+{
+  "href": "page1.html", "type": "text/html",
+  "properties": {
+    "layout": "fixed"
+  }
+}
+```
+
+### media-overlay
+
+```
+{
+  "href": "chapter1.html", "type": "text/html",
+  "properties": {
+    "media-overlay": "chapter1.smil"
+  }
+}
+```
+
+
+### overflow
+
+```
+{
+  "href": "endnotes.html", "type": "text/html",
+  "properties": {
+    "overflow": "scrolled"
+  }
+}
+```
+
+
+### spread
+
+
+```
+[
+  {
+    "href": "page1.html", "type": "text/html",
+    "properties": {
+      "layout": "fixed",
+      "spread": "both",
+      "page": "left"
+    }
+  },
+  {
+    "href": "page2.html", "type": "text/html",
+    "properties": {
+      "layout": "fixed",
+      "spread": "both",
+      "page": "right"
+    }
+  }
+]
+```
+
+
 ## Encryption
 
-TODO
+> **TODO**: Document the `encrypted` properties in the Properties Object.
 
 ## Collection Roles
 
-TODO
+> **TODO**: Do we document various EPUB extensions and associated roles?
