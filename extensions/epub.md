@@ -4,6 +4,24 @@ While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publicat
 
 Thanks to the various extension points in place, this document defines a number of new properties that are for the most part exclusive to EPUB.
 
+## Collection Roles
+
+> **TODO**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
+
+| Role  | Semantics | Compact? | Required? |
+| ----- | --------- | -------- | --------- |
+| landmarks  | Identifies the collection that contains a list of points of interest.  | Yes  | No  |
+| loa  | Identifies the collection that contains a list of audio resources.  | Yes  | No  |
+| loi  | Identifies the collection that contains a list of illustrations.  | Yes  | No  |
+| lot  | Identifies the collection that contains a list of tables.  | Yes  | No  |
+| lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
+| page-list  | Identifies the collection that contains a list of pages.  | Yes  | No  |
+| toc  | Identifies the collection that contains a table of contents. | Yes  | No  |
+
+## Extension to the Link Object
+
+> **TODO**: Need to document the use of `children` to handle multiple levels.
+
 ## Renditions
 
 | Key  | URI |
@@ -120,6 +138,4 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 
 > **TODO**: Document the `encrypted` properties in the Properties Object.
 
-## Collection Roles
 
-> **TODO**: Do we document various EPUB extensions and associated roles?
