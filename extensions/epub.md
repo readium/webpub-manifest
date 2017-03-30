@@ -22,16 +22,25 @@ Thanks to the various extension points in place, this document defines a number 
 
 > **TODO**: Need to document the use of `children` to handle multiple levels.
 
-## Renditions
+```json
+"toc": [
+  {
+    "href": "part1.xhtml",
+    "title": "Part I",
+    "children": [
+      {
+        "href": "chapter1.xhtml",
+        "title": "Chapter 1"
+      },
+      {
+        "href": "chapter2.xhtml",
+        "title": "Chapter 2"
+      }
+    ]
+  }
+]
+```
 
-| Key  | URI |
-| ---- | --- |
-| overflow  | http://www.idpf.org/vocab/rendition/#flow |
-| layout  | http://www.idpf.org/vocab/rendition/#layout |
-| orientation  | http://www.idpf.org/vocab/rendition/#orientation |
-| spread  | http://www.idpf.org/vocab/rendition/#spread |
-
-> These properties are used for both metadata and the Properties Object.
 
 ## Properties
 
@@ -137,5 +146,45 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 ## Encryption
 
 > **TODO**: Document the `encrypted` properties in the Properties Object.
+
+| Key   | Semantics | Type     |
+| ----- | --------- | -------- |
+| [algorithm](#algorithm)  | Identifies the algorithm used to encrypt the resource.  | URI  | 
+| [compression](#compression)  | Compression method used on the resource.  | String  |
+| [original-length](#original-length)  | Original length of the resource in bytes before compression and/or encryption. | Integer  |
+| [profile](#profile)  | Identifies the encryption profile used to encrypt the resource.  | URI  |
+| [scheme](#scheme)  | Identifies the encryption scheme used to encrypt the resource.  | URI  |
+
+*Example for an obfuscated font*
+
+```json
+{
+  "href": "fonts/sandome.obf.ttf",
+  "type": "application/vnd.ms-opentype",
+  "properties": {
+    "encrypted": {
+      "algorithm": "http://www.idpf.org/2008/embedding"
+    }
+  }
+}
+```
+
+*Example for a resource encrypted using LCP*
+
+```json
+{
+  "href": "chapter_001.xhtml",
+  "type": "application/xhtml+xml",
+  "properties": {
+    "encrypted": {
+      "scheme": "http://readium.org/2014/01/lcp",
+      "profile": "http://readium.org/lcp/basic-profile",
+      "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
+      "compression": "deflate",
+      "original-length": 13810
+    }
+  }
+}
+```
 
 
