@@ -4,6 +4,12 @@ While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publicat
 
 Thanks to the various extension points in place, this document defines a number of new properties that are for the most part exclusive to EPUB.
 
+## Metadata
+
+[An additional JSON-LD context](../contexts/epub) document is available to cover EPUB specific requirements.
+
+This document is registered in the [Context Document registry](../contexts), in compliance with the extensibility rules for metadata.
+
 ## Collection Roles
 
 > **TODO**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
@@ -46,7 +52,8 @@ Thanks to the various extension points in place, this document defines a number 
 
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
-| [contains](#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
+| [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
+| [encrypted](#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](#encrypted)  | See the definition for the [Encryption Object](#encrypted) | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
 | [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
 | [overflow](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | 
@@ -79,6 +86,53 @@ While the media type is the main way to identify the nature of a resource in a L
 }
 ```
 
+### encrypted
+
+The `encrypted` key contains an Encryption Object that indicates how a given resource is encrypted/obfuscated.
+
+The Encryption Object has the following keys:
+
+| Key   | Semantics | Type     | Required? |
+| ----- | --------- | -------- | --------- |
+| [algorithm](#algorithm)  | Identifies the algorithm used to encrypt the resource.  | URI  | Yes |
+| [compression](#compression)  | Compression method used on the resource.  | String  | No |
+| [original-length](#original-length)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
+| [profile](#profile)  | Identifies the encryption profile used to encrypt the resource.  | URI  | No |
+| [scheme](#scheme)  | Identifies the encryption scheme used to encrypt the resource.  | URI  | No |
+
+*Example for an obfuscated font*
+
+```json
+{
+  "href": "fonts/sandome.obf.ttf",
+  "type": "application/vnd.ms-opentype",
+  "properties": {
+    "encrypted": {
+      "algorithm": "http://www.idpf.org/2008/embedding"
+    }
+  }
+}
+```
+
+*Example for a resource encrypted using LCP*
+
+```json
+{
+  "href": "chapter_001.xhtml",
+  "type": "application/xhtml+xml",
+  "properties": {
+    "encrypted": {
+      "scheme": "http://readium.org/2014/01/lcp",
+      "profile": "http://readium.org/lcp/basic-profile",
+      "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
+      "compression": "deflate",
+      "original-length": 13810
+    }
+  }
+}
+```
+
+
 ### layout
 
 The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
@@ -100,7 +154,7 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 {
   "href": "chapter1.html", "type": "text/html",
   "properties": {
-    "media-overlay": "chapter1.smil"
+    "media-overlay": "media-overlay/chapter1.json"
   }
 }
 ```
@@ -141,50 +195,4 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
   }
 ]
 ```
-
-
-## Encryption
-
-> **TODO**: Document the `encrypted` properties in the Properties Object.
-
-| Key   | Semantics | Type     |
-| ----- | --------- | -------- |
-| [algorithm](#algorithm)  | Identifies the algorithm used to encrypt the resource.  | URI  | 
-| [compression](#compression)  | Compression method used on the resource.  | String  |
-| [original-length](#original-length)  | Original length of the resource in bytes before compression and/or encryption. | Integer  |
-| [profile](#profile)  | Identifies the encryption profile used to encrypt the resource.  | URI  |
-| [scheme](#scheme)  | Identifies the encryption scheme used to encrypt the resource.  | URI  |
-
-*Example for an obfuscated font*
-
-```json
-{
-  "href": "fonts/sandome.obf.ttf",
-  "type": "application/vnd.ms-opentype",
-  "properties": {
-    "encrypted": {
-      "algorithm": "http://www.idpf.org/2008/embedding"
-    }
-  }
-}
-```
-
-*Example for a resource encrypted using LCP*
-
-```json
-{
-  "href": "chapter_001.xhtml",
-  "type": "application/xhtml+xml",
-  "properties": {
-    "encrypted": {
-      "scheme": "http://readium.org/2014/01/lcp",
-      "profile": "http://readium.org/lcp/basic-profile",
-      "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
-      "compression": "deflate",
-      "original-length": 13810
-    }
-  }
-}
-```
-
 
