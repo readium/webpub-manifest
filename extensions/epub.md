@@ -8,7 +8,7 @@ Thanks to the various extension points in place, this document defines a number 
 
 [An additional JSON-LD context](../contexts/epub) document is available to cover EPUB specific requirements.
 
-This document is registered in the [Context Document registry](../contexts), in compliance with the extensibility rules for metadata.
+This document is registered in the [Context Documents registry](../contexts), in compliance with the extensibility rules for metadata.
 
 ## Collection Roles
 

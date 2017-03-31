@@ -111,15 +111,15 @@ It requires at least the presence of `href` and `type`:
 
 | Name  | Value | Format | Required? |
 | ------------- | ------------- | ------------- | ------------- |
-| href  | link location  | URI  | Yes  |
-| type  | MIME type of resource  | MIME media type  | Yes  |
-| title  | title of the linked resource  | text  | No  |
-| rel  | relationship  | [link relationship](relationships.md) or URI for an extension  | No  |
-| properties  | properties associated with the linked resource  | [Properties Object](properties.md)  | No  |
-| height  | indicates the height of the linked resource in pixels  | integer  | No  |
-| width  | indicates the width of the linked resource in pixels  | integer | No  |
-| duration  | indicates the length of the linked resource in seconds  | float| No  |
-| templated  | indicates linked resource is a URI template  | boolean, defaults to false  | No  |
+| href  | Link location.  | URI  | Yes  |
+| type  | MIME type of resource.  | MIME Media Type  | Yes  |
+| title  | Title of the linked resource.  | String  | No  |
+| rel  | Indicates the relationship between the resource and its containing collection.  | [Link Relationship](relationships.md) or URI for an extension  | No  |
+| properties  | Properties associated to the linked resource.  | [Properties Object](properties.md)  | No  |
+| height  | Indicates the height of the linked resource in pixels.  | Integer  | No  |
+| width  | Indicates the width of the linked resource in pixels.  | Integer | No  |
+| duration  | Indicates the length of the linked resource in seconds.  | Float| No  |
+| templated  | Indicates that the linked resource is a URI template.  | Boolean, defaults to false  | No  |
 
 ### Links
 
