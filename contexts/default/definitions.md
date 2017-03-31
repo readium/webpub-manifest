@@ -61,7 +61,7 @@ Each element can also contain multiple contributors using a simple array:
 "artist": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
 ```
 
-In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sorted_as` and `identifier`.
+In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sort_as` and `identifier`.
 
 When an object is used, it must contain at least `name`. 
 
