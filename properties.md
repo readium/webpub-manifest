@@ -15,12 +15,12 @@ This document is meant to provide an exhaustive list of properties that can be a
 
 | Key   | Semantics | Type     | Values    | Reference |
 | ----- | --------- | -------- | --------- | --------- |
-| [contains](/extensions/epub.md#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | EPUB extension |
-| [encrypted](/extensions/epub.md#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](/extensions/epub.md#encrypted)  | See the definition for the [Encryption Object](/extensions/epub.md#encrypted) |
-| [layout](/extensions/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | EPUB extension |
-| [media-overlay](/extensions/epub.md#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | EPUB extension |
-| [overflow](/extensions/epub.md#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | EPUB extension |
-| [spread](/extensions/epub.md#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | EPUB extension |
+| [contains](/extensions/epub.md#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB extension](/extensions/epub.md#properties) |
+| [encrypted](/extensions/epub.md#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](/extensions/epub.md#encrypted)  | See the definition for the [Encryption Object](/extensions/epub.md#encrypted) | [EPUB extension](/extensions/epub.md#properties) |
+| [layout](/extensions/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | [EPUB extension](/extensions/epub.md#properties) |
+| [media-overlay](/extensions/epub.md#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | [EPUB extension](/extensions/epub.md#properties) |
+| [overflow](/extensions/epub.md#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | [EPUB extension](/extensions/epub.md#properties) |
+| [spread](/extensions/epub.md#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | [EPUB extension](/extensions/epub.md#properties) |
 
 ## Definitions
 
