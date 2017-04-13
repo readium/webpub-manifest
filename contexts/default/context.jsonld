@@ -30,7 +30,7 @@
     "language": "http://schema.org/inLanguage",
     "subject": "http://schema.org/keywords",
     "numberOfPages": "http://schema.org/numberOfPages",
-    "publisher": "http://schema.org/Organization",
+    "publisher": "http://schema.org/publisher",
     "imprint": "http://bib.schema.org/publisherImprint",
     "modified": {
       "@id": "http://schema.org/dateModified",
