@@ -34,6 +34,13 @@ To provide these alternate representations, an object may be used instead of a s
 }
 ```
 
+In addition to the `title` element, the manifest may also contain an optional `subtitle` element with exactly the same syntax.
+
+```json
+"title": "Flatland",
+"subtitle": "A Romance of Many Dimensions"
+```
+
 The manifest may also contain a `sort_as` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json

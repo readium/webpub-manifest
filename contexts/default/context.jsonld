@@ -7,51 +7,22 @@
       "@id": "http://schema.org/name",
       "@container": "@language"
     },
+    "subtitle": {
+      "@id": "http://schema.org/alternativeHeadline",
+      "@container": "@language"
+    },
     "sort_as": "http://schema.org/alternateName",
-    "author": {
-      "@id": "http://schema.org/author",
-      "@type": "http://schema.org/Person"
-    },
-    "translator": {
-      "@id": "http://schema.org/translator",
-      "@type": "http://schema.org/Person"
-    },
-    "editor": {
-      "@id": "http://schema.org/editor",
-      "@type": "http://schema.org/Person"
-    },
-    "illustrator": {
-      "@id": "http://schema.org/illustrator",
-      "@type": "http://schema.org/Person"
-    },
-    "artist": {
-      "@id": "http://bib.schema.org/artist",
-      "@type": "http://schema.org/Person"
-    },
-    "colorist": {
-      "@id": "http://bib.schema.org/colorist",
-      "@type": "http://schema.org/Person"
-    },
-    "inker": {
-      "@id": "http://bib.schema.org/inker",
-      "@type": "http://schema.org/Person"
-    },
-    "penciler": {
-      "@id": "http://bib.schema.org/penciler",
-      "@type": "http://schema.org/Person"
-    },
-    "letterer": {
-      "@id": "http://bib.schema.org/letterer",
-      "@type": "http://schema.org/Person"
-    },
-    "narrator": {
-      "@id": "http://bib.schema.org/readBy",
-      "@type": "http://schema.org/Person"
-    },
-    "contributor": {
-      "@id": "http://schema.org/contributor",
-      "@type": "http://schema.org/Person"
-    },
+    "author": "http://schema.org/author",
+    "translator": "http://schema.org/translator",
+    "editor": "http://schema.org/editor",
+    "illustrator": "http://schema.org/illustrator",
+    "artist": "http://bib.schema.org/artist",
+    "colorist": "http://bib.schema.org/colorist",
+    "inker": "http://bib.schema.org/inker",
+    "penciler": "http://bib.schema.org/penciler",
+    "letterer": "http://bib.schema.org/letterer",
+    "narrator": "http://bib.schema.org/readBy",
+    "contributor": "http://schema.org/contributor",
     "name":  {
       "@id": "http://schema.org/name",
       "@container": "@language"
@@ -59,10 +30,7 @@
     "language": "http://schema.org/inLanguage",
     "subject": "http://schema.org/keywords",
     "numberOfPages": "http://schema.org/numberOfPages",
-    "publisher": {
-      "@id": "http://schema.org/publisher",
-      "@type": "http://schema.org/Organization"
-    },
+    "publisher": "http://schema.org/Organization",
     "imprint": "http://bib.schema.org/publisherImprint",
     "modified": {
       "@id": "http://schema.org/dateModified",
@@ -73,6 +41,7 @@
       "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
     },
     "description": "http://schema.org/description",
+    "source": "http://schema.org/isBasedOn",
     "belongs_to": "http://schema.org/isPartOf",
     "series": "http://schema.org/Series",
     "collection": "http://bib.schema.org/Collection",
