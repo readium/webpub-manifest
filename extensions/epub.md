@@ -12,7 +12,7 @@ This document is registered in the [Context Documents registry](../contexts), in
 
 ## Collection Roles
 
-> **TODO**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
+> **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -26,7 +26,17 @@ This document is registered in the [Context Documents registry](../contexts), in
 
 ## Extension to the Link Object
 
-> **TODO**: Need to document the use of `children` to handle multiple levels.
+Specific collection roles in this EPUB extension require the Link Object to be extended to support nesting.
+
+In order to support Link Object nesting, this extension introduces the `children` element:
+
+| Name      | Semantics     | Format        |
+| --------- | ------------- | ------------- |
+| children  | Contains one or more Link Objects that are direct descendents of the linked resource.    | Link Object   |
+
+This new element is meant primarly for the `toc` collection role but can be useful for other extensions of the Readium Web Publication Manifest.
+
+*Example of a table of contents expressed with nested Link Objects*
 
 ```json
 "toc": [
@@ -64,7 +74,7 @@ This document is registered in the [Context Documents registry](../contexts), in
 While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient enough:
 
 * a number of metadata standards either rely on XML and JSON without defining a specific media type (ONIX, XMP)
-* the media type doesn't indicate if an HTML/XHTML resource relies on MathML, SVG or Javascript, or if some of it resources are not available in the package (purely for a packaged version of a publication)
+* the media type doesn't indicate if an HTML/XHTML resource relies on MathML, SVG or Javascript, or if some of its resources are not available in the package 
 
 `contains` is meant to convey that information in the Properties Object using an array of string values.
 
@@ -150,6 +160,10 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 
 ### media-overlay
 
+The `media-overlay` property indicates that the linked resource has a media-overlay available and points to the location of that media-overlay using a URI.
+
+This specification does not define the expected format for that media-overlay.
+
 ```
 {
   "href": "chapter1.html", "type": "text/html",
@@ -173,6 +187,10 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 
 
 ### spread
+
+The `spread` property is meant to indicate to the reading system the condition for displaying the linked resource in a synthetic spread.
+
+This only applies to fixed layout resources and defaults to `auto`.
 
 
 ```
