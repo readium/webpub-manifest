@@ -28,7 +28,7 @@ This document is registered in the [Context Documents registry](../contexts), in
 
 Specific collection roles in this EPUB extension require the Link Object to be extended to support nesting.
 
-In order to support Link Object nesting, this extension introduces the `children` element:
+For this purpose, this extension introduces the `children` element:
 
 | Name      | Semantics     | Format        |
 | --------- | ------------- | ------------- |
