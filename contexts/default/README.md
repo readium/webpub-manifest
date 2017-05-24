@@ -1,8 +1,8 @@
-# Default Context for the Web Publication Manifest
+# Default Context
 
 >**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-The Web Publication Manifest defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
+The Readium Web Publication Manifest defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
 
 This context is meant primarily to:
 
@@ -12,7 +12,7 @@ This context is meant primarily to:
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-Default Context | http://readium.org/webpub/default.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
+Default Context | http://readium.org/webpub/default.jsonld  | Default context definition used in every Readium Web Publication Manifest. | Yes |
 
 ## Core Metadata
 
