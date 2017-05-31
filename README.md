@@ -17,7 +17,7 @@
   "links": [
     {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/webpub+json"},
     {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"},
-    {"rel": "search", "href": "http://example.org/?q={searchTerms}", "type": "text/html", "templated": true}
+    {"rel": "search", "href": "http://example.org/search{?query}", "type": "text/html", "templated": true}
   ],
   
   "spine": [
