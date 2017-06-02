@@ -7,6 +7,7 @@
   "@context": "http://readium.org/webpub/default.jsonld",
   
   "metadata": {
+    "@type": "http://schema.org/Book"
     "title": "Moby-Dick",
     "author": "Herman Melville",
     "identifier": "urn:isbn:978031600000X",
@@ -104,6 +105,23 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
+The Readium Web Publication Manifest has a single requirement in terms of metadata: all publications must contain at least a `title` in its `metadata`.
+
+```json
+"metadata": {
+  "title": "Test Publication"
+}
+```
+
+In addition to `title`, this specification also recommends including `@type` to describe the nature of the publication described by the manifest.
+
+```json
+"metadata": {
+  "@type": "http://schema.org/Book",
+  "title": "Test Publication"
+}
+```
+
 ### The Link Object
 
 The Link Object is used in `links` and in compact collections to list resources associated to a collection. 
@@ -127,11 +145,11 @@ A manifest must contain at least one link using the `self` relationship.
 This link must point to the canonical location of the manifest using an absolute URI:
 
 ```json
-"links": [{
+{
   "rel": "self",
   "href": "http://example.org/manifest.json",
-  "type": "application/webpub+json"}
-]
+  "type": "application/webpub+json"
+}
 ```
 A manifest may also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
 
@@ -174,7 +192,13 @@ A Web Publication Manifest client may also rely on the `title` key included in e
 A Web Publication Manifest can also provide a cover using the `cover` rel value in a Link Object listed in `spine`, `resources` or `links`:
 
 ```json
-{"rel": "cover", "href": "cover.jpg", "type": "image/jpeg", "height": 600, "width": 400}
+{
+  "rel": "cover", 
+  "href": "cover.jpg", 
+  "type": "image/jpeg", 
+  "height": 600, 
+  "width": 400
+}
 ```
 
 The link must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
