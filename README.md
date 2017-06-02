@@ -7,7 +7,7 @@
   "@context": "http://readium.org/webpub/default.jsonld",
   
   "metadata": {
-    "@type": "http://schema.org/Book"
+    "@type": "http://schema.org/Book",
     "title": "Moby-Dick",
     "author": "Herman Melville",
     "identifier": "urn:isbn:978031600000X",
@@ -180,7 +180,11 @@ Link: <http://example.org/manifest.json>; rel="manifest";
 A Web Publication Manifest can indicate that a table of contents is available using the `contents` rel value in a Link Object listed in `spine` or `resources`:
 
 ```json
-{"rel": "contents", "href": "contents.html", "type": "text/html"}
+{
+  "rel": "contents", 
+  "href": "contents.html", 
+  "type": "text/html"
+}
 ```
 
 The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
