@@ -53,30 +53,26 @@ Readium Web Publication Manifest is an attempt to standardize a JSON based manif
 
 To facilitate the interoperability between EPUB and Web Publications, this document also defines a number of extension points to fully support EPUB specific features.
 
-## The Web Publication Manifest Document
+## Abstract Model
 
-### Data Model
+The Readium Web Publication Manifest is based on a hypermedia model inspired by [Atom](https://tools.ietf.org/html/rfc4287), [HAL](http://stateless.co/hal_specification.html), [Siren](https://github.com/kevinswiber/siren) and [Collection+JSON](http://amundsen.com/media-types/collection/format/) among others.
 
-The manifest itself is a collection.
-A collection is a group of resources, with a role and optional metadata.
+There are three core concepts to this model:
 
-In our serialization, the key for a collection is the role of that collection:
+- [collections](#collections)
+- [metadata](#metadata)
+- [links](#links)
 
-```
-role
-  metadata
-  links
-  [sub-collections]
-```
+Collections are identified by their role and they can either contain:
 
-A manifest must have one `spine` collection where the components of the publications are listed in the linear reading order. 
+- metadata, links and other collections for *"full collections"*
+- or just links for "*compact collections"*
 
-Other resources that are required to interact with the publication are listed in a `resources` collection. 
+The Readium Web Publication Manifest is a full collection in this abstract model.
 
-Collections that do not contain any metadata or subcollections (also called "compact collections"), 
-can use a more compact syntax where they simply contain an array of [Link Objects](#the-link-object). 
+## JSON Serialization
 
-### Collection Roles
+### Collections
 
 This specification defines two collection roles that are the building blocks of any manifest:
 
@@ -87,7 +83,25 @@ This specification defines two collection roles that are the building blocks of 
 
 Additional collection roles are defined in the [Collection Roles registry](roles.md).
 
-Extensions to these collection roles must use a URI as their JSON key.
+Extensions that are not registered officially must use a URI for their role.
+
+A manifest must have one `spine` collection where the main resources of the publication are listed in the linear reading order:
+
+```json
+"spine": [
+  {"href": "/chapter1", "type": "text/html"},
+  {"href": "/chapter2", "type": "text/html"}
+]
+```
+
+Other resources that are required to render the publication are listed in a `resources` collection:
+
+```json
+"resources": [
+  {"href": "/style.css", "type": "text/css"},
+  {"href": "/image1.jpg", "type": "image/jpeg"}
+]
+```
 
 ### Metadata
 
@@ -95,7 +109,7 @@ JSON-LD provides an easy and standard way to extend existing JSON document: thro
 
 The Web Publication Manifest relies on JSON-LD to provide a context for the `metadata` object of the manifest.
 
-While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), the Web Publication Manifest restricts context definition strictly to references.
+While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), the Web Publication Manifest restricts context definition strictly to references (URIs) at the top-level of the document.
 
 The Web Publication Manifest defines an initial registry of well-known context documents, which currently includes the following references:
 
@@ -105,7 +119,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
-The Readium Web Publication Manifest has a single requirement in terms of metadata: all publications must contain at least a `title` in its `metadata`.
+The Readium Web Publication Manifest has a single requirement in terms of metadata: all publications must contain at least a `title` in their `metadata`.
 
 ```json
 "metadata": {
@@ -124,7 +138,8 @@ In addition to `title`, this specification also recommends including `@type` to 
 
 ### The Link Object
 
-The Link Object is used in `links` and in compact collections to list resources associated to a collection. 
+The Link Object is used in `links` and in compact collections to list resources related to a collection. 
+
 It requires at least the presence of `href` and `type`:
 
 | Name  | Value | Format | Required? |
@@ -132,12 +147,13 @@ It requires at least the presence of `href` and `type`:
 | href  | Link location.  | URI  | Yes  |
 | type  | MIME type of resource.  | MIME Media Type  | Yes  |
 | title  | Title of the linked resource.  | String  | No  |
-| rel  | Indicates the relationship between the resource and its containing collection.  | [Link Relationship](relationships.md) or URI for an extension  | No  |
+| rel  | Indicates the relation between the resource and its containing collection.  | One or more [Link Relation](relationships.md) or URI (extensions)  | No  |
 | properties  | Properties associated to the linked resource.  | [Properties Object](properties.md)  | No  |
 | height  | Indicates the height of the linked resource in pixels.  | Integer  | No  |
 | width  | Indicates the width of the linked resource in pixels.  | Integer | No  |
 | duration  | Indicates the length of the linked resource in seconds.  | Float| No  |
 | templated  | Indicates that the linked resource is a URI template.  | Boolean, defaults to false  | No  |
+
 
 ### Links
 
@@ -153,16 +169,17 @@ This link must point to the canonical location of the manifest using an absolute
 ```
 A manifest may also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
 
-Link relationships that are currently used in this specification and its extensions are listed in the [Link Relationships registry](relationships.md).
+Link relations that are currently used in this specification and its extensions are listed in the [Link Relations registry](relationships.md).
 
 ## Content Documents
 
-A Readium Web Publication Manifest can point to any text, image, video or audio format that can be used in a Web browser.
+Contents documents are the resources listed in the `spine` collection of a Web Publication.
+
+Any text, image, video or audio format that can be opened in a Web browser is a valid content document format.
 
 ## Discovering a Manifest
 
-To indicate that a content document is associated with a particular Web Publication Manifest, 
-use a `link` element in the HTML `head`:
+To indicate that a content document is associated with a particular Web Publication Manifest, use a `link` element in the HTML `head`:
 
 ```html
 <link href="manifest.json" rel="manifest" type="application/webpub+json">
@@ -175,9 +192,26 @@ Link: <http://example.org/manifest.json>; rel="manifest";
          type="application/webpub+json"
 ```
 
+Finally, a manifest may also be embedded in an HTML document using the `<script>` element:
+
+```
+<script type="application/webpub+json">
+{
+  "@context": "http://readium.org/webpub/default.jsonld",
+  "metadata": {"title": "Example"},
+  "links": [
+    {"rel": "self", "href": "http://example.org/manifest.json", "type": "text/html"}
+  ],
+  "spine": [
+    {"href": "chapter1.html", "type": "text/html", "title": "Chapter 1"}
+  ]
+}
+</script>
+```
+
 ## Table of Contents
 
-A Web Publication Manifest can indicate that a table of contents is available using the `contents` rel value in a Link Object listed in `spine` or `resources`:
+A Web Publication Manifest can indicate that a table of contents is available using the `contents` relation in a Link Object listed in `spine` or `resources`:
 
 ```json
 {
@@ -187,13 +221,15 @@ A Web Publication Manifest can indicate that a table of contents is available us
 }
 ```
 
-The link must point to an HTML or XHTML document and may be a Navigation Document as defined in EPUB 3.1. 
+The Link Object must point to an HTML or XHTML document. 
 
-A Web Publication Manifest client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
+A client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
+
+[The EPUB extension](/extensions/epub.md) also defines [specialized collection roles](https://github.com/readium/webpub-manifest/blob/master/extensions/epub.md#collection-roles) for embedding various tables of contents directly in the manifest.
 
 ## Cover
 
-A Web Publication Manifest can also provide a cover using the `cover` rel value in a Link Object listed in `spine`, `resources` or `links`:
+A Readium Web Publication Manifest can also provide a cover using the `cover` relation in a Link Object listed in `spine`, `resources` or `links`:
 
 ```json
 {
@@ -205,28 +241,28 @@ A Web Publication Manifest can also provide a cover using the `cover` rel value 
 }
 ```
 
-The link must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
+The Link Object must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
 
 ## Packaging a Web Publication
 
-The Web Publication Manifest is primarily meant to be distributed unpackaged and exploded on the Web.
+The Readium Web Publication Manifest is primarily meant to be distributed unpackaged and exploded on the Web.
 
-That said, a Web Publication Manifest may be included in a classic EPUB, but reading systems have no obligation to access the manifest.
+That said, a Readium Web Publication Manifest may be included in a classic EPUB, but reading systems have no obligation to access the manifest.
 
-If a Web Publication Manifest is included in an EPUB container, the following restrictions apply:
+If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
 
 - the manifest document must be named `manifest.json` and must appear at the top level of the container
 - the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
 
 ```xml
-<link rel="alternate" href="manifest.json" media-type="application/webpub+json" />
+<link rel="alternate" href="manifest.json" media-type="application/webpub+json"/>
 ```
 
-In addition to the EPUB format, a Web Publication can also be distributed as a separate package:
+In addition to the EPUB format, a Readium Web Publication can also be distributed as a separate package:
 
 - the package itself must be a ZIP archive
 - the manifest document must be named `manifest.json` and must appear at the top level of the package
-- all resources referenced in `spine`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
+- all resources in `spine`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
 - its media type is `application/webpub+zip`
 - its file extension is `.webpub`
 - a publication where any resource is encrypted using a DRM must use a different media type and file extension

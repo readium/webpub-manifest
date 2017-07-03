@@ -26,7 +26,7 @@ This document is meant to provide an exhaustive list of properties that can be a
 
 ### orientation
 
-The `orientation` property defaults to `auto` and is mostly relevant for fixed layout resources, where the orientation has an actual impact on how the resource is displayed.
+The `orientation` property defaults to `auto` and is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
 
 ```
 {
@@ -40,6 +40,7 @@ The `orientation` property defaults to `auto` and is mostly relevant for fixed l
 
 ### page
 
+The `page` property is meant to provide a hint to reading systems that rely on synthetic spreads to display more than a single resource at once.
 
 
 ```
