@@ -54,13 +54,13 @@ The following keys and their mappings to schema.org are used to specify collecti
 
 ## Identifier
 
-A Web Publication Manifest must contain an identifier. The identifier must be a valid URN:
+A Web Publication Manifest should contain an identifier. The identifier must be a valid URI:
 
 ```json
 "identifier": "http://example.com/publication"
 ```
 
-Publications can be updated and to identify each specific version, the manifest must also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
+Publications can be updated and to identify each specific version, the manifest should also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
 
 ```json
 "modified": "2016-02-22T11:31:38Z"
@@ -145,7 +145,7 @@ The contributor object may also contain a `sort_as` element to provide a single 
 }
 ```
 
-Finally, the object may also contain an `identifier`. The `identifier` must be a URN.
+Finally, the object may also contain an `identifier`. The `identifier` must be a URI.
 
 ISNI (http://isni.org) is the preferred authority, but other sources may also be used:
 
@@ -290,7 +290,7 @@ To provide a name and a sortable string, `collection` and `series` support both 
 ```
 
 A collection/series can also have an identifier, provided using the `identifier`
-element. The identifier must be a URN:
+element. The identifier must be a URI:
 
 ```json
 "belongs_to": {
