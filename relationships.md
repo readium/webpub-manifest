@@ -1,4 +1,4 @@
-# Link Relationships
+# Link Relations
 
 The Readium Web Publication Manifest specification and its extensions currently define and/or use the following link relationships:
 
