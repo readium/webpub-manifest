@@ -2,7 +2,7 @@
 
 >**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
 
-The Readium Web Publication Manifest defines a shared external context document hosted by the IDPF and based primarily on schema.org and its extensions.
+The Readium Web Publication Manifest defines a shared external context document hosted by the Readium Foundation and based primarily on schema.org and its extensions.
 
 This context is meant primarily to:
 
@@ -13,43 +13,6 @@ This context is meant primarily to:
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
 Default Context | http://readium.org/webpub/default.jsonld  | Default context definition used in every Readium Web Publication Manifest. | Yes |
-
-## Core Metadata
-
-| Key  | Schema.org | EPUB 3.1 |
-| ---- | ---------- | -------- |
-| [identifier](#identifier) | None, identifies the resource  | dc:identifier |
-| [title](#title) | http://schema.org/name  | dc:title |
-| [sort_as](#title)  | http://schema.org/alternateName  | title@opf:file-as |
-| [author](#contributors) | http://schema.org/author  | dc:creator |
-| [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
-| [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
-| [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
-| [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
-| [	language](#language)  | http://schema.org/inLanguage  | dc:language |
-| [subject](#subjects)  | http://schema.org/keywords  | dc:subject |
-| [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
-| [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
-| [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
-| [	description](#description)  | http://schema.org/description  | dc:description |
-| numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
-
-
-## Collections & Series Properties
-
-This context also allows metadata to express that a publication belongs to any number of collections or series.
-
-The `belongs_to` object is used for that purpose and has no real equivalent in EPUB 3.1.
-
-The following keys and their mappings to schema.org are used to specify collections/series:
-
-| Key  | Schema.org |
-| ---- | --- |
-| [belongs_to](#collections--series) | http://www.schema.org/isPartOf |
-| [series](#collections--series) | http://www.schema.org/Series |
-| [collection](#collections--series) | http://www.schema.org/Collection |
-| [position](#collections--series) | http://www.schema.org/position |
 
 
 ## Identifier
@@ -252,13 +215,15 @@ Subjects can also be expressed using an object with the following elements: `nam
 
 In many fields and territories, a number of controlled vocabularies are in use to identify subjects. For example THEMA is used in the publishing industry to provide an international subject scheme.
 
-To indicate that a subject belongs to a particular scheme, the `scheme` element is available. In addition to it, the `code` element is available to provide the string that identifies the subject in a given scheme:
+To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` must be a URI.
+
+The `code` element is available to provide the string that identifies the subject in a given scheme:
 
 ```json
 "subject": {
   "name": "Manga: Shonen",
   "sort_as": "Shonen",
-  "scheme": "THEMA",
+  "scheme": "http://www.editeur.org/151/Thema/",
   "code": "XAMG"
 }
 ```
@@ -390,3 +355,40 @@ If we use another example with more complex metadata expression and an extension
   }
 }
 ```
+
+## Mapping to Schema.org & EPUB 3.1
+
+| Key  | Schema.org | EPUB 3.1 |
+| ---- | ---------- | -------- |
+| [identifier](#identifier) | None, identifies the resource  | dc:identifier |
+| [title](#title) | http://schema.org/name  | dc:title |
+| [sort_as](#title)  | http://schema.org/alternateName  | title@opf:file-as |
+| [author](#contributors) | http://schema.org/author  | dc:creator |
+| [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
+| [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
+| [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
+| [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
+| [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
+| [	language](#language)  | http://schema.org/inLanguage  | dc:language |
+| [subject](#subjects)  | http://schema.org/keywords  | dc:subject |
+| [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
+| [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
+| [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
+| [	description](#description)  | http://schema.org/description  | dc:description |
+| numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
+
+
+### Collections & Series Properties
+
+This context also allows metadata to express that a publication belongs to any number of collections or series.
+
+The `belongs_to` object is used for that purpose and has no real equivalent in EPUB 3.1.
+
+The following keys and their mappings to schema.org are used to specify collections/series:
+
+| Key  | Schema.org |
+| ---- | --- |
+| [belongs_to](#collections--series) | http://www.schema.org/isPartOf |
+| [series](#collections--series) | http://www.schema.org/Series |
+| [collection](#collections--series) | http://www.schema.org/Collection |
+| [position](#collections--series) | http://www.schema.org/position |
