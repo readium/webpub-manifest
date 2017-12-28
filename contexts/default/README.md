@@ -282,6 +282,30 @@ A position can be either an integer or a float where the value is greater than z
 }
 ```
 
+## Reading Direction
+
+To properly browse through a publication, a User Agent needs to know its reading direction.
+
+This is expressed in the manifest using `direction` which allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
+
+This defaults to `auto` when no value is set.
+
+```
+"title": "海底二万里",
+"direction": "rtl"
+```
+
+## Duration and Number of Pages
+
+To indicate the length of a publication, this context defines two different elements: `duration` and `numberOfPages`.
+
+`duration` is expressed in seconds using an integer, while `numberOfPages` is an integer as well.
+
+```
+"duration": "5467",
+"numberOfPages": "178"
+```
+
 
 ## Examples
 
@@ -362,33 +386,25 @@ If we use another example with more complex metadata expression and an extension
 | ---- | ---------- | -------- |
 | [identifier](#identifier) | None, identifies the resource  | dc:identifier |
 | [title](#title) | http://schema.org/name  | dc:title |
+| [subtitle](#title) | http://schema.org/alternativeHeadline | - |
 | [sort_as](#title)  | http://schema.org/alternateName  | title@opf:file-as |
 | [author](#contributors) | http://schema.org/author  | dc:creator |
 | [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
 | [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
 | [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" |
+| [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" or meta@property="media:narrator"|
 | [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
 | [	language](#language)  | http://schema.org/inLanguage  | dc:language |
 | [subject](#subjects)  | http://schema.org/keywords  | dc:subject |
 | [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
+| [	imprint](#publisher)  | http://bib.schema.org/publisherImprint  | - |
 | [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
 | [	description](#description)  | http://schema.org/description  | dc:description |
 | numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
-
-
-### Collections & Series Properties
-
-This context also allows metadata to express that a publication belongs to any number of collections or series.
-
-The `belongs_to` object is used for that purpose and has no real equivalent in EPUB 3.1.
-
-The following keys and their mappings to schema.org are used to specify collections/series:
-
-| Key  | Schema.org |
-| ---- | --- |
-| [belongs_to](#collections--series) | http://www.schema.org/isPartOf |
-| [series](#collections--series) | http://www.schema.org/Series |
-| [collection](#collections--series) | http://www.schema.org/Collection |
-| [position](#collections--series) | http://www.schema.org/position |
+| duration  | http://schema.org/duration  | meta@property="media:duration"|
+| direction  | -  | spine@page-progression-direction |
+| [belongs_to](#collections--series) | http://www.schema.org/isPartOf | - |
+| [series](#collections--series) | http://www.schema.org/Series | - |
+| [collection](#collections--series) | http://bib.schema.org/Collection | - |
+| [position](#collections--series) | http://www.schema.org/position | - |
