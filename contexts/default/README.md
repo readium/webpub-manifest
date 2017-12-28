@@ -385,6 +385,7 @@ If we use another example with more complex metadata expression and an extension
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
 | [identifier](#identifier) | None, identifies the resource  | dc:identifier |
+| [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [title](#title) | http://schema.org/name  | dc:title |
 | [subtitle](#title) | http://schema.org/alternativeHeadline | - |
 | [sort_as](#title)  | http://schema.org/alternateName  | title@opf:file-as |
@@ -392,19 +393,23 @@ If we use another example with more complex metadata expression and an extension
 | [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
 | [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
 | [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
+| [artist](#contributors)| http://bib.schema.org/artist | dc:contributor@opf:role="art" |
+| [colorist](#contributors)| http://bib.schema.org/colorist | dc:contributor@opf:role="clr" |
+| [inker](#contributors)| http://bib.schema.org/inker | - |
+| [penciler](#contributors)| http://bib.schema.org/penciler | - |
+| [letterer](#contributors)| http://bib.schema.org/letterer | - |
 | [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" or meta@property="media:narrator"|
 | [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
 | [	language](#language)  | http://schema.org/inLanguage  | dc:language |
 | [subject](#subjects)  | http://schema.org/keywords  | dc:subject |
 | [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
 | [	imprint](#publisher)  | http://bib.schema.org/publisherImprint  | - |
-| [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
 | [	description](#description)  | http://schema.org/description  | dc:description |
-| numberOfPages  | http://schema.org/numberOfPages  | schema:numberOfPages |
-| duration  | http://schema.org/duration  | meta@property="media:duration"|
-| direction  | -  | spine@page-progression-direction |
 | [belongs_to](#collections--series) | http://www.schema.org/isPartOf | - |
 | [series](#collections--series) | http://www.schema.org/Series | - |
 | [collection](#collections--series) | http://bib.schema.org/Collection | - |
 | [position](#collections--series) | http://www.schema.org/position | - |
+| [direction](#reading-direction) | -  | spine@page-progression-direction |
+| [numberOfPages](#duration-and-number-of-pages) | http://schema.org/numberOfPages  | schema:numberOfPages |
+| [duration](#duration-and-number-of-pages) | http://schema.org/duration  | meta@property="media:duration"|
