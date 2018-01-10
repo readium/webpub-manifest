@@ -282,9 +282,9 @@ A position can be either an integer or a float where the value is greater than z
 }
 ```
 
-## Reading Direction
+## Progression Direction
 
-To properly browse through a publication, a User Agent needs to know its reading direction.
+To properly browse through a publication, a User Agent needs to know its progression direction.
 
 This is expressed in the manifest using `direction` which allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
 
