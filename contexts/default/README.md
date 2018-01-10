@@ -290,11 +290,6 @@ This is expressed in the manifest using `direction` which allows the following v
 
 This defaults to `auto` when no value is set.
 
-```
-"title": "海底二万里",
-"direction": "rtl"
-```
-
 ## Duration and Number of Pages
 
 To indicate the length of a publication, this context defines two different elements: `duration` and `numberOfPages`.
