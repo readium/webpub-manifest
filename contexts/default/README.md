@@ -405,6 +405,6 @@ If we use another example with more complex metadata expression and an extension
 | [series](#collections--series) | http://www.schema.org/Series | - |
 | [collection](#collections--series) | http://bib.schema.org/Collection | - |
 | [position](#collections--series) | http://www.schema.org/position | - |
-| [direction](#reading-direction) | -  | spine@page-progression-direction |
+| [direction](#progression-direction) | -  | spine@page-progression-direction |
 | [numberOfPages](#duration-and-number-of-pages) | http://schema.org/numberOfPages  | schema:numberOfPages |
 | [duration](#duration-and-number-of-pages) | http://schema.org/duration  | meta@property="media:duration"|
