@@ -28,7 +28,7 @@
       "@container": "@language"
     },
     "language": "http://schema.org/inLanguage",
-    "subject": "http://schema.org/keywords",
+    "subject": "http://schema.org/about",
     "numberOfPages": "http://schema.org/numberOfPages",
     "duration": "http://schema.org/Duration",
     "publisher": "http://schema.org/publisher",
