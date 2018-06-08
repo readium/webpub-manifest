@@ -1,7 +1,7 @@
 {
   "@context": {
     "schema": "http://schema.org/",
-    "metadata": "owl:sameAs",
+    "metadata": "@nest",
     "identifier": "@id",
     "title": {
       "@id": "http://schema.org/name",
