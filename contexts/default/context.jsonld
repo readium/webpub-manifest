@@ -16,12 +16,12 @@
     "translator": "http://schema.org/translator",
     "editor": "http://schema.org/editor",
     "illustrator": "http://schema.org/illustrator",
-    "artist": "http://bib.schema.org/artist",
-    "colorist": "http://bib.schema.org/colorist",
-    "inker": "http://bib.schema.org/inker",
-    "penciler": "http://bib.schema.org/penciler",
-    "letterer": "http://bib.schema.org/letterer",
-    "narrator": "http://bib.schema.org/readBy",
+    "artist": "http://schema.org/artist",
+    "colorist": "http://schema.org/colorist",
+    "inker": "http://schema.org/inker",
+    "penciler": "http://schema.org/penciler",
+    "letterer": "http://schema.org/letterer",
+    "narrator": "http://schema.org/readBy",
     "contributor": "http://schema.org/contributor",
     "name":  {
       "@id": "http://schema.org/name",
@@ -32,7 +32,7 @@
     "numberOfPages": "http://schema.org/numberOfPages",
     "duration": "http://schema.org/Duration",
     "publisher": "http://schema.org/publisher",
-    "imprint": "http://bib.schema.org/publisherImprint",
+    "imprint": "http://schema.org/publisherImprint",
     "modified": {
       "@id": "http://schema.org/dateModified",
       "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -45,7 +45,13 @@
     "source": "http://schema.org/isBasedOn",
     "belongs_to": "http://schema.org/isPartOf",
     "series": "http://schema.org/Series",
-    "collection": "http://bib.schema.org/Collection",
-    "position": "http://schema.org/position"
+    "collection": "http://schema.org/Collection",
+    "position": "http://schema.org/position",
+    "spine": {
+      "@container": "@list"
+    },
+    "resources": {
+      "@container": "@set"
+    }
   }
 }
