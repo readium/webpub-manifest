@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "http://readium.org/webpub-manifest/schema/publication.schema.json",
+  "title": "Readium Web Publication Manifest",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "format": "uri"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["identifier"]
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "properties": {
+          "href": {
+            "description": "URI or URI template of the linked resource",
+            "type": "string",
+            "anyOf": [
+              {
+                "format": "uri"
+              },
+              {
+                "format": "uri-template"
+              }
+            ]
+          },
+          "type": {
+            "description": "MIME type of the linked resource",
+            "type": "string"
+          },
+          "title": {
+            "description": "Title of the linked resource",
+            "type": "string"
+          },
+          "rel": {
+            "description": "Relation between the linked resource and its containing collection",
+            "type": ["string", "array"],
+            "items": {
+              "title": "string"
+            }
+          },
+          "properties": {
+            "description": "Properties associated to the linked resource",
+            "type": "object"
+          },
+          "height": {
+            "description": "Height of the linked resource in pixels",
+            "type": "integer",
+            "minimum": 0
+          },
+          "width": {
+            "description": "Width of the linked resource in pixels",
+            "type": "integer",
+            "minimum": 0
+          },
+          "duration": {
+            "description": "Length of the linked resource in seconds",
+            "type": "number",
+            "minimum": 0
+          },
+          "templated": {
+            "description": "Indicates that a URI template is used in href",
+            "type": "boolean"
+          }
+        },
+        "required": ["href"]
+      }
+    }
+  },
+  "required": ["metadata", "links", "spine"]
+}
