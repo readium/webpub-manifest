@@ -13,6 +13,32 @@
         "modified": {
           "type": "string",
           "format": "date-time"
+        },
+        "published": {
+          "type": "string",
+          "format": "date"
+        },
+        "language": {
+          "type": ["string", "array"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "sort_as": {
+          "type": "string"
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["rtl", "ltr", "auto"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number"
+        },
+        "numberOfPages": {
+          "type": "integer"
         }
       },
       "required": ["identifier"]
