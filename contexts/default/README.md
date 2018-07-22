@@ -388,22 +388,22 @@ If we use another example with more complex metadata expression and an extension
 | [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
 | [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
 | [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| [artist](#contributors)| http://bib.schema.org/artist | dc:contributor@opf:role="art" |
-| [colorist](#contributors)| http://bib.schema.org/colorist | dc:contributor@opf:role="clr" |
-| [inker](#contributors)| http://bib.schema.org/inker | - |
-| [penciler](#contributors)| http://bib.schema.org/penciler | - |
-| [letterer](#contributors)| http://bib.schema.org/letterer | - |
-| [narrator](#contributors) | http://bib.schema.org/readBy | dc:contributor@opf:role="nrt" or meta@property="media:narrator"|
+| [artist](#contributors)| http://schema.org/artist | dc:contributor@opf:role="art" |
+| [colorist](#contributors)| http://schema.org/colorist | dc:contributor@opf:role="clr" |
+| [inker](#contributors)| http://schema.org/inker | - |
+| [penciler](#contributors)| http://schema.org/penciler | - |
+| [letterer](#contributors)| http://schema.org/letterer | - |
+| [narrator](#contributors) | http://schema.org/readBy | dc:contributor@opf:role="nrt" or meta@property="media:narrator"|
 | [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
 | [	language](#language)  | http://schema.org/inLanguage  | dc:language |
-| [subject](#subjects)  | http://schema.org/keywords  | dc:subject |
+| [subject](#subjects)  | http://schema.org/about  | dc:subject |
 | [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
-| [	imprint](#publisher)  | http://bib.schema.org/publisherImprint  | - |
+| [	imprint](#publisher)  | http://schema.org/publisherImprint  | - |
 | [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
 | [	description](#description)  | http://schema.org/description  | dc:description |
 | [belongs_to](#collections--series) | http://www.schema.org/isPartOf | - |
 | [series](#collections--series) | http://www.schema.org/Series | - |
-| [collection](#collections--series) | http://bib.schema.org/Collection | - |
+| [collection](#collections--series) | http://schema.org/Collection | - |
 | [position](#collections--series) | http://www.schema.org/position | - |
 | [direction](#progression-direction) | -  | spine@page-progression-direction |
 | [numberOfPages](#duration-and-number-of-pages) | http://schema.org/numberOfPages  | schema:numberOfPages |
