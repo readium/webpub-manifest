@@ -70,6 +70,12 @@
         "contributor": {
           "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
         },
+        "publisher": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "imprint": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
         "direction": {
           "type": "string",
           "enum": ["rtl", "ltr", "auto"],
@@ -83,6 +89,17 @@
         },
         "numberOfPages": {
           "type": "integer"
+        },
+        "belongs_to": {
+          "type": "object",
+          "properties": {
+            "collection": {
+              "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+            },
+            "series": {
+              "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+            }
+          }
         }
       },
       "required": ["identifier"]

@@ -15,6 +15,9 @@
     },
     "role": {
       "type": "string"
+    },
+    "position": {
+      "type": "number"
     }
   },
   "required": ["name"]
