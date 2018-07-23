@@ -37,17 +37,17 @@
     "height": {
       "description": "Height of the linked resource in pixels",
       "type": "integer",
-      "minimum": 0
+      "exclusiveMinimum": 0
     },
     "width": {
       "description": "Width of the linked resource in pixels",
       "type": "integer",
-      "minimum": 0
+      "exclusiveMinimum": 0
     },
     "duration": {
       "description": "Length of the linked resource in seconds",
       "type": "number",
-      "minimum": 0
+      "exclusiveMinimum": 0
     },
     "templated": {
       "description": "Indicates that a URI template is used in href",

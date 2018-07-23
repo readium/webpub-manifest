@@ -10,6 +10,16 @@
           "type": "string",
           "format": "uri"
         },
+        "@type": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": ["string", "array", "object"]
+        },
+        "subtitle": {
+          "type": ["string", "array", "object"]
+        },
         "modified": {
           "type": "string",
           "format": "date-time"
@@ -27,9 +37,43 @@
         "sort_as": {
           "type": "string"
         },
+        "author": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "translator": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "editor": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "artist": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "illustrator": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "letterer": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "penciler": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "colorist": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "inker": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "narrator": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "contributor": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
         "direction": {
           "type": "string",
-          "enum": ["rtl", "ltr", "auto"]
+          "enum": ["rtl", "ltr", "auto"],
+          "default": "auto"
         },
         "description": {
           "type": "string"

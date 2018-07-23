@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "http://readium.org/webpub-manifest/schema/contributor-object.schema.json",
+  "title": "Contributor Object",
+  "properties": {
+    "name": {
+      "type": ["string", "object"]
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sort_as": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  },
+  "required": ["name"]
+}
