@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "http://readium.org/webpub-manifest/schema/metadata.schema.json",
+  "title": "Metadata",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+      "format": "uri"
+    },
+    "title": {
+      "type": ["string", "array", "object"]
+    },
+    "subtitle": {
+      "type": ["string", "array", "object"]
+    },
+    "modified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published": {
+      "type": "string",
+      "format": "date"
+    },
+    "language": {
+      "type": ["string", "array"],
+      "items": {
+        "type": "string"
+      }
+    },
+    "sort_as": {
+      "type": "string"
+    },
+    "author": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "translator": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "editor": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "artist": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "illustrator": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "letterer": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "penciler": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "colorist": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "inker": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "narrator": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "contributor": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "publisher": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "imprint": {
+      "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["rtl", "ltr", "auto"],
+      "default": "auto"
+    },
+    "description": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "number"
+    },
+    "numberOfPages": {
+      "type": "integer"
+    },
+    "belongs_to": {
+      "type": "object",
+      "properties": {
+        "collection": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        },
+        "series": {
+          "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
+        }
+      }
+    }
+  },
+  "required": ["identifier"]
+}
