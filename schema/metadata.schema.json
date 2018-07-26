@@ -23,7 +23,14 @@
     },
     "published": {
       "type": "string",
-      "format": "date"
+      "anyOf": [
+        {
+          "format": "date"
+        },
+        {
+          "format": "date-time"
+        }
+      ]
     },
     "language": {
       "type": ["string", "array"],
