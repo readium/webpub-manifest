@@ -1,7 +1,5 @@
 # Default Context
 
->**Note**: This proposal is still a work in progress. For the metadata the idea is to have properties that can either work as literals or objects. [Examples for both are available in a separate Gist] (https://gist.github.com/HadrienGardeur/03ab96f5770b0512233a).
-
 The Readium Web Publication Manifest defines a shared external context document hosted by the Readium Foundation and based primarily on schema.org and its extensions.
 
 This context is meant primarily to:
@@ -21,12 +19,6 @@ A Web Publication Manifest should contain an identifier. The identifier must be 
 
 ```json
 "identifier": "http://example.com/publication"
-```
-
-Publications can be updated and to identify each specific version, the manifest should also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
-
-```json
-"modified": "2016-02-22T11:31:38Z"
 ```
 
 ## Title
@@ -56,11 +48,11 @@ In addition to the `title` element, the manifest may also contain an optional `s
 "subtitle": "A Romance of Many Dimensions"
 ```
 
-The manifest may also contain a `sort_as` element to provide a single sortable string, used by a client to organize a collection of publications:
+The manifest may also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
 "title": "A Tale of Two Cities",
-"sort_as": "Tale of Two Cities, A"
+"sortAs": "Tale of Two Cities, A"
 ```
 
 ## Contributors
@@ -83,7 +75,7 @@ Each element can also contain multiple contributors using a simple array:
 "artist": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
 ```
 
-In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sort_as` and `identifier`.
+In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sortAs` and `identifier`.
 
 When an object is used, it must contain at least `name`. 
 
@@ -99,12 +91,12 @@ It behaves like the `title` element and allows either a simple strings, or repre
 }
 ```
 
-The contributor object may also contain a `sort_as` element to provide a single sortable string, used by a client to organize a collection of publications:
+The contributor object may also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
 "author": {
   "name": "Marcel Proust",
-  "sort_as": "Proust, Marcel"
+  "sortAs": "Proust, Marcel"
 }
 ```
 
@@ -115,7 +107,7 @@ ISNI (http://isni.org) is the preferred authority, but other sources may also be
 ```json
 "author": {
   "name": "Jules Amédée Barbey d'Aurevilly",
-  "sort_as": "Barbey d'Aurevilly, Jules Amédée",
+  "sortAs": "Barbey d'Aurevilly, Jules Amédée",
   "identifier": "http://isni.org/isni/0000000121317806"
 }
 ```
@@ -172,7 +164,7 @@ This element also allows a more complex representation using an object and the f
 ```json
 "publisher": {
   "name": "The Science Fiction Company",
-  "sort_as": "Science Fiction Company, The",
+  "sortAs": "Science Fiction Company, The",
   "identifier": "http://example.com/publisher/TheScienceFictionCompany"
 }
 ```
@@ -186,6 +178,14 @@ A Web Publication Manifest may contain a publication date using the `published` 
 
 ```json
 "published": "2016-09-02"
+```
+
+## Modification Date
+
+Publications can be updated and to identify each specific version, the manifest should also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
+
+```json
+"modified": "2016-02-22T11:31:38Z"
 ```
 
 ## Subjects
@@ -202,14 +202,14 @@ Multiple subjects are listed using an array:
 "subject": ["Science Fiction", "Fantasy"]
 ```
 
-Subjects can also be expressed using an object with the following elements: `name`, `sort_as`, `code` and `scheme`.
+Subjects can also be expressed using an object with the following elements: `name`, `sortAs`, `code` and `scheme`.
 
 `name` is meant to provide a human readable string for the subject, while `sort_as` is meant to provide a string that a machine can sort: 
 
 ```json
 "subject": {
   "name": "Manga: Shonen",
-  "sort_as": "Shonen"
+  "sortAs": "Shonen"
 }
 ```
 
@@ -222,7 +222,7 @@ The `code` element is available to provide the string that identifies the subjec
 ```json
 "subject": {
   "name": "Manga: Shonen",
-  "sort_as": "Shonen",
+  "sortAs": "Shonen",
   "scheme": "http://www.editeur.org/151/Thema/",
   "code": "XAMG"
 }
@@ -235,7 +235,7 @@ A Web Publication Manifest may indicate that it belongs to one or multiple colle
 `collection` and `series` behave the same way, the most straightforward way to indicate that a publication belongs to a collection/series is through a simple string:
 
 ```json
-"belongs_to": {
+"belongsTo": {
   "collection": "Mysteries from Another Time",
   "series": "The Zombie Detective"
 }
@@ -243,13 +243,13 @@ A Web Publication Manifest may indicate that it belongs to one or multiple colle
 
 In order to provide more information about a specific collection/series, an object can also be used instead of a string.
 
-To provide a name and a sortable string, `collection` and `series` support both `name` and `sort_as`:
+To provide a name and a sortable string, `collection` and `series` support both `name` and `sortAs`:
 
 ```json
-"belongs_to": {
+"belongsTo": {
   "series": {
     "name": "The Zombie Detective",
-    "sort_as": "Zombie Detective, The"
+    "sortAs": "Zombie Detective, The"
   }
 }
 ```
@@ -258,10 +258,10 @@ A collection/series can also have an identifier, provided using the `identifier`
 element. The identifier must be a URI:
 
 ```json
-"belongs_to": {
+"belongsTo": {
   "series": {
     "name": "The Zombie Detective",
-    "sort_as": "Zombie Detective, The",
+    "sortAs": "Zombie Detective, The",
     "identifier": "http://www.example.com/series/TheZombieDetective"
   }
 }
@@ -272,10 +272,10 @@ Finally, series/collection can be ordered. To provide the position of the curren
 A position can be either an integer or a float where the value is greater than zero.
 
 ```json
-"belongs_to": {
+"belongsTo": {
   "series": {
     "name": "The Zombie Detective",
-    "sort_as": "Zombie Detective, The",
+    "sortAs": "Zombie Detective, The",
     "identifier": "http://www.example.com/series/TheZombieDetective",
     "position": 4
   }
@@ -323,7 +323,7 @@ To indicate the length of a publication, this context defines two different elem
     {"rel": "alternate", "href": "http://example.org/publication.epub", "type": "application/epub+zip"}
   ],
   
-  "spine": [
+  "readingOrder": [
     {"href": "cover.jpg", "type": "image/jpeg", "rel": "cover"}, 
     {"href": "map.svg", "type": "image/svg+xml", "title": "Map"}, 
     {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
@@ -356,7 +356,7 @@ If we use another example with more complex metadata expression and an extension
     "author": {
       "name": "Jules Verne",
       "identifier": "http://isni.org/isni/0000000121400562",
-      "sort_as": "Verne, Jules"
+      "sortAs": "Verne, Jules"
     },
     "translator": "Frederick Amadeus Malleson",
     "language": ["en", "fr"],
@@ -364,7 +364,7 @@ If we use another example with more complex metadata expression and an extension
     "modified": "2016-02-22T11:31:38Z",
     "description": "The story involves German professor Otto Lidenbrock who believes there are volcanic tubes going toward the centre of the Earth. He, his nephew Axel, and their guide Hans descend into the Icelandic volcano Snæfellsjökull, encountering many adventures, including prehistoric animals and natural hazards, before eventually coming to the surface again in southern Italy, at the Stromboli volcano.",
     "schema:isFamilyFriendly": true,
-    "belongs_to": {
+    "belongsTo": {
       "series": {
         "name": "The Extraordinary Voyages",
         "position": 3
@@ -380,10 +380,9 @@ If we use another example with more complex metadata expression and an extension
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |
 | [identifier](#identifier) | None, identifies the resource  | dc:identifier |
-| [modified](#identifier) | http://schema.org/dateModified  | dcterms:modified |
 | [title](#title) | http://schema.org/name  | dc:title |
 | [subtitle](#title) | http://schema.org/alternativeHeadline | - |
-| [sort_as](#title)  | http://schema.org/alternateName  | title@opf:file-as |
+| [sortAs](#title)  | http://schema.org/alternateName  | title@opf:file-as |
 | [author](#contributors) | http://schema.org/author  | dc:creator |
 | [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
 | [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
@@ -400,8 +399,9 @@ If we use another example with more complex metadata expression and an extension
 | [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
 | [	imprint](#publisher)  | http://schema.org/publisherImprint  | - |
 | [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
+| [modified](#modification-date) | http://schema.org/dateModified  | dcterms:modified |
 | [	description](#description)  | http://schema.org/description  | dc:description |
-| [belongs_to](#collections--series) | http://www.schema.org/isPartOf | - |
+| [belongsTo](#collections--series) | http://www.schema.org/isPartOf | - |
 | [series](#collections--series) | http://www.schema.org/Series | - |
 | [collection](#collections--series) | http://schema.org/Collection | - |
 | [position](#collections--series) | http://www.schema.org/position | - |

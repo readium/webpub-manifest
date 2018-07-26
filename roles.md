@@ -6,7 +6,7 @@ The Readium Web Publication Manifest specification defines the following roles f
 
 | Role  | Semantics | Compact? | Required? | Reference |
 | ----- | --------- | -------- | --------- | --------- |
-| spine  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  | [Main Specification](README.md) |
+| readingOrder  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  | [Main Specification](README.md) |
 | resources  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  | [Main Specification](README.md) |
 
 ## Extensions

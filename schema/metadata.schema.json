@@ -87,7 +87,7 @@
     "numberOfPages": {
       "type": "integer"
     },
-    "belongs_to": {
+    "belongsTo": {
       "type": "object",
       "properties": {
         "collection": {
@@ -99,5 +99,5 @@
       }
     }
   },
-  "required": ["identifier"]
+  "required": ["title"]
 }

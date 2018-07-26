@@ -1,5 +1,6 @@
 {
   "@context": {
+    "@version": 1.1,
     "schema": "http://schema.org/",
     "metadata": "@nest",
     "identifier": "@id",
@@ -11,7 +12,7 @@
       "@id": "http://schema.org/alternativeHeadline",
       "@container": "@language"
     },
-    "sort_as": "http://schema.org/alternateName",
+    "sortAs": "http://schema.org/alternateName",
     "author": "http://schema.org/author",
     "translator": "http://schema.org/translator",
     "editor": "http://schema.org/editor",
@@ -43,9 +44,28 @@
     },
     "description": "http://schema.org/description",
     "source": "http://schema.org/isBasedOn",
-    "belongs_to": "http://schema.org/isPartOf",
+    "belongsTo": "http://schema.org/isPartOf",
     "series": "http://schema.org/Series",
     "collection": "http://schema.org/Collection",
-    "position": "http://schema.org/position"
+    "position": "http://schema.org/position",
+    "readingProgression": "https://www.w3.org/ns/wp#readingProgression",
+    "readingOrder": {
+      "@container": "@list",
+      "@id": "https://www.w3.org/ns/wp#readingOrder"
+    },
+    "resources": {
+      "@container": "@set",
+      "@id": "https://www.w3.org/ns/wp#resources"
+    },
+    "links": {
+      "@container": "@set",
+      "@id": "https://www.w3.org/ns/wp#links"
+    },
+    "href": "http://schema.org/url",
+    "type": "http://schema.org/encodingFormat",
+    "rel": {
+      "@container": "@set",
+      "@id": "https://www.w3.org/ns/wp#rel"
+    }
   }
 }

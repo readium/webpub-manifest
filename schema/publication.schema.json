@@ -13,7 +13,7 @@
         "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
       }
     },
-    "spine": {
+    "readingOrder": {
       "type": "array",
       "items": {
         "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
@@ -26,5 +26,5 @@
       }
     }
   },
-  "required": ["metadata", "links", "spine"]
+  "required": ["metadata", "links", "readingOrder"]
 }

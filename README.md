@@ -21,7 +21,7 @@
     {"rel": "search", "href": "http://example.org/search{?query}", "type": "text/html", "templated": true}
   ],
   
-  "spine": [
+  "readingOrder": [
     {"href": "c001.html", "type": "text/html", "title": "Chapter 1"}, 
     {"href": "c002.html", "type": "text/html", "title": "Chapter 2"}
   ],
@@ -78,17 +78,17 @@ This specification defines two collection roles that are the building blocks of 
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
-| spine  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
+| readingOrder  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
 | resources  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
 
 Additional collection roles are defined in the [Collection Roles registry](roles.md).
 
 Extensions that are not registered officially must use a URI for their role.
 
-A manifest must have one `spine` collection where the main resources of the publication are listed in the linear reading order:
+A manifest must have one `readingOrder` collection where the main resources of the publication are listed in the linear reading order:
 
 ```json
-"spine": [
+"readingOrder": [
   {"href": "/chapter1", "type": "text/html"},
   {"href": "/chapter2", "type": "text/html"}
 ]
@@ -102,6 +102,8 @@ Other resources that are required to render the publication are listed in a `res
   {"href": "/image1.jpg", "type": "image/jpeg"}
 ]
 ```
+
+All resources listed in `readingOrder` and `resources` must indicate their media type using `type`.
 
 ### Metadata
 
@@ -173,7 +175,7 @@ Link relations that are currently used in this specification and its extensions 
 
 ## Content Documents
 
-Contents documents are the resources listed in the `spine` collection of a Web Publication.
+Contents documents are the resources listed in the `readingOrder` collection of a Web Publication.
 
 Any text, image, video or audio format that can be opened in a Web browser is a valid content document format.
 
@@ -202,7 +204,7 @@ Finally, a manifest may also be embedded in an HTML document using the `<script>
   "links": [
     {"rel": "self", "href": "http://example.org/manifest.json", "type": "text/html"}
   ],
-  "spine": [
+  "readingOrder": [
     {"href": "chapter1.html", "type": "text/html", "title": "Chapter 1"}
   ]
 }
@@ -211,7 +213,7 @@ Finally, a manifest may also be embedded in an HTML document using the `<script>
 
 ## Table of Contents
 
-A Web Publication Manifest can indicate that a table of contents is available using the `contents` relation in a Link Object listed in `spine` or `resources`:
+A Web Publication Manifest can indicate that a table of contents is available using the `contents` relation in a Link Object listed in `readingOrder` or `resources`:
 
 ```json
 {
@@ -223,13 +225,13 @@ A Web Publication Manifest can indicate that a table of contents is available us
 
 The Link Object must point to an HTML or XHTML document. 
 
-A client may also rely on the `title` key included in each Link Object of the `spine` to extract a minimal table of contents.
+A client may also rely on the `title` key included in each Link Object of the `readingOrder` to extract a minimal table of contents.
 
 [The EPUB extension](/extensions/epub.md) also defines [specialized collection roles](https://github.com/readium/webpub-manifest/blob/master/extensions/epub.md#collection-roles) for embedding various tables of contents directly in the manifest.
 
 ## Cover
 
-A Readium Web Publication Manifest can also provide a cover using the `cover` relation in a Link Object listed in `spine`, `resources` or `links`:
+A Readium Web Publication Manifest can also provide a cover using the `cover` relation in a Link Object listed in `readingOrder`, `resources` or `links`:
 
 ```json
 {
@@ -262,7 +264,7 @@ In addition to the EPUB format, a Readium Web Publication can also be distribute
 
 - the package itself must be a ZIP archive
 - the manifest document must be named `manifest.json` and must appear at the top level of the package
-- all resources in `spine`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
+- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
 - its media type is `application/webpub+zip`
 - its file extension is `.webpub`
 - a publication where any resource is encrypted using a DRM must use a different media type and file extension

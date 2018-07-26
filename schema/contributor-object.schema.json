@@ -10,11 +10,14 @@
       "type": "string",
       "format": "uri"
     },
-    "sort_as": {
+    "sortAs": {
       "type": "string"
     },
     "role": {
-      "type": "string"
+      "type": ["string", "array"],
+      "items": {
+        "type": "string"
+      }
     },
     "position": {
       "type": "number"
