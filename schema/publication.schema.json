@@ -26,5 +26,25 @@
       }
     }
   },
-  "required": ["metadata", "links", "readingOrder"]
+  "required": ["metadata", "links", "readingOrder"],
+  "allOf": [
+    {
+      "properties": {
+        "readingOrder": {
+          "items": {
+            "required": ["type"]
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "resources": {
+          "items": {
+            "required": ["type"]
+          }
+        }
+      }
+    }
+  ]
 }
