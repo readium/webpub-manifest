@@ -50,6 +50,7 @@
   "required": ["href"],
   "oneOf": [
     {
+      "description": "A URI template should also include the proper flag.",
       "properties": {
         "templated": {
           "const": true

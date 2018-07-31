@@ -29,6 +29,7 @@
   "required": ["metadata", "links", "readingOrder"],
   "allOf": [
     {
+      "description": "All resources listed in the reading order should contain a media type.",
       "properties": {
         "readingOrder": {
           "items": {
@@ -38,10 +39,36 @@
       }
     },
     {
+      "description": "All resources listed in the publication should contain a media type.",
       "properties": {
         "resources": {
           "items": {
             "required": ["type"]
+          }
+        }
+      }
+    },
+    {
+      "description": "A publication must contain at least one self link.",
+      "properties": {
+        "links": {
+          "contains": {
+            "properties": {
+              "rel": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "self"
+                  },
+                  {
+                    "type": "array",
+                    "contains": {
+                      "const": "self"
+                    }
+                  }
+                ]
+              }
+            }
           }
         }
       }
