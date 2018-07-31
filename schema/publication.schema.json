@@ -4,7 +4,6 @@
   "title": "Readium Web Publication Manifest",
   "properties": {
     "metadata": {
-      "type": "object",
       "$ref": "http://readium.org/webpub-manifest/schema/metadata.schema.json"
     },
     "links": {
