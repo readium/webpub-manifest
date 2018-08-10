@@ -159,7 +159,7 @@ The most straightforward expression is through a simple string:
 "imprint": "World Literature"
 ```
 
-This element also allows a more complex representation using an object and the following elements: `name`, `sort_as`, `identifier`. The semantics and syntax are identical to contributors:
+This element also allows a more complex representation using an object and the following elements: `name`, `sortAs`, `identifier`. The semantics and syntax are identical to contributors:
 
 ```json
 "publisher": {
@@ -204,7 +204,7 @@ Multiple subjects are listed using an array:
 
 Subjects can also be expressed using an object with the following elements: `name`, `sortAs`, `code` and `scheme`.
 
-`name` is meant to provide a human readable string for the subject, while `sort_as` is meant to provide a string that a machine can sort: 
+`name` is meant to provide a human readable string for the subject, while `sortAs` is meant to provide a string that a machine can sort: 
 
 ```json
 "subject": {
@@ -352,7 +352,7 @@ If we use another example with more complex metadata expression and an extension
       "en": "A Journey into the Center of the Earth",
       "fr": "Voyage au centre de la Terre"
     },
-    "sort_as": "Journey into the Center of the Earth, A",
+    "sortAs": "Journey into the Center of the Earth, A",
     "author": {
       "name": "Jules Verne",
       "identifier": "http://isni.org/isni/0000000121400562",
