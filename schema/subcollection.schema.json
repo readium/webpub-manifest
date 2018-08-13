@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "http://readium.org/webpub-manifest/schema/subcollection.schema.json",
+  "title": "Subcollection",
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "$ref": "http://readium.org/webpub-manifest/schema/metadata.schema.json"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
+          }
+        },
+        "additionalProperties": {
+          "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
+        }
+      }
+    },
+    {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
+          },
+          {
+            "properties": {
+              "metadata": {
+                "$ref": "http://readium.org/webpub-manifest/schema/metadata.schema.json"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
+                }
+              },
+              "additionalProperties": {
+                "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

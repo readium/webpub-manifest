@@ -26,6 +26,9 @@
     }
   },
   "required": ["metadata", "links", "readingOrder"],
+  "additionalProperties": {
+    "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
+  },
   "allOf": [
     {
       "description": "All resources listed in the reading order should contain a media type.",
