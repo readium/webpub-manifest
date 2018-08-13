@@ -7,7 +7,7 @@
       "type": "object",
       "properties": {
         "metadata": {
-          "$ref": "http://readium.org/webpub-manifest/schema/metadata.schema.json"
+          "type": "object"
         },
         "links": {
           "type": "array",
@@ -31,7 +31,7 @@
           {
             "properties": {
               "metadata": {
-                "$ref": "http://readium.org/webpub-manifest/schema/metadata.schema.json"
+                "type": "object"
               },
               "links": {
                 "type": "array",
@@ -39,11 +39,11 @@
                   "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
                 }
               },
-              "additionalProperties": {
-                "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
-              },
-              "required": ["metadata", "links"]
-            }
+            },
+            "additionalProperties": {
+              "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
+            },
+            "required": ["metadata", "links"]
           }
         ]
       }
