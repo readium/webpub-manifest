@@ -18,7 +18,8 @@
         "additionalProperties": {
           "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
         }
-      }
+      },
+      "required": ["metadata", "links"]
     },
     {
       "type": "array",
@@ -40,7 +41,8 @@
               },
               "additionalProperties": {
                 "$ref": "http://readium.org/webpub-manifest/schema/subcollection.schema.json"
-              }
+              },
+              "required": ["metadata", "links"]
             }
           }
         ]
