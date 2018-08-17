@@ -48,26 +48,12 @@
     }
   },
   "required": ["href"],
-  "oneOf": [
-    {
-      "description": "A URI template should also include the proper flag.",
+  "dependencies": {
+    "templated": {
       "properties": {
-        "templated": {
-          "const": true
-        },
-        "href": {
-          "format": "uri-template"
-        }
-      },
-      "required": ["templated"]
-    },
-    {
-      "properties": {
-        "href": {
-          "format": "uri"
-        }
+        "href": { "format": "uri-template" },
+        "templated": { "const": true }
       }
     }
-
-  ]
+  }
 }
