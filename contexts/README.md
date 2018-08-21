@@ -2,8 +2,8 @@
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](default/) | http://readium.org/webpub/default.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
-[EPUB Context](epub/) | http://readium.org/webpub/epub.jsonld  | EPUB specific metadata. | No |
+[Default Context](default/) | https://readium.org/webpub-manifest/context.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
+[EPUB Context](epub/) | https://readium.org/webpub-manifest/contexts/epub/context.jsonld  | EPUB specific metadata. | No |
 
 
 ## Registering a Context Document

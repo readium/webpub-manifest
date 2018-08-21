@@ -4,7 +4,7 @@
 
 ```json
 {
-  "@context": "http://readium.org/webpub/default.jsonld",
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
   
   "metadata": {
     "@type": "http://schema.org/Book",
@@ -117,7 +117,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](contexts/default/) | http://readium.org/webpub/default.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
+[Default Context](contexts/default/) | https://readium.org/webpub-manifest/context.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
 
 Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
@@ -199,7 +199,7 @@ Finally, a manifest may also be embedded in an HTML document using the `<script>
 ```
 <script type="application/webpub+json">
 {
-  "@context": "http://readium.org/webpub/default.jsonld",
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
   "metadata": {"title": "Example"},
   "links": [
     {"rel": "self", "href": "http://example.org/manifest.json", "type": "text/html"}

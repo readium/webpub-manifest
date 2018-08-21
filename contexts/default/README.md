@@ -10,7 +10,7 @@ This context is meant primarily to:
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-Default Context | http://readium.org/webpub/default.jsonld  | Default context definition used in every Readium Web Publication Manifest. | Yes |
+Default Context | https://readium.org/webpub-manifest/context.jsonld  | Default context definition used in every Readium Web Publication Manifest. | Yes |
 
 
 ## Identifier
@@ -306,7 +306,7 @@ To indicate the length of a publication, this context defines two different elem
 
 ```json
 {
-  "@context": "http://readium.org/webpub/default.jsonld",
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
   
   "metadata": {
     "@type": "http://schema.org/EBook",
@@ -343,7 +343,7 @@ If we use another example with more complex metadata expression and an extension
 
 ```json
 {
-  "@context": "http://readium.org/webpub/default.jsonld",
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
   
   "metadata": {
     "@type": "http://schema.org/EBook",

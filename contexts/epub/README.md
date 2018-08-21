@@ -2,7 +2,7 @@
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-EPUB Context | http://readium.org/webpub/epub.jsonld  | EPUB specific metadata | Yes |
+EPUB Context | https://readium.org/webpub-manifest/contexts/epub/context.jsonld  | EPUB specific metadata | Yes |
 
 ## Rendition Properties
 

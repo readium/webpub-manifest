@@ -1,5 +1,5 @@
 {
-  "@context": "http://readium.org/webpub/default.jsonld",
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
 
   "metadata": {
     "@type": "http://schema.org/EBook",
