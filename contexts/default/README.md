@@ -286,7 +286,7 @@ A position can be either an integer or a float where the value is greater than z
 
 To properly browse through a publication, a User Agent needs to know its progression direction.
 
-This is expressed in the manifest using `direction` which allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
+This is expressed in the manifest using `readingProgression` which allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
 
 This defaults to `auto` when no value is set.
 
@@ -405,6 +405,6 @@ If we use another example with more complex metadata expression and an extension
 | [series](#collections--series) | http://www.schema.org/Series | - |
 | [collection](#collections--series) | http://schema.org/Collection | - |
 | [position](#collections--series) | http://www.schema.org/position | - |
-| [direction](#progression-direction) | -  | spine@page-progression-direction |
+| [readingProgression](#progression-direction) | -  | spine@page-progression-direction |
 | [numberOfPages](#duration-and-number-of-pages) | http://schema.org/numberOfPages  | schema:numberOfPages |
 | [duration](#duration-and-number-of-pages) | http://schema.org/duration  | meta@property="media:duration"|

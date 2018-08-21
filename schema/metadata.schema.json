@@ -114,7 +114,7 @@
     "imprint": {
       "$ref": "http://readium.org/webpub-manifest/schema/contributor.schema.json"
     },
-    "direction": {
+    "readingProgression": {
       "type": "string",
       "enum": ["rtl", "ltr", "auto"],
       "default": "auto"
