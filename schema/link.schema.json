@@ -18,7 +18,10 @@
     },
     "rel": {
       "description": "Relation between the linked resource and its containing collection",
-      "type": ["string", "array"],
+      "type": [
+        "string",
+        "array"
+      ],
       "items": {
         "title": "string"
       }
@@ -47,20 +50,28 @@
       "type": "boolean"
     }
   },
-  "required": ["href"],
+  "required": [
+    "href"
+  ],
   "if": {
     "properties": {
-      "templated": { "const": true }
+      "templated": {
+        "const": true
+      }
     }
   },
   "then": {
     "properties": {
-      "href": { "format": "uri-template" }
+      "href": {
+        "format": "uri-template"
+      }
     }
   },
   "else": {
     "properties": {
-      "href": { "format": "uri" }
+      "href": {
+        "format": "uri"
+      }
     }
   }
 }

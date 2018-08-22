@@ -15,8 +15,16 @@
         "properties": {
           "rel": {
             "anyOf": [
-              { "type": "string", "const": "self" },
-              { "type": "array", "contains": { "const": "self" } }
+              {
+                "type": "string",
+                "const": "self"
+              },
+              {
+                "type": "array",
+                "contains": {
+                  "const": "self"
+                }
+              }
             ]
           }
         }
@@ -35,7 +43,11 @@
       }
     }
   },
-  "required": ["metadata", "links", "readingOrder"],
+  "required": [
+    "metadata",
+    "links",
+    "readingOrder"
+  ],
   "additionalProperties": {
     "$ref": "subcollection.schema.json"
   },
@@ -45,7 +57,9 @@
       "properties": {
         "readingOrder": {
           "items": {
-            "required": ["type"]
+            "required": [
+              "type"
+            ]
           }
         }
       }
@@ -55,7 +69,9 @@
       "properties": {
         "resources": {
           "items": {
-            "required": ["type"]
+            "required": [
+              "type"
+            ]
           }
         }
       }

@@ -30,7 +30,10 @@
       "type": "string"
     },
     "role": {
-      "type": ["string", "array"],
+      "type": [
+        "string",
+        "array"
+      ],
       "items": {
         "type": "string"
       }
@@ -45,5 +48,7 @@
       }
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

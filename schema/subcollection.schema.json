@@ -19,7 +19,10 @@
           "$ref": "subcollection.schema.json"
         }
       },
-      "required": ["metadata", "links"]
+      "required": [
+        "metadata",
+        "links"
+      ]
     },
     {
       "type": "array",
@@ -43,7 +46,10 @@
             "additionalProperties": {
               "$ref": "subcollection.schema.json"
             },
-            "required": ["metadata", "links"]
+            "required": [
+              "metadata",
+              "links"
+            ]
           }
         ]
       }
