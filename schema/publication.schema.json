@@ -10,6 +10,16 @@
       "type": "array",
       "items": {
         "$ref": "http://readium.org/webpub-manifest/schema/link.schema.json"
+      },
+      "contains": {
+        "properties": {
+          "rel": {
+            "anyOf": [
+              { "type": "string", "const": "self" },
+              { "type": "array", "contains": { "const": "self" } }
+            ]
+          }
+        }
       }
     },
     "readingOrder": {
@@ -46,31 +56,6 @@
         "resources": {
           "items": {
             "required": ["type"]
-          }
-        }
-      }
-    },
-    {
-      "description": "A publication must contain at least one self link.",
-      "properties": {
-        "links": {
-          "contains": {
-            "properties": {
-              "rel": {
-                "anyOf": [
-                  {
-                    "type": "string",
-                    "const": "self"
-                  },
-                  {
-                    "type": "array",
-                    "contains": {
-                      "const": "self"
-                    }
-                  }
-                ]
-              }
-            }
           }
         }
       }
