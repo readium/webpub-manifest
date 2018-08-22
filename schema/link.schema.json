@@ -48,12 +48,19 @@
     }
   },
   "required": ["href"],
-  "dependencies": {
-    "templated": {
-      "properties": {
-        "href": { "format": "uri-template" },
-        "templated": { "const": true }
-      }
+  "if": {
+    "properties": {
+      "templated": { "const": true }
+    }
+  },
+  "then": {
+    "properties": {
+      "href": { "format": "uri-template" }
+    }
+  },
+  "else": {
+    "properties": {
+      "href": { "format": "uri" }
     }
   }
 }
