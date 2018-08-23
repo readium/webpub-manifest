@@ -56,21 +56,23 @@
   "if": {
     "properties": {
       "templated": {
-        "const": true
+        "enum": [
+          false, null
+        ]
       }
     }
   },
   "then": {
     "properties": {
       "href": {
-        "format": "uri-template"
+        "format": "uri-reference"
       }
     }
   },
   "else": {
     "properties": {
       "href": {
-        "format": "uri"
+        "format": "uri-template"
       }
     }
   }
