@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "id": "http://readium.org/webpub-manifest/schema/link.schema.json",
+  "$id": "http://readium.org/webpub-manifest/schema/link.schema.json",
   "title": "Link Object for the Readium Web Publication Manifest",
   "type": "object",
   "properties": {
@@ -18,7 +18,10 @@
     },
     "rel": {
       "description": "Relation between the linked resource and its containing collection",
-      "type": ["string", "array"],
+      "type": [
+        "string",
+        "array"
+      ],
       "items": {
         "title": "string"
       }
@@ -47,12 +50,29 @@
       "type": "boolean"
     }
   },
-  "required": ["href"],
-  "dependencies": {
-    "templated": {
-      "properties": {
-        "href": { "format": "uri-template" },
-        "templated": { "const": true }
+  "required": [
+    "href"
+  ],
+  "if": {
+    "properties": {
+      "templated": {
+        "enum": [
+          false, null
+        ]
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "href": {
+        "format": "uri-reference"
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "href": {
+        "format": "uri-template"
       }
     }
   }
