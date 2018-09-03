@@ -66,6 +66,9 @@
     "rel": {
       "@container": "@set",
       "@id": "https://www.w3.org/ns/wp#rel"
-    }
+    },
+    "height": "http://schema.org/height",
+    "width": "http://schema.org/width",
+    "bitrate": "http://schema.org/bitrate"
   }
 }

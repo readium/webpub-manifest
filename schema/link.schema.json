@@ -40,6 +40,11 @@
       "type": "integer",
       "exclusiveMinimum": 0
     },
+    "bitrate": {
+      "description": "Bitrate of the linked resource in kbps",
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
     "duration": {
       "description": "Length of the linked resource in seconds",
       "type": "number",
