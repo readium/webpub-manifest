@@ -2,7 +2,7 @@
   "@context": "https://readium.org/webpub-manifest/context.jsonld",
 
   "metadata": {
-    "@type": "http://schema.org/EBook",
+    "@type": "http://schema.org/Book",
     "title": "Moby-Dick",
     "author": "Herman Melville",
     "identifier": "urn:isbn:9780000000001",
@@ -12,7 +12,7 @@
 
   "links": [
     {"rel": "cover", "href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797}, 
-    {"rel": "self", "href": "https://readium.github.io/webpub-manifest/examples/MobyDick/manifest.json", "type": "application/webpub+json"}
+    {"rel": "self", "href": "https://readium.org/webpub-manifest/examples/MobyDick/manifest.json", "type": "application/webpub+json"}
   ],
 
   "readingOrder": [
