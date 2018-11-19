@@ -54,16 +54,13 @@
 
 ## Introduction
 
-The goal of this document is to provide an audiobook profile for the [Readium Web Publication Manifest](https://github.com/readium/webpub-manifest) that will cover the following requirements:
+The goal of this document is to provide an audiobook profile for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) that will cover the following requirements:
 
 - provide metadata
 - list the different components of an audiobook
 - support multiple audio formats and means of accessing an audiobook (streaming or downloads)
 
-While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type and file extension in order to maximize compatibilty with audio apps:
-
-- its media type is `application/audiobook+json`
-- its file extension is `.audiobook-manifest`
+While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with audio apps: `application/audiobook+json`.
 
 ## Metadata
 
@@ -75,25 +72,26 @@ The core metadata for the audiobook manifest are based on [the default context f
 
 ## Listing Audio Files
 
-An audiobook is divided into one or more audio files, which are all listed in the `readingOrder` of the manifest, in reading order.
+An audiobook is divided into one or more audio files, which are all listed in the `readingOrder` of the manifest.
 
-In addition to the normal requirements of a `readingOrder`, all link objects have the following additional requirements:
+In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - all link objects must point strictly to audio files
- - every link object must include a `duration` that provides the duration of each individual audio file
+ - they must point strictly to audio files
+ - they must include a `duration` term that provides the duration in seconds of each individual audio resource
 
-In addition, all link objects should also include the `bitrate` whenever possible.
+In addition, all Link Objects should also include the `bitrate` whenever possible.
 
 ## Package
 
-In order to facilitate distribution, both manifest and audio files can also be distributed using a package.
+In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#package).
 
-The container also has the following properties:
+To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
 
 - its file extension must be `.audiobook`
 - its media type must be `application/audiobook+zip`
 
-When an audiobook is distributed in a container (instead of simply as a manifest), the manifest has the following additional restrictions:
+## Examples
 
-- the `readingOrder` must strictly reference audio files that are present in the container
-- to reference such files, all URIs in the `readingOrder` must be relative to the manifest (at the root of the container)
+A full example based on [the Librivox editions of Flatland](https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/) is available at: [https://readium.org/webpub-manifest/examples/Flatland/manifest.json](https://readium.org/webpub-manifest/examples/Flatland/manifest.json)
+
+Over 10,000+ audiobooks are also available in this format through [the Internet Archive OPDS Catalog](https://bookserver.archive.org/).

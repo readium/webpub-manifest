@@ -245,7 +245,7 @@ A Readium Web Publication Manifest can also provide a cover using the `cover` re
 
 The Link Object must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
 
-## Packaging a Web Publication
+## Package
 
 The Readium Web Publication Manifest is primarily meant to be distributed unpackaged and exploded on the Web.
 
@@ -262,9 +262,9 @@ If a Readium Web Publication Manifest is included in an EPUB, the following rest
 
 In addition to the EPUB format, a Readium Web Publication can also be distributed as a separate package:
 
-- the package itself must be a ZIP archive
-- the manifest document must be named `manifest.json` and must appear at the top level of the package
-- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
 - its media type is `application/webpub+zip`
 - its file extension is `.webpub`
+- the package itself must be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
+- the manifest must be named `manifest.json` and must appear at the top level of the package
+- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
 - a publication where any resource is encrypted using a DRM must use a different media type and file extension
