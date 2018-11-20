@@ -40,14 +40,14 @@
 
 * [Introduction](#introduction)
 * [Abstract Model](#abstract-model)
-* [Syntax](#Syntax)
+* [Syntax](#syntax)
   + [Collections](#collections)
   + [Metadata](#metadata)
   + [The Link Object](#the-link-object)
   + [Links](#links)
 * [Content Documents](#content-documents)
 * [Discovering a Manifest](#discovering-a-manifest)
-* [Table of Contents](#table-of-contents)
+* [Defining a Table of Contents](#defining-a-table-of-contents)
 * [Cover](#cover)
 * [Package](#package)
 * [Appendix A. JSON Schema](#appendix-a-json-schema)
@@ -227,7 +227,7 @@ Finally, a manifest may also be embedded in an HTML document using the `<script>
 </script>
 ```
 
-## Table of Contents
+## Defining a Table of Contents
 
 A Web Publication Manifest can indicate that a table of contents is available using the `contents` relation in a Link Object listed in `readingOrder` or `resources`:
 
