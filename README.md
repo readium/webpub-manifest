@@ -36,6 +36,22 @@
 }
 ```
 
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Abstract Model](#abstract-model)
+* [Syntax](#Syntax)
+  + [Collections](#collections)
+  + [Metadata](#metadata)
+  + [The Link Object](#the-link-object)
+  + [Links](#links)
+* [Content Documents](#content-documents)
+* [Discovering a Manifest](#discovering-a-manifest)
+* [Table of Contents](#table-of-contents)
+* [Cover](#cover)
+* [Package](#package)
+* [Appendix A. JSON Schema](#appendix-a-json-schema)
+
 ## Introduction
 
 While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together can represent a publication.
@@ -70,7 +86,7 @@ Collections are identified by their role and they can either contain:
 
 The Readium Web Publication Manifest is a full collection in this abstract model.
 
-## JSON Serialization
+## Syntax
 
 ### Collections
 
@@ -268,3 +284,9 @@ In addition to the EPUB format, a Readium Web Publication can also be distribute
 - the manifest must be named `manifest.json` and must appear at the top level of the package
 - all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
 - a publication where any resource is encrypted using a DRM must use a different media type and file extension
+
+## Appendix A. JSON Schema
+
+A JSON Schema is available under version control at [https://github.com/readium/webpub-manifest/tree/master/schema](https://github.com/readium/webpub-manifest/tree/master/schema)
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)

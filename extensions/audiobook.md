@@ -70,16 +70,44 @@ The core metadata for the audiobook manifest are based on [the default context f
 - it must include a `duration` element that provides the total duration of the audiobook
 
 
-## Listing Audio Files
+## Listing Audio Resources
 
-An audiobook is divided into one or more audio files, which are all listed in the `readingOrder` of the manifest.
+An audiobook is divided into one or more audio resources, which are all listed in the `readingOrder` of the manifest.
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - they must point strictly to audio files
+ - they must point strictly to audio resources
  - they must include a `duration` term that provides the duration in seconds of each individual audio resource
 
 In addition, all Link Objects should also include the `bitrate` whenever possible.
+
+## Alternate Audio Resources
+
+In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` may rely on the `alternate` key:
+
+```
+{
+  "href": "http://example.org/part1.mp3", 
+  "type": "audio/mpeg", 
+  "bitrate": 128, 
+  "duration": 1980, 
+  "title": "Part 1"
+  "alternate": [
+    {
+      "href": "http://example.org/part1.opus", 
+      "type": "audio/ogg", 
+      "bitrate": 32
+    }
+  ]
+}
+```
+
+All Link Objects present in the `alternate` array:
+
+- must indicate their media-type using `type`
+- should indicate their bitrate using `bitrate`
+- must reference audio resources of the same duration as the top-level Link Object
+- must not include the following keys: `title`, `duration` or `templated`
 
 ## Package
 
