@@ -42,7 +42,7 @@
     },
     "bitrate": {
       "description": "Bitrate of the linked resource in kbps",
-      "type": "integer",
+      "type": "number",
       "exclusiveMinimum": 0
     },
     "duration": {
