@@ -72,9 +72,9 @@ To facilitate the interoperability between EPUB and Web Publications, this docum
 <dl>
  <dt id="collection">Collection</dt>
  <dd>A grouping of some variable number of data items. In the context of this specification, a collection is defined as a grouping of metadata, links and sub-collections.</dd>
- <dt>Full Collections</dt>
+ <dt>Full Collection</dt>
  <dd>A collection that contains at least two or more data items among metadata, links and sub-collections.</dd>
- <dt>Compact Collections</dt>
+ <dt>Compact Collection</dt>
  <dd>A collection that contains one or more links, but doesn't contain any metadata or sub-collections.</dd>
  <dt>Manifest</dt>
  <dd>A manifest is a full collection that represents structured information about a publication.</dd>
@@ -84,7 +84,7 @@ To facilitate the interoperability between EPUB and Web Publications, this docum
 
 The Readium Web Publication Manifest is based on a hypermedia model inspired by [Atom](https://tools.ietf.org/html/rfc4287), [HAL](http://stateless.co/hal_specification.html), [Siren](https://github.com/kevinswiber/siren) and [Collection+JSON](http://amundsen.com/media-types/collection/format/) among others.
 
-Every Readium Web Publication Manifest is a [collection](#collection) that must contain:
+Every Readium Web Publication Manifest is a [collection](#collection) that <span class="rfc">must</span> contain:
 
 - [metadata](#22-metadata)
 - [links](#23-links)
@@ -98,7 +98,7 @@ Every Readium Web Publication Manifest is a [collection](#collection) that must 
 This specification defines two collection roles that are the building blocks of any manifest:
 
 | Role  | Semantics | Compact Collection? | Required? |
-| ----- | --------- | -------- | --------- |
+| ----- | --------- | ------------------- | --------- |
 | `readingOrder`  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
 | `resources`  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
 
@@ -110,11 +110,11 @@ Extensions that are not registered in the registry <span class="rfc">must</span>
 
 A manifest <span class="rfc">must</span> contain a `readingOrder` sub-collection.
 
-Other resources that are required to render the publication <span class="rfc">should</span> be listed in `resources` collection.
+Other resources that are required to render the publication <span class="rfc">should</span> be listed in `resources`.
 
 All resources listed in `readingOrder` and `resources` <span class="rfc">must</span> indicate their media type using `type`.
 
-*Example 1: Reading order and resources*
+*Example 1: Reading order and list of resources*
 
 ```json
 "readingOrder": [
@@ -182,64 +182,71 @@ Link relations that are currently used in this specification and its extensions 
 
 ### 2.4. The Link Object
 
-The Link Object is used in `links` and in compact collections to list resources related to a collection. 
+The Link Object is a core component of the Readium Web Publication Manifest JSON syntax.
 
-It requires at least the presence of `href` and `type`:
+It represents a link to a resource along with a set of metadata associated with that resource.
 
-| Name  | Value | Format | Required? |
+This specification defines the following keys for this JSON object:
+
+| Key  | Value | Format | Required? |
 | ------------- | ------------- | ------------- | ------------- |
-| href  | Link location.  | URI  | Yes  |
-| type  | MIME type of resource.  | MIME Media Type  | Yes  |
-| title  | Title of the linked resource.  | String  | No  |
-| rel  | Indicates the relation between the resource and its containing collection.  | One or more [Link Relation](relationships.md) or URI (extensions)  | No  |
-| properties  | Properties associated to the linked resource.  | [Properties Object](properties.md)  | No  |
-| height  | Indicates the height of the linked resource in pixels.  | Integer  | No  |
-| width  | Indicates the width of the linked resource in pixels.  | Integer | No  |
-| duration  | Indicates the length of the linked resource in seconds.  | Float| No  |
-| templated  | Indicates that the linked resource is a URI template.  | Boolean, defaults to false  | No  |
+| `href`  | Link location.  | URI  | Yes  |
+| `type`  | MIME type of resource.  | MIME Media Type  | No  |
+| `title`  | Title of the linked resource.  | String  | No  |
+| `rel`  | Indicates the relation between the resource and its containing collection.  | One or more [Link Relation](relationships.md) or URIs (extensions)  | No  |
+| `properties`  | Properties associated to the linked resource.  | [Properties Object](properties.md)  | No  |
+| `height`  | Indicates the height of the linked resource in pixels.  | Integer  | No  |
+| `width`  | Indicates the width of the linked resource in pixels.  | Integer | No  |
+| `duration`  | Indicates the length of the linked resource in seconds.  | Float| No  |
+| `bitrate`  | Indicates the bit rate of the linked resource in kilobits per second.  | Float| No  |
+| `templated`  | Indicates that the linked resource is a URI template.  | Boolean, defaults to `false`  | No  |
 
 
 ## 3. Content Documents
 
-Contents documents are the resources listed in the `readingOrder` collection of a Web Publication.
+The `readingOrder` of a manifest <span class="rfc">may</span> contain references to any text, image, video or audio resource that can be opened in a Web browser.
 
-Any text, image, video or audio format that can be opened in a Web browser is a valid content document format.
+## 4. Media Type
+
+This specification introduces a dedicated media type value to identify the Readium Web Publication Manifest: `application/webpub+json`.
+
+All HTTP responses for the manifest <span class="rfc">must</span> indicate this media type in their headers.
 
 ## 4. Discovering a Manifest
 
-To indicate that a content document is associated with a particular Web Publication Manifest, use a `link` element in the HTML `head`:
+The Readium Web Publication Manifest <span class="rfc">may</span> be referenced by resources included in its `readingOrder` or `resources` using a link.
+
+Such links <span class="rfc">must</span> include:
+
+- `application/webpub+json` as the media type of the manifest
+- `manifest` as the relation of the link
+
+*Example 4: Link in HTML to a manifest*
 
 ```html
 <link href="manifest.json" rel="manifest" type="application/webpub+json">
 ```
 
-The manifest can also be associated with any resources served over HTTP using the `Link` header:
+*Example 5: Link in HTTP to a manifest*
 
-```
+```http
 Link: <http://example.org/manifest.json>; rel="manifest";
          type="application/webpub+json"
 ```
 
-Finally, a manifest may also be embedded in an HTML document using the `<script>` element:
+## 5. Table of Contents
 
-```
-<script type="application/webpub+json">
-{
-  "@context": "https://readium.org/webpub-manifest/context.jsonld",
-  "metadata": {"title": "Example"},
-  "links": [
-    {"rel": "self", "href": "http://example.org/manifest.json", "type": "text/html"}
-  ],
-  "readingOrder": [
-    {"href": "chapter1.html", "type": "text/html", "title": "Chapter 1"}
-  ]
-}
-</script>
-```
+A Readium Web Publication Manifest <span class="rfc">may</span> contain a reference to a table of contents.
 
-## 5. Defining a Table of Contents
+In order to represent a table of contents in the manifest, this specification introduces an additional collection role:
 
-A Web Publication Manifest can indicate that a table of contents is available using the `contents` relation in a Link Object listed in `readingOrder` or `resources`:
+| Role  | Semantics | Compact Collection? | Required? |
+| ----- | --------- | ------------------- | --------- |
+| `toc`  | Identifies the collection that contains a table of contents. | Yes  | No  |
+
+As a fallback mechanism, a Readium Web Publication Manifest <span class="rfc">may</span> identify an HTML or XHTML resource in `readingOrder` or `resources` as a table of contents using the `contents` link relation.
+
+*Example 6: Reference to an HTML resource containing a TOC*
 
 ```json
 {
@@ -249,15 +256,21 @@ A Web Publication Manifest can indicate that a table of contents is available us
 }
 ```
 
-The Link Object must point to an HTML or XHTML document. 
+A User Agent <span class="rfc">may</span> also rely on the `title` key included in each Link Object of the `readingOrder` to extract a minimal table of contents.
 
-A client may also rely on the `title` key included in each Link Object of the `readingOrder` to extract a minimal table of contents.
-
-[The EPUB extension](/extensions/epub.md) also defines [specialized collection roles](https://github.com/readium/webpub-manifest/blob/master/extensions/epub.md#collection-roles) for embedding various tables of contents directly in the manifest.
+[The EPUB extension](/extensions/epub.md) also defines [additional collection roles](https://github.com/readium/webpub-manifest/blob/master/extensions/epub.md#collection-roles) for embedding navigation directly in the manifest.
 
 ## 6. Cover
 
-A Readium Web Publication Manifest can also provide a cover using the `cover` relation in a Link Object listed in `readingOrder`, `resources` or `links`:
+A Readium Web Publication Manifest <span class="rfc">may</span> contain a reference to a cover.
+
+Link Objects in `readingOrder`, `resources` or `links` can be identified as such using the `cover` link relation.
+
+All Link Objects containing the `cover` link relation <span class="rfc">must</span> reference an image directly. They <span class="rfc">should</span> include a `height` and `width` to facilitate how they are processed by User Agents.
+
+This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
+
+*Example 7: Reference to a cover*
 
 ```json
 {
@@ -269,31 +282,34 @@ A Readium Web Publication Manifest can also provide a cover using the `cover` re
 }
 ```
 
-The Link Object must point to an image using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
-
 ## 7. Package
 
-The Readium Web Publication Manifest is primarily meant to be distributed unpackaged and exploded on the Web.
+The Readium Web Publication Manifest is primarily meant to be distributed unpackaged on the Web.
 
-That said, a Readium Web Publication Manifest may be included in a classic EPUB, but reading systems have no obligation to access the manifest.
+That said, a Readium Web Publication Manifest <span class="rfc">may</span> be included in an EPUB.
 
 If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
 
-- the manifest document must be named `manifest.json` and must appear at the top level of the container
-- the OPF of the primary rendition must include a link to the manifest where the relationship is set to `alternate`
+- the manifest document <span class="rfc">must</span> be named `manifest.json` and must appear at the top level of the container
+- the OPF of the primary rendition <span class="rfc">must</span> include a link to the manifest where the link relation is set to `alternate`
+
+
+*Example 8: Reference to a manifest in an OPF*
 
 ```xml
-<link rel="alternate" href="manifest.json" media-type="application/webpub+json"/>
+<link rel="alternate" 
+      href="manifest.json" 
+      media-type="application/webpub+json" />
 ```
 
-In addition to the EPUB format, a Readium Web Publication can also be distributed as a separate package:
+In addition to the EPUB format, a Readium Web Publication <span class="rfc">may</span> also be distributed as a separate package where:
 
-- its media type is `application/webpub+zip`
-- its file extension is `.webpub`
-- the package itself must be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
-- the manifest must be named `manifest.json` and must appear at the top level of the package
-- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, must be referenced relatively to the manifest
-- a publication where any resource is encrypted using a DRM must use a different media type and file extension
+- its media type <span class="rfc">must</span> be `application/webpub+zip`
+- its file extension <span class="rfc">must</span> be `.webpub`
+- the package itself <span class="rfc">must</span> be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
+- the manifest <span class="rfc">must</span> be named `manifest.json` and <span class="rfc">must</span> appear at the top level of the package
+- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, <span class="rfc">must</span> be referenced relatively to the manifest
+- a publication where any resource is encrypted using a DRM <span class="rfc">must</span> use a different media type and file extension
 
 ## Appendix A. JSON Schema
 
