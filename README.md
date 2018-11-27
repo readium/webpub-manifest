@@ -97,8 +97,8 @@ Every Readium Web Publication Manifest is a [collection](#collection) that <span
 
 This specification defines two collection roles that are the building blocks of any manifest:
 
-| Role  | Semantics | Compact Collection? | Required? |
-| ----- | --------- | ------------------- | --------- |
+| Role  | Definition | Compact Collection? | Required? |
+| ----- | ---------- | ------------------- | --------- |
 | `readingOrder`  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
 | `resources`  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
 
@@ -188,21 +188,21 @@ It represents a link to a resource along with a set of metadata associated with 
 
 This specification defines the following keys for this JSON object:
 
-| Key  | Value | Format | Required? |
-| ------------- | ------------- | ------------- | ------------- |
-| `href`  | Link location.  | URI  | Yes  |
-| `type`  | MIME type of resource.  | MIME Media Type  | No  |
-| `title`  | Title of the linked resource.  | String  | No  |
-| `rel`  | Indicates the relation between the resource and its containing collection.  | One or more [Link Relation](relationships.md) or URIs (extensions)  | No  |
-| `properties`  | Properties associated to the linked resource.  | [Properties Object](properties.md)  | No  |
-| `height`  | Indicates the height of the linked resource in pixels.  | Integer  | No  |
-| `width`  | Indicates the width of the linked resource in pixels.  | Integer | No  |
-| `duration`  | Indicates the length of the linked resource in seconds.  | Float| No  |
-| `bitrate`  | Indicates the bit rate of the linked resource in kilobits per second.  | Float| No  |
-| `templated`  | Indicates that the linked resource is a URI template.  | Boolean, defaults to `false`  | No  |
+| Key  | Definition | Format | Required? |
+| ---- | -----------| -------| ----------|
+| `href`  | URI or URI template of the linked resource  | URI or URI template | Yes  |
+| `templated`  | Indicates that `href` is a URI template  | Boolean, defaults to `false`  | Only when `href` is a URI template  |
+| `type`  | Media type of the linked resource  | MIME Media Type  | No  |
+| `title`  | Title of the linked resource  | String  | No  |
+| `rel`  | Relation between the resource and its containing collection  | One or more [Link Relation](relationships.md) or URIs (extensions)  | No  |
+| `properties`  | Properties associated to the linked resource  | [Properties Object](properties.md)  | No  |
+| `height`  | Height of the linked resource in pixels  | Integer  | No  |
+| `width`  | Width of the linked resource in pixels  | Integer | No  |
+| `duration`  | Duration of the linked resource in seconds  | Float| No  |
+| `bitrate`  | Bit rate of the linked resource in kilobits per second  | Float| No  |
 
 
-## 3. Content Documents
+## 3. Resources in the Reading Order
 
 The `readingOrder` of a manifest <span class="rfc">may</span> contain references to any text, image, video or audio resource that can be opened in a Web browser.
 
@@ -227,9 +227,9 @@ Such links <span class="rfc">must</span> include:
 <link href="manifest.json" rel="manifest" type="application/webpub+json">
 ```
 
-*Example 5: Link in HTTP to a manifest*
+*Example 5: Link in HTTP headers to a manifest*
 
-```http
+```
 Link: <http://example.org/manifest.json>; rel="manifest";
          type="application/webpub+json"
 ```
@@ -282,7 +282,25 @@ This specification recommends using one of the following media types: `image/jpe
 }
 ```
 
-## 7. Package
+## 7. Extensibility
+
+The manifest provides multiple extension points:
+
+- additional collection roles using the [registry of roles](roles.md) or URIs
+- additional metadata using schema.org, a [registry of context documents](contexts/) or URIs (for individual terms)
+- additional link relations using the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
+- additional properties using the [registry of properties](properties.md)
+
+In addition to these extension points, this specification defines an [extension registry](extensions/) as well, to document specific profiles of the manifest.
+
+The initial registry, contains the following extensions:
+
+| Name  |  Description |
+| ----- | ------------ |
+| [EPUB Extension](extensions/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+| [Audiobook Profile](extensions/audiobook.md) | Defines a dedicated profile for audiobooks. |
+
+## 8. Package
 
 The Readium Web Publication Manifest is primarily meant to be distributed unpackaged on the Web.
 
@@ -290,7 +308,7 @@ That said, a Readium Web Publication Manifest <span class="rfc">may</span> be in
 
 If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
 
-- the manifest document <span class="rfc">must</span> be named `manifest.json` and must appear at the top level of the container
+- the manifest document <span class="rfc">must</span> be named `manifest.json` and <span class="rfc">must</span> appear at the top level of the container
 - the OPF of the primary rendition <span class="rfc">must</span> include a link to the manifest where the link relation is set to `alternate`
 
 
@@ -308,7 +326,7 @@ In addition to the EPUB format, a Readium Web Publication <span class="rfc">may<
 - its file extension <span class="rfc">must</span> be `.webpub`
 - the package itself <span class="rfc">must</span> be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
 - the manifest <span class="rfc">must</span> be named `manifest.json` and <span class="rfc">must</span> appear at the top level of the package
-- all resources in `readingOrder`, `resources` and `links` that are referenced using a relative URI, <span class="rfc">must</span> be referenced relatively to the manifest
+- all resources in `readingOrder`, `resources` and `links` <span class="rfc">must</span> be referenced relatively to the manifest
 - a publication where any resource is encrypted using a DRM <span class="rfc">must</span> use a different media type and file extension
 
 ## Appendix A. JSON Schema
