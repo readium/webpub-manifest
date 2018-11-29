@@ -22,7 +22,6 @@ This document is registered in the [Context Documents registry](../contexts), in
 | lot  | Identifies the collection that contains a list of tables.  | Yes  | No  |
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | page-list  | Identifies the collection that contains a list of pages.  | Yes  | No  |
-| toc  | Identifies the collection that contains a table of contents. | Yes  | No  |
 
 ## Extension to the Link Object
 

@@ -242,8 +242,8 @@ A Readium Web Publication Manifest <span class="rfc">may</span> contain a refere
 
 In order to represent a table of contents in the manifest, this specification introduces an additional collection role:
 
-| Role  | Semantics | Compact Collection? | Required? |
-| ----- | --------- | ------------------- | --------- |
+| Role  | Definition | Compact Collection? | Required? |
+| ----- | ---------- | ------------------- | --------- |
 | `toc`  | Identifies the collection that contains a table of contents. | Yes  | No  |
 
 As a fallback mechanism, a Readium Web Publication Manifest <span class="rfc">may</span> identify an HTML or XHTML resource in `readingOrder` or `resources` as a table of contents using the `contents` link relation.
