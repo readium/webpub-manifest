@@ -1,3 +1,13 @@
+[![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
+
+<style>
+.rfc {
+    color: #d55;
+    font-variant: small-caps;
+    font-style: normal;
+}
+</style>
+
 # Audiobook Extension
 
 ## Example
@@ -66,8 +76,8 @@ While the Audiobook Manifest is technically a profile of the Readium Web Publica
 
 The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://github.com/readium/webpub-manifest/tree/master/contexts/default) with the following additional requirements:
 
-- it must include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
-- it must include a `duration` element that provides the total duration of the audiobook
+- it <span class="rfc">must</span> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
+- it <span class="rfc">must</span> include a `duration` element that provides the total duration of the audiobook
 
 
 ## Listing Audio Resources
@@ -76,14 +86,14 @@ An audiobook is divided into one or more audio resources, which are all listed i
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - they must point strictly to audio resources
- - they must include a `duration` term that provides the duration in seconds of each individual audio resource
+ - they <span class="rfc">must</span> point strictly to audio resources
+ - they <span class="rfc">must</span> include a `duration` term that provides the duration in seconds of each individual audio resource
 
-In addition, all Link Objects should also include the `bitrate` whenever possible.
+In addition, all Link Objects <span class="rfc">should</span> also include the `bitrate` whenever possible.
 
 ## Alternate Audio Resources
 
-In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` may rely on the `alternate` key:
+In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key:
 
 ```
 {
@@ -104,10 +114,10 @@ In order to support multiple variants of the same audiobook (using a different f
 
 All Link Objects present in the `alternate` array:
 
-- must indicate their media-type using `type`
-- should indicate their bitrate using `bitrate`
-- must reference audio resources of the same duration as the top-level Link Object
-- must not include the following keys: `title`, `duration` or `templated`
+- <span class="rfc">must</span> indicate their media-type using `type`
+- <span class="rfc">should</span> indicate their bitrate using `bitrate`
+- <span class="rfc">must</span> reference audio resources of the same duration as the top-level Link Object
+- <span class="rfc">must not</span> include the following keys: `title`, `duration` or `templated`
 
 ## Package
 
@@ -115,8 +125,8 @@ In order to facilitate distribution, both manifest and audio files can also be d
 
 To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
 
-- its file extension must be `.audiobook`
-- its media type must be `application/audiobook+zip`
+- its file extension <span class="rfc">must</span> be `.audiobook`
+- its media type <span class="rfc">must</span> be `application/audiobook+zip`
 
 ## Examples
 

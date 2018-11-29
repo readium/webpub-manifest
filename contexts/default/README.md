@@ -5,12 +5,12 @@ The Readium Web Publication Manifest defines a shared external context document 
 This context is meant primarily to:
 
 - align the Web Publication Manifest with the Web by adopting schema.org and its extensions
-- provide compatibility with EPUB 3.1 by providing equivalent metadata elements based on schema.org
+- provide compatibility with EPUB 3.2 by providing equivalent metadata elements based on schema.org
 
 
 | Name  | URI | Description | Required? |
-| ---- | ----------- | ------------- | --------- |
-Default Context | https://readium.org/webpub-manifest/context.jsonld  | Default context definition used in every Readium Web Publication Manifest. | Yes |
+| ----- | --- | ----------- | --------- |
+Default Context | [https://readium.org/webpub-manifest/context.jsonld](https://readium.org/webpub-manifest/context.jsonld) | Default context definition used in every Readium Web Publication Manifest. | Yes |
 
 
 ## Identifier
@@ -294,15 +294,22 @@ This defaults to `auto` when no value is set.
 
 To indicate the length of a publication, this context defines two different elements: `duration` and `numberOfPages`.
 
-`duration` is expressed in seconds using an integer, while `numberOfPages` is an integer as well.
+`duration` is expressed in seconds using a float (number in JS), while `numberOfPages` is an integer as well.
 
 ```
 "duration": "5467",
 "numberOfPages": "178"
 ```
 
+## JSON Schema
 
-## Examples
+The default context is implemented in the core JSON Schema for the Readium Web Publication Manifest and should be used as a reference as well.
+
+The JSON Schema for metadata is under version control at [https://github.com/readium/webpub-manifest/blob/master/schema/metadata.schema.json](https://github.com/readium/webpub-manifest/blob/master/schema/metadata.schema.json)
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)
+
+## Appendix A - Examples
 
 ```json
 {
@@ -375,7 +382,7 @@ If we use another example with more complex metadata expression and an extension
 }
 ```
 
-## Mapping to Schema.org & EPUB 3.1
+## Appendix B - Mapping to Schema.org & EPUB 3.1
 
 | Key  | Schema.org | EPUB 3.1 |
 | ---- | ---------- | -------- |

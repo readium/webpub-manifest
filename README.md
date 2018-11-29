@@ -1,3 +1,5 @@
+[![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
+
 <style>
 .rfc {
     color: #d55;
@@ -171,8 +173,8 @@ A manifest <span class="rfc">must</span> contain at least one link using the `se
 "links": [
   {
     "rel": "self",
-	 "href": "http://example.org/manifest.json",
-	 "type": "application/webpub+json"
+    "href": "http://example.org/manifest.json",
+    "type": "application/webpub+json"
   }
 ]
 ```
