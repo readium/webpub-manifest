@@ -8,7 +8,7 @@
 }
 </style>
 
-# Audiobook Extension
+# Audiobook Profile
 
 ## Example
 
@@ -61,7 +61,6 @@
 }
 ```
 
-
 ## Introduction
 
 The goal of this document is to provide an audiobook profile for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) that will cover the following requirements:
@@ -74,7 +73,7 @@ While the Audiobook Manifest is technically a profile of the Readium Web Publica
 
 ## Metadata
 
-The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://github.com/readium/webpub-manifest/tree/master/contexts/default) with the following additional requirements:
+The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
 
 - it <span class="rfc">must</span> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
 - it <span class="rfc">must</span> include a `duration` element that provides the total duration of the audiobook
@@ -121,7 +120,7 @@ All Link Objects present in the `alternate` array:
 
 ## Package
 
-In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#package).
+In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
 
 To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
 
@@ -130,6 +129,10 @@ To maximize compatibility with audio-only apps, the package for an audiobook pro
 
 ## Examples
 
-A full example based on [the Librivox editions of Flatland](https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/) is available at: [https://readium.org/webpub-manifest/examples/Flatland/manifest.json](https://readium.org/webpub-manifest/examples/Flatland/manifest.json)
+A full example based on [the LibriVox edition of Flatland](https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/) is available at: [https://readium.org/webpub-manifest/examples/Flatland/manifest.json](https://readium.org/webpub-manifest/examples/Flatland/manifest.json)
 
 Over 10,000+ audiobooks are also available in this format through [the Internet Archive OPDS Catalog](https://bookserver.archive.org/).
+
+## Demo
+
+[A demo of the Flatland example is also available](https://player.cantookaudio.com/aHR0cHM6Ly9yZWFkaXVtLm9yZy93ZWJwdWItbWFuaWZlc3QvZXhhbXBsZXMvRmxhdGxhbmQvbWFuaWZlc3QuanNvbg==) through a Web App developed by [De Marque](https://www.demarque.com/). 
