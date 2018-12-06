@@ -18,7 +18,7 @@
 
   "links": [
     {"rel": "self", "href": "https://readium.org/webpub-manifest/examples/Flatland/manifest.json", "type": "application/audiobook+json"},
-    {"rel": "cover", "href": "http://ia800704.us.archive.org/9/items/LibrivoxCdCoverArt12/Flatland_1109.jpg", "type": "image/jpeg", "height": 300, "width": 300},
+    {"rel": "cover", "href": "https://www.archive.org/download/LibrivoxCdCoverArt12/Flatland_1109.jpg", "type": "image/jpeg", "height": 300, "width": 300},
     {"rel": "alternate", "href": "https://archive.org/download/flatland_rg_librivox/Flatland_64kb_librivox.m4b", "type": "audio/x-m4b", "bitrate": 64},
     {"rel": "alternate", "href": "http://www.archive.org/download/flatland_rg_librivox/flatland_rg_librivox_64kb_mp3.zip", "type": "application/zip"},
     {"rel": "alternate", "href": "http://www.archive.org/download/flatland_rg_librivox/flatland_rg_librivox_archive.torrent", "type": "application/x-bittorrent"}
