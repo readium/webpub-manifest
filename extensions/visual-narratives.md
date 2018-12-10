@@ -25,12 +25,12 @@
     "published": "1953-12-30",
     "modified": "2018-12-10T18:21:18Z",
     "numberOfPages": 62,
-    "belongsTo": [
+    "belongsTo": {
       "series": {
         "name": "Les Aventures de Tintin",
         "position": 16
       }
-    ]
+    }
   },
 
   "links": [
