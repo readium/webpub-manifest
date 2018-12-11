@@ -147,6 +147,45 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
+## Guided Navigation
+
+In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <span class="rfc">may</span> also provide guided navigation where each reference is either:
+
+- pointing directly to a resource (`image1.jpg`)
+- or to a fragment of a resource using [Media Fragments](https://www.w3.org/TR/media-frags) (`image1.jpg#xywh=160,120,320,240`)
+
+This document introduces a new collection role to fulfill that goal:
+
+| Role  | Definition | Compact Collection? | Required? |
+| ----- | ---------- | ------------------- | --------- |
+| `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  |
+
+To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <span class="rfc">should</span> only contain `href`, `title` and `children`.
+
+This current draft does not cover guided navigation over alternate versions of each image resource.
+
+*Example 4: Guided navigation in a single page*
+
+```
+"guided": [
+{
+  "href": "http://example.org/page1.jpeg",
+  "title": "Page 1",
+  "children": [
+    {
+      "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
+      "title": "Panel 1"
+    },
+    {
+      "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
+      "title": "Panel 2"
+    }
+  ]
+}
+]
+```
+
+
 ## Package
 
 In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
