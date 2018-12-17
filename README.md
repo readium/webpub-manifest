@@ -301,6 +301,7 @@ The initial registry, contains the following extensions:
 | ----- | ------------ |
 | [EPUB Extension](extensions/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 | [Audiobook Profile](extensions/audiobook.md) | Defines a dedicated profile for audiobooks. |
+| [Visual Narrative Profile](extensions/visual-narrative.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 
 ## 8. Package
 
