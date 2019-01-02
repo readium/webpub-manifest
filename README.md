@@ -144,7 +144,7 @@ The Web Publication Manifest defines an initial registry of well-known context d
 
 | Name  | URI | Description | Required? |
 | ---- | ----------- | ------------- | --------- |
-[Default Context](contexts/default/) | https://readium.org/webpub-manifest/context.jsonld  | Default context definition used in every Web Publication Manifest. | Yes |
+[Default Context](contexts/default/) | [https://readium.org/webpub-manifest/context.jsonld](https://readium.org/webpub-manifest/context.jsonld)  | Default context definition used in every Web Publication Manifest. | Yes |
 
 Context documents are all defined and listed in the [Context Documents registry](contexts/).
 
