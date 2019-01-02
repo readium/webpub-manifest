@@ -54,6 +54,12 @@
         "$ref": "link.schema.json"
       },
       "uniqueItems": true
+    },
+    "toc": {
+      "type": "array",
+      "items": {
+        "$ref": "link.schema.json"
+      }
     }
   },
   "required": [

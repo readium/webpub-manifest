@@ -12,6 +12,11 @@
       "description": "MIME type of the linked resource",
       "type": "string"
     },
+
+    "templated": {
+      "description": "Indicates that a URI template is used in href",
+      "type": "boolean"
+    },
     "title": {
       "description": "Title of the linked resource",
       "type": "string"
@@ -28,7 +33,7 @@
     },
     "properties": {
       "description": "Properties associated to the linked resource",
-      "type": "object"
+      "$ref": "properties.schema.json"
     },
     "height": {
       "description": "Height of the linked resource in pixels",
@@ -50,9 +55,11 @@
       "type": "number",
       "exclusiveMinimum": 0
     },
-    "templated": {
-      "description": "Indicates that a URI template is used in href",
-      "type": "boolean"
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "link.schema.json"
+      }
     }
   },
   "required": [

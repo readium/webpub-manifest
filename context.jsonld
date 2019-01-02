@@ -43,7 +43,6 @@
       "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
     },
     "description": "http://schema.org/description",
-    "source": "http://schema.org/isBasedOn",
     "belongsTo": "http://schema.org/isPartOf",
     "series": "http://schema.org/Series",
     "collection": "http://schema.org/Collection",
