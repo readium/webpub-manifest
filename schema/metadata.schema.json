@@ -151,5 +151,8 @@
   },
   "required": [
     "title"
+  ],
+  "allOf": [
+    { "$ref": "https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json" }
   ]
 }

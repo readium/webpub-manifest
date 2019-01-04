@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json",
+  "title": "EPUB Extension - Metadata",
+  "type": "object",
+  "properties": {
+    "rendition": {
+      "type": "object",
+      "properties": {
+        "layout": {
+          "description": "Hints how the layout of the resource should be presented",
+          "type": "string",
+          "enum": [
+            "fixed", 
+            "reflowable"
+          ]
+        },
+        "orientation": {
+          "description": "Suggested orientation for the device when displaying the linked resource",
+          "type": "string",
+          "enum": [
+            "auto", 
+            "landscape", 
+            "portrait"
+          ]
+        },
+        "overflow": {
+          "description": "Suggested method for handling overflow while displaying the linked resource",
+          "type": "string",
+          "enum": [
+            "auto",
+            "paginated",
+            "scrolled",
+            "scrolled-continuous"
+          ]
+        },
+        "spread": {
+          "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread",
+          "type": "string",
+          "enum": [
+            "auto",
+            "both",
+            "none",
+            "landscape"
+          ]
+        }
+      }
+    }
+  }
+}
