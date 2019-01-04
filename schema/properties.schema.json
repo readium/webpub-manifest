@@ -24,6 +24,7 @@
     }
   },
   "allOf": [
-    { "$ref": "https://drafts.opds.io/schema/properties.schema.json" }
+    { "$ref": "https://drafts.opds.io/schema/properties.schema.json" },
+    { "$ref": "https://readium.org/webpub-manifest/schema/extensions/epub/properties.schema.json" }
   ]
 }
