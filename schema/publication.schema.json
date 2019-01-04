@@ -71,6 +71,7 @@
     "$ref": "subcollection.schema.json"
   },
   "allOf": [
+    { "$ref": "extensions/epub/subcollections.schema.json" }
     {
       "description": "All resources listed in the reading order should contain a media type.",
       "properties": {
