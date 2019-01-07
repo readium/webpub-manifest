@@ -31,7 +31,7 @@ A Web Publication Manifest <span class="rfc">must</span> contain a single title 
 
 In addition to a simple string representation, the `title` element also supports alternate representations of the same string in different scripts and languages.
 
-To provide these alternate representations, an object <span class="rfc">may</span> be used instead of a string, where each key identifies a language/script and must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag:
+To provide these alternate representations, an object may be used instead of a string, where each key identifies a language/script and must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag:
 
 ```json
 "title": {
@@ -57,7 +57,7 @@ The manifest <span class="rfc">may</span> also contain a `sortAs` element to pro
 
 ## Identifier
 
-A Web Publication Manifest <span class="rfc">should</span> contain an identifier. The identifier <span class="rfc">must</span> be a valid URI:
+A Web Publication Manifest <span class="rfc">should</span> contain an identifier. The identifier must be a valid URI:
 
 ```json
 "identifier": "http://example.com/publication"
@@ -70,7 +70,7 @@ The default context for the Web Publication Manifest provides a number of elemen
 
 In addition to these elements, it also provides a generic term for contributors: `contributor`.
 
-A Web Publication Manifest <span class="rfc">should</span> contain one or more contributor.
+A Web Publication Manifest <span class="rfc">should</span> contain one or more contributors.
 
 The most straightforward expression of a contributor is through a simple string:
 
@@ -86,7 +86,7 @@ Each element can also contain multiple contributors using a simple array:
 
 In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sortAs` and `identifier`.
 
-When an object is used, it <span class="rfc">must</span> contain at least `name`. 
+When an object is used, it must contain at least `name`. 
 
 It behaves like the `title` element and allows either a simple strings, or representations in multiple languages and scripts of a contributor's name:
 
@@ -100,7 +100,7 @@ It behaves like the `title` element and allows either a simple strings, or repre
 }
 ```
 
-The contributor object <span class="rfc">may</span> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
+The contributor object may also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
 "author": {
@@ -109,7 +109,7 @@ The contributor object <span class="rfc">may</span> also contain a `sortAs` elem
 }
 ```
 
-Finally, the object <span class="rfc">may</span> also contain an `identifier`. The `identifier` <span class="rfc">must</span> be a URI.
+Finally, the object may also contain an `identifier`. The `identifier` must be a URI.
 
 ISNI (http://isni.org) is the preferred authority, but other sources may also be used:
 
@@ -225,7 +225,7 @@ Subjects can also be expressed using an object with the following elements: `nam
 
 In many fields and territories, a number of controlled vocabularies are in use to identify subjects. For example THEMA is used in the publishing industry to provide an international subject scheme.
 
-To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` <span class="rfc">must</span> be a URI.
+To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` must be a URI.
 
 The `code` element is available to provide the string that identifies the subject in a given scheme:
 
@@ -265,7 +265,7 @@ To provide a name and a sortable string, `collection` and `series` support both 
 ```
 
 A collection/series can also have an identifier, provided using the `identifier`
-element. The identifier <span class="rfc">must</span> be a URI:
+element. The identifier must be a URI:
 
 ```json
 "belongsTo": {
@@ -296,15 +296,17 @@ A position can be either an integer or a float where the value is greater than z
 
 To properly browse through a publication, a User Agent needs to know its progression direction.
 
-This is expressed in the manifest using `readingProgression` which allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
+A manifest <span class="rfc">may</span> express this information using `readingProgression`. 
 
-This defaults to `auto` when no value is set.
+It allows the following values: `ltr` (left to right), `rtl` (right to left) and `auto`.
+
+It also defaults to `auto` when no value is set.
 
 ## Duration and Number of Pages
 
-To indicate the length of a publication, this context defines two different elements: `duration` and `numberOfPages`.
+To indicate the length of a publication, a manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
 
-`duration` is expressed in seconds using a float (number in JS), while `numberOfPages` is an integer as well.
+`duration` is expressed in seconds using a float (number in JS), while `numberOfPages` is an integer.
 
 ```
 "duration": "5467",
