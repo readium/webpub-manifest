@@ -196,13 +196,13 @@ This specification defines the following keys for this JSON object:
 | `templated`  | Indicates that `href` is a URI template  | Boolean, defaults to `false`  | Only when `href` is a URI template  |
 | `type`  | Media type of the linked resource  | MIME Media Type  | No  |
 | `title`  | Title of the linked resource  | String  | No  |
-| `rel`  | Relation between the resource and its containing collection  | One or more [Link Relation](relationships.md) or URIs (extensions)  | No  |
-| `properties`  | Properties associated to the linked resource  | [Properties Object](properties.md)  | No  |
-| `height`  | Height of the linked resource in pixels  | Integer  | No  |
-| `width`  | Width of the linked resource in pixels  | Integer | No  |
-| `duration`  | Duration of the linked resource in seconds  | Float| No  |
-| `bitrate`  | Bit rate of the linked resource in kilobits per second  | Float| No  |
-
+| `rel`  | Relation between the resource and its containing collection  | One or more [Link Relations](relationships.md) | No  |
+| `properties`  | Properties associated to the linked resource  | [Properties Object](properties.md)  | No |
+| `height`  | Height of the linked resource in pixels | Integer  | No  |
+| `width`  | Width of the linked resource in pixels | Integer | No  |
+| `duration`  | Duration of the linked resource in seconds | Float| No  |
+| `bitrate`  | Bit rate of the linked resource in kilobits per second | Float| No  |
+| `children`  | Resources that are children of the linked resource, in the context of a given collection role | One or more [Link Objects](#24-the-link-object) | No |
 
 ## 3. Resources in the Reading Order
 
@@ -246,9 +246,35 @@ In order to represent a table of contents in the manifest, this specification in
 | ----- | ---------- | ------------------- | --------- |
 | `toc`  | Identifies the collection that contains a table of contents. | Yes  | No  |
 
+*Example 6: Partial TOC for an audiobook*
+
+```json
+"toc": [
+  {
+    "href": "track1.mp3#t=71",
+    "title": "Part 1 - This World",
+    "children": [
+      {
+        "href": "track1.mp3#t=80",
+        "title": "Section 1 - Of the Nature of Flatland"
+      },
+      {
+        "href": "track1.mp3#t=415",
+        "title": "Section 2 - Of the Climate and Houses in Flatland"
+      },
+      {
+        "href": "track1.mp3#t=789",
+        "title": "Section 3 - Concerning the Inhabitants of Flatland"
+      }
+    ]
+  }
+]
+```
+
+
 As a fallback mechanism, a Readium Web Publication Manifest <span class="rfc">may</span> identify an HTML or XHTML resource in `readingOrder` or `resources` as a table of contents using the `contents` link relation.
 
-*Example 6: Reference to an HTML resource containing a TOC*
+*Example 7: Reference to an HTML resource containing a TOC*
 
 ```json
 {
@@ -272,7 +298,7 @@ All Link Objects containing the `cover` link relation <span class="rfc">must</sp
 
 This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
 
-*Example 7: Reference to a cover*
+*Example 8: Reference to a cover*
 
 ```json
 {
@@ -289,8 +315,8 @@ This specification recommends using one of the following media types: `image/jpe
 The manifest provides multiple extension points:
 
 - additional collection roles using the [registry of roles](roles.md) or URIs
-- additional metadata using schema.org, a [registry of context documents](contexts/) or URIs (for individual terms)
-- additional link relations using the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
+- additional metadata using schema.org, terms from the [registry of context documents](contexts/) or URIs (for individual terms)
+- additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
 - additional properties using the [registry of properties](properties.md)
 
 In addition to these extension points, this specification defines an [extension registry](extensions/) as well, to document specific profiles of the manifest.
@@ -315,7 +341,7 @@ If a Readium Web Publication Manifest is included in an EPUB, the following rest
 - the OPF of the primary rendition <span class="rfc">must</span> include a link to the manifest where the link relation is set to `alternate`
 
 
-*Example 8: Reference to a manifest in an OPF*
+*Example 9: Reference to a manifest in an OPF*
 
 ```xml
 <link rel="alternate" 

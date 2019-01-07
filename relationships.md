@@ -11,6 +11,10 @@ The Readium Web Publication Manifest specification and its extensions currently 
 | `search`   | Refers to a URI or templated URI that will perform a search | [HTML5](https://www.w3.org/TR/html5/links.html) |
 | `self`   | Conveys an identifier for the link's context | [Atom Syndication Format](https://tools.ietf.org/html/rfc4287) |
 
+In addition to these relations, any term define in the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) can also be used.
+
+Extensions must either be registered on this repo or rely on URIs.
+
 ## OPDS 2.0
 
 While OPDS 2.0 itself is not an extension of the Readium Web Publication Manifest, it shares the same abstract model and syntax.
