@@ -72,12 +72,12 @@
         },
         "profile": {
           "description": "Identifies the encryption profile used to encrypt the resource",
-          "type": "integer",
+          "type": "string",
           "format": "uri"
         },
         "scheme": {
           "description": "Identifies the encryption scheme used to encrypt the resource",
-          "type": "integer",
+          "type": "string",
           "format": "uri"
         }
       },
