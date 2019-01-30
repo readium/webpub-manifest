@@ -63,7 +63,7 @@
 }
 ```
 
-## Introduction
+## 1. Introduction
 
 The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) that will cover the following requirements:
 
@@ -74,7 +74,7 @@ The goal of this document is to provide a profile dedicated to visual narratives
 While the Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/visual-narrative+json`.
 
 
-## Listing Visual Narrative Resources
+## 2. Listing Visual Narrative Resources
 
 A visual narratived is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
 
@@ -84,7 +84,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
 
 In addition, all Link Objects <span class="rfc">should</span> include `width` and `height` to indicate the dimensions of each resource
 
-## Alternate Visual Resources
+## 3. Alternate Visual Resources
 
 In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key.
 
@@ -147,7 +147,7 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
-## Guided Navigation
+## 4. Guided Navigation
 
 In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <span class="rfc">may</span> also provide guided navigation where each reference is either:
 
@@ -186,7 +186,7 @@ This current draft does not cover guided navigation over alternate versions of e
 ```
 
 
-## Package
+## 5. Package
 
 In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
 
@@ -196,3 +196,66 @@ To maximize compatibility with comics apps, the package for this profile has its
 - its media type <span class="rfc">must</span> be `application/visual-narrative+zip`
 
 As an alternative, the manifest can also be added to a CBZ file at the same well-known location.
+
+## Appendix A. Webtoons
+
+*This section is non-normative.*
+
+Webtoons are probably the most successful form of digital native visual narrative. Originally from South Korea, they're now becoming popular in Japan and France as well and should be covered by this profile.
+
+We could either consider that a webtoon is:
+
+- a single scrollable image, that should fit the width of the viewport
+- multiple images that can be continuously scrolled
+
+With the first approach, the `readingOrder` contains a single image:
+
+```
+"readingOrder": [
+  {
+    "href": "long-image.jpg",
+    "type": "image/jpeg",
+    "properties": {
+      "overflow": "scrolled",
+      "layout": "reflowable"
+    }
+  }
+]
+```
+
+The `overflow` property indicates that the resource should be scrolled, while the use of a reflowable layout means that the image defaults to a fit based on the width of the device (instead of a fit for both dimensions with a fixed layout).
+
+A second approach is based on using multiple images, which could be better for performance on large webtoons.
+
+In this case, a webtoon becomes a list of images that should be presented in a continuous scroll (with no gap or margin between images):
+
+```
+"readingOrder": [
+  {
+    "href": "image1.jpg",
+    "type": "image/jpeg",
+    "properties": {
+      "overflow": "scrolled-continuous",
+      "layout": "reflowable"
+    }
+  },
+  {
+    "href": "image2.jpg",
+    "type": "image/jpeg",
+    "properties": {
+      "overflow": "scrolled-continuous",
+      "layout": "reflowable"
+    }
+  },
+  {
+    "href": "image3.jpg",
+    "type": "image/jpeg",
+    "properties": {
+      "overflow": "scrolled-continuous",
+      "layout": "reflowable"
+    }
+  }
+]
+```
+
+To avoid duplicating `overflow` and `layout`, they can be defined in the `metadata` of the publication instead of `properties` for each resource.
