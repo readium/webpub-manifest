@@ -8,7 +8,7 @@
       "description": "Identifies content contained in the linked resource, that cannot be strictly identified using a media type.",
       "type": "array",
       "items": {
-        "type": "strings",
+        "type": "string",
         "enum": [
           "mathml", 
           "onix", 
@@ -72,12 +72,12 @@
         },
         "profile": {
           "description": "Identifies the encryption profile used to encrypt the resource",
-          "type": "integer",
+          "type": "string",
           "format": "uri"
         },
         "scheme": {
           "description": "Identifies the encryption scheme used to encrypt the resource",
-          "type": "integer",
+          "type": "string",
           "format": "uri"
         }
       },
