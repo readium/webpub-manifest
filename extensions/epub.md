@@ -2,7 +2,7 @@
 
 While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publication Manifest, a number of metadata, collection roles and properties are still very specific to EPUB and not fully covered by the core specification.
 
-Thanks to the various extension points in place, this document defines a number of new properties that are for the most part exclusive to EPUB.
+Thanks to the various extension points in place, this document defines a number of new collection roles and properties that are for the most part exclusive to EPUB.
 
 ## Metadata
 
@@ -22,39 +22,6 @@ This document is registered in the [Context Documents registry](../contexts), in
 | lot  | Identifies the collection that contains a list of tables.  | Yes  | No  |
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | page-list  | Identifies the collection that contains a list of pages.  | Yes  | No  |
-
-## Extension to the Link Object
-
-Specific collection roles in this EPUB extension require the Link Object to be extended to support nesting.
-
-For this purpose, this extension introduces the `children` element:
-
-| Name      | Semantics     | Format        |
-| --------- | ------------- | ------------- |
-| children  | Contains one or more Link Objects that are direct descendents of the linked resource.    | Link Object   |
-
-This new element is meant primarly for the `toc` collection role but can be useful for other extensions of the Readium Web Publication Manifest.
-
-*Example of a table of contents expressed with nested Link Objects*
-
-```json
-"toc": [
-  {
-    "href": "part1.xhtml",
-    "title": "Part I",
-    "children": [
-      {
-        "href": "chapter1.xhtml",
-        "title": "Chapter 1"
-      },
-      {
-        "href": "chapter2.xhtml",
-        "title": "Chapter 2"
-      }
-    ]
-  }
-]
-```
 
 
 ## Properties
