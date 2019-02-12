@@ -201,6 +201,8 @@ As an alternative, the manifest can also be added to a CBZ file at the same well
 
 *This section is non-normative.*
 
+> **Note:** We're currently missing the ability to indicate how an image should fit on the screen. The current default is to fit both dimensions on screen, which would not work well with webtoons. In this non-normative appendix, we're currently using `fit` for this use case.
+
 Webtoons are probably the most successful form of digital native visual narrative. Originally from South Korea, they're now becoming popular in Japan and France as well and should be covered by this profile.
 
 We could either consider that a webtoon is:
@@ -216,46 +218,35 @@ With the first approach, the `readingOrder` contains a single image:
     "href": "long-image.jpg",
     "type": "image/jpeg",
     "properties": {
-      "overflow": "scrolled",
-      "layout": "reflowable"
+      "fit": "width"
     }
   }
 ]
 ```
-
-The `overflow` property indicates that the resource should be scrolled, while the use of a reflowable layout means that the image defaults to a fit based on the width of the device (instead of a fit for both dimensions with a fixed layout).
 
 A second approach is based on using multiple images, which could be better for performance on large webtoons.
 
 In this case, a webtoon becomes a list of images that should be presented in a continuous scroll (with no gap or margin between images):
 
 ```
+"metadata": {
+  "rendition": {
+    "overflow": "scrolled-continuous",
+    "fit": "width"
+  }
+},
 "readingOrder": [
   {
     "href": "image1.jpg",
-    "type": "image/jpeg",
-    "properties": {
-      "overflow": "scrolled-continuous",
-      "layout": "reflowable"
-    }
+    "type": "image/jpeg"
   },
   {
     "href": "image2.jpg",
-    "type": "image/jpeg",
-    "properties": {
-      "overflow": "scrolled-continuous",
-      "layout": "reflowable"
-    }
+    "type": "image/jpeg"
   },
   {
     "href": "image3.jpg",
-    "type": "image/jpeg",
-    "properties": {
-      "overflow": "scrolled-continuous",
-      "layout": "reflowable"
-    }
+    "type": "image/jpeg"
   }
 ]
 ```
-
-To avoid duplicating `overflow` and `layout`, they can be defined in the `metadata` of the publication instead of `properties` for each resource.
