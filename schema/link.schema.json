@@ -27,7 +27,7 @@
         "array"
       ],
       "items": {
-        "title": "string"
+        "type": "string"
       }
     },
     "properties": {
