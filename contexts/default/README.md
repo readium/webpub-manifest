@@ -394,36 +394,8 @@ If we use another example with more complex metadata expression and an extension
 }
 ```
 
-## Appendix B - Mapping to Schema.org & EPUB 3.1
+## Appendix B - Mapping to EPUB
 
-| Key  | Schema.org | EPUB 3.1 |
-| ---- | ---------- | -------- |
-| [identifier](#identifier) | None, identifies the resource  | dc:identifier |
-| [title](#title) | http://schema.org/name  | dc:title |
-| [subtitle](#title) | http://schema.org/alternativeHeadline | - |
-| [sortAs](#title)  | http://schema.org/alternateName  | title@opf:file-as |
-| [author](#contributors) | http://schema.org/author  | dc:creator |
-| [translator](#contributors) | http://schema.org/translator  | dc:contributor@opf:role="trl" |
-| [editor](#contributors) | http://schema.org/editor  | dc:contributor@opf:role="edt" |
-| [illustrator](#contributors)| http://schema.org/illustrator  | dc:contributor@opf:role="ill" |
-| [artist](#contributors)| http://schema.org/artist | dc:contributor@opf:role="art" |
-| [colorist](#contributors)| http://schema.org/colorist | dc:contributor@opf:role="clr" |
-| [inker](#contributors)| http://schema.org/inker | - |
-| [penciler](#contributors)| http://schema.org/penciler | - |
-| [letterer](#contributors)| http://schema.org/letterer | - |
-| [narrator](#contributors) | http://schema.org/readBy | dc:contributor@opf:role="nrt" or meta@property="media:narrator"|
-| [contributor](#contributors) | http://schema.org/contributor  | dc:contributor |
-| [	language](#language)  | http://schema.org/inLanguage  | dc:language |
-| [subject](#subjects)  | http://schema.org/about  | dc:subject |
-| [	publisher](#publisher)  | http://schema.org/publisher  | dc:publisher |
-| [	imprint](#publisher)  | http://schema.org/publisherImprint  | - |
-| [	published](#publication-date)   | http://schema.org/datePublished  | dc:date |
-| [modified](#modification-date) | http://schema.org/dateModified  | dcterms:modified |
-| [	description](#description)  | http://schema.org/description  | dc:description |
-| [belongsTo](#collections--series) | http://www.schema.org/isPartOf | - |
-| [series](#collections--series) | http://www.schema.org/Series | - |
-| [collection](#collections--series) | http://schema.org/Collection | - |
-| [position](#collections--series) | http://www.schema.org/position | - |
-| [readingProgression](#progression-direction) | -  | spine@page-progression-direction |
-| [numberOfPages](#duration-and-number-of-pages) | http://schema.org/numberOfPages  | schema:numberOfPages |
-| [duration](#duration-and-number-of-pages) | http://schema.org/duration  | meta@property="media:duration"|
+In order to convert EPUB packages into a Readium Web Publication Manifest, we've documented how each metadata item listed in the default context is mapped to an equivalent in EPUB 2.x or 3.x.
+
+This live document is available at: [https://readium.org/architecture/streamer/parser/metadata](https://readium.org/architecture/streamer/parser/metadata)
