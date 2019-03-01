@@ -31,7 +31,6 @@
 
   "links": [
     {"rel": "self", "href": "http://example.org/manifest.audiobook-manifest", "type": "application/audiobook+json"},
-    {"rel": "cover", "href": "http://example.org/cover.jpeg", "type": "image/jpeg", "height": 300, "width": 300},
     {"rel": "alternate", "href": "http://example.org/audiobook.m3u", "type": "audio/mpegurl", "bitrate": 64}
   ],
 
@@ -57,6 +56,10 @@
       "duration": 1140, 
       "title": "Part 3"
     }
+  ],
+  
+  "resources": [
+    {"rel": "cover", "href": "http://example.org/cover.jpeg", "type": "image/jpeg", "height": 300, "width": 300}
   ]
 }
 ```
