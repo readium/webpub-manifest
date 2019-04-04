@@ -305,7 +305,7 @@ To indicate the length of a publication, a manifest <span class="rfc">may</span>
 "numberOfPages": "178"
 ```
 
-## JSON Schema
+## Appendix A - JSON Schema
 
 The default context is implemented in the core JSON Schema for the Readium Web Publication Manifest and should be used as a reference as well.
 
@@ -313,7 +313,7 @@ The JSON Schema for metadata is under version control at [https://github.com/rea
 
 For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)
 
-## Appendix A - Examples
+## Appendix B - Examples
 
 ```json
 {
@@ -386,7 +386,7 @@ If we use another example with more complex metadata expression and an extension
 }
 ```
 
-## Appendix B - Mapping to EPUB
+## Appendix C - Mapping to EPUB
 
 In order to convert EPUB packages into a Readium Web Publication Manifest, we've documented how each metadata item listed in the default context is mapped to an equivalent in EPUB 2.x or 3.x.
 
