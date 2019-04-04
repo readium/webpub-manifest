@@ -1,13 +1,5 @@
 [![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
 
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-}
-</style>
-
 # Audiobook Profile
 
 ## Example
@@ -97,7 +89,7 @@ In addition, all Link Objects <span class="rfc">should</span> also include the `
 
 In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key:
 
-```
+```json
 {
   "href": "http://example.org/part1.mp3", 
   "type": "audio/mpeg", 
@@ -139,3 +131,11 @@ Over 10,000+ audiobooks are also available in this format through [the Internet 
 ## Demo
 
 [A demo of the Flatland example is also available](https://player.cantookaudio.com/aHR0cHM6Ly9yZWFkaXVtLm9yZy93ZWJwdWItbWFuaWZlc3QvZXhhbXBsZXMvRmxhdGxhbmQvbWFuaWZlc3QuanNvbg==) through a Web App developed by [De Marque](https://www.demarque.com/). 
+
+<style>
+.rfc {
+    color: #d55;
+    font-variant: small-caps;
+    font-style: normal;
+}
+</style>

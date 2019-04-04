@@ -1,13 +1,5 @@
 [![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
 
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-}
-</style>
-
 # Readium Web Publication Manifest
 
 The Readium Web Publication Manifest is a JSON-based document meant to represent and distribute publications over HTTPS.
@@ -363,3 +355,11 @@ In addition to the EPUB format, a Readium Web Publication <span class="rfc">may<
 A JSON Schema is available under version control at [https://github.com/readium/webpub-manifest/tree/master/schema](https://github.com/readium/webpub-manifest/tree/master/schema)
 
 For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)
+
+<style>
+.rfc {
+    color: #d55;
+    font-variant: small-caps;
+    font-style: normal;
+}
+</style>

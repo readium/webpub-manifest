@@ -117,6 +117,9 @@
     "imprint": {
       "$ref": "contributor.schema.json"
     },
+    "subject": {
+      "$ref": "subject.schema.json"
+    },
     "readingProgression": {
       "type": "string",
       "enum": [
