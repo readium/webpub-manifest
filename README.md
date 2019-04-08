@@ -96,7 +96,7 @@ This specification defines two collection roles that are the building blocks of 
 | `readingOrder`  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
 | `resources`  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
 
-Both collections are full collections, which means that they contain one or more [Link Objects](#24-the-link-object). 
+Both collections are compact collections, which means that they contain one or more [Link Objects](#24-the-link-object). 
 
 All additional collection roles are defined in the [Collection Roles registry](roles.md).
 
@@ -170,7 +170,7 @@ A manifest <span class="rfc">must</span> contain at least one link using the `se
   }
 ]
 ```
-A manifest <span class="rfc">may</span> also contain other links, such as a `alternate` link to an EPUB 3.1 version of the publication for example.
+A manifest <span class="rfc">may</span> also contain other links, such as a `alternate` link to an EPUB 3.2 version of the publication for example.
 
 Link relations that are currently used in this specification and its extensions are listed in the [Link Relations registry](relationships.md).
 
@@ -325,7 +325,7 @@ The initial registry, contains the following extensions:
 
 The Readium Web Publication Manifest is primarily meant to be distributed unpackaged on the Web.
 
-That said, a Readium Web Publication Manifest <span class="rfc">may</span> be included in an EPUB.
+That said, a Readium Web Publication Manifest <span class="rfc">may</span> be included in an EPUB 3.2.
 
 If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
 
@@ -347,7 +347,6 @@ In addition to the EPUB format, a Readium Web Publication <span class="rfc">may<
 - its file extension <span class="rfc">must</span> be `.webpub`
 - the package itself <span class="rfc">must</span> be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
 - the manifest <span class="rfc">must</span> be named `manifest.json` and <span class="rfc">must</span> appear at the top level of the package
-- all resources in `readingOrder`, `resources` and `links` <span class="rfc">must</span> be referenced relatively to the manifest
 - a publication where any resource is encrypted using a DRM <span class="rfc">must</span> use a different media type and file extension
 
 ## Appendix A. JSON Schema
