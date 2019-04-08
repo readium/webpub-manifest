@@ -6,7 +6,7 @@ EPUB Context | [https://readium.org/webpub-manifest/contexts/epub/context.jsonld
 
 ## Rendition Properties
 
-All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.1 specification:
+All rendition specific properties must show up in a `rendition` object. This specification allows the following elements, all defined in the EPUB 3.2 specification:
 
 
 | Key   | Semantics | Type     | Values    | URI |
@@ -26,3 +26,9 @@ Here's an example of metadata for a fixed layout document:
   "spread": "none"
 }
 ```
+
+## Appendix A - JSON Schema
+
+The EPUB context is referenced in the core JSON Schema for the Readium Web Publication Manifest.
+
+The JSON Schema is under version control at [https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/metadata.schema.json](https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/metadata.schema.json)
