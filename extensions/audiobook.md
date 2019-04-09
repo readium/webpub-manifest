@@ -66,15 +66,14 @@ The goal of this document is to provide an audiobook profile for the [Readium We
 
 While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with audio apps: `application/audiobook+json`.
 
-## Metadata
+## 1. Metadata
 
 The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
 
 - it <span class="rfc">must</span> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
-- it <span class="rfc">must</span> include a `duration` element that provides the total duration of the audiobook
+- it <span class="rfc">must</span> include a `duration` element that provides the total duration of the audiobook (sum of all durations expressed in the `readingOrder`)
 
-
-## Listing Audio Resources
+## 2. Listing Audio Resources
 
 An audiobook is divided into one or more audio resources, which are all listed in the `readingOrder` of the manifest.
 
@@ -85,7 +84,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
 
 In addition, all Link Objects <span class="rfc">should</span> also include the `bitrate` whenever possible.
 
-## Alternate Audio Resources
+## 3. Alternate Audio Resources
 
 In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key:
 
@@ -113,7 +112,7 @@ All Link Objects present in the `alternate` array:
 - <span class="rfc">must</span> reference audio resources of the same duration as the top-level Link Object
 - <span class="rfc">must not</span> include the following keys: `title`, `duration` or `templated`
 
-## Package
+## 4. Package
 
 In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
 
@@ -122,13 +121,13 @@ To maximize compatibility with audio-only apps, the package for an audiobook pro
 - its file extension <span class="rfc">must</span> be `.audiobook`
 - its media type <span class="rfc">must</span> be `application/audiobook+zip`
 
-## Examples
+## Appendix A - Examples
 
 A full example based on [the LibriVox edition of Flatland](https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/) is available at: [https://readium.org/webpub-manifest/examples/Flatland/manifest.json](https://readium.org/webpub-manifest/examples/Flatland/manifest.json)
 
 Over 10,000+ audiobooks are also available in this format through [the Internet Archive OPDS Catalog](https://bookserver.archive.org/).
 
-## Demo
+## Appendix B - Demo
 
 [A demo of the Flatland example is also available](https://player.cantookaudio.com/aHR0cHM6Ly9yZWFkaXVtLm9yZy93ZWJwdWItbWFuaWZlc3QvZXhhbXBsZXMvRmxhdGxhbmQvbWFuaWZlc3QuanNvbg==) through a Web App developed by [De Marque](https://www.demarque.com/). 
 
