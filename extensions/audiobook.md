@@ -70,8 +70,10 @@ While the Audiobook Manifest is technically a profile of the Readium Web Publica
 
 The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
 
-- it <span class="rfc">must</span> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
-- it <span class="rfc">must</span> include a `duration` element that provides the total duration of the audiobook (sum of all durations expressed in the `readingOrder`)
+- it <strong class="rfc">must</strong> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
+- it <strong class="rfc">must</strong> include a `duration` element that provides the total duration of the audiobook in seconds
+
+The `duration` of an audiobook as expressed in `metadata` is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
 
 ## 2. Listing Audio Resources
 
@@ -79,14 +81,14 @@ An audiobook is divided into one or more audio resources, which are all listed i
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - they <span class="rfc">must</span> point strictly to audio resources
- - they <span class="rfc">must</span> include a `duration` term that provides the duration in seconds of each individual audio resource
+ - they <strong class="rfc">must</strong> point strictly to audio resources
+ - they <strong class="rfc">must</strong> include a `duration` term that provides the duration in seconds of each individual audio resource
 
-In addition, all Link Objects <span class="rfc">should</span> also include the `bitrate` whenever possible.
+In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` whenever possible.
 
 ## 3. Alternate Audio Resources
 
-In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key:
+In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key:
 
 ```json
 {
@@ -107,10 +109,10 @@ In order to support multiple variants of the same audiobook (using a different f
 
 All Link Objects present in the `alternate` array:
 
-- <span class="rfc">must</span> indicate their media-type using `type`
-- <span class="rfc">should</span> indicate their bitrate using `bitrate`
-- <span class="rfc">must</span> reference audio resources of the same duration as the top-level Link Object
-- <span class="rfc">must not</span> include the following keys: `title`, `duration` or `templated`
+- <strong class="rfc">must</strong> indicate their media-type using `type`
+- <strong class="rfc">should</strong> indicate their bitrate using `bitrate`
+- <strong class="rfc">must</strong> reference audio resources of the same duration as the top-level Link Object
+- <strong class="rfc">must not</strong> include the following keys: `title`, `duration` or `templated`
 
 ## 4. Package
 
@@ -118,8 +120,8 @@ In order to facilitate distribution, both manifest and audio files can also be d
 
 To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
 
-- its file extension <span class="rfc">must</span> be `.audiobook`
-- its media type <span class="rfc">must</span> be `application/audiobook+zip`
+- its file extension <strong class="rfc">must</strong> be `.audiobook`
+- its media type <strong class="rfc">must</strong> be `application/audiobook+zip`
 
 ## Appendix A - Examples
 
@@ -136,5 +138,6 @@ Over 10,000+ audiobooks are also available in this format through [the Internet 
     color: #d55;
     font-variant: small-caps;
     font-style: normal;
+    font-weight: normal;
 }
 </style>
