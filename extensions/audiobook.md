@@ -96,7 +96,7 @@ In order to support multiple variants of the same audiobook (using a different f
   "type": "audio/mpeg", 
   "bitrate": 128, 
   "duration": 1980, 
-  "title": "Part 1"
+  "title": "Part 1",
   "alternate": [
     {
       "href": "http://example.org/part1.opus", 
