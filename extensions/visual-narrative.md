@@ -1,14 +1,6 @@
 [![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
 
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-}
-</style>
-
-# Visual Narrative Profile
+# Digital Visual Narration Profile
 
 ## Example
 
@@ -34,7 +26,7 @@
   },
 
   "links": [
-    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/visual-narrative+json"}
+    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/divina+json"}
   ],
 
   "readingOrder": [
@@ -71,7 +63,7 @@ The goal of this document is to provide a profile dedicated to visual narratives
 - support multiple resolutions, image formats and/or languages for each visual element of a narrative
 - provide guided navigation (also called panel by panel navigation in the case of comics)
 
-While the Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/visual-narrative+json`.
+While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
 
 ## 2. Listing Visual Narrative Resources
@@ -192,8 +184,8 @@ In order to facilitate distribution, both manifest and images can also be distri
 
 To maximize compatibility with comics apps, the package for this profile has its own file extension and media-type:
 
-- its file extension <span class="rfc">must</span> be `.visupub`
-- its media type <span class="rfc">must</span> be `application/visual-narrative+zip`
+- its file extension <span class="rfc">must</span> be `.divina`
+- its media type <span class="rfc">must</span> be `application/divina+zip`
 
 As an alternative, the manifest can also be added to a CBZ file at the same well-known location.
 
@@ -218,7 +210,8 @@ With the first approach, the `readingOrder` contains a single image:
     "href": "long-image.jpg",
     "type": "image/jpeg",
     "properties": {
-      "fit": "width"
+      "fit": "width",
+      "overflow": "scrolled"
     }
   }
 ]
@@ -250,3 +243,12 @@ In this case, a webtoon becomes a list of images that should be presented in a c
   }
 ]
 ```
+
+<style>
+.rfc {
+    color: #d55;
+    font-variant: small-caps;
+    font-style: normal;
+    font-weight: normal;
+}
+</style>
