@@ -66,7 +66,7 @@ The goal of this document is to provide a profile dedicated to visual narratives
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
 
-## 2. Listing Visual Narrative Resources
+## 2. Listing Resources
 
 A visual narratived is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
 
@@ -76,7 +76,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
 
 In addition, all Link Objects <span class="rfc">should</span> include `width` and `height` to indicate the dimensions of each resource
 
-## 3. Alternate Visual Resources
+## 3. Alternate Resources
 
 In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key.
 
@@ -84,8 +84,7 @@ All Link Objects present in the `alternate` array:
 
 - <span class="rfc">must</span> indicate their media-type using `type`
 - <span class="rfc">should</span> indicate their dimensions using `height` and `width`
-- <span class="rfc">may</span> target a different language using `hreflang`
-- <span class="rfc">must not</span> reference a URI template
+- <span class="rfc">may</span> target a different language using `language`
 
 *Example 1: A resource available in JPEG and WebP*
 
@@ -102,19 +101,18 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
-
 *Example 2: A resource available in French and Japanese*
 
 ```
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
-  "hreflang": "fr"
+  "language": "fr"
   "alternate": [
     {
       "href": "http://example.org/page1-jp.jpeg", 
       "type": "image/jpeg",
-      "hreflang": "jp"
+      "language": "jp"
     }
   ]
 }
@@ -177,7 +175,6 @@ This current draft does not cover guided navigation over alternate versions of e
 ]
 ```
 
-
 ## 5. Package
 
 In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
@@ -189,7 +186,23 @@ To maximize compatibility with comics apps, the package for this profile has its
 
 As an alternative, the manifest can also be added to a CBZ file at the same well-known location.
 
-## Appendix A. Webtoons
+## Appendix A. Compliance Levels
+
+### Level 0
+
+* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
+* Support for [alternate resources](#3-alternate-resources)
+* Support for the rendition extension (TBD)
+
+### Level 1
+
+* Support for [guided navigation](#4-guided-navigation)
+
+### Level 2
+
+* TBD
+
+## Appendix B. Webtoons
 
 *This section is non-normative.*
 
