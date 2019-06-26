@@ -320,7 +320,7 @@ The initial registry, contains the following extensions:
 | Name  |  Description |
 | ----- | ------------ |
 | [Audiobook Profile](extensions/audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narrative Profile](extensions/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
+| [Digital Visual Narratives Profile](extensions/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 | [EPUB Extension](extensions/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
 ## 8. Package

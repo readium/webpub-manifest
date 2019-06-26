@@ -3,7 +3,7 @@
 | Name  |  Description |
 | ----- | ------------ |
 | [Audiobook Profile](audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narrative Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
+| [Digital Visual Narratives Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 | [EPUB Extension](epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
 

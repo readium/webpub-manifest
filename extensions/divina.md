@@ -1,6 +1,6 @@
 [![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
 
-# Digital Visual Narration Profile
+# Digital Visual Narratives Profile
 
 ## Example
 
