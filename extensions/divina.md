@@ -68,7 +68,7 @@ While the Digital Visual Narrative Manifest is technically a profile of the Read
 
 ## 2. Listing Resources
 
-A visual narratived is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
+A visual narrative is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
@@ -179,12 +179,12 @@ This current draft does not cover guided navigation over alternate versions of e
 
 In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
 
-To maximize compatibility with comics apps, the package for this profile has its own file extension and media-type:
+To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
 
 - its file extension <span class="rfc">must</span> be `.divina`
 - its media type <span class="rfc">must</span> be `application/divina+zip`
 
-As an alternative, the manifest can also be added to a CBZ file at the same well-known location.
+As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#8-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
 
 ## Appendix A. Compliance Levels
 
