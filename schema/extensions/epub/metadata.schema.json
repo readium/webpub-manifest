@@ -4,7 +4,7 @@
   "title": "EPUB Extension - Metadata",
   "type": "object",
   "properties": {
-    "rendition": {
+    "presentation": {
       "type": "object",
       "properties": {
         "layout": {
@@ -13,35 +13,6 @@
           "enum": [
             "fixed", 
             "reflowable"
-          ]
-        },
-        "orientation": {
-          "description": "Suggested orientation for the device when displaying the linked resource",
-          "type": "string",
-          "enum": [
-            "auto", 
-            "landscape", 
-            "portrait"
-          ]
-        },
-        "overflow": {
-          "description": "Suggested method for handling overflow while displaying the linked resource",
-          "type": "string",
-          "enum": [
-            "auto",
-            "paginated",
-            "scrolled",
-            "scrolled-continuous"
-          ]
-        },
-        "spread": {
-          "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread",
-          "type": "string",
-          "enum": [
-            "auto",
-            "both",
-            "none",
-            "landscape"
           ]
         }
       }

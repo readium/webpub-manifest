@@ -32,7 +32,11 @@
     },
     "properties": {
       "description": "Properties associated to the linked resource",
-      "$ref": "properties.schema.json"
+      "allOf": [
+        { "$ref": "https://drafts.opds.io/schema/properties.schema.json" },
+        { "$ref": "extensions/epub/properties.schema.json" },
+        { "$ref": "extensions/presentation/properties.schema.json" }
+      ]
     },
     "height": {
       "description": "Height of the linked resource in pixels",

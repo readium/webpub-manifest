@@ -33,26 +33,6 @@
       "type": "string",
       "format": "uri-reference"
     },
-    "overflow": {
-      "description": "Suggested method for handling overflow while displaying the linked resource",
-      "type": "string",
-      "enum": [
-        "auto",
-        "paginated",
-        "scrolled",
-        "scrolled-continuous"
-      ]
-    },
-    "spread": {
-      "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread",
-      "type": "string",
-      "enum": [
-        "auto",
-        "both",
-        "none",
-        "landscape"
-      ]
-    },
     "encrypted": {
       "description": "Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption",
       "type": "object",

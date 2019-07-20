@@ -322,6 +322,7 @@ The initial registry, contains the following extensions:
 | [Audiobook Profile](extensions/audiobook.md) | Defines a dedicated profile for audiobooks. |
 | [Digital Visual Narratives Profile](extensions/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 | [EPUB Extension](extensions/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+| [Presentation Hints](extensions/presentation.md) | Metadata and properties meant to convey to User Agents how a given publication should be presented. |
 
 ## 8. Package
 
