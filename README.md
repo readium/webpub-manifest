@@ -6,6 +6,15 @@ The Readium Web Publication Manifest is a JSON-based document meant to represent
 
 It is the primary exchange format used in the [Readium Architecture](https://readium.org/architecture) and serves as the main building block for [OPDS 2.0](https://drafts.opds.io/opds-2.0). 
 
+**Editors:**
+
+* Hadrien Gardeur ([Feedbooks](http://www.feedbooks.com))
+
+**Participate:**
+
+* [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
+* [File an issue](https://github.com/readium/webpub-manifest/issues)
+
 ## Example
 
 ```json
@@ -290,7 +299,7 @@ Link Objects in `readingOrder`, `resources` or `links` can be identified as such
 
 All Link Objects containing the `cover` link relation <span class="rfc">must</span> reference an image directly. They <span class="rfc">should</span> include a `height` and `width` to facilitate how they are processed by User Agents.
 
-This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif` or `image/svg+xml`. 
+This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif`, `image/webp` or `image/svg+xml`. 
 
 *Example 8: Reference to a cover*
 

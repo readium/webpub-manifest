@@ -125,6 +125,8 @@
       "enum": [
         "rtl",
         "ltr",
+        "ttb",
+        "btt",
         "auto"
       ],
       "default": "auto"

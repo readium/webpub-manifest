@@ -17,6 +17,7 @@
     "published": "1953-12-30",
     "modified": "2018-12-10T18:21:18Z",
     "numberOfPages": 62,
+    "readingProgression": "ltr",
     "belongsTo": {
       "series": {
         "name": "Les Aventures de Tintin",
@@ -39,15 +40,10 @@
     {
       "href": "http://example.org/page1.jpg", 
       "type": "image/jpeg",
-      "properties": { "page": "right" }
-    }, 
-    {
-      "href": "http://example.org/page2.jpg", 
-      "type": "image/jpeg",
       "properties": { "page": "left" }
     }, 
     {
-      "href": "http://example.org/page3.jpg", 
+      "href": "http://example.org/page2.jpg", 
       "type": "image/jpeg",
       "properties": { "page": "right" }
     }
@@ -154,24 +150,37 @@ To avoid duplicating content between `readingOrder` and `guided`, Link Objects r
 
 This current draft does not cover guided navigation over alternate versions of each image resource.
 
-*Example 4: Guided navigation in a single page*
+*Example 4: Guided navigation between panels*
 
 ```
 "guided": [
-{
-  "href": "http://example.org/page1.jpeg",
-  "title": "Page 1",
-  "children": [
-    {
-      "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
-      "title": "Panel 1"
-    },
-    {
-      "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
-      "title": "Panel 2"
-    }
-  ]
-}
+  {
+    "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
+    "title": "Panel 1"
+  },
+  {
+    "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
+    "title": "Panel 2"
+  }
+]
+```
+
+*Example 5: Guided navigation with full page displayed before panels*
+
+```
+"guided": [
+  {
+    "href": "http://example.org/page1.jpeg",
+    "title": "Page 1
+  },
+  {
+    "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
+    "title": "Panel 1"
+  },
+  {
+    "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
+    "title": "Panel 2"
+  }
 ]
 ```
 
@@ -192,53 +201,64 @@ As an alternative, the manifest can also be added to a CBZ file at the same well
 
 * Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
 * Support for [alternate resources](#3-alternate-resources)
-* Support for the rendition extension (TBD)
+* Support for [presentation hints](presentation.md)
 
 ### Level 1
 
 * Support for [guided navigation](#4-guided-navigation)
+* Support for transitions
 
 ### Level 2
 
 * TBD
 
-## Appendix B. Webtoons
+## Appendix B. Examples
 
-*This section is non-normative.*
+*Example 6: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
-> **Note:** We're currently missing the ability to indicate how an image should fit on the screen. The current default is to fit both dimensions on screen, which would not work well with webtoons. In this non-normative appendix, we're currently using `fit` for this use case.
-
-Webtoons are probably the most successful form of digital native visual narrative. Originally from South Korea, they're now becoming popular in Japan and France as well and should be covered by this profile.
-
-We could either consider that a webtoon is:
-
-- a single scrollable image, that should fit the width of the viewport
-- multiple images that can be continuously scrolled
-
-With the first approach, the `readingOrder` contains a single image:
 
 ```
+"metadata": {
+  "title": "Manga",
+  "identifier": "https://example.com/manga",
+  "readingProgression": "rtl",
+  "presentation": {
+    "fit": "contain",
+    "spread": "landscape"
+  }
+},
 "readingOrder": [
   {
-    "href": "long-image.jpg",
+    "rel": "cover",
+    "href": "cover.jpg", 
     "type": "image/jpeg",
-    "properties": {
-      "fit": "width",
-      "overflow": "scrolled"
-    }
+    "properties": { "page": "center" }
+  }, 
+  {
+    "href": "page1.jpg", 
+    "type": "image/jpeg",
+    "properties": { "page": "right" }
+  }, 
+  {
+    "href": "page2.jpg", 
+    "type": "image/jpeg",
+    "properties": { "page": "left" }
   }
 ]
 ```
 
-A second approach is based on using multiple images, which could be better for performance on large webtoons.
+*Example 7: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
 
-In this case, a webtoon becomes a list of images that should be presented in a continuous scroll (with no gap or margin between images):
 
 ```
 "metadata": {
-  "rendition": {
-    "overflow": "scrolled-continuous",
-    "fit": "width"
+  "title": "Webtoon",
+  "identifier": "https://example.com/webtoon",
+  "readingProgression": "ttb",
+  "presentation": {
+    "overflow": "scrolled",
+    "fit": "width",
+    "continuous": true
   }
 },
 "readingOrder": [
