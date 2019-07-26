@@ -150,22 +150,7 @@ To avoid duplicating content between `readingOrder` and `guided`, Link Objects r
 
 This current draft does not cover guided navigation over alternate versions of each image resource.
 
-*Example 4: Guided navigation between panels*
-
-```
-"guided": [
-  {
-    "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
-    "title": "Panel 1"
-  },
-  {
-    "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
-    "title": "Panel 2"
-  }
-]
-```
-
-*Example 5: Guided navigation with full page displayed before panels*
+*Example 4: Guided navigation with full page displayed before panels*
 
 ```
 "guided": [
@@ -214,7 +199,7 @@ As an alternative, the manifest can also be added to a CBZ file at the same well
 
 ## Appendix B. Examples
 
-*Example 6: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
 
 ```
@@ -247,7 +232,7 @@ As an alternative, the manifest can also be added to a CBZ file at the same well
 ]
 ```
 
-*Example 7: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
 
 
 ```

@@ -1,20 +1,41 @@
 # Presentation Hints
 
+The Presentation Hints extension defines a number of elements (meant to be expressed as metadata, link properties or both) meant to convey additional hints to User Agents about the way content <span class="rfc">should</span> be presented to the user.
 
-### overflow
+## 1. Presentation Hints in `metadata`
 
-```
-{
-  "href": "endnotes.html", "type": "text/html",
-  "properties": {
-    "overflow": "scrolled"
-  }
-}
-```
+| Key   | Semantics | Type     | Values    |
+| ----- | --------- | -------- | --------- |
+| [`orientation`](#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  |
+| [`overflow`](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled`  |
+| [`spread`](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  |
+
+## 2. Presentation Hints as Link Properties
+
+| Key   | Semantics | Type     | Values    |
+| ----- | --------- | -------- | --------- |
+| [`orientation`](#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  |
+| [`overflow`](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled`  |
+| [`page`](#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  |
+| [`spread`](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  |
+
+
+## 3. Available Hints
 
 ### orientation
 
 The `orientation` property defaults to `auto` and is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
+
+```
+"metadata": {
+  "presentation": {
+    "orientation": "portrait",
+    "overflow": "scrolled",
+    "continuous": true
+  }
+}
+```
+
 
 ```
 {
@@ -22,6 +43,27 @@ The `orientation` property defaults to `auto` and is mostly relevant for resourc
   "properties": {
     "layout": "fixed",
     "orientation": "landscape"
+  }
+}
+```
+
+### overflow
+
+
+```
+"metadata": {
+  "presentation": {
+    "overflow": "paginated"
+  }
+}
+```
+
+
+```
+{
+  "href": "endnotes.html", "type": "text/html",
+  "properties": {
+    "overflow": "scrolled"
   }
 }
 ```
@@ -54,6 +96,15 @@ The `spread` property is meant to indicate to the reading system the condition f
 
 This only applies to fixed layout resources and defaults to `auto`.
 
+```
+"metadata": {
+  "presentation": {
+    "spread": "landscape",
+    "fit": "contain"
+  }
+}
+```
+
 
 ```
 [
@@ -76,4 +127,11 @@ This only applies to fixed layout resources and defaults to `auto`.
 ]
 ```
 
-
+<style>
+.rfc {
+    color: #d55;
+    font-variant: small-caps;
+    font-style: normal;
+    font-weight: normal;
+}
+</style>
