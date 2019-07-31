@@ -53,11 +53,7 @@
 
 ## 1. Introduction
 
-The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) that will cover the following requirements:
-
-- list the different components of a visual narrative
-- support multiple resolutions, image formats and/or languages for each visual element of a narrative
-- provide guided navigation (also called panel by panel navigation in the case of comics)
+The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
@@ -146,7 +142,7 @@ This document introduces a new collection role to fulfill that goal:
 | ----- | ---------- | ------------------- | --------- |
 | `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  |
 
-To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <span class="rfc">should</span> only contain `href`, `title` and `children`.
+To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <span class="rfc">must</span> only contain `href` and `title`.
 
 This current draft does not cover guided navigation over alternate versions of each image resource.
 
