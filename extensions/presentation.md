@@ -27,9 +27,9 @@ The following elements <span class="rfc">may</span> be included in `properties` 
 
 ### continuous
 
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `continuous` | Indicates how the progression between resources from the `readingOrder` should be handled.  | Boolean  | `true` or `false`  |
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `continuous` | Indicates how the progression between resources from the `readingOrder` should be handled.  | Boolean  | `true` or `false`  | `false` |
 
 ```
 "metadata": {
@@ -42,9 +42,9 @@ The following elements <span class="rfc">may</span> be included in `properties` 
 
 ### fit
 
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `fit` | Suggested method for constraining a resource inside the viewport.  | String  | `width`, `height`, `contain` or `cover` |
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `fit` | Suggested method for constraining a resource inside the viewport.  | String  | `width`, `height`, `contain` or `cover` | `contain` |
 
 ```
 "metadata": {
@@ -58,13 +58,12 @@ The following elements <span class="rfc">may</span> be included in `properties` 
 
 ### orientation
 
-
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `orientation` | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  |
-
-
 The `orientation` property defaults to `auto` and is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `orientation` | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  | `auto` |
+
 
 ```
 "metadata": {
@@ -89,9 +88,9 @@ The `orientation` property defaults to `auto` and is mostly relevant for resourc
 
 ### overflow
 
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `overflow` | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled`  |
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `overflow` | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled` | `auto` |
 
 
 ```
@@ -114,12 +113,11 @@ The `orientation` property defaults to `auto` and is mostly relevant for resourc
 
 ### page
 
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `page` | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  |
-
 The `page` property is meant to provide a hint to reading systems that rely on synthetic spreads to display more than a single resource at once.
 
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `page` | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center` | None |
 
 ```
 [
@@ -140,13 +138,12 @@ The `page` property is meant to provide a hint to reading systems that rely on s
 
 ### spread
 
-| Key   | Semantics | Type     | Values    |
-| ----- | --------- | -------- | --------- |
-| `spread` | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  |
-
 The `spread` property is meant to indicate to the reading system the condition for displaying the linked resource in a synthetic spread.
 
-This only applies to fixed layout resources and defaults to `auto`.
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `spread` | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape` | `auto` |
 
 ```
 "metadata": {
