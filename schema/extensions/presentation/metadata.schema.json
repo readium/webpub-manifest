@@ -7,6 +7,20 @@
     "presentation": {
       "type": "object",
       "properties": {
+        "continuous": {
+          "description": "ndicates how the progression between resources from the readingOrder should be handled.",
+          "type": "boolean"
+        },
+        "fit": {
+          "description": "Suggested method for constraining a resource inside the viewport.",
+          "type": "string",
+          "enum": [
+            "width", 
+            "height", 
+            "contain",
+            "cover"
+          ]
+        },
         "orientation": {
           "description": "Suggested orientation for the device when displaying the linked resource",
           "type": "string",

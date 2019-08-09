@@ -4,6 +4,24 @@
   "title": "Presentation Hints - Link Properties",
   "type": "object",
   "properties": {
+    "fit": {
+      "description": "Suggested method for constraining a resource inside the viewport.",
+      "type": "string",
+      "enum": [
+        "width", 
+        "height", 
+        "contain",
+        "cover"
+      ]
+    },"orientation": {
+      "description": "Suggested orientation for the device when displaying the linked resource",
+      "type": "string",
+      "enum": [
+        "auto", 
+        "landscape", 
+        "portrait"
+      ]
+    },
     "overflow": {
       "description": "Suggested method for handling overflow while displaying the linked resource",
       "type": "string",
@@ -14,6 +32,15 @@
         "scrolled-continuous"
       ]
     },
+    "page": {
+      "description": "Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads",
+      "type": "string",
+      "enum": [
+        "left", 
+        "right", 
+        "center"
+      ]
+    },
     "spread": {
       "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread",
       "type": "string",
@@ -22,24 +49,6 @@
         "both",
         "none",
         "landscape"
-      ]
-    },
-    "orientation": {
-      "description": "Suggested orientation for the device when displaying the linked resource",
-      "type": "string",
-      "enum": [
-        "auto", 
-        "landscape", 
-        "portrait"
-      ]
-    },
-    "page": {
-      "description": "Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads",
-      "type": "string",
-      "enum": [
-        "left", 
-        "right", 
-        "center"
       ]
     }
 }
