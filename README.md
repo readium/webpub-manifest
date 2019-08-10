@@ -8,7 +8,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 
 **Editors:**
 
-* Hadrien Gardeur ([Feedbooks](http://www.feedbooks.com))
+* Hadrien Gardeur ([De Marque](http://www.demarque.com))
 
 **Participate:**
 

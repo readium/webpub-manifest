@@ -8,7 +8,7 @@
       "type": "object",
       "properties": {
         "continuous": {
-          "description": "ndicates how the progression between resources from the readingOrder should be handled.",
+          "description": "Indicates how the progression between resources from the readingOrder should be handled.",
           "type": "boolean"
         },
         "fit": {
