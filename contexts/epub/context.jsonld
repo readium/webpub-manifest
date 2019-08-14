@@ -1,9 +1,0 @@
-{
-  "@context": {
-    "rendition": "http://www.idpf.org/vocab/rendition/",
-    "overflow": "http://www.idpf.org/vocab/rendition/#flow",
-    "layout": "http://www.idpf.org/vocab/rendition/#layout",
-    "orientation": "http://www.idpf.org/vocab/rendition/#orientation",
-    "spread": "http://www.idpf.org/vocab/rendition/#spread"
-  }
-}
