@@ -125,6 +125,8 @@
       "enum": [
         "rtl",
         "ltr",
+        "ttb",
+        "btt",
         "auto"
       ],
       "default": "auto"
@@ -156,6 +158,7 @@
     "title"
   ],
   "allOf": [
-    { "$ref": "extensions/epub/metadata.schema.json" }
+    { "$ref": "extensions/epub/metadata.schema.json" },
+    { "$ref": "extensions/presentation/metadata.schema.json" }
   ]
 }
