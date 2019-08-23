@@ -1,5 +1,3 @@
-[![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
-
 # Digital Visual Narratives Profile
 
 **Editors:**

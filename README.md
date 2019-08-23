@@ -1,5 +1,3 @@
-[![Readium Logo](https://readium.org/assets/logos/readium-logo.png)](https://readium.org)
-
 # Readium Web Publication Manifest
 
 The Readium Web Publication Manifest is a JSON-based document meant to represent and distribute publications over HTTPS.
