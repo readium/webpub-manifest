@@ -366,11 +366,3 @@ In addition to the EPUB format, a Readium Web Publication <span class="rfc">may<
 A JSON Schema is available under version control at [https://github.com/readium/webpub-manifest/tree/master/schema](https://github.com/readium/webpub-manifest/tree/master/schema)
 
 For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)
-
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-}
-</style>

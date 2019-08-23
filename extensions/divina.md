@@ -2,6 +2,15 @@
 
 # Digital Visual Narratives Profile
 
+**Editors:**
+
+* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+
+**Participate:**
+
+* [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
+* [File an issue](https://github.com/readium/webpub-manifest/issues)
+
 ## Example
 
 ```json
@@ -257,12 +266,3 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
   }
 ]
 ```
-
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-    font-weight: normal;
-}
-</style>

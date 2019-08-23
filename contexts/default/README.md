@@ -391,11 +391,3 @@ If we use another example with more complex metadata expression and an extension
 In order to convert EPUB packages into a Readium Web Publication Manifest, we've documented how each metadata item listed in the default context is mapped to an equivalent in EPUB 2.x or 3.x.
 
 This live document is available at: [https://readium.org/architecture/streamer/parser/metadata](https://readium.org/architecture/streamer/parser/metadata)
-
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-}
-</style>

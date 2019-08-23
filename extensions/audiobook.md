@@ -2,6 +2,15 @@
 
 # Audiobook Profile
 
+**Editors:**
+
+* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+
+**Participate:**
+
+* [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
+* [File an issue](https://github.com/readium/webpub-manifest/issues)
+
 ## Example
 
 ```json
@@ -132,12 +141,3 @@ Over 10,000+ audiobooks are also available in this format through [the Internet 
 ## Appendix B - Demo
 
 [A demo of the Flatland example is also available](https://player.cantookaudio.com/aHR0cHM6Ly9yZWFkaXVtLm9yZy93ZWJwdWItbWFuaWZlc3QvZXhhbXBsZXMvRmxhdGxhbmQvbWFuaWZlc3QuanNvbg==) through a Web App developed by [De Marque](https://www.demarque.com/). 
-
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-    font-weight: normal;
-}
-</style>

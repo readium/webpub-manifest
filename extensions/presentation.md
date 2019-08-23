@@ -4,7 +4,7 @@ The Presentation Hints extension defines a number of elements (meant to be expre
 
 ## 1. Presentation Hints in `metadata`
 
-The following elements <span class="rfc">may</span> be included in `presentation`:
+The following elements <strong class="rfc">may</strong> be included in `presentation`:
 
 - [`continuous`](#continuous)
 - [`fit`](#fit)
@@ -14,7 +14,7 @@ The following elements <span class="rfc">may</span> be included in `presentation
 
 ## 2. Presentation Hints as Link Properties
 
-The following elements <span class="rfc">may</span> be included in `properties` in a Link Object from the `readingOrder`:
+The following elements <strong class="rfc">may</strong> be included in `properties` in a Link Object from the `readingOrder`:
 
 - [`fit`](#fit)
 - [`orientation`](#orientation)
@@ -175,12 +175,3 @@ The `spread` property is meant to indicate to the reading system the condition f
   }
 ]
 ```
-
-<style>
-.rfc {
-    color: #d55;
-    font-variant: small-caps;
-    font-style: normal;
-    font-weight: normal;
-}
-</style>
