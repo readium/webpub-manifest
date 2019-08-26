@@ -174,7 +174,7 @@ This current draft does not cover guided navigation over alternate versions of e
 
 ## 5. Package
 
-In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
+In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
 
 To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
 
