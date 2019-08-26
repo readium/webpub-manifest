@@ -32,8 +32,6 @@ This document is registered in the [Context Documents registry](../contexts), in
 | [encrypted](#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](#encrypted)  | See the definition for the [Encryption Object](#encrypted) | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
 | [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
-| [overflow](#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `paginated`, `scrolled` or `scrolled-continuous`  | 
-| [spread](#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | 
 
 ### contains
 
@@ -138,45 +136,3 @@ This specification does not define the expected format for that media-overlay.
   }
 }
 ```
-
-
-### overflow
-
-```
-{
-  "href": "endnotes.html", "type": "text/html",
-  "properties": {
-    "overflow": "scrolled"
-  }
-}
-```
-
-
-### spread
-
-The `spread` property is meant to indicate to the reading system the condition for displaying the linked resource in a synthetic spread.
-
-This only applies to fixed layout resources and defaults to `auto`.
-
-
-```
-[
-  {
-    "href": "page1.html", "type": "text/html",
-    "properties": {
-      "layout": "fixed",
-      "spread": "both",
-      "page": "left"
-    }
-  },
-  {
-    "href": "page2.html", "type": "text/html",
-    "properties": {
-      "layout": "fixed",
-      "spread": "both",
-      "page": "right"
-    }
-  }
-]
-```
-

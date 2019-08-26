@@ -123,7 +123,7 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Package
 
-In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#8-package).
+In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
 
 To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
 

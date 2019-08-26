@@ -71,19 +71,19 @@ A visual narrative is divided into one or more images, which are all listed in t
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - they <span class="rfc">must</span> point strictly to bitmap images
+ - they <strong class="rfc">must</strong> point strictly to bitmap images
 
-In addition, all Link Objects <span class="rfc">should</span> include `width` and `height` to indicate the dimensions of each resource
+In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource
 
 ## 3. Alternate Resources
 
-In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <span class="rfc">may</span> rely on the `alternate` key.
+In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
 
 All Link Objects present in the `alternate` array:
 
-- <span class="rfc">must</span> indicate their media-type using `type`
-- <span class="rfc">should</span> indicate their dimensions using `height` and `width`
-- <span class="rfc">may</span> target a different language using `language`
+- <strong class="rfc">must</strong> indicate their media-type using `type`
+- <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`
+- <strong class="rfc">may</strong> target a different language using `language`
 
 *Example 1: A resource available in JPEG and WebP*
 
@@ -138,7 +138,7 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Guided Navigation
 
-In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <span class="rfc">may</span> also provide guided navigation where each reference is either:
+In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
 
 - pointing directly to a resource (`image1.jpg`)
 - or to a fragment of a resource using [Media Fragments](https://www.w3.org/TR/media-frags) (`image1.jpg#xywh=160,120,320,240`)
@@ -149,7 +149,7 @@ This document introduces a new collection role to fulfill that goal:
 | ----- | ---------- | ------------------- | --------- |
 | `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  |
 
-To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <span class="rfc">must</span> only contain `href` and `title`.
+To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <strong class="rfc">must</strong> only contain `href` and `title`.
 
 This current draft does not cover guided navigation over alternate versions of each image resource.
 
@@ -178,10 +178,10 @@ In order to facilitate distribution, both manifest and images can also be distri
 
 To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
 
-- its file extension <span class="rfc">must</span> be `.divina`
-- its media type <span class="rfc">must</span> be `application/divina+zip`
+- its file extension <strong class="rfc">must</strong> be `.divina`
+- its media type <strong class="rfc">must</strong> be `application/divina+zip`
 
-As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#8-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
+As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#9-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
 
 ## Appendix A. Compliance Levels
 
