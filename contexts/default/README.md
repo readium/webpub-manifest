@@ -284,7 +284,7 @@ A position can be either an integer or a float where the value is greater than z
 }
 ```
 
-## Progression Direction
+## Reading Progression Direction
 
 To properly browse through a publication, a User Agent needs to know its progression direction.
 
