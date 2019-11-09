@@ -118,15 +118,16 @@ All resources listed in `readingOrder` and `resources` <strong class="rfc">must<
 *Example 1: Reading order and list of resources*
 
 ```json
-"readingOrder": [
-  {"href": "/chapter1", "type": "text/html"},
-  {"href": "/chapter2", "type": "text/html"}
-],
-
-"resources": [
-  {"href": "/style.css", "type": "text/css"},
-  {"href": "/image1.jpg", "type": "image/jpeg"}
-]
+{
+  "readingOrder": [
+    {"href": "/chapter1", "type": "text/html"},
+    {"href": "/chapter2", "type": "text/html"}
+  ],
+  "resources": [
+    {"href": "/style.css", "type": "text/css"},
+    {"href": "/image1.jpg", "type": "image/jpeg"}
+  ]
+}
 ```
 
 
