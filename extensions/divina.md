@@ -194,7 +194,6 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 ### Level 1
 
 * Support for [guided navigation](#4-guided-navigation)
-* Support for transitions
 
 ### Level 2
 
