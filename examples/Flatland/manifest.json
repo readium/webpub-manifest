@@ -3,7 +3,8 @@
   "metadata": {
     "@type": "http://schema.org/Audiobook",
     "identifier": "https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/",
-    "title": "Flatland: A Romance of Many Dimensions",
+    "title": "Flatland",
+    "subtitle": "A Romance of Many Dimensions",
     "author": {"name": "Edwin Abbott Abbott", "sortAs": "Abbott, Abbott Edwin"},
     "narrator": "Ruth Golding",
     "language": "en",
@@ -13,6 +14,7 @@
     "modified": "2016-08-11T19:32:18Z",
     "published": "2008-10-12",
     "duration": 15153,
+    "abridged": false,
     "schema:license": "https://creativecommons.org/publicdomain/zero/1.0/"
   },
 

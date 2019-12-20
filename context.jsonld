@@ -31,7 +31,8 @@
     "language": "http://schema.org/inLanguage",
     "subject": "http://schema.org/about",
     "numberOfPages": "http://schema.org/numberOfPages",
-    "duration": "http://schema.org/Duration",
+    "duration": "http://schema.org/duration",
+    "abridged": "http://schema.org/abridged",
     "publisher": "http://schema.org/publisher",
     "imprint": "http://schema.org/publisherImprint",
     "modified": {

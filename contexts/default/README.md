@@ -305,6 +305,12 @@ To indicate the length of a publication, a manifest <span class="rfc">may</span>
 "numberOfPages": "178"
 ```
 
+In addition to these two properties, `abridged` is used to indicate an abridged edition of a publication. This is expressed using a boolean.
+
+```
+"abridged": true
+```
+
 ## Appendix A - JSON Schema
 
 The default context is implemented in the core JSON Schema for the Readium Web Publication Manifest and should be used as a reference as well.

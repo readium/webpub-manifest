@@ -82,6 +82,8 @@ The core metadata for the audiobook manifest are based on [the default context f
 
 The `duration` of an audiobook as expressed in `metadata` is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
 
+In addition to its duration, an audiobook <strong class="rfc">may</strong> indicate that it's an abridged edition using the `abridged` element.
+
 ## 2. Listing Audio Resources
 
 An audiobook is divided into one or more audio resources, which are all listed in the `readingOrder` of the manifest.
