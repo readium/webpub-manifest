@@ -264,7 +264,7 @@ If a discontinuous gesture is made during a transition, then its effect depends 
 
 *Example 5: Transitions*
 
-This example features a slide-in from image1 to image2 with a slide-out from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition. 
+This example features a slide-in btt from image1 to image2 with a slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition. 
 
 ```
 {
@@ -302,11 +302,26 @@ This example features a slide-in from image1 to image2 with a slide-out from ima
         “transitionForward”: {
           “type”: animation,
           “sequence”: [
-              “./content/tr3-1.png”,
-              “./content/tr3-2.png”,
-              “./content/tr3-3.png”,
-              “./content/tr3-4.png”,
-              “./content/tr3-5.png”
+              {
+                "href": “./content/tr3-1.png”,
+                "type": "image/png",
+              },
+              {
+                "href": “./content/tr3-2.png”,
+                "type": "image/png",
+              },
+              {
+                "href": “./content/tr3-3.png”,
+                "type": "image/png",
+              },
+              {
+                "href": “./content/tr3-4.png”,
+                "type": "image/png",
+              },
+              {
+                "href": “./content/tr3-5.png”,
+                "type": "image/png",
+              }
           ],
           “duration”: 500
         }
@@ -318,7 +333,10 @@ This example features a slide-in from image1 to image2 with a slide-out from ima
       “properties”: {
         “transitionForward”: {
           “type”: "animation",
-          file: “./content/tr4.mp4”,
+          "file": {
+            "href": “./content/tr4.mp4”,
+            "type": "video/mp4",
+          },
           “duration”: 1000
         }
       }
