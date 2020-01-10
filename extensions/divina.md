@@ -215,6 +215,8 @@ This specification defines the following keys for this JSON object:
 | `push` |  the next resource moves into the viewport while the current one moves out of it, revealing the next one below. | 
 | `animation` | the next resource appears after playing a sequence of images or a video. |
 
+If the transition type is `animation`, either a `file` or a `sequence` property <strong class="rfc">must</strong> be specified.
+
 #### Transition Direction
 
 | Value  | Definition | 
@@ -228,7 +230,7 @@ Note: Usually, if the reading progression is ltr, forward transitions will be rt
 
 #### Transition Sequence
 
-When the type is `animation`, the value of the `sequence` property is an array of Link Objects pointing to bitmap images displayed before the next resource appears.
+Only used when the type is `animation`, the value of the `sequence` property is an array of Link Objects pointing to bitmap images displayed before the next resource appears.
 
 Each image in the array is a frame displayed for a slice of `duration` divided by the number of images of the sequence.
 
@@ -236,7 +238,7 @@ In this case `overflow` is forced to `clipped` while `fit` is inherited from the
 
 #### Transition File
 
-When the type is `animation`, the value of the `file` property is a Link Object pointing to a video to be played before the next resource appears.
+Only used when the type is `animation`, the value of the `file` property is a Link Object pointing to a video to be played before the next resource appears.
 
 In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
 
