@@ -228,7 +228,7 @@ Note: Usually, if the reading progression is ltr, forward transitions will be rt
 
 #### Transition Sequence
 
-When the type is `animation`, the value of the `sequence` property is an array of hrefs pointing to bitmap images displayed before the next resource appears.
+When the type is `animation`, the value of the `sequence` property is an array of Link Objects pointing to bitmap images displayed before the next resource appears.
 
 Each image in the array is a frame displayed for a slice of `duration` divided by the number of images of the sequence.
 
@@ -236,7 +236,7 @@ In this case `overflow` is forced to `clipped` while `fit` is inherited from the
 
 #### Transition File
 
-When the type is `animation`, a video to be played before the next resource appears.
+When the type is `animation`, the value of the `file` property is a Link Object pointing to a video to be played before the next resource appears.
 
 In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
 
