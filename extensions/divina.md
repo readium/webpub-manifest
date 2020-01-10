@@ -236,7 +236,7 @@ In this case `overflow` is forced to `clipped` while `fit` is inherited from the
 
 #### Transition File
 
-When the type is animation, a video to be played before the next resource appears.
+When the type is `animation`, a video to be played before the next resource appears.
 
 In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
 
@@ -269,23 +269,23 @@ This example features is a slide-in from image1 to image2 and a slide-out from i
 ```
 {
   ...,
-	“metadata”: {
+  “metadata”: {
 		“readingProgression”: “ttb”,
 		“presentation”: {
       "overflow": "scrolled",
       "continuous": "true",
       "fit": "width"
-      }
+    }
   },
-	“readingOrder”: [
+  “readingOrder”: [
     {
       "href": “./content/image1.png”,
       "type": "image/png",
     },
     {
-		  "href": “./content/image2.png”,
-			"type": "image/png",
-			“properties”: {
+      "href": “./content/image2.png”,
+      "type": "image/png",
+      “properties”: {
         “transitionForward”: {
           “type”: “slide-in”,
           “direction”: “btt”,
@@ -296,11 +296,11 @@ This example features is a slide-in from image1 to image2 and a slide-out from i
         }
   	},
     {
-		  "href": “./content/image3.png”,
-			"type": "image/png"
-			“properties”: {
+      "href": “./content/image3.png”,
+      "type": "image/png"
+      “properties”: {
         “transitionForward”: {
-          “type”: “sequence”,
+          “type”: animation,
           “sequence”: [
               “./content/tr3-1.png”,
               “./content/tr3-2.png”,
@@ -309,6 +309,17 @@ This example features is a slide-in from image1 to image2 and a slide-out from i
               “./content/tr3-5.png”
           ],
           “duration”: 500
+        }
+      }
+    },
+    {
+      "href": “./content/image4.png”,
+      "type": "image/png"
+      “properties”: {
+        “transitionForward”: {
+          “type”: "animation",
+          file: “./content/tr4.mp4”,
+          “duration”: 1000
         }
       }
     }
