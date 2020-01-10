@@ -172,7 +172,152 @@ This current draft does not cover guided navigation over alternate versions of e
 ]
 ```
 
-## 5. Package
+## 5. Transitions
+
+In the reading order of a visual narrative, Link Objects <strong class="rfc">may</strong> contain the following additional properties: 
+
+| Key   | Semantics | Type     | Values    | 
+| ----- | --------- | -------- | --------- | 
+| [transitionForward](#transitionForward-transitionBackward) | Describes the transition to be applied when moving FROM the previous resource TO current resource in reading order  | Transition Object | See [Transition Object](#the-transition-object)  | 
+| [transitionBackward](#transitionForward-transitionBackward) | Describes the transition to be applied when moving FROM the current resource TO the previous resource in reading order  | Transition Object | See [Transition Object](#the-transition-object)  | 
+
+A transition disables any continuity between the current resource and the next, i.e. it locally applies a form of `continuous`=`false`. Therefore, a transition represents the only way of creating “breaks” or “pages” in a webtoon (i.e. when continuous=true). However, do note that:
+
+* This can only be done with a `transitionForward` (if continuous=true, any `transitionBackward` will be discarded, except if it happens to coincide with a `transitionForward`, i.e. if both transitions are properties of the same Link Object).
+* The elements making up a “page” in such a paginated webtoon will necessarily be stitched together in the direction of the `readingProgression` (for example, you can’t have 2 images stitched together vertically if `readingProgression` = `ltr`).
+
+
+### transitionForward, transitionBackward
+
+Keep in mind that a forward transition is placed on the TARGET resource of the transition.
+
+### The Transition Object
+
+This specification defines the following keys for this JSON object:
+
+| Key  | Definition | Format | Required? |
+| ---- | -----------| -------| ----------|
+| [type](#transition-type)  | Type of transition  | `cut`, `dissolve`, `slide-in`, `slide-out`, `push`, `animation` | Yes |
+| [direction](#transition-direction)  | Direction of a slide-in, slide-out or push transition  | `ltr`, `rtl`, `ttb`, `btt` | Yes if the type is slide-in, slide-out or push. |
+| [sequence](#transition-sequence)  | Sequence of images which create an animation | Array of URIs | No |
+| [file](#transition-file)  | Video file which creates an animation | URI | No |
+| [duration](#transition-duration)  | The duration of the transition in milliseconds | Integer | No |
+
+
+#### Transition Type
+
+| Value  | Definition | 
+| ---- | -----------| 
+| `cut` | the new resource immediately replaces the current one; this transition does not need a duration and is only useful when continuous=true, as a way to specify an explicit cut (“page change”) between two resources. | 
+| `dissolve` |  the new resource appears above the current one, with opacity increasing from 0 to 1. | 
+| `slide-in` | the new resource appears above the current one, and moves into the viewport to cover it. | 
+| `slide-out` | the next resource is placed below the current one, which moves out of the viewport. | 
+| `push` |  the next resource moves into the viewport while the current one moves out of it, revealing the next one below. | 
+| `animation` | the next resource appears after playing a sequence of images or a video. |
+
+#### Transition Direction
+
+| Value  | Definition | 
+| ---- | -----------| 
+| `ltr` | the new image comes from the left (whether the transition is forward or backward). | 
+| `rtl` | the new image comes from the right. | 
+| `ttb` | the new image comes from the top . | 
+| `ltr` | the new image comes from the bottom. | 
+
+Note: Usually, if the reading progression is ltr, forward transitions will be rtl. Also, the reverse of an rtl slide-in is an ltr slide-out.
+
+#### Transition Sequence
+
+When the type is `animation`, the value of the `sequence` property is an array of hrefs pointing to bitmap images displayed before the next resource appears.
+
+Each image in the array is a frame displayed for a slice of `duration` divided by the number of images of the sequence.
+
+In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource (i.e. the target resource for a forward transition and the source for a backward one).
+
+#### Transition File
+
+When the type is animation, a video to be played before the next resource appears.
+
+In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
+
+#### Transition Duration
+
+The duration applies to any type of transition. 
+
+In case the transition type is `animation`, a video `file` is defined but no duration is specified, then the video should play entirely (which goes further than saying that the transition duration should be that of the video: if the video lags, it should still reach its end before the next image appears). 
+
+If a duration is specified which is shorter than the video duration, the video is cut before its end. If the duration is longer, the transition is ended after the video has been played entirely. 
+
+Apart from the video case, if no `duration` is specified, the total duration of the transition is chosen by the client application. 
+
+
+### Recommendations of implementation for transitions
+
+Scrolling should be disabled by the reading application while a transition unfolds.
+
+If a discontinuous gesture is made during a transition, then its effect depends on the relative directions of the two movements:
+
+* If they have the same direction (forward and forward, or backward and backward), the transition should be forced to its end - but no addition page change should be performed.
+* If they have contradictory directions, then the transition should be cancelled and the publication brought back to the transition’s start or end, with an additional page change in the direction of the gesture.
+..* Example 1: if a forward transition is unfolding and the user taps to go backward, the story will move back to the previous page (possibly playing the corresponding backward transition if there is one for the previous page).
+..* Example 2: if a backward snap point jump is unfolding and the user taps forward, the story will jump to the next start point and then either automatically jump to the next one (if there is one) or trigger a page change (if there is none).
+
+### Example
+
+This example features is a slide-in from image1 to image2 and a slide-out from image2 to image1, a sequence  from image2 to image3 and no backward transition. 
+
+```
+{
+  ...,
+	“metadata”: {
+		“readingProgression”: “ttb”,
+		“presentation”: {
+      "overflow": "scrolled",
+      "continuous": "true",
+      "fit": "width"
+      }
+  },
+	“readingOrder”: [
+    {
+      "href": “./content/image1.png”,
+      "type": "image/png",
+    },
+    {
+		  "href": “./content/image2.png”,
+			"type": "image/png",
+			“properties”: {
+        “transitionForward”: {
+          “type”: “slide-in”,
+          “direction”: “btt”,
+        },
+        “transitionBackward”: {
+          “type”: “slide-out”,
+          “direction”: “ttb”,
+        }
+  	},
+    {
+		  "href": “./content/image3.png”,
+			"type": "image/png"
+			“properties”: {
+        “transitionForward”: {
+          “type”: “sequence”,
+          “sequence”: [
+              “./content/tr3-1.png”,
+              “./content/tr3-2.png”,
+              “./content/tr3-3.png”,
+              “./content/tr3-4.png”,
+              “./content/tr3-5.png”
+          ],
+          “duration”: 500
+        }
+      }
+    }
+  ]
+}
+```
+
+
+## 6. Packaging
 
 In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
 
