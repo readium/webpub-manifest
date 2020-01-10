@@ -262,16 +262,16 @@ If a discontinuous gesture is made during a transition, then its effect depends 
 ..* Example 1: if a forward transition is unfolding and the user taps to go backward, the story will move back to the previous page (possibly playing the corresponding backward transition if there is one for the previous page).
 ..* Example 2: if a backward snap point jump is unfolding and the user taps forward, the story will jump to the next start point and then either automatically jump to the next one (if there is one) or trigger a page change (if there is none).
 
-### Example
+*Example 5: Transitions*
 
-This example features is a slide-in from image1 to image2 and a slide-out from image2 to image1, a sequence  from image2 to image3 and no backward transition. 
+This example features a slide-in from image1 to image2 with a slide-out from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition. 
 
 ```
 {
   ...,
   “metadata”: {
-		“readingProgression”: “ttb”,
-		“presentation”: {
+    “readingProgression”: “ttb”,
+    “presentation”: {
       "overflow": "scrolled",
       "continuous": "true",
       "fit": "width"
@@ -339,6 +339,8 @@ To maximize compatibility with dedicated apps, the package for this profile has 
 
 As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#9-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
 
+
+
 ## Appendix A. Compliance Levels
 
 ### Level 0
@@ -350,6 +352,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 ### Level 1
 
 * Support for [guided navigation](#4-guided-navigation)
+* Support for [transitions](#5-transitions)
 
 ### Level 2
 
@@ -357,7 +360,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 ## Appendix B. Examples
 
-*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+*Example 6: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
 
 ```
@@ -390,7 +393,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 ]
 ```
 
-*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+*Example 7: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
 
 
 ```
@@ -418,4 +421,5 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
     "type": "image/jpeg"
   }
 ]
+
 ```
