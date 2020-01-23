@@ -3,6 +3,7 @@
 **Editors:**
 
 * Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Laurent Le Meur ([EDRLab](https://www.edrlab.org))
 
 **Participate:**
 
@@ -62,6 +63,12 @@
 
 The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
+This profile relies on:
+
+* the use of [presentation hints](./presentation.md) for specifying display constraints, 
+* the definition of a new collection type for implementing guided navigation,
+* the definition of new properties of Link Objects for implementing transitions. 
+
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
 
@@ -73,7 +80,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
  
  - they <strong class="rfc">must</strong> point strictly to bitmap images
 
-In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource
+In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource.
 
 ## 3. Alternate Resources
 
@@ -197,14 +204,14 @@ This specification defines the following keys for this JSON object:
 
 | Key  | Definition | Format | Required? |
 | ---- | -----------| -------| ----------|
-| [type](#transition-type)  | Type of transition  | `cut`, `dissolve`, `slide-in`, `slide-out`, `push`, `animation` | Yes |
-| [direction](#transition-direction)  | Direction of a slide-in, slide-out or push transition  | `ltr`, `rtl`, `ttb`, `btt` | Yes if the type is slide-in, slide-out or push. |
-| [sequence](#transition-sequence)  | Sequence of images which create an animation | Array of URIs | No |
-| [file](#transition-file)  | Video file which creates an animation | URI | No |
-| [duration](#transition-duration)  | The duration of the transition in milliseconds | Integer | No |
+| [type](#type)  | Type of transition  | `cut`, `dissolve`, `slide-in`, `slide-out`, `push`, `animation` | Yes |
+| [direction](#direction)  | Direction of a slide-in, slide-out or push transition  | `ltr`, `rtl`, `ttb`, `btt` | Yes if the type is slide-in, slide-out or push. |
+| [sequence](#sequence)  | Sequence of images which create an animation | Array of URIs | No |
+| [file](#file)  | Video file which creates an animation | URI | No |
+| [duration](#duration)  | The duration of the transition in milliseconds | Integer | No |
 
 
-#### Transition Type
+#### type
 
 | Value  | Definition | 
 | ---- | -----------| 
@@ -217,7 +224,7 @@ This specification defines the following keys for this JSON object:
 
 If the transition type is `animation`, either a `file` or a `sequence` property <strong class="rfc">must</strong> be specified.
 
-#### Transition Direction
+#### direction
 
 | Value  | Definition | 
 | ---- | -----------| 
@@ -228,7 +235,7 @@ If the transition type is `animation`, either a `file` or a `sequence` property 
 
 Note: Usually, if the reading progression is ltr, forward transitions will be rtl. Also, the reverse of an rtl slide-in is an ltr slide-out.
 
-#### Transition Sequence
+#### sequence
 
 Only used when the type is `animation`, the value of the `sequence` property is an array of Link Objects pointing to bitmap images displayed before the next resource appears.
 
@@ -236,13 +243,13 @@ Each image in the array is a frame displayed for a slice of `duration` divided b
 
 In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource (i.e. the target resource for a forward transition and the source for a backward one).
 
-#### Transition File
+#### file
 
 Only used when the type is `animation`, the value of the `file` property is a Link Object pointing to a video to be played before the next resource appears.
 
 In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
 
-#### Transition Duration
+#### duration
 
 The duration applies to any type of transition. 
 
@@ -366,8 +373,9 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 ### Level 0
 
 * Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [alternate resources](#3-alternate-resources)
 * Support for [presentation hints](presentation.md)
+* Support for [alternate resources](#3-alternate-resources)
+
 
 ### Level 1
 
