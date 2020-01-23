@@ -94,7 +94,7 @@ All Link Objects present in the `alternate` array:
 
 *Example 1: A resource available in JPEG and WebP*
 
-```
+```json
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg", 
@@ -109,7 +109,7 @@ All Link Objects present in the `alternate` array:
 
 *Example 2: A resource available in French and Japanese*
 
-```
+```json
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
@@ -126,7 +126,7 @@ All Link Objects present in the `alternate` array:
 
 *Example 3: A resource available in two different resolutions*
 
-```
+```json
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
@@ -162,11 +162,11 @@ This current draft does not cover guided navigation over alternate versions of e
 
 *Example 4: Guided navigation with full page displayed before panels*
 
-```
+```json
 "guided": [
   {
     "href": "http://example.org/page1.jpeg",
-    "title": "Page 1
+    "title": "Page 1"
   },
   {
     "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
@@ -266,87 +266,87 @@ Scrolling should be disabled by the reading application while a transition unfol
 
 If a discontinuous gesture is made during a transition, then its effect depends on the relative directions of the two movements:
 
-* If they have the same direction (forward and forward, or backward and backward), the transition should be forced to its end - but no addition page change should be performed.
+* If they have the same direction (forward and forward, or backward and backward), the transition should be forced to its end - but no additional page change should be performed.
 * If they have contradictory directions, then the transition should be cancelled and the publication brought back to the transition’s start or end, with an additional page change in the direction of the gesture.
-..* Example 1: if a forward transition is unfolding and the user taps to go backward, the story will move back to the previous page (possibly playing the corresponding backward transition if there is one for the previous page).
-..* Example 2: if a backward snap point jump is unfolding and the user taps forward, the story will jump to the next start point and then either automatically jump to the next one (if there is one) or trigger a page change (if there is none).
+ * Example 1: if a forward transition is unfolding and the user taps to go backward, the story will move back to the previous page (possibly playing the corresponding backward transition if there is one for the previous page).
+ * Example 2: if a backward snap point jump is unfolding and the user taps forward, the story will jump to the next start point and then either automatically jump to the next one (if there is one) or trigger a page change (if there is none).
 
 *Example 5: Transitions*
 
 This example features a slide-in btt from image1 to image2 with a slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition. 
 
-```
+```json
 {
   ...,
-  “metadata”: {
-    “readingProgression”: “ttb”,
-    “presentation”: {
+  "metadata": {
+    "readingProgression": "ttb",
+    "presentation": {
       "overflow": "scrolled",
-      "continuous": "true",
+      "continuous": true,
       "fit": "width"
     }
   },
-  “readingOrder”: [
+  "readingOrder": [
     {
-      "href": “./content/image1.png”,
+      "href": "./content/image1.png",
       "type": "image/png",
     },
     {
-      "href": “./content/image2.png”,
+      "href": "./content/image2.png",
       "type": "image/png",
-      “properties”: {
-        “transitionForward”: {
-          “type”: “slide-in”,
-          “direction”: “btt”,
+      "properties": {
+        "transitionForward": {
+          "type": "slide-in",
+          "direction": "btt"
         },
-        “transitionBackward”: {
-          “type”: “slide-out”,
-          “direction”: “ttb”,
+        "transitionBackward": {
+          "type": "slide-out",
+          "direction": "ttb"
         }
   	},
     {
-      "href": “./content/image3.png”,
+      "href": "./content/image3.png",
       "type": "image/png"
-      “properties”: {
-        “transitionForward”: {
-          “type”: animation,
-          “sequence”: [
+      "properties": {
+        "transitionForward": {
+          "type": "animation",
+          "sequence": [
               {
-                "href": “./content/tr3-1.png”,
+                "href": "./content/tr3-1.png",
                 "type": "image/png",
               },
               {
-                "href": “./content/tr3-2.png”,
+                "href": "./content/tr3-2.png",
                 "type": "image/png",
               },
               {
-                "href": “./content/tr3-3.png”,
+                "href": "./content/tr3-3.png",
                 "type": "image/png",
               },
               {
-                "href": “./content/tr3-4.png”,
+                "href": "./content/tr3-4.png",
                 "type": "image/png",
               },
               {
-                "href": “./content/tr3-5.png”,
+                "href": "./content/tr3-5.png",
                 "type": "image/png",
               }
           ],
-          “duration”: 500
+          "duration": 500
         }
       }
     },
     {
-      "href": “./content/image4.png”,
-      "type": "image/png"
-      “properties”: {
-        “transitionForward”: {
-          “type”: "animation",
+      "href": "./content/image4.png",
+      "type": "image/png",
+      "properties": {
+        "transitionForward": {
+          "type": "animation",
           "file": {
-            "href": “./content/tr4.mp4”,
+            "href": "./content/tr4.mp4",
             "type": "video/mp4",
           },
-          “duration”: 1000
+          "duration": 1000
         }
       }
     }
@@ -391,7 +391,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 *Example 6: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
 
-```
+```json
 "metadata": {
   "title": "Manga",
   "identifier": "https://example.com/manga",
@@ -424,7 +424,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 *Example 7: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
 
 
-```
+```json
 "metadata": {
   "title": "Webtoon",
   "identifier": "https://example.com/webtoon",
