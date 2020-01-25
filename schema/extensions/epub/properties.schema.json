@@ -28,8 +28,8 @@
         "reflowable"
       ]
     },
-    "media-overlay": {
-      "description": "Location of a media-overlay for the resource referenced in the Link Object",
+    "mediaOverlay": {
+      "description": "Location of a media overlay for the resource referenced in the Link Object",
       "type": "string",
       "format": "uri-reference"
     },
@@ -46,7 +46,7 @@
           "description": "Compression method used on the resource",
           "type": "string"
         },
-        "original-length": {
+        "originalLength": {
           "description": "Original length of the resource in bytes before compression and/or encryption",
           "type": "integer"
         },

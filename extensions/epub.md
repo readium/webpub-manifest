@@ -31,7 +31,7 @@ This document is registered in the [Context Documents registry](../contexts), in
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
 | [encrypted](#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](#encrypted)  | See the definition for the [Encryption Object](#encrypted) | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
-| [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
+| [mediaOverlay](#mediaOverlay)  | Location of a media overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
 
 ### contains
 
@@ -70,7 +70,7 @@ The Encryption Object has the following keys:
 | ----- | --------- | -------- | --------- |
 | [algorithm](#algorithm)  | Identifies the algorithm used to encrypt the resource.  | URI  | Yes |
 | [compression](#compression)  | Compression method used on the resource.  | String  | No |
-| [original-length](#original-length)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
+| [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
 | [profile](#profile)  | Identifies the encryption profile used to encrypt the resource.  | URI  | No |
 | [scheme](#scheme)  | Identifies the encryption scheme used to encrypt the resource.  | URI  | No |
 
@@ -122,17 +122,17 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
 }
 ```
 
-### media-overlay
+### mediaOverlay
 
-The `media-overlay` property indicates that the linked resource has a media-overlay available and points to the location of that media-overlay using a URI.
+The `mediaOverlay` property indicates that the linked resource has a media overlay available and points to the location of that media overlay using a URI.
 
-This specification does not define the expected format for that media-overlay.
+This specification does not define the expected format for that media overlay.
 
 ```
 {
   "href": "chapter1.html", "type": "text/html",
   "properties": {
-    "media-overlay": "media-overlay/chapter1.json"
+    "mediaOverlay": "media-overlay/chapter1.json"
   }
 }
 ```
