@@ -13,9 +13,10 @@ In order to provide publication-wide Presentation Hints, this extension introduc
 The following elements <strong class="rfc">may</strong> be included in `presentation`:
 
 - [`continuous`](#continuous)
-- [`fit`](#fit)
-- [`orientation`](#orientation)
 - [`overflow`](#overflow)
+- [`fit`](#fit)
+- [`clipped`](#clipped)
+- [`orientation`](#orientation)
 - [`spread`](#spread)
 
 ## 2. Presentation Hints as Link Properties
@@ -25,10 +26,10 @@ In addition to publication-wide hints, this extension defines a number of Link P
 The following elements <strong class="rfc">may</strong> be included in `properties`:
 
 - [`fit`](#fit)
+- [`clipped`](#clipped)
 - [`orientation`](#orientation)
-- [`overflow`](#overflow)
-- [`page`](#page)
 - [`spread`](#spread)
+- [`page`](#page)
 
 
 ## 3. Properties
@@ -37,13 +38,40 @@ The following elements <strong class="rfc">may</strong> be included in `properti
 
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
-| `continuous` | Indicates how the progression between resources from the `readingOrder` should be handled.  | Boolean  | `true` or `false`  | `true` |
+| `continuous` | Indicates if consecutive linked resources from the `reading order` should be handled in a continuous or discontinuous way.  | Boolean  | `true` or `false`  | `true` |
 
-```
+*In this example, the user will not experience discontinuities between the different resources*
+
+```json
 "metadata": {
   "presentation": {
-    "overflow": "scrolled",
     "continuous": true
+  }
+}
+```
+
+### overflow
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `overflow` |  Indicates if the overflow of linked resources from the `reading order` should be handled using dynamic pagination or scrolling.  | String  | `paginated`, `scrolled` or `auto` | `auto` |
+
+Values: 
+
+| Value   | Definition |
+| ------- | ---------- |
+| `paginated` | Content overflow should be handled using dynamic pagination. |
+| `scrolled` | Content overflow should be handled using scrolling. |
+| `auto` | Choice is left to the User Agent.  |
+
+*Here is an example of a paginated mode requested by the author*
+
+```json
+"metadata": {
+  "readingProgression": "ltr",
+  "presentation": {
+    "continuous": true,
+    "overflow": "paginated"
   }
 }
 ```
@@ -52,25 +80,76 @@ The following elements <strong class="rfc">may</strong> be included in `properti
 
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
-| `fit` | Suggested method for constraining a resource inside the viewport.  | String  | `width`, `height`, `contain` or `cover` | `contain` |
+| `fit` | Specifies  constraints for the presentation of a linked resource within the viewport.  | String  | `contain`, `cover`, `width` or `height` | `contain` |
 
-```
+Values: 
+
+| Value   | Definition |
+| ------- | ---------- |
+| `contain` | The content is centered and sized to fit the viewport. |
+| `cover`  |  The content is centered and sized to fill the viewport. |
+| `width`  |  The content is centered and sized to fit the viewport width. |
+| `height` |  The content is centered and sized to fit the viewport height. |
+
+*In this example, resources are handled in a continuous way, the content is scrollable on the vertical axis and each resource fits the viewport width. It smells like a webtoon.*
+
+```json
 "metadata": {
+  "readingProgression": "ttb",
   "presentation": {
-    "fit": "width",
+    "continuous": true,
     "overflow": "scrolled",
-    "continuous": true
+    "fit": "width"
   }
 }
 ```
+*In this example, a specific resource is sized to fit the viewport.*
 
-```
+```json
 "readingOrder": [
   {
     "href": "image1.webp",
     "type": "image/webp",
     "properties": {
-      "fit": "width"
+      "fit": "contain"
+    }
+  }
+]
+```
+
+### clipped
+
+The `clipped` property is meant to allow for a precise adaptation of linked resources to different viewport ratios. The clipped areas will contain information which is not mandatory for the comprehension of the resource. 
+
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `clipped` | Specifies whether or not the parts of a linked resource that may exit the viewport are clipped.  | Boolean  | `true` or `false` | `false` |
+
+*In this example, resources are handled in a discontinuous way  and each resource is centered, sized to fit the viewport height and clipped to fit different viewport widths. It smells like a turbomedia.*
+
+```json
+"metadata": {
+  "readingProgression": "ttb",
+  "presentation": {
+    "continuous": false,
+    "fit": "height",
+    "clipped": true
+
+  }
+}
+```
+
+*In this example, a specific resource is sized to fit the viewport width and clipped to fit different viewport heights.*
+
+```json
+"readingOrder": [
+  {
+    "href": "image1.webp",
+    "type": "image/webp",
+    "properties": {
+      "fit": "width",
+      "clipped": true
     }
   }
 ]
@@ -78,25 +157,24 @@ The following elements <strong class="rfc">may</strong> be included in `properti
 
 ### orientation
 
-The `orientation` property defaults to `auto` and is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
-
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
-| `orientation` | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  | `auto` |
+| `orientation` | Suggested orientation for the device when displaying the linked resource.  | String  | `landscape`, `portrait` or `auto`  | `auto` |
 
+The `orientation` property is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
 
-```
+*In this example, each resource should be displayed in portrait mode.*
+
+```json
 "metadata": {
   "presentation": {
-    "orientation": "portrait",
-    "overflow": "scrolled",
-    "continuous": true
+    "orientation": "portrait"
   }
 }
 ```
+*In this example, a specific resource should be displayed in landscape mode.*
 
-
-```
+```json
 "readingOrder": [
   {
     "href": "page1.html", 
@@ -108,43 +186,17 @@ The `orientation` property defaults to `auto` and is mostly relevant for resourc
 ]
 ```
 
-### overflow
-
-| Key   | Semantics | Type     | Values    | Default |
-| ----- | --------- | -------- | --------- | ------- |
-| `overflow` | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled` | `auto` |
-
-
-```
-"metadata": {
-  "presentation": {
-    "overflow": "paginated"
-  }
-}
-```
-
-
-```
-"resources": [
-  {
-    "href": "endnotes.html", 
-    "type": "text/html",
-    "properties": {
-      "overflow": "scrolled"
-    }
-  }
-]
-```
-
 ### page
 
-The `page` property is meant to provide a hint to reading systems that rely on synthetic spreads to display more than a single resource at once.
+The `page` property is meant to provide a hint to Use Agents that rely on synthetic spreads to display more than a single resource at once.
 
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
 | `page` | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center` | None |
 
-```
+*In this example, the first page should be displayed of the left of a synthetic spread, the second page on the right.*
+
+```json
 "readingOrder": [
   {
     "href": "page1.jpg", 
@@ -165,14 +217,20 @@ The `page` property is meant to provide a hint to reading systems that rely on s
 
 ### spread
 
-The `spread` property is meant to indicate to the reading system the condition for displaying the linked resource in a synthetic spread.
-
-
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
-| `spread` | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape` | `auto` |
+| `spread` | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `landscape`, `both`, `none` or `auto`  | `auto` |
 
-```
+| Value   | Definition |
+| ------- | ---------- |
+| `landscape` | The content should be displayed in a spread only if the device is in landscape mode. |
+| `both` | The content should be displayed in a spread whatever the device orientation is. |
+| `none` | The content should never be displayed in a spread. |
+| `auto` | The choice is left to the User Agent. |
+
+*In this example, content should be displayed in a spread only if the device is in landscape mode.*
+
+```json
 "metadata": {
   "presentation": {
     "spread": "landscape",
@@ -180,8 +238,9 @@ The `spread` property is meant to indicate to the reading system the condition f
   }
 }
 ```
+*In this example, content of these two pages should be displayed in a spread, one on the left, the other on the right, whatever the device orientation is.*
 
-```
+```json
 "readingOrder": [
   {
     "href": "page1.jpg", 
@@ -201,3 +260,4 @@ The `spread` property is meant to indicate to the reading system the condition f
   }
 ]
 ```
+
