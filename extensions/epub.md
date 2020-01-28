@@ -70,7 +70,7 @@ The Encryption Object has the following keys:
 | ----- | --------- | -------- | --------- |
 | [algorithm](#algorithm)  | Identifies the algorithm used to encrypt the resource.  | URI  | Yes |
 | [compression](#compression)  | Compression method used on the resource.  | String  | No |
-| [original-length](#original-length)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
+| [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
 | [profile](#profile)  | Identifies the encryption profile used to encrypt the resource.  | URI  | No |
 | [scheme](#scheme)  | Identifies the encryption scheme used to encrypt the resource.  | URI  | No |
 
@@ -100,7 +100,7 @@ The Encryption Object has the following keys:
       "profile": "http://readium.org/lcp/basic-profile",
       "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
       "compression": "deflate",
-      "original-length": 13810
+      "originalLength": 13810
     }
   }
 }
