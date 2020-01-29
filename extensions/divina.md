@@ -245,8 +245,103 @@ Only used when the type is `animation`, the value of the `file` property is a Li
 
 Duration (in ms) can apply to any type of transition. 
 
+## 6. Packaging
 
-*Example 5: This example features a slide-in btt from image1 to image2 with a slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition.*
+In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
+
+To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
+
+- its file extension <strong class="rfc">must</strong> be `.divina`
+- its media type <strong class="rfc">must</strong> be `application/divina+zip`
+
+As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#9-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
+
+
+
+## Appendix A. Compliance Levels
+
+### Level 0
+
+* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
+* Support for [presentation hints](presentation.md)
+* Support for [alternate resources](#3-alternate-resources)
+
+
+### Level 1
+
+* Support for [guided navigation](#4-guided-navigation)
+* Support for [transitions](#5-transitions)
+
+### Level 2
+
+* TBD
+
+## Appendix B. Examples
+
+*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+
+
+```json
+"metadata": {
+  "title": "Manga",
+  "identifier": "https://example.com/manga",
+  "readingProgression": "rtl",
+  "presentation": {
+    "fit": "contain",
+    "spread": "landscape"
+  }
+},
+"readingOrder": [
+  {
+    "rel": "cover",
+    "href": "cover.jpg", 
+    "type": "image/jpeg",
+    "properties": { "page": "center" }
+  }, 
+  {
+    "href": "page1.jpg", 
+    "type": "image/jpeg",
+    "properties": { "page": "right" }
+  }, 
+  {
+    "href": "page2.jpg", 
+    "type": "image/jpeg",
+    "properties": { "page": "left" }
+  }
+]
+```
+
+*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+
+
+```json
+"metadata": {
+  "title": "Webtoon",
+  "identifier": "https://example.com/webtoon",
+  "readingProgression": "ttb",
+  "presentation": {
+    "overflow": "scrolled",
+    "fit": "width",
+    "continuous": true
+  }
+},
+"readingOrder": [
+  {
+    "href": "image1.jpg",
+    "type": "image/jpeg"
+  },
+  {
+    "href": "image2.jpg",
+    "type": "image/jpeg"
+  },
+  {
+    "href": "image3.jpg",
+    "type": "image/jpeg"
+  }
+]
+```
+
+*Example 7: This example features transitions. A slide-in btt from image1 to image2 with a backward slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition.*
 
 ```json
 {
@@ -325,102 +420,4 @@ Duration (in ms) can apply to any type of transition.
     }
   ]
 }
-```
-
-
-## 6. Packaging
-
-In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
-
-To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
-
-- its file extension <strong class="rfc">must</strong> be `.divina`
-- its media type <strong class="rfc">must</strong> be `application/divina+zip`
-
-As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#9-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
-
-
-
-## Appendix A. Compliance Levels
-
-### Level 0
-
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [presentation hints](presentation.md)
-* Support for [alternate resources](#3-alternate-resources)
-
-
-### Level 1
-
-* Support for [guided navigation](#4-guided-navigation)
-* Support for [transitions](#5-transitions)
-
-### Level 2
-
-* TBD
-
-## Appendix B. Examples
-
-*Example 6: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
-
-
-```json
-"metadata": {
-  "title": "Manga",
-  "identifier": "https://example.com/manga",
-  "readingProgression": "rtl",
-  "presentation": {
-    "fit": "contain",
-    "spread": "landscape"
-  }
-},
-"readingOrder": [
-  {
-    "rel": "cover",
-    "href": "cover.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "center" }
-  }, 
-  {
-    "href": "page1.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "right" }
-  }, 
-  {
-    "href": "page2.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "left" }
-  }
-]
-```
-
-*Example 7: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
-
-
-```json
-"metadata": {
-  "title": "Webtoon",
-  "identifier": "https://example.com/webtoon",
-  "readingProgression": "ttb",
-  "presentation": {
-    "overflow": "scrolled",
-    "fit": "width",
-    "continuous": true
-  }
-},
-"readingOrder": [
-  {
-    "href": "image1.jpg",
-    "type": "image/jpeg"
-  },
-  {
-    "href": "image2.jpg",
-    "type": "image/jpeg"
-  },
-  {
-    "href": "image3.jpg",
-    "type": "image/jpeg"
-  }
-]
-
 ```
