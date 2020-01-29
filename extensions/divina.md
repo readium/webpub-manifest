@@ -71,6 +71,8 @@ This profile relies on:
 
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
+See [DiViNa guidelines](../guidelines/divina-guidelines.md) for more details on how User Agents should implement this specification.
+
 
 ## 2. Listing Resources
 
@@ -241,7 +243,7 @@ Only used when the type is `animation`, the value of the `file` property is a Li
 
 #### duration
 
-A duration can apply to any type of transition. See [DiViNa guidelines](../guidelines/divina-guidelines.md) for more details. 
+Duration (in ms) can apply to any type of transition. 
 
 
 *Example 5: This example features a slide-in btt from image1 to image2 with a slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition.*
