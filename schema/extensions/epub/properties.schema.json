@@ -46,7 +46,7 @@
           "description": "Compression method used on the resource",
           "type": "string"
         },
-        "original-length": {
+        "originalLength": {
           "description": "Original length of the resource in bytes before compression and/or encryption",
           "type": "integer"
         },
