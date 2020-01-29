@@ -1,18 +1,26 @@
+# DiViNa guidelines
 
-## Guidelines for transitions
+## Guidelines relative to presentation hints
+
+### Expression of continuity between consecutive resources
+
+Continuity is expressed by the concatenation of two adjacent resources in the reading direction. 
+
+As an example, if the reading direction is `ltr` (resp. `tbb`), two adjacent images are "glued" side by side (resp. one on top of the other).
+
+## Guidelines relative to transitions
 
 ### Transitions applied on publications where continuous=true.
 
-A transition disables any continuity between the current resource and the next, i.e. it locally applies a form of `continuous`=`false`. Therefore, a transition represents the only way of creating “breaks” in a webtoon (i.e. when continuous=true). However, do note that:
+*This guideline is still under discussion by the WG*
 
-* This can only be done with a `transitionForward` (if continuous=true, any `transitionBackward` will be discarded, except if it happens to coincide with a `transitionForward`, i.e. if both transitions are properties of the same Link Object).
-* The elements making up a “page” in such a paginated webtoon will necessarily be stitched together in the direction of the `readingProgression` (for example, you can’t have 2 images stitched together vertically if `readingProgression` = `ltr`).
+Transitions should still be honored if `continuous=true`. This can be interpreted as a local discontinuity in the image flow. 
 
 ### Transitions applied on publications where overflow=scrolled
 
-Scrolling should be disabled by the User Agent while a transition unfolds.
+Continuous gestures should be disabled by the User Agent while a transition unfolds.
 
-If a discontinuous gesture is made during a transition, then its effect depends on the relative directions of the two movements:
+If a discontinuous gesture (like a "tap") is made during a transition, then its effect depends on the relative directions of the two movements:
 
 * If they have the same direction (forward and forward, or backward and backward), the transition should be forced to its end - but no additional page change should be performed.
 * If they have contradictory directions, then the transition should be cancelled and the publication brought back to the transition’s start or end, with an additional page change in the direction of the gesture.
@@ -20,6 +28,12 @@ If a discontinuous gesture is made during a transition, then its effect depends 
 Example 1: if a forward transition is unfolding and the user taps to go backward, the story will move back to the previous page (possibly playing the corresponding backward transition if there is one for the previous page).
 
 Example 2: if a backward snap point jump is unfolding and the user taps forward, the story will jump to the next start point and then either automatically jump to the next one (if there is one) or trigger a page change (if there is none).
+
+## Animations
+
+*This guideline is still under discussion by the WG*
+
+If the transition is an animation (either a sequence of images or a video file), its `fit` value should be inherited from the parent resource (i.e. the target resource for a forward transition and the source for a backward one) and it should be `clipped`.
 
 ## Duration of transitions 
 

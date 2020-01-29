@@ -235,13 +235,9 @@ Only used when the type is `animation`, the value of the `sequence` property is 
 
 Each image in the array is a frame displayed for a slice of `duration` divided by the number of images of the sequence.
 
-In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource (i.e. the target resource for a forward transition and the source for a backward one).
-
 #### file
 
 Only used when the type is `animation`, the value of the `file` property is a Link Object pointing to a video to be played before the next resource appears.
-
-In this case `overflow` is forced to `clipped` while `fit` is inherited from the parent resource.
 
 #### duration
 
