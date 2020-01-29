@@ -66,8 +66,8 @@ The goal of this document is to provide a profile dedicated to visual narratives
 This profile relies on:
 
 * the use of [presentation hints](./presentation.md) for specifying display constraints, 
-* the definition of a new collection type for implementing [guided navigation](#4.-guided-navigation),
-* the definition of new properties of Link Objects for implementing [transitions](#5.-transitions). 
+* the definition of a new collection type for implementing [guided navigation](#4-guided-navigation),
+* the definition of new properties of Link Objects for implementing [transitions](#5-transitions). 
 
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
