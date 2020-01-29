@@ -86,10 +86,10 @@ Values:
 
 | Value   | Definition |
 | ------- | ---------- |
-| `contain` | The content is centered and sized to fit the viewport. |
-| `cover`  |  The content is centered and sized to fill the viewport. |
-| `width`  |  The content is centered and sized to fit the viewport width. |
-| `height` |  The content is centered and sized to fit the viewport height. |
+| `contain` | The content is centered and scaled to fit the viewport. |
+| `cover`  |  The content is centered and scaled to fill the viewport. |
+| `width`  |  The content is centered and scaled to fit the viewport width. |
+| `height` |  The content is centered and scaled to fit the viewport height. |
 
 *In this example, resources are handled in a continuous way, the content is scrollable on the vertical axis and each resource fits the viewport width. It smells like a webtoon.*
 
@@ -103,7 +103,7 @@ Values:
   }
 }
 ```
-*In this example, a specific resource is sized to fit the viewport.*
+*In this example, a specific resource is scaled to fit the viewport.*
 
 ```json
 "readingOrder": [
@@ -124,9 +124,9 @@ The `clipped` property is meant to allow for a precise adaptation of linked reso
 
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
-| `clipped` | Specifies whether or not the parts of a linked resource that may exit the viewport are clipped.  | Boolean  | `true` or `false` | `false` |
+| `clipped` | Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.  | Boolean  | `true` or `false` | `false` |
 
-*In this example, resources are handled in a discontinuous way  and each resource is centered, sized to fit the viewport height and clipped to fit different viewport widths. It smells like a turbomedia.*
+*In this example, resources are handled in a discontinuous way  and each resource is centered, scaled to fit the viewport height and clipped to fit different viewport widths. It smells like a turbomedia.*
 
 ```json
 "metadata": {
@@ -140,7 +140,7 @@ The `clipped` property is meant to allow for a precise adaptation of linked reso
 }
 ```
 
-*In this example, a specific resource is sized to fit the viewport width and clipped to fit different viewport heights.*
+*In this example, a specific resource is scaled to fit the viewport width and clipped to fit different viewport heights.*
 
 ```json
 "readingOrder": [
@@ -223,10 +223,10 @@ The `page` property is meant to provide a hint to Use Agents that rely on synthe
 
 | Value   | Definition |
 | ------- | ---------- |
-| `landscape` | The content should be displayed in a spread only if the device is in landscape mode. |
-| `both` | The content should be displayed in a spread whatever the device orientation is. |
-| `none` | The content should never be displayed in a spread. |
-| `auto` | The choice is left to the User Agent. |
+| `landscape` | The resource should be displayed in a spread only if the device is in landscape mode. |
+| `both` | The resource should be displayed in a spread whatever the device orientation is. |
+| `none` | The resource should never be displayed in a spread. |
+| `auto` | The resource is left to the User Agent. |
 
 *In this example, content should be displayed in a spread only if the device is in landscape mode.*
 
