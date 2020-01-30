@@ -258,10 +258,10 @@ The `page` property is meant to provide a hint to Use Agents that rely on synthe
 
 ## Appendix A - JSON Schema
 
-The following JSON Schemas for this module are available: 
+The following JSON Schemas for this module are available under version control: 
 
-- Metadata: https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json
-- Link Properties: https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json
+- Metadata: https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/metadata.schema.json
+- Link Properties: https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/properties.schema.json
 
 For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resources: 
 
