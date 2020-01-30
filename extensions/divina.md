@@ -282,70 +282,73 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 
 ```json
-"metadata": {
-  "title": "Manga",
-  "identifier": "https://example.com/manga",
-  "readingProgression": "rtl",
-  "presentation": {
-    "fit": "contain",
-    "spread": "landscape"
-  }
-},
-"readingOrder": [
-  {
-    "rel": "cover",
-    "href": "cover.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "center" }
-  }, 
-  {
-    "href": "page1.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "right" }
-  }, 
-  {
-    "href": "page2.jpg", 
-    "type": "image/jpeg",
-    "properties": { "page": "left" }
-  }
-]
+{
+  "metadata": {
+    "title": "Manga",
+    "identifier": "https://example.com/manga",
+    "readingProgression": "rtl",
+    "presentation": {
+      "fit": "contain",
+      "spread": "landscape"
+    }
+  },
+  "readingOrder": [
+    {
+      "rel": "cover",
+      "href": "cover.jpg", 
+      "type": "image/jpeg",
+      "properties": { "page": "center" }
+    }, 
+    {
+      "href": "page1.jpg", 
+      "type": "image/jpeg",
+      "properties": { "page": "right" }
+    }, 
+    {
+      "href": "page2.jpg", 
+      "type": "image/jpeg",
+      "properties": { "page": "left" }
+    }
+  ]
+}
 ```
 
 *Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
 
 
 ```json
-"metadata": {
-  "title": "Webtoon",
-  "identifier": "https://example.com/webtoon",
-  "readingProgression": "ttb",
-  "presentation": {
-    "overflow": "scrolled",
-    "fit": "width",
-    "continuous": true
-  }
-},
-"readingOrder": [
-  {
-    "href": "image1.jpg",
-    "type": "image/jpeg"
+{
+  "metadata": {
+    "title": "Webtoon",
+    "identifier": "https://example.com/webtoon",
+    "readingProgression": "ttb",
+    "presentation": {
+      "overflow": "scrolled",
+      "fit": "width",
+      "continuous": true
+    }
   },
-  {
-    "href": "image2.jpg",
-    "type": "image/jpeg"
-  },
-  {
-    "href": "image3.jpg",
-    "type": "image/jpeg"
-  }
-]
+  "readingOrder": [
+    {
+      "href": "image1.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "image2.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "image3.jpg",
+      "type": "image/jpeg"
+    }
+  ]
+}
 ```
 
 *Example 7: This example features transitions. A slide-in btt from image1 to image2 with a backward slide-out ttb from image2 to image1; an image sequence from image2 to image3 with no backward transition; a video from image 3 to image 4 with no backward transition.*
 
 ```json
 {
-  ...,
   "metadata": {
     "readingProgression": "ttb",
     "presentation": {
@@ -357,7 +360,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
   "readingOrder": [
     {
       "href": "./content/image1.png",
-      "type": "image/png",
+      "type": "image/png"
     },
     {
       "href": "./content/image2.png",
@@ -371,34 +374,35 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
           "type": "slide-out",
           "direction": "ttb"
         }
+      }
   	},
-    {
-      "href": "./content/image3.png",
-      "type": "image/png"
-      "properties": {
-        "transitionForward": {
-          "type": "animation",
-          "sequence": [
-              {
-                "href": "./content/tr3-1.png",
-                "type": "image/png",
-              },
-              {
-                "href": "./content/tr3-2.png",
-                "type": "image/png",
-              },
-              {
-                "href": "./content/tr3-3.png",
-                "type": "image/png",
-              },
-              {
-                "href": "./content/tr3-4.png",
-                "type": "image/png",
-              },
-              {
-                "href": "./content/tr3-5.png",
-                "type": "image/png",
-              }
+   {
+     "href": "./content/image3.png",
+     "type": "image/png",
+     "properties": {
+       "transitionForward": {
+         "type": "animation",
+         "sequence": [
+           {
+             "href": "./content/tr3-1.png",
+             "type": "image/png"
+            },
+            {
+              "href": "./content/tr3-2.png",
+              "type": "image/png"
+            },
+            {
+              "href": "./content/tr3-3.png",
+              "type": "image/png"
+            },
+            {
+              "href": "./content/tr3-4.png",
+              "type": "image/png"
+            },
+            {
+              "href": "./content/tr3-5.png",
+              "type": "image/png"
+            }
           ],
           "duration": 500
         }
@@ -412,7 +416,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
           "type": "animation",
           "file": {
             "href": "./content/tr4.mp4",
-            "type": "video/mp4",
+            "type": "video/mp4"
           },
           "duration": 1000
         }
