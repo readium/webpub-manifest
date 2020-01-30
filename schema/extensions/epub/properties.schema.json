@@ -28,11 +28,6 @@
         "reflowable"
       ]
     },
-    "media-overlay": {
-      "description": "Location of a media-overlay for the resource referenced in the Link Object",
-      "type": "string",
-      "format": "uri-reference"
-    },
     "encrypted": {
       "description": "Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption",
       "type": "object",

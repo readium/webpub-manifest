@@ -1,14 +1,8 @@
-# EPUB Extension
+# EPUB Module
 
 While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publication Manifest, a number of metadata, collection roles and properties are still very specific to EPUB and not fully covered by the core specification.
 
 Thanks to the various extension points in place, this document defines a number of new collection roles and properties that are for the most part exclusive to EPUB.
-
-## Metadata
-
-[An additional JSON-LD context](../contexts/epub) document is available to cover EPUB specific requirements.
-
-This document is registered in the [Context Documents registry](../contexts), in compliance with the extensibility rules for metadata.
 
 ## Collection Roles
 
@@ -31,7 +25,6 @@ This document is registered in the [Context Documents registry](../contexts), in
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
 | [encrypted](#encrypted)  | Indicates that a resource is encrypted/obfuscated and provides relevant information for decryption.  | [Encryption Object](#encrypted)  | See the definition for the [Encryption Object](#encrypted) | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
-| [media-overlay](#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | 
 
 ### contains
 
@@ -118,21 +111,6 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
   "href": "page1.html", "type": "text/html",
   "properties": {
     "layout": "fixed"
-  }
-}
-```
-
-### media-overlay
-
-The `media-overlay` property indicates that the linked resource has a media-overlay available and points to the location of that media-overlay using a URI.
-
-This specification does not define the expected format for that media-overlay.
-
-```
-{
-  "href": "chapter1.html", "type": "text/html",
-  "properties": {
-    "media-overlay": "media-overlay/chapter1.json"
   }
 }
 ```
