@@ -7,12 +7,16 @@
     "presentation": {
       "type": "object",
       "properties": {
+        "clipped": {
+          "description": "Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.",
+          "type": "boolean",
+        },
         "continuous": {
-          "description": "Indicates how the progression between resources from the readingOrder should be handled.",
+          "description": "Indicates if consecutive linked resources from the `reading order` should be handled in a continuous or discontinuous way.",
           "type": "boolean"
         },
         "fit": {
-          "description": "Suggested method for constraining a resource inside the viewport.",
+          "description": "Specifies constraints for the presentation of a linked resource within the viewport.",
           "type": "string",
           "enum": [
             "width", 
@@ -22,7 +26,7 @@
           ]
         },
         "orientation": {
-          "description": "Suggested orientation for the device when displaying the linked resource",
+          "description": "Suggested orientation for the device when displaying the linked resource.",
           "type": "string",
           "enum": [
             "auto", 
@@ -31,7 +35,7 @@
           ]
         },
         "overflow": {
-          "description": "Suggested method for handling overflow while displaying the linked resource",
+          "description": "Indicates if the overflow of linked resources from the `readingOrder` or `resources` should be handled using dynamic pagination or scrolling.",
           "type": "string",
           "enum": [
             "auto",
@@ -41,7 +45,7 @@
           ]
         },
         "spread": {
-          "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread",
+          "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread.",
           "type": "string",
           "enum": [
             "auto",

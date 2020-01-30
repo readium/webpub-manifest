@@ -12,11 +12,11 @@ In order to provide publication-wide Presentation Hints, this extension introduc
 
 The following elements <strong class="rfc">may</strong> be included in `presentation`:
 
-- [`continuous`](#continuous)
-- [`overflow`](#overflow)
-- [`fit`](#fit)
 - [`clipped`](#clipped)
+- [`continuous`](#continuous)
+- [`fit`](#fit)
 - [`orientation`](#orientation)
+- [`overflow`](#overflow)
 - [`spread`](#spread)
 
 ## 2. Presentation Hints as Link Properties
@@ -25,108 +25,23 @@ In addition to publication-wide hints, this extension defines a number of Link P
 
 The following elements <strong class="rfc">may</strong> be included in `properties`:
 
-- [`fit`](#fit)
 - [`clipped`](#clipped)
+- [`fit`](#fit)
 - [`orientation`](#orientation)
-- [`spread`](#spread)
 - [`page`](#page)
-
+- [`spread`](#spread)
 
 ## 3. Properties
 
-### continuous
-
-| Key   | Semantics | Type     | Values    | Default |
-| ----- | --------- | -------- | --------- | ------- |
-| `continuous` | Indicates if consecutive linked resources from the `reading order` should be handled in a continuous or discontinuous way.  | Boolean  | `true` or `false`  | `true` |
-
-*In this example, the user will not experience discontinuities between the different resources*
-
-```json
-"metadata": {
-  "presentation": {
-    "continuous": true
-  }
-}
-```
-
-### overflow
-
-| Key   | Semantics | Type     | Values    | Default |
-| ----- | --------- | -------- | --------- | ------- |
-| `overflow` |  Indicates if the overflow of linked resources from the `reading order` should be handled using dynamic pagination or scrolling.  | String  | `paginated`, `scrolled` or `auto` | `auto` |
-
-Values: 
-
-| Value   | Definition |
-| ------- | ---------- |
-| `paginated` | Content overflow should be handled using dynamic pagination. |
-| `scrolled` | Content overflow should be handled using scrolling. |
-| `auto` | Choice is left to the User Agent.  |
-
-*Here is an example of a paginated mode requested by the author*
-
-```json
-"metadata": {
-  "readingProgression": "ltr",
-  "presentation": {
-    "continuous": true,
-    "overflow": "paginated"
-  }
-}
-```
-
-### fit
-
-| Key   | Semantics | Type     | Values    | Default |
-| ----- | --------- | -------- | --------- | ------- |
-| `fit` | Specifies  constraints for the presentation of a linked resource within the viewport.  | String  | `contain`, `cover`, `width` or `height` | `contain` |
-
-Values: 
-
-| Value   | Definition |
-| ------- | ---------- |
-| `contain` | The content is centered and scaled to fit the viewport. |
-| `cover`  |  The content is centered and scaled to fill the viewport. |
-| `width`  |  The content is centered and scaled to fit the viewport width. |
-| `height` |  The content is centered and scaled to fit the viewport height. |
-
-*In this example, resources are handled in a continuous way, the content is scrollable on the vertical axis and each resource fits the viewport width. It smells like a webtoon.*
-
-```json
-"metadata": {
-  "readingProgression": "ttb",
-  "presentation": {
-    "continuous": true,
-    "overflow": "scrolled",
-    "fit": "width"
-  }
-}
-```
-*In this example, a specific resource is scaled to fit the viewport.*
-
-```json
-"readingOrder": [
-  {
-    "href": "image1.webp",
-    "type": "image/webp",
-    "properties": {
-      "fit": "contain"
-    }
-  }
-]
-```
-
 ### clipped
 
-The `clipped` property is meant to allow for a precise adaptation of linked resources to different viewport ratios. The clipped areas will contain information which is not mandatory for the comprehension of the resource. 
-
+The `clipped` property is meant to adapt visual resources to any given viewport ratio. The clipped areas <strong class="rfc">must not</strong> contain information which are mandatory for the comprehension of the resource. 
 
 | Key   | Semantics | Type     | Values    | Default |
 | ----- | --------- | -------- | --------- | ------- |
 | `clipped` | Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.  | Boolean  | `true` or `false` | `false` |
 
-*In this example, resources are handled in a discontinuous way  and each resource is centered, scaled to fit the viewport height and clipped to fit different viewport widths. It smells like a turbomedia.*
+*In this example, resources are handled in a discontinuous way and each resource is scaled to fit the viewport height and clipped to fit different viewport widths. It behaves like turbomedia.*
 
 ```json
 "metadata": {
@@ -150,6 +65,61 @@ The `clipped` property is meant to allow for a precise adaptation of linked reso
     "properties": {
       "fit": "width",
       "clipped": true
+    }
+  }
+]
+```
+
+### continuous
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `continuous` | Indicates if consecutive linked resources from the `readingOrder` should be handled in a continuous or discontinuous way.  | Boolean  | `true` or `false`  | `true` |
+
+*In this example, the user will not experience discontinuities between the different resources*
+
+```json
+"metadata": {
+  "presentation": {
+    "continuous": true
+  }
+}
+```
+
+### fit
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `fit` | Specifies constraints for the presentation of a linked resource within the viewport.  | String  | `contain`, `cover`, `width` or `height` | `contain` |
+
+| Value   | Definition |
+| ------- | ---------- |
+| `contain` | The content is centered and scaled to fit both dimensions into the viewport. |
+| `cover`  |  The content is centered and scaled to fill the viewport. |
+| `width`  |  The content is centered and scaled to fit the viewport width. |
+| `height` |  The content is centered and scaled to fit the viewport height. |
+
+*In this example, resources are handled in a continuous way, the content is scrollable on the vertical axis and each resource fits the viewport width. It behaves like a webtoon.*
+
+```json
+"metadata": {
+  "readingProgression": "ttb",
+  "presentation": {
+    "continuous": true,
+    "overflow": "scrolled",
+    "fit": "width"
+  }
+}
+```
+*In this example, a specific resource is scaled to fit the viewport.*
+
+```json
+"readingOrder": [
+  {
+    "href": "image1.webp",
+    "type": "image/webp",
+    "properties": {
+      "fit": "contain"
     }
   }
 ]
@@ -184,6 +154,31 @@ The `orientation` property is mostly relevant for resources with fixed dimension
     }
   }
 ]
+```
+
+### overflow
+
+| Key   | Semantics | Type     | Values    | Default |
+| ----- | --------- | -------- | --------- | ------- |
+| `overflow` |  Indicates if the overflow of linked resources from the `readingOrder` or `resources` should be handled using dynamic pagination or scrolling.  | String  | `paginated`, `scrolled` or `auto` | `auto` |
+
+
+| Value   | Definition |
+| ------- | ---------- |
+| `paginated` | Content overflow should be handled using dynamic pagination. |
+| `scrolled` | Content overflow should be handled using scrolling. |
+| `auto` | The User Agent can decide how overflow should be handled.  |
+
+*Here is an example of a paginated mode requested by the author*
+
+```json
+"metadata": {
+  "readingProgression": "ltr",
+  "presentation": {
+    "continuous": true,
+    "overflow": "paginated"
+  }
+}
 ```
 
 ### page
@@ -261,3 +256,14 @@ The `page` property is meant to provide a hint to Use Agents that rely on synthe
 ]
 ```
 
+## Appendix A - JSON Schema
+
+The following JSON Schemas for this module are available: 
+
+- Metadata: https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json
+- Link Properties: https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resources: 
+
+- https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json
+- https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json
