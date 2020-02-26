@@ -210,7 +210,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 * TBD
 
-## Appendix B. Guidelines
+## Appendix B. Implementation Guidelines
 
 An implementation guideline is available for more details on how User Agents should implement this specification: https://readium.org/webpub-manifest/guidelines/divina-guidelines
 
