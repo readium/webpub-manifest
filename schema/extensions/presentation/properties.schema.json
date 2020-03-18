@@ -6,7 +6,7 @@
   "properties": {
     "clipped": {
       "description": "Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.",
-      "type": "boolean",
+      "type": "boolean"
     },
     "fit": {
       "description": "Specifies constraints for the presentation of a linked resource within the viewport.",
