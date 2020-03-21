@@ -4,7 +4,7 @@
   "title": "EPUB Extension - Sub-Collections",
   "type": "object",
   "properties": {
-    "page-list": {
+    "pageList": {
       "type": "array",
       "items": {
         "$ref": "../../link.schema.json"
