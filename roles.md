@@ -20,7 +20,7 @@ The Readium Web Publication Manifest specification defines the following roles f
 | `loi`  | Identifies the collection that contains a list of illustrations.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
 | `lot`  | Identifies the collection that contains a list of tables.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
 | `lov`  | Identifies the collection that contains a list of videos.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `page-list`  | Identifies the collection that contains a list of pages.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
+| `pageList`  | Identifies the collection that contains a list of pages.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
 
 
 ## OPDS 2.0
