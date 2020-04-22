@@ -1,8 +1,7 @@
 # Make `sortAs` a language map
 
 * Authors: [Quentin Gliosca](https://github.com/qnga)
-* Review PR:
-* Implementation PRs:
+* Review PR: [#58](https://github.com/readium/webpub-manifest/pull/58)
 * Related Issues:
     * [#48 Sorting keys are language dependent](https://github.com/readium/webpub-manifest/issues/48)
 
