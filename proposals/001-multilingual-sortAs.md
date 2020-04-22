@@ -3,7 +3,6 @@
 * Authors: [Quentin Gliosca](https://github.com/qnga)
 * Review PR:
 * Implementation PRs:
-    * 
 * Related Issues:
     * [#48 Sorting keys are language dependent](https://github.com/readium/webpub-manifest/issues/48)
 
