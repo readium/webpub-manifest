@@ -14,13 +14,13 @@ The Readium Web Publication Manifest specification defines the following roles f
 
 | Role  | Definition | Compact Collection? | Required? | Reference |
 | ----- | ---------- | ------------------- | --------- | --------- |
-| `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  | [Visual Narrative Profile](extensions/visual-narrative.md#4-guided-navigation) |
-| `landmarks`  | Identifies the collection that contains a list of points of interest.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `loa`  | Identifies the collection that contains a list of audio resources.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `loi`  | Identifies the collection that contains a list of illustrations.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `lot`  | Identifies the collection that contains a list of tables.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `lov`  | Identifies the collection that contains a list of videos.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
-| `pageList`  | Identifies the collection that contains a list of pages.  | Yes  | No  | [EPUB Extension](extensions/epub.md#collection-roles) |
+| `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  | [Visual Narrative Profile](profiles/visual-narrative.md#4-guided-navigation) |
+| `landmarks`  | Identifies the collection that contains a list of points of interest.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
+| `loa`  | Identifies the collection that contains a list of audio resources.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
+| `loi`  | Identifies the collection that contains a list of illustrations.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
+| `lot`  | Identifies the collection that contains a list of tables.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
+| `lov`  | Identifies the collection that contains a list of videos.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
+| `pageList`  | Identifies the collection that contains a list of pages.  | Yes  | No  | [EPUB Extension](profiles/epub.md#collection-roles) |
 
 
 ## OPDS 2.0

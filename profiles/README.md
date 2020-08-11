@@ -4,8 +4,7 @@
 | ----- | ------------ |
 | [Audiobook Profile](audiobook.md) | Defines a dedicated profile for audiobooks. |
 | [Digital Visual Narratives Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Extension](epub.md) | Additional metadata and collection roles for representing EPUB publications. |
-| [Presentation Hints](presentation.md) | Metadata and properties meant to convey to User Agents how a given publication should be presented. |
+| [EPUB Profile](epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
 
 ## Registering a profile

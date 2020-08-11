@@ -288,7 +288,7 @@ As a fallback mechanism, a Readium Web Publication Manifest <strong class="rfc">
 
 A User Agent <strong class="rfc">may</strong> also rely on the `title` key included in each Link Object of the `readingOrder` to extract a minimal table of contents.
 
-[The EPUB extension](/extensions/epub.md) also defines [additional collection roles](https://github.com/readium/webpub-manifest/blob/master/extensions/epub.md#collection-roles) for embedding navigation directly in the manifest.
+[The EPUB profile](profiles/epub.md) also defines [additional collection roles](profiles/epub.md#collection-roles) for embedding navigation directly in the manifest.
 
 ## 7. Cover
 
@@ -321,16 +321,15 @@ The manifest provides multiple extension points:
 - additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
 - additional properties using the [registry of properties](properties.md)
 
-In addition to these extension points, this specification defines an [extension registry](extensions/) as well, to document specific profiles of the manifest.
+In addition to these extension points, this specification defines both an [profile registry](profiles/) and [a module registry](modules/) as well.
 
-The initial registry, contains the following extensions:
+The initial registry, contains the following profiles:
 
 | Name  |  Description |
 | ----- | ------------ |
-| [Audiobook Profile](extensions/audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narratives Profile](extensions/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Extension](extensions/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
-| [Presentation Hints](extensions/presentation.md) | Metadata and properties meant to convey to User Agents how a given publication should be presented. |
+| [Audiobook Profile](profiles/audiobook.md) | Defines a dedicated profile for audiobooks. |
+| [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
+| [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
 ## 9. Package
 
