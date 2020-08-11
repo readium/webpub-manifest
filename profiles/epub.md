@@ -15,7 +15,7 @@ Thanks to the various extension points in place, this document defines a number 
 | loi  | Identifies the collection that contains a list of illustrations.  | Yes  | No  |
 | lot  | Identifies the collection that contains a list of tables.  | Yes  | No  |
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
-| page-list  | Identifies the collection that contains a list of pages.  | Yes  | No  |
+| pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
 
 ## Properties

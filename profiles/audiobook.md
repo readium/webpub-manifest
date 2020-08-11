@@ -93,7 +93,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
  - they <strong class="rfc">must</strong> point strictly to audio resources
  - they <strong class="rfc">must</strong> include a `duration` term that provides the duration in seconds of each individual audio resource
 
-In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` whenever possible.
+In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` (in `kbps`) whenever possible.
 
 ## 3. Alternate Audio Resources
 
