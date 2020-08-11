@@ -1,4 +1,4 @@
-# Extensions Registry
+# Profiles Registry
 
 | Name  |  Description |
 | ----- | ------------ |
@@ -8,9 +8,9 @@
 | [Presentation Hints](presentation.md) | Metadata and properties meant to convey to User Agents how a given publication should be presented. |
 
 
-## Registering an extension
+## Registering a profile
 
-In order to register an additional extensions for the Web Publication Manifest, it is required to:
+In order to register an additional profile for the Readium Web Publication Manifest, it is required to:
 
 - provide documentation in Markdown
-- send a pull request on this folder that includes the documentation
+- send a pull request on this folder
