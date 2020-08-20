@@ -321,7 +321,7 @@ The manifest provides multiple extension points:
 - additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
 - additional properties using the [registry of properties](properties.md)
 
-In addition to these extension points, this specification defines both an [profile registry](profiles/) and [a module registry](modules/) as well.
+In addition to these extension points, this specification defines both a [profile registry](profiles/) and a [module registry](modules/) as well.
 
 The initial registry, contains the following profiles:
 
