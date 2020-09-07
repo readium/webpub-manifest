@@ -9,7 +9,7 @@
       "properties": {
         "clipped": {
           "description": "Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.",
-          "type": "boolean",
+          "type": "boolean"
         },
         "continuous": {
           "description": "Indicates if consecutive linked resources from the `reading order` should be handled in a continuous or discontinuous way.",
