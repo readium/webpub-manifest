@@ -65,7 +65,7 @@ The goal of this document is to provide a profile dedicated to visual narratives
 
 This profile relies on:
 
-* the use of [presentation hints](./presentation.md) for specifying display constraints, 
+* the use of [presentation hints](../modules/presentation.md) for specifying display constraints, 
 * the definition of a new collection type for implementing [guided navigation](#4-guided-navigation),
 * the [transitions module](../modules/transitions.md) to manage transitions between resources of the reading order.
 
