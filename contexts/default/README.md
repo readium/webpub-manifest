@@ -298,11 +298,11 @@ It defaults to `auto` when no value is set.
 
 To indicate the length of a publication, a manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
 
-`duration` is expressed in seconds using a float (number in JS), while `numberOfPages` is an integer.
+`duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
 ```
-"duration": "5467",
-"numberOfPages": "178"
+"duration": 5467,
+"numberOfPages": 178
 ```
 
 In addition to these two properties, `abridged` is used to indicate an abridged edition of a publication. This is expressed using a boolean.
