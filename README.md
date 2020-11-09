@@ -1,3 +1,4 @@
+
 # Readium Web Publication Manifest
 
 The Readium Web Publication Manifest is a JSON-based document meant to represent and distribute publications over HTTPS.
@@ -7,13 +8,39 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 **Editors:**
 
 * Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Laurent Le Meur ([EDRLab](http://www.edrlab.org))
 
 **Participate:**
 
 * [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
 * [File an issue](https://github.com/readium/webpub-manifest/issues)
 
-## Example
+
+## Table of Contents
+
+- [Initial Example](#first-example)
+- [1. Introduction](#1-introduction)
+- [2. Abstract Model](#2-abstract-model)
+  - [Collection](#21-collection)
+  - [Metadata](#22-metadata)
+  - [Link Array](#23-link-array)
+  - [Link Object](#24-link-object)
+- [3. Readium Web Publication Manifest](#3-readium-web-publication-manifest)
+  - [Metadata](#31-metadata)
+  - [Links](#32-links)
+  - [Reading Order and Resources](#33-reading-order-and-resources)
+  - [Table of Contents](#34-table-of-contents)
+  - [Cover](#35-cover)
+- [5. Profiles, modules](#5-profiles-modules)
+  - [EPUB Profile](profiles/epub.md)
+  - [Audiobook Profile](profiles/audiobook.md)
+  - [Digital Visual Narratives Profile](profiles/divina.md)
+- [6. Media Type](#6-media-type)
+- [Appendix A. JSON Schema](appendix-a-json-schema)
+- [Appendix B. Relationship with W3C Web Publications](appendix-b-relationship-with-w3C-web-publications)
+
+
+## Initial Example
 
 ```json
 {
@@ -31,7 +58,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
   "links": [
     {"rel": "self", "href": "https://example.com/manifest.json", "type": "application/webpub+json"},
     {"rel": "alternate", "href": "https://example.com/publication.epub", "type": "application/epub+zip"},
-    {"rel": "search", "href": "https://example.com/search{?query}", "type": "text/html", "templated": true}
+    {"rel": "search", "href": "https://example.com/{pubid}/search{?query}", "type": "text/html", "templated": true}
   ],
   
   "readingOrder": [
@@ -49,248 +76,251 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 }
 ```
 
+
 ## 1. Introduction
 
 ### 1.1. Goals
 
-While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together can represent a publication.
+While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together, represent a *publication*.
 
-Publication formats such as EPUB or CBZ/CBR group these documents together using a container format, making them easier to archive or transmit as a whole. But they also break an important promise of the Web: the resources of a publication are not available through HTTP to any client that would like to access them.
+Packaged publication formats such as EPUB group together these resources, along with associated metadata, in a container file which makes them easy to transmit or archive as a whole. But they also break an important promise of the Web, as the individual resources of a publication are not easily available to client applications through HTTP.  
 
-W3C has recently provided a definition for a [Web Publication](https://w3c.github.io/dpub-pwp-ucr/):
+The [Readium Architecture](https://readium.org/architecture) is based on the use of a browser engine for displaying HTML documents and associated multimedia resources. Each Readium toolkit contains a client module (the Navigator) which drives the browser engine, and a server module (the Streamer, or the Publication Server in the case of Readium Web) which dynamically extracts resources from packaged publications. Navigator and Streamer exchange a format optimized for Web interactions, a format we name *Readium Web Publication*. 
 
-> A **Web Publication (WP)** is a collection of one or more constituent resources, organized together in a uniquely identifiable grouping, and presented using standard Open Web Platform technologies.
+A Readium Web Publication is a collection of one or more constituent resources, organized together in a uniquely identifiable grouping, associated with descriptive metadata, and available using standard Open Web Platform technologies. 
 
-It also provides a definition for a manifest in the context of a Web Publication:
-> [...] **manifest** refers to an abstract means to contain information necessary to the proper management, rendering, and so on, of a publication. This is opposed to metadata that contains information on the content of the publication like author, publication date, and so on. The precise format of how such a manifest is stored is not considered in this document.
+A Readium Web Publication Manifest (in short Manifest, acronym *rwpm*) is a JSON structure which can be easily fetched by a Web application (in our case a Navigator) from a Web Server (in our case a Streamer or Publication Server). Such structure centralizes the identifier of the publication, its associated metadata, and the set of URLs used for fetching the different resources of the publication. It can also contain a table of contents and a set of useful links, especially the URL of a cover image.
 
-The Readium Web Publication Manifest is an attempt to standardize a JSON based manifest format that follows both definitions.
+An important goal of this work is to be able to represent in a common way differents types of content, i.e. ebooks, audiobooks, digital visual narratives (comics, manga and bandes dessinées), including ebooks with synchronized media (Media Overlays in EPUB speak), and this independently of their source packaged format. 
 
-To facilitate the interoperability between EPUB and Web Publications, this document also defines a number of extension points to fully support EPUB specific features.
+### 1.2. References
 
-### 1.2. Terminology
+The Readium Web Publication Manifest is based on a hypermedia model inspired, among others, by:
 
-<dl>
- <dt id="collection">Collection</dt>
- <dd>A grouping of some variable number of data items. In the context of this specification, a collection is defined as a grouping of metadata, links and sub-collections.</dd>
- <dt>Full Collection</dt>
- <dd>A collection that contains at least two or more data items among metadata, links and sub-collections.</dd>
- <dt>Compact Collection</dt>
- <dd>A collection that contains one or more links, but doesn't contain any metadata or sub-collections.</dd>
- <dt>Manifest</dt>
- <dd>A manifest is a full collection that represents structured information about a publication.</dd>
-</dl>
+- [Atom](https://tools.ietf.org/html/rfc4287), 
+- [HAL](http://stateless.co/hal_specification.html), 
+- [Siren](https://github.com/kevinswiber/siren) 
+- [Collection+JSON](http://amundsen.com/media-types/collection/format/) 
 
-### 1.3. Abstract Model
+## 2. Abstract Model
 
-The Readium Web Publication Manifest is based on a hypermedia model inspired by [Atom](https://tools.ietf.org/html/rfc4287), [HAL](http://stateless.co/hal_specification.html), [Siren](https://github.com/kevinswiber/siren) and [Collection+JSON](http://amundsen.com/media-types/collection/format/) among others.
+### 2.1. Collection
 
-Every Readium Web Publication Manifest is a [collection](#collection) that <strong class="rfc">must</strong> contain:
+A Collection is a grouping of [Metadata](#32-metadata), a set of [Link Arrays](#33-link-array) and a set of Sub-Collections. Each of these constituants is optional. 
 
-- [metadata](#22-metadata)
-- [links](#23-links)
-- a [reading order](#21-sub-collections)
-
-
-## 2. Syntax
-
-### 2.1. Sub-Collections
-
-This specification defines two collection roles that are the building blocks of any manifest:
-
-| Role  | Definition | Compact Collection? | Required? |
-| ----- | ---------- | ------------------- | --------- |
-| `readingOrder`  | Identifies a list of resources in reading order for the publication.  | Yes  | Yes  |
-| `resources`  | Identifies resources that are necessary for rendering the publication.  | Yes  | No  |
-
-Both collections are compact collections, which means that they contain one or more [Link Objects](#24-the-link-object). 
-
-All additional collection roles are defined in the [Collection Roles registry](roles.md).
-
-Extensions that are not registered in the registry <strong class="rfc">must</strong> use a URI for their role.
-
-A manifest <strong class="rfc">must</strong> contain a `readingOrder` sub-collection.
-
-Other resources that are required to render the publication <strong class="rfc">should</strong> be listed in `resources`.
-
-All resources listed in `readingOrder` and `resources` <strong class="rfc">must</strong> indicate their media type using `type`.
-
-*Example 1: Reading order and list of resources*
-
-```json
-{
-  "readingOrder": [
-    {"href": "/chapter1", "type": "text/html"},
-    {"href": "/chapter2", "type": "text/html"}
-  ],
-  "resources": [
-    {"href": "/style.css", "type": "text/css"},
-    {"href": "/image1.jpg", "type": "image/jpeg"}
-  ]
-}
-```
-
-
+A Sub-Collection is a Collection embedded in a parent Collection.
 
 ### 2.2. Metadata
 
-JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate keys in a document to Linked Data elements from various vocabularies.
+The `metadata` object groups together useful meta-information about the Collection; such metadata rely on JSON-LD to express their semantics.
 
-The Web Publication Manifest relies on JSON-LD to provide a context for the `metadata` object of the manifest.
+[JSON-LD](https://www.w3.org/TR/json-ld11/) is a lightweight Linked Data format based on JSON, and it relies on a notion of "context". In consequence a Collection that contains a `metadata` key <strong class="rfc">must</strong> set a `@context` property and every metadata property <strong class="rfc">should</strong> be defined in this context. 
 
-While JSON-LD is very flexible and allows the context to be defined in-line (local context) or referenced (URI), the Web Publication Manifest restricts context definition strictly to references (URIs) at the top-level of the document.
+Several context values <strong class="rfc">may</strong> be used simultaneously in the same Collection: in such a case the `@context` property <strong class="rfc">must</strong> be a JSON array and additional context URIs added to this array. 
 
-The Web Publication Manifest defines an initial registry of well-known context documents, which currently includes the following references:
+While JSON-LD is very flexible and allows the context to be defined either in-line (as a local context) or by reference (via URIs), this specification strictly restricts its definition to references (URIs).
 
-| Name  | URI | Description | Required? |
-| ---- | ----------- | ------------- | --------- |
-[Default Context](contexts/default/) | [https://readium.org/webpub-manifest/context.jsonld](https://readium.org/webpub-manifest/context.jsonld)  | Default context definition used in every Web Publication Manifest. | Yes |
+A [registry of context documents](contexts/) lists all contexts defined by this specification. 
 
-Context documents are all defined and listed in the [Context Documents registry](contexts/).
+### 2.3. Link Array
 
-The Readium Web Publication Manifest has a single requirement in terms of metadata: all publications <strong class="rfc">must</strong> include a [title](contexts/default/#title).
+A Link Array is a unsorted set of [Link Objects](#24-link-object). 
 
-In addition all publications <strong class="rfc">should</strong> include a `@type` key to describe the nature of the publication.
+### 2.4. Link Object
 
-*Example 2: Minimal metadata*
-
-```json
-"metadata": {
-  "@type": "http://schema.org/Book",
-  "title": "Test Publication"
-}
-```
-
-### 2.3. Links
-
-Links are expressed using the `links` key that contains one or more [Link Objects](#24-the-link-object).
-
-A manifest <strong class="rfc">must</strong> contain at least one link using the `self` relationship where `href` is an absolute URI to the canonical location of the manifest.
-
-*Example 3: Link to the canonical location of a manifest*
-
-```json
-"links": [
-  {
-    "rel": "self",
-    "href": "http://example.org/manifest.json",
-    "type": "application/webpub+json"
-  }
-]
-```
-A manifest <strong class="rfc">may</strong> also contain other links, such as a `alternate` link to an EPUB 3.2 version of the publication for example.
-
-Link relations that are currently used in this specification and its extensions are listed in the [Link Relations registry](relationships.md).
-
-### 2.4. The Link Object
-
-The Link Object is a core component of the Readium Web Publication Manifest JSON syntax.
-
-It represents a link to a resource along with a set of metadata associated with that resource.
+A Link Object represents a link to a resource of a Collection, along with a set of properties of that resource.
 
 This specification defines the following keys for this JSON object:
 
 | Key  | Definition | Format | Required? |
 | ---- | -----------| -------| ----------|
 | `href`  | URI or URI template of the linked resource  | URI or URI template | Yes  |
-| `templated`  | Indicates that `href` is a URI template  | Boolean, defaults to `false`  | Only when `href` is a URI template  |
+| `templated`  | Indicates that `href` is a URI template  | Boolean, defaults to `false`  | No |
 | `type`  | Media type of the linked resource  | MIME Media Type  | No  |
 | `title`  | Title of the linked resource  | String  | No  |
-| `rel`  | Relation between the resource and its containing collection  | One or more [Link Relations](relationships.md) | No  |
-| `properties`  | Properties associated to the linked resource  | [Properties Object](properties.md)  | No |
+| `rel`  | Relation between the linked resource and the parent collection of the link object  | One or more [Link Relations](relationships.md) or author defined URIs | No |
+| `properties`  | Properties of the linked resource  | [Properties Object](properties.md)  | No |
 | `height`  | Height of the linked resource in pixels | Integer  | No  |
 | `width`  | Width of the linked resource in pixels | Integer | No  |
 | `duration`  | Duration of the linked resource in seconds | Float| No  |
 | `bitrate`  | Bit rate of the linked resource in kilobits per second | Float| No  |
 | `language`  | Expected language of the linked resource | One or more [BCP 47 Language Tag](https://tools.ietf.org/html/bcp47) | No  |
-| `alternate`  | Alternate resources for the linked resource | One or more [Link Objects](#24-the-link-object) | No |
-| `children`  | Resources that are children of the linked resource, in the context of a given collection role | One or more [Link Objects](#24-the-link-object) | No |
+| `alternate`  | Alternate resources for the linked resource | One or more Link Objects | No |
+| `children`  | Resources that are children of the linked resource in the context of a given Collection | One or more Link Objects | No |
 
-## 3. Resources in the Reading Order
+#### 2.4.1. Properties of Linked Resources
 
-The `readingOrder` of a manifest <strong class="rfc">may</strong> contain references to any text, image, video or audio resource that can be opened in a Web browser.
+Different sets of properties of linked resources are attached to different [profiles](profiles/).
 
-## 4. Media Type
+The complete set of properties defined by this specification is listed in the [registry of resource properties](properties.md). 
 
-This specification introduces a dedicated media type value to identify the Readium Web Publication Manifest: `application/webpub+json`.
+## 3. Readium Web Publication Manifest
 
-All HTTP responses for the manifest <strong class="rfc">must</strong> indicate this media type in their headers.
+A Readium Web Publication Manifest is a [Collection](#21-collection) that contains:
 
-## 5. Discovering a Manifest
+- a set of [metadata](#31-metadata)
+- an array of [links](#32-links)
+- a [reading order](#33-reading-order-and-resources)
 
-The Readium Web Publication Manifest <strong class="rfc">may</strong> be referenced by resources included in its `readingOrder` or `resources` using a link.
+It <strong class="rfc">may</strong> also contain:
+- a set of additional [resources](#33-reading-order-and-resources)
+- a [table of contents](#34-table-of-contents)
 
-Such links <strong class="rfc">must</strong> include:
+It may also be extended by one or more supplemental [Link Arrays](#23-link-array) and [Sub-Collections](#21-collection). These <strong class="rfc">should</strong> be identified by a role defined in the [Collection Roles registry](roles.md). Extensions that are not registered in the registry <strong class="rfc">must</strong> use a URI for identifying their role.
 
-- `application/webpub+json` as the media type of the manifest
-- `manifest` as the relation of the link
+### 3.1. Metadata
 
-*Example 4: Link in HTML to a manifest*
+A standard [set of descriptive properties](contexts/default/) is defined by this specification. 
 
-```html
-<link href="manifest.json" rel="manifest" type="application/webpub+json">
-```
+Metadata defined in this "default context" are common to different types of publications and they are all mapped from [schema.org](https://schema.org/) properties.
 
-*Example 5: Link in HTTP headers to a manifest*
+The JSON-LD "default context" is identified by the URI `https://readium.org/webpub-manifest/context.jsonld`. 
 
-```
-Link: <http://example.org/manifest.json>; rel="manifest";
-         type="application/webpub+json"
-```
-
-## 6. Table of Contents
-
-A Readium Web Publication Manifest <strong class="rfc">may</strong> contain a reference to a table of contents.
-
-In order to represent a table of contents in the manifest, this specification introduces an additional collection role:
-
-| Role  | Definition | Compact Collection? | Required? |
-| ----- | ---------- | ------------------- | --------- |
-| `toc`  | Identifies the collection that contains a table of contents. | Yes  | No  |
-
-*Example 6: Partial TOC for an audiobook*
+*Example 1: Context key*
 
 ```json
-"toc": [
-  {
-    "href": "track1.mp3#t=71",
-    "title": "Part 1 - This World",
-    "children": [
-      {
-        "href": "track1.mp3#t=80",
-        "title": "Section 1 - Of the Nature of Flatland"
-      },
-      {
-        "href": "track1.mp3#t=415",
-        "title": "Section 2 - Of the Climate and Houses in Flatland"
-      },
-      {
-        "href": "track1.mp3#t=789",
-        "title": "Section 3 - Concerning the Inhabitants of Flatland"
-      }
-    ]
-  }
-]
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld"
+}
 ```
 
+This specification has a single requirement in terms of metadata: a Readium Web Publication Manifest <strong class="rfc">must</strong> include a [title](contexts/default/#title).
 
-As a fallback mechanism, a Readium Web Publication Manifest <strong class="rfc">may</strong> identify an HTML or XHTML resource in `readingOrder` or `resources` as a table of contents using the `contents` link relation.
+In addition, a Readium Web Publication Manifest <strong class="rfc">should</strong> include both a `@type` and a `conformsTo` property.
+
+The `@type` property defines the type of the JSON-LD graph node. Its value <strong class="rfc">must</strong> be the URL of a [schema.org](https://schema.org/) Type of [CreativeWork](https://schema.org/CreativeWork) and <strong class="rfc">should</strong> be consistent with the [profile](profiles/) of the publication. Recommended value(s) are indicated in each profile page. 
+
+The `conformsTo` property specifies the profile associated with the publication and is also specified in the corresponding profile page. 
+
+*Example 2: Minimal metadata*
+
+```json
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Publication",
+    "@type": "http://schema.org/Book",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/epub"
+  }
+}
+```
+
+### 3.2. Links
+
+Links which are deemed useful to the processing of a publication are expressed using the `links` array, which contains one or more [Link Objects](#24-link-object).
+
+If a Readium Web Publication is provided to a client application via a Web server, it <strong class="rfc">should</strong> contain a link with the `self` relationship, `href` being an absolute URI to the canonical location of the manifest.
+
+*Example 3: Link to the canonical location of a manifest*
+
+```json
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Publication"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://example.org/manifest.json",
+      "type": "application/webpub+json"
+    }
+  ]
+}
+```
+A manifest <strong class="rfc">may</strong> also contain other links, such as a `alternate` link to e.g. an EPUB 3 version of the Web publication.
+
+Standard link relationships are listed in the [Link Relations registry](relationships.md). 
+
+In addition, authors may use relationships defined by the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml); they are free to extend this set, using URIs as property values.
+
+### 3.3. Reading Order and Resources
+
+The `readingOrder` of a Readium Web Publication Manifest is an array of references to text, audio, image or video resources that can be displayed or played in sequence by a client module.
+
+Resources that are required to render the publication but have no place is the reading order <strong class="rfc">should</strong> be listed in the `resources` array.
+
+Each item of the reading order is a [Link Object](#24-link-object). The media type of the linked resource <strong class="rfc">must</strong> be indicated using the `type` key.  
+
+*Example 4: Reading order and list of resources*
+
+```json
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Publication"
+  },
+  "readingOrder": [
+    {"href": "/chapter1", "type": "text/html"},
+    {"href": "/chapter2", "type": "text/html"}
+  ],
+  "resources": [
+    {"href": "/style.css", "type": "text/css"},
+    {"href": "/image.jpg", "type": "image/jpeg"}
+  ]
+}
+```
+
+### 3.4. Table of Contents
+
+A Readium Web Publication Manifest <strong class="rfc">may</strong> contain a table of contents, i.e. a [Link Array](#23-link-array) identified by the `toc` role.
+
+*Example 6: Partial TOC of an audiobook*
+
+```json
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Audiobook"
+  },
+  "toc": [
+    {
+      "href": "track1.mp3#t=71",
+      "title": "Part 1 - This World",
+      "children": [
+        {
+          "href": "track1.mp3#t=80",
+          "title": "Section 1 - Of the Nature of Flatland"
+        },
+        {
+          "href": "track1.mp3#t=415",
+          "title": "Section 2 - Of the Climate and Houses in Flatland"
+        },
+        {
+          "href": "track1.mp3#t=789",
+          "title": "Section 3 - Concerning the Inhabitants of Flatland"
+        }
+      ]
+    }
+  ]
+}
+```
+
+As a fallback mechanism, a Readium Web Publication Manifest <strong class="rfc">may</strong> identify an HTML or XHTML resource found in the `readingOrder` or `resources` sub-collection as a table of contents. Such reference is identified by a `contents` value of the link relation.
 
 *Example 7: Reference to an HTML resource containing a TOC*
 
 ```json
 {
-  "rel": "contents", 
-  "href": "contents.html", 
-  "type": "text/html"
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Audiobook"
+  },
+  "readingOrder": [
+    {
+      "rel": "contents", 
+      "href": "contents.html", 
+      "type": "text/html"
+    }
+  ]
 }
 ```
 
-A User Agent <strong class="rfc">may</strong> also rely on the `title` key included in each Link Object of the `readingOrder` to extract a minimal table of contents.
+A User Agent <strong class="rfc">should</strong> also use as a fallback the `title` key of each Link Object of the `readingOrder` to extract a minimal table of contents.
 
-[The EPUB profile](profiles/epub.md) also defines [additional collection roles](profiles/epub.md#collection-roles) for embedding navigation directly in the manifest.
+[The EPUB profile](profiles/epub.md) defines [additional collection roles](profiles/epub.md#collection-roles) which provide EPUB specific navigation affordances.
 
-## 7. Cover
+### 3.5. Cover
 
 A Readium Web Publication Manifest <strong class="rfc">may</strong> contain a reference to a cover.
 
@@ -300,67 +330,61 @@ All Link Objects containing the `cover` link relation <strong class="rfc">must</
 
 This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif`, `image/webp` or `image/svg+xml`. 
 
-*Example 8: Reference to a cover*
+*Example 8: Reference to a cover as a resource*
 
 ```json
 {
-  "rel": "cover", 
-  "href": "cover.jpg", 
-  "type": "image/jpeg", 
-  "height": 600, 
-  "width": 400
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "title": "Test Publication"
+  },
+  "resource": [
+    {
+      "rel": "cover", 
+      "href": "cover.jpg", 
+      "type": "image/jpeg", 
+      "height": 600, 
+      "width": 400
+    }
+  ]
 }
 ```
 
-## 8. Extensibility
+## 5. Profiles, modules
 
-The manifest provides multiple extension points:
+The Manifest generated out of an EPUB ebook, a W3C Audiobook or a Divina visual narrative is based on the same [Core Model](#3-core-model), but each type of publication presents some specificities. Some of these specificities are shared between profiles, which leads to the creation of shared modules. 
 
-- additional collection roles using the [registry of roles](roles.md) or URIs
-- additional metadata using schema.org, terms from the [registry of context documents](contexts/) or URIs (for individual terms)
-- additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
-- additional properties using the [registry of properties](properties.md)
+As a consequence, this specification defines different profiles corresponding to each type of publication supported by the Readium toolkits. Each profile includes the modules, metadata, collections and resource properties specific to a given nature of publication.
 
-In addition to these extension points, this specification defines both a [profile registry](profiles/) and a [module registry](modules/) as well.
+| Profile  |  Description |
+| -------- | ------------ |
+| [EPUB Profile](profiles/epub.md) | Defines the specificities associated with EPUB publications. |
+| [Audiobook Profile](profiles/audiobook.md) | Defines the specificities associated with audiobooks. |
+| [Digital Visual Narratives Profile](profiles/divina.md) | Defines the specificities associated with digital visual narratives. |
 
-The initial registry, contains the following profiles:
+These different profiles are referenced in the [profile registry](profiles/) and all available modules are referenced in the [module registry](modules/).
 
-| Name  |  Description |
-| ----- | ------------ |
-| [Audiobook Profile](profiles/audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+## 6. Media Type
 
-## 9. Package
+This specification introduces a dedicated media type value which identifies a Readium Web Publication Manifest: `application/webpub+json`.
 
-The Readium Web Publication Manifest is primarily meant to be distributed unpackaged on the Web.
-
-That said, a Readium Web Publication Manifest <strong class="rfc">may</strong> be included in an EPUB 3.2.
-
-If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
-
-- the manifest document <strong class="rfc">must</strong> be named `manifest.json` and <strong class="rfc">must</strong> appear at the top level of the container
-- the OPF of the primary rendition <strong class="rfc">must</strong> include a link to the manifest where the link relation is set to `alternate`
-
-
-*Example 9: Reference to a manifest in an OPF*
-
-```xml
-<link rel="alternate" 
-      href="manifest.json" 
-      media-type="application/webpub+json" />
-```
-
-In addition to the EPUB format, a Readium Web Publication <strong class="rfc">may</strong> also be distributed as a separate package where:
-
-- its media type <strong class="rfc">must</strong> be `application/webpub+zip`
-- its file extension <strong class="rfc">must</strong> be `.webpub`
-- the package itself <strong class="rfc">must</strong> be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
-- the manifest <strong class="rfc">must</strong> be named `manifest.json` and <strong class="rfc">must</strong> appear at the top level of the package
-- a publication where any resource is encrypted using a DRM <strong class="rfc">must</strong> use a different media type and file extension
+All HTTP responses having such manifest as a payload <strong class="rfc">must</strong> indicate this media type in their headers.
 
 ## Appendix A. JSON Schema
 
-A JSON Schema is available under version control at [https://github.com/readium/webpub-manifest/tree/master/schema](https://github.com/readium/webpub-manifest/tree/master/schema)
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json).
 
-For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: [https://readium.org/webpub-manifest/schema/publication.schema.json](https://readium.org/webpub-manifest/schema/publication.schema.json)
+This JSON Schema and all sub-Schemas are available under version control at [https://github.com/readium/webpub-manifest/tree/master/schema](https://github.com/readium/webpub-manifest/tree/master/schema)
+
+## Appendix B. Relationship with W3C Web Publications
+
+W3C members of the W3C Publishing Working Group have defined from 2017 to 2019 the W3C Web Publications format. EDRLab and Feedbooks, both core member of the Readium Foundation, have been actively participating to this standardization initiative and provided as an input document the early work done on Readium Web Publications (as listed in the [WG charter](https://www.w3.org/2017/04/publ-wg-charter/)).
+
+The [W3C Web Publications](https://www.w3.org/TR/wpub/) specification was published as a W3C Note (which is different from a W3C Recommendation): extracted from the spec itself it was "due to the lack of practical business cases for Web Publications, and the consequent lack of commitment to implement the technology". 
+
+The [W3C Audiobooks](https://www.w3.org/TR/audiobooks/) specification is the result of work focusing on the audiobook use case, where business cases are stronger; in Q4 2020, it is reaching the status of W3C Recommendation. It's companion packaging specification, [Lighweight Packaging Format (LPF)](https://www.w3.org/TR/lpf/) is kept as a W3C Note. 
+
+There are in practice many similarities between W3C Web Publications and Readium Web Publications, but there are notable differences between the two: 
+
+- The goal of W3C Web Publications is to allow PWAs (Progressive Web Apps) fetching Web publications from Web Servers in a standard way. An HTML entry page is mandatory, the Table of Content must also be an HTML document and DRM is out of scope.
+- A Readium Web Publication is the pivot format used in Readium software, and a Readium Web Publication Manifest is the structure exchanged between a Readium client module and a Readium server module. The Table of Contents is part of the manifest and it supports information related to [Readium LCP](https://www.edrlab.org/readium-lcp/) resource encryption.
