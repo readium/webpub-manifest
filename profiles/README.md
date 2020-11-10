@@ -1,10 +1,10 @@
 # Profiles Registry
 
-| Name  |  Description |
-| ----- | ------------ |
-| [Audiobook Profile](audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narratives Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Profile](epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+| Name  |  Description | URI |
+| ----- | ------------ | --- |
+| [Audiobook Profile](audiobook.md) | Defines a dedicated profile for audiobooks. | [https//readium.org/webpub-manifest/profiles/audiobook](https//readium.org/webpub-manifest/profiles/audiobook) |
+| [Digital Visual Narratives Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). | [https//readium.org/webpub-manifest/profiles/divina](https//readium.org/webpub-manifest/profiles/divina) |
+| [EPUB Profile](epub.md) | Additional metadata and collection roles for representing EPUB publications. |[https//readium.org/webpub-manifest/profiles/epub](https//readium.org/webpub-manifest/profiles/epub) |
 
 
 ## Registering a profile
