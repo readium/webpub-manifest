@@ -1,6 +1,6 @@
 # EPUB Profile
 
-## 1. Introduction
+## Introduction
 
 While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publication Manifest, a number of metadata, collection roles and properties are still very specific to EPUB and not fully covered by the core specification.
 
@@ -10,8 +10,15 @@ This profile relies on:
 * the definition of new [resource properties](#3-resource-properties),
 * the [encryption module](../modules/encryption.md).
 
+## 1. Declaring conformance with the EPUB Profile
 
-## 2. Collection Roles
+In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/epub` as value.
+
+## 2. Restrictions on resources in the `readingOrder`
+
+A Readium Web Publication Manifest that conforms to the EPUB Profile <strong class="rfc">must</strong> strictly reference XHTML documents (`application/xhtml+xml`) in its `readingOrder`.
+
+## 3. Collection Roles
 
 > **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
 
@@ -25,14 +32,14 @@ This profile relies on:
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
 
-## 3. Resource Properties
+## 4. Link Properties
 
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
 
-### 3.1. contains
+### contains
 
 While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient enough:
 
@@ -59,7 +66,7 @@ While the media type is the main way to identify the nature of a resource in a L
 }
 ```
 
-### 3.2. layout
+### layout
 
 The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
 
