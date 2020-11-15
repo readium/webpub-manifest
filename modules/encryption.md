@@ -11,17 +11,17 @@ The Encryption Object has the following keys:
 | Key   | Semantics | Type     | Required? |
 | ----- | --------- | -------- | --------- |
 | [algorithm](#algorithm)  | Identifier of the algorithm used to encrypt the resource.  | URI  | Yes |
-| [compression](#compression)  | Compression method used on the resource.  | String | No |
-| [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
 | [scheme](#scheme)  | Identifier of the encryption scheme used to encrypt the resource.  | URI  | No |
 | [profile](#profile)  | Identifier of the encryption profile used to encrypt the resource.  | URI  | No |
+| [compression](#compression)  | Compression method used on the resource.  | String | No |
+| [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
 
 
 ## LCP Encrypted Resource
 
-EPUB, Audiobooks and Divina publications can all be protected by the [Readium LCP](https://readium.org/lcp-specs/releases/lcp/latest) DRM.
+Publication of any type can be protected by the [Readium LCP](https://readium.org/lcp-specs/releases/lcp/latest) DRM.
 
-In such a case, the properties of the Encryption Object <strong class="rfc">must</strong> be set as following :
+In such a case, allowed values for the properties of the Encryption Object are:
 
 | Property    | Value | 
 | ----------- | ----- | 
