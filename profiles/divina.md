@@ -113,7 +113,7 @@ All Link Objects present in the `alternate` array:
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
-  "language": "fr"
+  "language": "fr",
   "alternate": [
     {
       "href": "http://example.org/page1-jp.jpeg", 
