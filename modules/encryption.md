@@ -1,8 +1,10 @@
 # Encryption 
 
-The `encrypted` key is a Link Property.
+The Encryption Module defines how a given resource has been encrypted or obfuscated, and provides relevant information for decryption by a User Agent.
 
-The `encrypted` key contains an Encryption Object that indicates how a given resource has been encrypted or obfuscated, and provides relevant information for decryption.
+## Encrypted
+
+The `encrypted` key is a Link Property and contains an Encryption Object.
 
 ## Encryption Object
 
