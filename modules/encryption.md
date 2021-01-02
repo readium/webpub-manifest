@@ -13,26 +13,31 @@ The Encryption Object has the following keys:
 | [algorithm](#algorithm)  | Identifier of the algorithm used to encrypt the resource.  | URI  | Yes |
 | [scheme](#scheme)  | Identifier of the encryption scheme used to encrypt the resource.  | URI  | No |
 | [profile](#profile)  | Identifier of the encryption profile used to encrypt the resource.  | URI  | No |
-| [compression](#compression)  | Compression method used on the resource.  | String | No |
+| [compression](#compression)  | Compression method used on the resource before encryption. | String | No |
 | [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
+
+### Compression 
+
+The `compression` property <strong class="rfc">should</strong> only be present if the content has been compressed before encryption. The absence of this property, or the presence of an empty string as a value, indicate that the content was not compressed before encryption.  
+
+The only allowed value for the compression property is currently:
+
+| Value     | Semantics |
+| --------- | --------- | 
+| `deflate` | Deflate algorithm, as defined by the Zip specification |
+
+### originalLength
+
+The `originalLength` property <strong class="rfc">should</strong> only be present if the `compression` property is present and has a non-null value. 
 
 
 ## LCP Encrypted Resource
 
-Publication of any type can be protected by the [Readium LCP](https://readium.org/lcp-specs/releases/lcp/latest) DRM.
+Any type of publication can be protected by the [Readium LCP](https://readium.org/lcp-specs/releases/lcp/latest) DRM. 
 
-In such a case, allowed values for the properties of the Encryption Object are:
+On each encrypted resource, `scheme`, `profile` and `algorithm` are required an their values are defined by the LCP specification and the definition of the LCP profile which is applied.
 
-| Property    | Value | 
-| ----------- | ----- | 
-| scheme      | `http://readium.org/2014/01/lcp` |
-| profile     | see the [LCP Encryption Profile Registry](https://readium.org/lcp-specs/registries/profiles) |
-| algorithm   | `http://www.w3.org/2001/04/xmlenc#aes256-cbc` |
-| compression | `deflate` |
-
-> **Note**: AES256-CBC is currently the only algorithm supported by LCP profiles; this could evolve in the future with the addition of a CGM variant. 
-
-*Example for a resource encrypted using LCP*
+*Example of an XHTML resource encrypted using LCP with a basic profile*
 
 ```json
 {
@@ -49,14 +54,29 @@ In such a case, allowed values for the properties of the Encryption Object are:
   }
 }
 ```
+*Example of a PDF resource encrypted using LCP with a 1.0 profile*
+
+```json
+{
+  "href": "publication.pdf",
+  "type": "application/pdf",
+  "properties": {
+    "encrypted": {
+      "scheme": "http://readium.org/2014/01/lcp",
+      "profile": "http://readium.org/lcp/profile-1.0",
+      "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+    }
+  }
+}
+```
 
 ## Font obfuscation
 
 Font obfuscation is only used in EPUB publications (see the [EPUB Profile](../profiles/epub.md)). 
 
-Font obfuscation is indicated by the `algorithm` property, which MUST take the value `http://www.idpf.org/2008/embedding`, as defined in [EPUB 3.2 - Specifying Obfuscated Resources](https://www.w3.org/publishing/epub3/epub-ocf.html#obfus-specifying)
+Font obfuscation is indicated by the `algorithm` property, which MUST take the value `http://www.idpf.org/2008/embedding`, as defined in [EPUB 3.2 - Specifying Obfuscated Resources](https://www.w3.org/publishing/epub3/epub-ocf.html#obfus-specifying).
 
-*Example for an obfuscated font*
+*Example of an obfuscated font*
 
 ```json
 {
