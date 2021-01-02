@@ -6,21 +6,23 @@ While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publicat
 
 This profile relies on:
 
-* the definition of new [collection roles](#2-collection-roles),
-* the definition of new [resource properties](#3-resource-properties),
-* the [encryption module](../modules/encryption.md).
+* a declaration of [conformance with this Profile](#1-declaring-conformance-with-the-epub-profile),
+* some [restrictions on the resources of the readingOrder](#2-restrictions-on-the-resources-of-the readingorder),
+* the definition of additional [collection roles](#3-collection-roles),
+* the definition of additional [Link properties](#4-link-properties),
+* the use of the [encryption module](../modules/encryption.md).
 
 ## 1. Declaring conformance with the EPUB Profile
 
 In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/epub` as value.
 
-## 2. Restrictions on resources in the `readingOrder`
+## 2. Restrictions on the resources of the `readingOrder`
 
 A Readium Web Publication Manifest that conforms to the EPUB Profile <strong class="rfc">must</strong> strictly reference XHTML documents (`application/xhtml+xml`) in its `readingOrder`.
 
 ## 3. Collection Roles
 
-> **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
+This profile defines additional collection roles: 
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -31,8 +33,11 @@ A Readium Web Publication Manifest that conforms to the EPUB Profile <strong cla
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
+> **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
 
 ## 4. Link Properties
+
+This profile defines additional Link properties: 
 
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
@@ -41,10 +46,10 @@ A Readium Web Publication Manifest that conforms to the EPUB Profile <strong cla
 
 ### contains
 
-While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient enough:
+While the media type is the main way to identify the nature of a resource in a Link Object, in certain cases it isn't sufficient because:
 
-* a number of metadata standards either rely on XML and JSON without defining a specific media type (ONIX, XMP)
-* the media type doesn't indicate if an HTML/XHTML resource relies on MathML, SVG or Javascript, or if some of its resources are not available in the package 
+* a number of metadata standards either rely on XML and JSON without defining a specific media type (ONIX, XMP);
+* the media type doesn't indicate if an HTML/XHTML resource contains MathML, SVG or Javascript, or if some of its resources are not available in the package.
 
 `contains` is meant to convey that information in the Properties Object using an array of string values.
 
