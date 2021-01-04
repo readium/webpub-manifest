@@ -37,7 +37,7 @@ The `originalLength` property <strong class="rfc">should</strong> only be presen
 
 Any type of publication can be protected by the [Readium LCP](https://readium.org/lcp-specs/releases/lcp/latest) DRM. 
 
-On each encrypted resource, `scheme`, `profile` and `algorithm` are required an their values are defined by the LCP specification and the definition of the LCP profile which is applied.
+On each encrypted resource, `scheme`, `profile` and `algorithm` are required and their values are defined by the LCP specification and the definition of the LCP profile which is applied.
 
 *Example of an XHTML resource encrypted using LCP with a basic profile*
 
