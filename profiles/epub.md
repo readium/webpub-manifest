@@ -1,12 +1,33 @@
 # EPUB Profile
 
-While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publication Manifest, a number of metadata, collection roles and properties are still very specific to EPUB and not fully covered by the core specification.
+**Editors:**
 
-Thanks to the various extension points in place, this document defines a number of new collection roles and properties that are for the most part exclusive to EPUB.
+* Hadrien Gardeur ([De Marque](http://www.demarque.com))
 
-## Collection Roles
+**Participate:**
 
-> **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
+* [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
+* [File an issue](https://github.com/readium/webpub-manifest/issues)
+
+## Introduction
+
+While EPUB publications can mostly be converted directly to the Readium Web Publication Manifest, a number of collection roles and properties remain specific to EPUB.
+
+This profile is meant to facilitate backward compatibility with EPUB and ensure that these specialized elements are not lost when converting to the Readium Web Publication Manifest.
+
+## 1. Declaring the EPUB Profile
+
+In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` element in its `metadata` that contains the following URI: `https://readium.org/webpub-manifest/profiles/epub`.
+
+
+## 2. Restrictions on resources in the `readingOrder`
+
+A Readium Web Publication Manifest that conforms to the EPUB Profile <strong class="rfc">must</strong> strictly reference XHTML documents (`application/xhtml+xml`) in its `readingOrder`.
+
+While EPUB itself allows SVG and other formats as long as an XHTML fallback is provided, this is not the case for this profile, which requires to reverse the fallback chain.
+
+
+## 3. Collection Roles
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -18,7 +39,7 @@ Thanks to the various extension points in place, this document defines a number 
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
 
-## Properties
+## 4. Link Properties
 
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 

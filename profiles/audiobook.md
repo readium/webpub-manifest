@@ -17,6 +17,7 @@
   
   "metadata": {
     "@type": "http://schema.org/Audiobook",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/audiobook",
     "identifier": "urn:isbn:9780000000001",
     "title": "Moby-Dick",
     "author": "Herman Melville",
@@ -77,7 +78,7 @@ While the Audiobook Manifest is technically a profile of the Readium Web Publica
 
 The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
 
-- it <strong class="rfc">must</strong> include a `@type` element that identifies the manifest as an audiobook: `http://schema.org/Audiobook`
+- it <strong class="rfc">must</strong> include a `conformsTo` element that identifies the manifest as an audiobook: `https://readium.org/webpub-manifest/profiles/audiobook`
 - it <strong class="rfc">must</strong> include a `duration` element that provides the total duration of the audiobook in seconds
 
 The `duration` of an audiobook as expressed in `metadata` is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
