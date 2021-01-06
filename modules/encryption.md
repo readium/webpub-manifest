@@ -18,7 +18,7 @@ The Encryption Object has the following keys:
 | [compression](#compression)  | Compression method used on the resource before encryption. | String | No |
 | [originalLength](#originalLength)  | Original length of the resource in bytes before compression and/or encryption. | Integer  | No |
 
-### Compression 
+### compression 
 
 The `compression` property <strong class="rfc">should</strong> only be present if the content has been compressed before encryption. The absence of this property, or the presence of an empty string as a value, indicate that the content was not compressed before encryption.  
 
@@ -39,7 +39,7 @@ Any type of publication can be protected by the [Readium LCP](https://readium.or
 
 On each encrypted resource, `scheme`, `profile` and `algorithm` are required and their values are defined by the LCP specification and the definition of the LCP profile which is applied.
 
-*Example of an XHTML resource encrypted using LCP with a basic profile*
+*Example of an XHTML resource encrypted using LCP in its basic profile, compressed before encryption*
 
 ```json
 {
@@ -56,7 +56,7 @@ On each encrypted resource, `scheme`, `profile` and `algorithm` are required and
   }
 }
 ```
-*Example of a PDF resource encrypted using LCP with a 1.0 profile*
+*Example of a PDF resource encrypted using LCP in its 1.0 profile*
 
 ```json
 {
