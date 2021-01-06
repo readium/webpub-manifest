@@ -12,6 +12,17 @@
       "type": "string",
       "format": "uri"
     },
+    "conformsTo": {
+      "type": [
+        "string",
+        "array"
+      ],
+      "format": "uri",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
     "title": {
       "anyOf": [
         {

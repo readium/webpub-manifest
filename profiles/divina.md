@@ -17,8 +17,9 @@
   "@context": "http://readium.org/webpub-manifest/context.jsonld",
   
   "metadata": {
-    "identifier": "urn:isbn:9782203001152",
     "title": "Objectif Lune",
+    "identifier": "urn:isbn:9782203001152",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
     "author": "Hergé",
     "language": "fr",
     "publisher": "Casterman",
@@ -59,7 +60,7 @@
 }
 ```
 
-## 1. Introduction
+## Introduction
 
 The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
@@ -113,7 +114,7 @@ All Link Objects present in the `alternate` array:
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
-  "language": "fr"
+  "language": "fr",
   "alternate": [
     {
       "href": "http://example.org/page1-jp.jpeg", 
@@ -210,11 +211,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 * TBD
 
-## Appendix B. Implementation Guidelines
-
-An implementation guideline is available for more details on how User Agents should implement this specification: https://readium.org/webpub-manifest/guidelines/divina-guidelines
-
-## Appendix C. Examples
+## Appendix B. Examples
 
 *Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
@@ -224,6 +221,7 @@ An implementation guideline is available for more details on how User Agents sho
   "metadata": {
     "title": "Manga",
     "identifier": "https://example.com/manga",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
     "readingProgression": "rtl",
     "presentation": {
       "fit": "contain",
@@ -259,6 +257,7 @@ An implementation guideline is available for more details on how User Agents sho
   "metadata": {
     "title": "Webtoon",
     "identifier": "https://example.com/webtoon",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
     "readingProgression": "ttb",
     "presentation": {
       "overflow": "scrolled",

@@ -23,18 +23,15 @@ This profile relies on:
 * the definition of additional [Link properties](#4-link-properties),
 * the use of the [encryption module](../modules/encryption.md).
 
-
 ## 1. Declaring conformance with the EPUB Profile
 
 In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/epub` as value.
-
 
 ## 2. Restrictions on resources in the `readingOrder`
 
 A Readium Web Publication Manifest that conforms to the EPUB Profile <strong class="rfc">must</strong> strictly reference XHTML documents (`application/xhtml+xml`) in its `readingOrder`.
 
 While EPUB itself allows SVG and other formats as long as an XHTML fallback is provided, this is not the case for this profile, which requires to reverse the fallback chain.
-
 
 ## 3. Collection Roles
 

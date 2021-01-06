@@ -13,6 +13,27 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 * [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
 * [File an issue](https://github.com/readium/webpub-manifest/issues)
 
+## Table of Contents
+
+* [Example](#example)
+* [1. Introduction](#1-introduction)
+  + [1.1. Goals](#11-goals)
+  + [1.2. Terminology](#12-terminology)
+  + [1.3. Abstract Model](#13-abstract-model)
+* [2. Syntax](#2-syntax)
+  + [2.1. Sub-Collections](#21-sub-collections)
+  + [2.2. Metadata](#22-metadata)
+  + [2.3. Links](#23-links)
+  + [2.4. The Link Object](#24-the-link-object)
+* [3. Resources in the Reading Order](#3-resources-in-the-reading-order)
+* [4. Media Type](#4-media-type)
+* [5. Discovering a Manifest](#5-discovering-a-manifest)
+* [6. Table of Contents](#6-table-of-contents)
+* [7. Cover](#7-cover)
+* [8. Extensibility](#8-extensibility)
+* [9. Package](#9-package)
+* [Appendix A. JSON Schema](#appendix-a-json-schema)
+
 ## Example
 
 ```json
