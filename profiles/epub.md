@@ -1,8 +1,19 @@
 # EPUB Profile
 
+**Editors:**
+
+* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+
+**Participate:**
+
+* [GitHub readium/webpub-manifest](https://github.com/readium/webpub-manifest)
+* [File an issue](https://github.com/readium/webpub-manifest/issues)
+
 ## Introduction
 
-While EPUB 2.x and 3.x can mostly be mapped directly to the Readium Web Publication Manifest, a number of metadata, collection roles and properties are still very specific to EPUB and not fully covered by the core specification.
+While EPUB publications can mostly be converted directly to the Readium Web Publication Manifest, a number of collection roles and properties remain specific to EPUB.
+
+This profile is meant to facilitate backward compatibility with EPUB and ensure that these specialized elements are not lost when converting to the Readium Web Publication Manifest.
 
 This profile relies on:
 
@@ -12,17 +23,20 @@ This profile relies on:
 * the definition of additional [Link properties](#4-link-properties),
 * the use of the [encryption module](../modules/encryption.md).
 
+
 ## 1. Declaring conformance with the EPUB Profile
 
 In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/epub` as value.
 
-## 2. Restrictions on the resources of the `readingOrder`
+
+## 2. Restrictions on resources in the `readingOrder`
 
 A Readium Web Publication Manifest that conforms to the EPUB Profile <strong class="rfc">must</strong> strictly reference XHTML documents (`application/xhtml+xml`) in its `readingOrder`.
 
-## 3. Collection Roles
+While EPUB itself allows SVG and other formats as long as an XHTML fallback is provided, this is not the case for this profile, which requires to reverse the fallback chain.
 
-This profile defines additional collection roles: 
+
+## 3. Collection Roles
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -33,7 +47,6 @@ This profile defines additional collection roles:
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
-> **Note**: Do we document various EPUB extensions and associated roles? This would have to be extended to index and dictionaries if we're only considering specs that were officially adopted.
 
 ## 4. Link Properties
 
