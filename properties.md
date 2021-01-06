@@ -10,7 +10,6 @@ This document is meant to provide an exhaustive list of properties that can be a
 | ----- | --------- | -------- | --------- | --------- |
 | [`contains`](/profiles/epub.md#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB Profile](/profiles/epub.md#properties) |
 | [`layout`](/profiles/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | [EPUB Profile](/profiles/epub.md#properties) |
-| [`media-overlay`](/profiles/epub.md#media-overlay)  | Location of a media-overlay for the resource referenced in the Link Object.  | URI  | Any valid relative or absolute URI  | [EPUB Profile](/profiles/epub.md#properties) |
 | [`orientation`](/modules/presentation.md#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  | [Presentation Hints](/modules/presentation.md) |
 | [`overflow`](/modules/presentation.md#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled`  | [Presentation Hints](/modules/presentation.md) |
 | [`page`](/modules/presentation.md#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  |  [Presentation Hints](/modules/presentation.md) |
