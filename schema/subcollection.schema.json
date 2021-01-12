@@ -45,11 +45,7 @@
             },
             "additionalProperties": {
               "$ref": "subcollection.schema.json"
-            },
-            "required": [
-              "metadata",
-              "links"
-            ]
+            }
           }
         ]
       }
