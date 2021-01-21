@@ -14,14 +14,12 @@
             "type": "string"
           },
           {
-            "type": "object",
             "$ref": "contributor-object.schema.json"
           }
         ]
       }
     },
     {
-      "type": "object",
       "$ref": "contributor-object.schema.json"
     }
   ]
