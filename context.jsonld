@@ -48,18 +48,17 @@
     "series": "http://schema.org/Series",
     "collection": "http://schema.org/Collection",
     "position": "http://schema.org/position",
-    "readingProgression": "https://www.w3.org/ns/wp#readingProgression",
     "readingOrder": {
       "@container": "@list",
-      "@id": "https://www.w3.org/ns/pub#readingOrder"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest#readingOrder"
     },
     "resources": {
       "@container": "@set",
-      "@id": "https://www.w3.org/ns/pub#resources"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest#resources"
     },
     "links": {
       "@container": "@set",
-      "@id": "https://www.w3.org/ns/pub#links"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest-vocab/manifest#links"
     },
     "href": "http://schema.org/url",
     "type": "http://schema.org/encodingFormat",
@@ -72,7 +71,7 @@
     "bitrate": "http://schema.org/bitrate",
     "alternate": {
       "@container": "@set",
-      "@id": "https://www.w3.org/ns/pub#alternate"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest#alternate"
     }
   }
 }
