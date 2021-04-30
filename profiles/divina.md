@@ -85,13 +85,13 @@ In addition, all Link Objects <strong class="rfc">should</strong> include `width
 
 ## 3. Alternate Resources
 
-In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
+Alternate resources are part of the core model of Readium web publications. This section describes the use of alternate resources in the scope of the Divina profile.
 
 All Link Objects present in the `alternate` array:
 
-- <strong class="rfc">must</strong> indicate their media-type using `type`
-- <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`
-- <strong class="rfc">may</strong> target a different language using `language`
+- <strong class="rfc">must</strong> indicate their media-type using `type`.
+- <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`, plus `duration`in the case of video resources. 
+- <strong class="rfc">may</strong> target a different language using `language`.
 
 *Example 1: A resource available in JPEG and WebP*
 
@@ -112,12 +112,12 @@ All Link Objects present in the `alternate` array:
 
 ```json
 {
-  "href": "http://example.org/page1.jpeg", 
+  "href": "http://example.org/page2-fr.jpeg", 
   "type": "image/jpeg",
   "language": "fr",
   "alternate": [
     {
-      "href": "http://example.org/page1-jp.jpeg", 
+      "href": "http://example.org/page2-jp.jpeg", 
       "type": "image/jpeg",
       "language": "jp"
     }
@@ -129,16 +129,36 @@ All Link Objects present in the `alternate` array:
 
 ```json
 {
-  "href": "http://example.org/page1.jpeg", 
+  "href": "http://example.org/page3-hires.jpeg", 
   "type": "image/jpeg",
-  "width": 546,
-  "height": 760,
+  "width":  1092,
+  "height": 1520,
   "alternate": [
     {
-      "href": "http://example.org/page1-high.jpeg", 
+      "href": "http://example.org/page3-lores.jpeg", 
       "type": "image/jpeg",
-      "width": 1092,
-      "height": 1520
+      "width":  546,
+      "height": 760 
+    }
+  ]
+}
+```
+
+*Example 4: A video resource and its image fallback*
+
+```json
+{
+  "href": "http://example.org/page4.mp4", 
+  "type": "video/mp4",
+  "width": 1024,
+  "height": 576,
+  "duration": 2437,
+  "alternate": [
+    {
+      "href": "http://example.org/page4.jpeg", 
+      "type": "image/jpeg",
+      "width": 1024,
+      "height": 576
     }
   ]
 }
@@ -197,13 +217,14 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 ### Level 0
 
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
+* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in the `readingOrder`
 * Support for [presentation hints](presentation.md)
 * Support for [alternate resources](#3-alternate-resources)
 
 
 ### Level 1
 
+* Support for video resources in the `readingOrder`. 
 * Support for [guided navigation](#4-guided-navigation)
 * Support for [transitions](../modules/transitions.md)
 
@@ -213,7 +234,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 
 ## Appendix B. Examples
 
-*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+*Example 5: A manga is a Divina publication where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
 
 ```json
@@ -249,7 +270,7 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
 }
 ```
 
-*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+*Example 6: A webtoon is a Divina publication where images are scrolled vertically in a single continuous strip of content*
 
 
 ```json
@@ -260,9 +281,14 @@ As an alternative, the manifest can also be added to an EPUB ([as defined in the
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
     "readingProgression": "ttb",
     "presentation": {
+      "orientation": "portrait",
+      "continuous": true,
       "overflow": "scrolled",
       "fit": "width",
-      "continuous": true
+      "viewportRatio": {
+        "constraint": "max",
+        "aspectRatio": "1:2"
+      }
     }
   },
   "readingOrder": [
