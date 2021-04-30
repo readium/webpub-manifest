@@ -31,7 +31,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 * [6. Table of Contents](#6-table-of-contents)
 * [7. Cover](#7-cover)
 * [8. Extensibility](#8-extensibility)
-* [9. Package](#9-package)
+* [9. Packaging a Readium Web Publication](#9-packaging-a-readium-web-publication)
 * [Appendix A. JSON Schema](#appendix-a-json-schema)
 
 ## Example
@@ -352,33 +352,11 @@ The initial registry, contains the following profiles:
 | [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 | [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
-## 9. Package
+## 9. Packaging a Readium Web Publication
 
-The Readium Web Publication Manifest is primarily meant to be distributed unpackaged on the Web.
+A Readium Web Publication is often distributed unpackaged on the Web, but it also may be packaged for easy distribution as a single file. A Readium Web Publication Manifest may also be included in an EPUB 3 publication and therefore directly reference media resources present in the package. 
 
-That said, a Readium Web Publication Manifest <strong class="rfc">may</strong> be included in an EPUB 3.2.
-
-If a Readium Web Publication Manifest is included in an EPUB, the following restrictions apply:
-
-- the manifest document <strong class="rfc">must</strong> be named `manifest.json` and <strong class="rfc">must</strong> appear at the top level of the container
-- the OPF of the primary rendition <strong class="rfc">must</strong> include a link to the manifest where the link relation is set to `alternate`
-
-
-*Example 9: Reference to a manifest in an OPF*
-
-```xml
-<link rel="alternate" 
-      href="manifest.json" 
-      media-type="application/webpub+json" />
-```
-
-In addition to the EPUB format, a Readium Web Publication <strong class="rfc">may</strong> also be distributed as a separate package where:
-
-- its media type <strong class="rfc">must</strong> be `application/webpub+zip`
-- its file extension <strong class="rfc">must</strong> be `.webpub`
-- the package itself <strong class="rfc">must</strong> be a ZIP archive and follow the restrictions expressed in [ISO/IEC 21320-1:2015](http://standards.iso.org/ittf/PubliclyAvailableStandards/c060101_ISO_IEC_21320-1_2015.zip)
-- the manifest <strong class="rfc">must</strong> be named `manifest.json` and <strong class="rfc">must</strong> appear at the top level of the package
-- a publication where any resource is encrypted using a DRM <strong class="rfc">must</strong> use a different media type and file extension
+To achieve both goals, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
 ## Appendix A. JSON Schema
 
