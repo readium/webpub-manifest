@@ -197,7 +197,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
 ### Level 0
 
 * Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [presentation hints](presentation.md)
+* Support for [presentation hints](../modules/presentation.md)
 * Support for [alternate resources](#3-alternate-resources)
 
 
