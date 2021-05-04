@@ -146,7 +146,7 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Guided Navigation
 
-In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
+In addition to having [a table of contents](https://readium.org/webpub-manifest/#6-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
 
 - pointing directly to a resource (`image1.jpg`)
 - or to a fragment of a resource using [Media Fragments](https://www.w3.org/TR/media-frags) (`image1.jpg#xywh=160,120,320,240`)
