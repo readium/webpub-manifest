@@ -31,7 +31,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 * [6. Table of Contents](#6-table-of-contents)
 * [7. Cover](#7-cover)
 * [8. Extensibility](#8-extensibility)
-* [9. Packaging a Readium Web Publication](#9-packaging-a-readium-web-publication)
+* [9. Packaging a Readium Web Publication](#9-packaging)
 * [Appendix A. JSON Schema](#appendix-a-json-schema)
 
 ## Example
@@ -352,11 +352,9 @@ The initial registry, contains the following profiles:
 | [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
 | [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
 
-## 9. Packaging a Readium Web Publication
+## 9. Packaging
 
-A Readium Web Publication is often distributed unpackaged on the Web, but it also may be packaged for easy distribution as a single file. A Readium Web Publication Manifest may also be included in an EPUB 3 publication and therefore directly reference media resources present in the package. 
-
-To achieve both goals, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
+A Readium Web Publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
 ## Appendix A. JSON Schema
 

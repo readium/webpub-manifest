@@ -62,17 +62,30 @@ These resource files <strong class="rfc">may</strong> be in any location descend
 Contents within the Package <strong class="rfc">must</strong> reference these resources via [relative-URL strings](https://url.spec.whatwg.org/#relative-url-string).
 
 
-## 7. Hybrid EPUB + RPF Packages
+## 6. Hybrid EPUB 3 + RPF Packages
+
+As an alternative to the creation of a pure RPF package, the manifest may also be included into an EPUB 3 publication and directly reference the media resources present in the package.
+
+An RPF compliant application will therefore be able to process the file as an RPF package, while an EPUB 3 compliant application will process it as a standard EPUB 3 publication. 
 
 If a Readium Web Publication Manifest is included in an EPUB 3 file, the following restriction apply:
 
-- The OPF of the primary rendition <strong class="rfc">must</strong> include a link to the manifest where the link relation is set to `alternate`
+- The EPUB 3 package document <strong class="rfc">must</strong> include a link to the Readium Web Publication Manifest, where the link relation is set to `alternate`
+- The EPUB 3 package document <strong class="rfc">must</strong> include in its `manifest` structure a reference to the Readium Web Publication Manifest.
+- - The EPUB 3 package document <strong class="rfc">must</strong> include in its `manifest` structure a reference to any resource (e.g. sound) used in the Readium Web Publication Manifest.
 
 
 *Example 1: Reference to a Manifest file in an EPUB 3 OPF structure*
 
 ```xml
-<link rel="alternate" 
-      href="manifest.json" 
-      media-type="application/webpub+json" />
+<metadata>
+      <link rel="alternate" 
+            href="manifest.json" 
+            media-type="application/webpub+json" />
+</metadata>
+...
+<manifest>
+    <item href="manifest.json" media-type="application/webpub+json" id="rwpm"/>
+    ...
+</manifest>
 ```

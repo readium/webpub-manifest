@@ -124,11 +124,11 @@ All Link Objects present in the `alternate` array:
 - <strong class="rfc">must</strong> reference audio resources of the same duration as the top-level Link Object
 - <strong class="rfc">must not</strong> include the following keys: `title`, `duration` or `templated`
 
-## 4. Package
+## 4. Packaging
 
-In order to facilitate distribution, both manifest and audio files can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
+An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
-To maximize compatibility with audio-only apps, the package for an audiobook profile has its own file extension and media-type:
+To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 
 - its file extension <strong class="rfc">must</strong> be `.audiobook`
 - its media type <strong class="rfc">must</strong> be `application/audiobook+zip`
