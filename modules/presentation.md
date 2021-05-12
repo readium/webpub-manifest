@@ -260,10 +260,10 @@ The `page` property is meant to provide a hint to Use Agents that rely on synthe
 
 The following JSON Schemas for this module are available under version control: 
 
-- Metadata: https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/metadata.schema.json
-- Link Properties: https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/properties.schema.json
+- Metadata: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/metadata.schema.json>
+- Link Properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/presentation/properties.schema.json>
 
 For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resources: 
 
-- https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json
-- https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json
+- <https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json>
+- <https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json>
