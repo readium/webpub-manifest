@@ -62,7 +62,7 @@
 
 ## Introduction
 
-The goal of this document is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
+The goal of this specification is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
 This profile relies on:
 
@@ -166,7 +166,7 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Guided Navigation
 
-In addition to having [a table of contents](https://readium.org/webpub-manifest/#5-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
+In addition to having [a table of contents](https://readium.org/webpub-manifest/#6-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
 
 - pointing directly to a resource (`image1.jpg`)
 - or to a fragment of a resource using [Media Fragments](https://www.w3.org/TR/media-frags) (`image1.jpg#xywh=160,120,320,240`)
@@ -202,23 +202,22 @@ This current draft does not cover guided navigation over alternate versions of e
 
 ## 5. Packaging
 
-In order to facilitate distribution, both manifest and images can also be distributed using a package based on [the requirements expressed for the Readium Web Publication Manifest](https://readium.org/webpub-manifest#9-package).
+A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
-To maximize compatibility with dedicated apps, the package for this profile has its own file extension and media-type:
+To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 
 - its file extension <strong class="rfc">must</strong> be `.divina`
 - its media type <strong class="rfc">must</strong> be `application/divina+zip`
 
-As an alternative, the manifest can also be added to an EPUB ([as defined in the core specification](https://readium.org/webpub-manifest/#9-package)) or a CBZ file at the same well-known location (`manifest.json` at the root of the package).
-
+As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](./packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by transitions, guided navigation, sounds etc. accessible via Divina compliant applications.  
 
 
 ## Appendix A. Compliance Levels
 
 ### Level 0
 
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in the `readingOrder`
-* Support for [presentation hints](presentation.md)
+* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
+* Support for [presentation hints](../modules/presentation.md)
 * Support for [alternate resources](#3-alternate-resources)
 
 
