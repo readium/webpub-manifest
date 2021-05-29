@@ -216,16 +216,15 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
 
 ### Level 0
 
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [presentation hints](../modules/presentation.md)
-* Support for [alternate resources](#3-alternate-resources)
-
+* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in the `readingOrder`.
+* Support for [presentation hints](../modules/presentation.md).
+* Support for [alternate resources](#3-alternate-resources). 
 
 ### Level 1
 
 * Support for video resources in the `readingOrder`. 
-* Support for [guided navigation](#4-guided-navigation)
-* Support for [transitions](../modules/transitions.md)
+* Support for [guided navigation](#4-guided-navigation).
+* Support for [transitions](../modules/transitions.md).
 
 ### Level 2
 
