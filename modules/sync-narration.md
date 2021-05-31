@@ -49,6 +49,8 @@ Structural semantics offer a way to selectively filter out content based on sema
 
 The recursive structure offers a way to jump out of complex structures and back into the reading flow ("escapability" in the DAISY world).
 
+In case we decide to extend the structure to image and video, using `image` and `video` would be consistent with the [latest work of the W3C CG](https://w3c.github.io/sync-media-pub/sync-media.html). 
+
 ## Example
 
 ```json
