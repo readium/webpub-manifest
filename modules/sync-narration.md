@@ -25,8 +25,16 @@ The Synchronized Narration object is defined as:
 | ---- | -----------| -------| ----------|
 | `textRef`   |  The absolute of relative URL of the textual resource which participates to the synchronized narration | URL | At the top level only |
 | `audioRef`  |  The absolute of relative URL of the audio resource which participates to the synchronized narration | URL | At the top level only |
-| `role`      | Semantic information relative to the role of the object in the publication | "aside", "footnote" | No |
-| `narration` | A recursive array of synchronization objects | Array of Synchronization Item or Synchronized Narration | Yes |
+| `narration` | A recursive array of synchronization objects | Array of Synchronization Item or Sub Narration | Yes |
+
+
+The Sub Narration object is defined as:
+
+| Key  | Definition | Format | Required? |
+| ---- | -----------| -------| ----------|
+| `role`      | Semantic information relative to the role of the object in the publication | [EPUB Structural Semantics](#references) | No |
+| `narration` | A recursive array of synchronization objects | Array of Synchronization Item or Sub Narration | Yes |
+
 
 The Synchronization Item object is defined as:
 
@@ -35,10 +43,9 @@ The Synchronization Item object is defined as:
 | `text`  | The fragment identifier of the textual fragment which participates to the synchronized narration | URI Fragment Identifier | Yes |
 | `audio` | The fragment identifier of the audio fragment which participates to the synchronized narration | Media Fragment URI | Yes |
 
-**Notes:**
+**Note:**
 
-- The recursive structure offers a way to selectively filter out content based on semantics ("skippability" in the DAISY world) and to jump out of complex structures and back into the reading flow ("escapability" in the DAISY world).
-- While the structure allows `textRef`and `audioRef` to be set at every level of a recursive tree of Synchronized Narration objects, these URL are usually defined only at the top level of the document, where they are mandatory. Nevertheless, this structure also allows the creation of a unique Synchronized Narration document structured as an array of Synchronized Narration objects (one per publication resource).
+The recursive structure offers a way to selectively filter out content based on semantics ("skippability" in the DAISY world) and to jump out of complex structures and back into the reading flow ("escapability" in the DAISY world).
 
 ## Example
 
@@ -56,7 +63,7 @@ The Synchronization Item object is defined as:
       "audio": "#t=1.2,3.4"
     },
     {
-      "role": "footnote-ref",
+      "role": "footnote",
       "text": "#id3",
       "audio": "#t=3.4,5.6"
     },
@@ -85,7 +92,7 @@ The Synchronization Item object is defined as:
 
 This specification introduces a dedicated media type value to identify a Synchronized Narration document: `application/vnd.syncnarr+json`.
 
-When serialized as a file, Synchronized Narration document <strong class="rfc">must</strong> have the following extension: `.sync`. 
+When saved as a file, a Synchronized Narration document <strong class="rfc">must</strong> have the following extension: `.sync`. 
 
 ## Declaring a Synchronized Narration document in a Manifest
 
@@ -102,19 +109,21 @@ Each Synchronized Narration document used in a publication <strong class="rfc">m
       "href": "/text/c001.html", 
       "type": "text/html", 
       "title": "Chapter 1",
-      "alternate": {
-        "href": "/sync/c001.sync",
-        "type": "application/vnd.syncnarr+json"
-      }
+      "alternate": [{
+          "href": "/sync/c001.sync",
+          "type": "application/vnd.syncnarr+json"
+        }
+      ]
     }, 
     { 
       "href": "/text/c002.html", 
       "type": "text/html", 
       "title": "Chapter 2",
-      "alternate": {
-        "href": "/sync/c002.sync",
-        "type": "application/vnd.syncnarr+json"
-      }
+      "alternate": [{
+          "href": "/sync/c002.sync",
+          "type": "application/vnd.syncnarr+json"
+        }
+      ]
     }
   ],
   "resources": [
@@ -146,6 +155,7 @@ In case of error, the Synchronized Narration object should be skipped.
 
 - [URI fragment identfier](https://www.ietf.org/rfc/rfc3986.txt), IETF, 2005.
 - [Media Fragments URI 1.0](https://www.w3.org/TR/media-frags/), W3C Recommendation, 2012.
+- [EPUB 3 Structural Semantics Vocabulary](https://idpf.github.io/epub-vocabs/structure/), IDPF, 2019
 
 ### Non normative Reference
 
