@@ -22,6 +22,7 @@ This profile relies on:
 * the definition of additional [collection roles](#3-collection-roles),
 * the definition of additional [Link properties](#4-link-properties),
 * the use of the [encryption module](../modules/encryption.md).
+* the use of the [Synchronized Narration module](../modules/sync-narration.md).
 
 ## 1. Declaring conformance with the EPUB Profile
 
