@@ -43,9 +43,11 @@ The Synchronization Item object is defined as:
 | `text`  | The fragment identifier of the textual fragment which participates to the synchronized narration | URI Fragment Identifier | Yes |
 | `audio` | The fragment identifier of the audio fragment which participates to the synchronized narration | Media Fragment URI | Yes |
 
-**Note:**
+**Notes:**
 
-The recursive structure offers a way to selectively filter out content based on semantics ("skippability" in the DAISY world) and to jump out of complex structures and back into the reading flow ("escapability" in the DAISY world).
+Structural semantics offer a way to selectively filter out content based on semantics ("skippability" in the DAISY world)
+
+The recursive structure offers a way to jump out of complex structures and back into the reading flow ("escapability" in the DAISY world).
 
 ## Example
 
