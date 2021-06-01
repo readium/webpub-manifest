@@ -96,13 +96,15 @@ In case we decide to extend the structure to image and video, using `image` and 
 
 This specification introduces a dedicated media type value to identify a Synchronized Narration document: `application/vnd.syncnarr+json`.
 
-When saved as a file, a Synchronized Narration document <strong class="rfc">must</strong> have the following extension: `.sync`. 
+When saved as a file, a Synchronized Narration document <strong class="rfc">should</strong> have the following extension: `.json`. 
 
-## Declaring a Synchronized Narration document in a Manifest
-
-There is usually one Synchronized Narration document per resource in the reading order. 
+## Declaring Synchronized Narration documents in a Manifest
 
 Each Synchronized Narration document used in a publication <strong class="rfc">must</strong> be declared in the Readium Webpub Manifest as an `alternate` resource with the proper media type. 
+
+The duration of the entire audio narration <strong class="rfc">may</strong> also be declared in the alternate item. 
+
+It is not an error if only some items in the reading order have a Synchronized Narration document attached.
 
 **Example** 
 
@@ -110,22 +112,24 @@ Each Synchronized Narration document used in a publication <strong class="rfc">m
 {
   "...": "...",  
   "readingOrder": [{
-      "href": "/text/c001.html", 
-      "type": "text/html", 
+      "href": "OPS/c001.xhtml", 
+      "type": "application/xhtml+xml", 
       "title": "Chapter 1",
       "alternate": [{
-          "href": "/sync/c001.sync",
-          "type": "application/vnd.syncnarr+json"
+          "href": "sync/c001.json",
+          "type": "application/vnd.syncnarr+json",
+          "duration": 850.5
         }
       ]
     }, 
     { 
-      "href": "/text/c002.html", 
-      "type": "text/html", 
+      "href": "OPS/c002.xhtml", 
+      "type": "application/xhtml+xml", 
       "title": "Chapter 2",
       "alternate": [{
-          "href": "/sync/c002.sync",
-          "type": "application/vnd.syncnarr+json"
+          "href": "sync/c002.json",
+          "type": "application/vnd.syncnarr+json",
+          "duration": 1001
         }
       ]
     }
@@ -143,15 +147,42 @@ Each Synchronized Narration document used in a publication <strong class="rfc">m
 }
 ```
 
+## Declaring the CSS associated with media overlays
+
+The manifest <strong class="rfc">may</strong> contain metadata indicating how textual content should be highlighted. 
+
+A `media-overlays` property <strong class="rfc">may</strong> be added to the set of metadata included in the manifest. This object is defined as:
+
+| Key  | Definition | Format | Required? |
+| ---- | -----------| -------| ----------|
+| `active-class`          |  The author-defined CSS class name to apply to the selected textual segment. | string | No |
+| `playback-active-class` |  The author-defined CSS class name to apply to the selected textual segment when playback is active. | string | No |
+
+**Example** 
+
+```json
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Book",
+    "duration": 1403.5,
+    "media-overlay": {
+      "active-class": "-epub-media-overlay-active"
+    },
+    ...
+  }
+}
+```
+
 ## Processing a Synchronized Narration object
 
 ** non-normative **
 
-If a Synchronized Narration object is detected in a Manifest, the reading system should present to the user a way to activate / deactivate the synchronized narration.
+If one or more Synchronized Narration objects are detected in a Manifest, the reading system should present to the user a way to activate / deactivate the synchronized narration.
 
-At the time a Readium Navigator is processing a Synchronized Narration object, a reading system should check that the `textRef` and `audioRef` properties reference existing resources in the manifest and that their media type is correct. 
+At the time it is processing a Synchronized Narration object, the reading system should check that the `textRef` and `audioRef` properties reference existing resources in the manifest and that their media type is correct. 
 
-In case of error, the Synchronized Narration object should be skipped. 
+In case of error in the processing of a Synchronized Narration object, the object should be skipped. 
 
 ## References
 
