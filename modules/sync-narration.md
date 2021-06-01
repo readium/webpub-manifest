@@ -2,7 +2,7 @@
 
 **Editors:**
 
-* Laurent Le Meur ([EDRLab](https://www.edrlab.org)
+* Laurent Le Meur ([EDRLab](https://www.edrlab.org))
 
 ## Introduction
 
@@ -147,7 +147,7 @@ It is not an error if only some items in the reading order have a Synchronized N
 }
 ```
 
-## Declaring the CSS associated with media overlays
+## Associating Style Information
 
 The manifest <strong class="rfc">may</strong> contain metadata indicating how textual content should be highlighted. 
 
@@ -169,14 +169,14 @@ A `media-overlays` property <strong class="rfc">may</strong> be added to the set
     "media-overlay": {
       "active-class": "-epub-media-overlay-active"
     },
-    ...
+    "...":"..."
   }
 }
 ```
 
 ## Processing a Synchronized Narration object
 
-** non-normative **
+**Non-normative**
 
 If one or more Synchronized Narration objects are detected in a Manifest, the reading system should present to the user a way to activate / deactivate the synchronized narration.
 
