@@ -14,7 +14,7 @@ While the main use of this Module is an audio narration synchonized with text hi
 
 This is a draft document from the Readium community. It is currently implemented in Readium Desktop.
 
-An useful evolution would be to extend this structure with a proper support for still and moving images. A textual publication could then be enhanced with the apparition of small illustrations or sign-language videos explaining words or utterances, upon manual selection of those textual segments. This feature would be very useful for cognitive disabled people, but also for children or people learning a new language. Such feature also has the advantage of being 100% descriptive (no javascript involved in the publication).
+A useful evolution would be to extend this structure with a proper support for still and moving images. A textual publication could then be enhanced with the apparition of small illustrations or sign-language videos explaining words or utterances, upon manual selection of those textual segments. This feature would be very useful for cognitive disabled people, but also for children or people learning a new language. Such feature also has the advantage of being 100% descriptive (no javascript involved in the publication).
 
 
 ## Structure of a Synchronized Narration document
@@ -197,4 +197,3 @@ In case of error in the processing of a Synchronized Narration object, the objec
 - [W3C Synchronized Narration](https://w3c.github.io/sync-media-pub/archived/synchronized-narration.html), W3C, archived, 2019. 
 
 This specification was discussed in 2019 by the W3C Synchronized Media for Publications Community Group - which included EDRLab - and was used as an inspiration for our document; but it was then archived by the W3C community group and replaced by an XML based proposal which does not fit the needs of the Readium Architecture. 
-
