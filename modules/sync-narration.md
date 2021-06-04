@@ -23,8 +23,8 @@ The Synchronized Narration object is defined as:
 
 | Key  | Definition | Format | Required? |
 | ---- | -----------| -------| ----------|
-| `textRef`   |  The absolute of relative URL of the textual resource which participates to the synchronized narration | URL | At the top level only |
-| `audioRef`  |  The absolute of relative URL of the audio resource which participates to the synchronized narration | URL | At the top level only |
+| `textRef`   |  The absolute or relative URL of the textual resource which participates to the synchronized narration | URL | At the top level only |
+| `audioRef`  |  The absolute or relative URL of the audio resource which participates to the synchronized narration | URL | At the top level only |
 | `narration` | A recursive array of synchronization objects | Array of Synchronization Item or Sub Narration | Yes |
 
 
