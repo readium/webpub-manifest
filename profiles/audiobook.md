@@ -91,7 +91,7 @@ An audiobook is divided into one or more audio resources, which are all listed i
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
- - they <strong class="rfc">must</strong> point strictly to audio resources
+ - they <strong class="rfc">must</strong> point strictly to audio resources, with no fragment identifier. 
  - they <strong class="rfc">must</strong> include a `duration` term that provides the duration in seconds of each individual audio resource
 
 In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` (in `kbps`) whenever possible.
