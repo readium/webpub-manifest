@@ -1,0 +1,99 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://readium.org/webpub-manifest/schema/a11y.schema.json",
+  "title": "Accessibility Object",
+  "type": "object",
+  "properties": {
+    "conformsTo": {
+      "type": [
+        "string",
+        "array"
+      ],
+      "format": "uri",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "certification": {
+      "type": "object",
+      "properties": {
+        "certifier": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "report": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "format": "uri",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "accessMode": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "auditory",
+          "chartOnVisual",
+          "chemOnVisual",
+          "colorDependent",
+          "mathOnVisual",
+          "tactile",
+          "textOnVisual",
+          "textual",
+          "visual"
+        ]  
+      }
+    },
+    "accessModeSufficient": {
+      "type": "array",
+      "items": {
+        "type": [
+          "array",
+          "string"
+        ],
+        "if": {
+          "type": "string"
+        },
+        "then": {
+          "enum": [
+            "auditory",
+            "tactile",
+            "textual",
+            "visual"
+          ],
+        },
+        "items": {
+          "type": "string",
+          "enum": [
+            "auditory",
+            "tactile",
+            "textual",
+            "visual"
+          ]
+        }
+      }
+    },
+    "feature": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hazard": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
