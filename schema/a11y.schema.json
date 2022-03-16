@@ -37,6 +37,9 @@
         }
       }
     },
+    "summary": {
+      "$ref": "language-map.schema.json"
+    },
     "accessMode": {
       "type": "array",
       "items": {
