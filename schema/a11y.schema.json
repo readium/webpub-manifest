@@ -18,11 +18,23 @@
     "certification": {
       "type": "object",
       "properties": {
-        "certifier": {
-          "type": "string"
+        "certifiedBy": {
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "credential": {
-          "type": "string"
+          "type": [
+            "string",
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "report": {
           "type": [
