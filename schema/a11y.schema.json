@@ -101,13 +101,57 @@
     "feature": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "annotations",
+          "ARIA",
+          "bookmarks",
+          "index",
+          "printPageNumbers",
+          "readingOrder",
+          "structuralNavigation",
+          "tableOfContents",
+          "taggedPDF",
+          "alternativeText",
+          "audioDescription",
+          "captions",
+          "describedMath",
+          "longDescription",
+          "rubyAnnotations",
+          "signLanguage",
+          "transcript",
+          "displayTransformability",
+          "synchronizedAudioText",
+          "timingControl",
+          "unlocked",
+          "ChemML",
+          "latex",
+          "MathML",
+          "ttsMarkup",
+          "highContrastAudio",
+          "highContrastDisplay",
+          "largePrint",
+          "braille",
+          "tactileGraphic",
+          "tactileObject",
+          "none"
+        ]
       }
     },
     "hazard": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": [
+          "flashing",
+          "noFlashingHazard",
+          "motionSimulation",
+          "noMotionSimulationHazard",
+          "sound",
+          "noSoundHazard",
+          "unknown",
+          "none"
+        ]
       }
     }
   }
