@@ -27,3 +27,25 @@ A conforming Webpub Manifsest <strong class="rfc">must</strong> only refererence
 
 If a Webpub Manifest contains encrypted resources, those resources <strong class="rfc">must</strong> include an [encryption object](https://github.com/readium/webpub-manifest/blob/master/modules/encryption.md#encryption-object) in the `properties` object attached to each `Link` object.
 
+
+## 4. Link Parameters
+
+A Manifest <strong class="rfc">may</strong> include the following parameters in the `href` attribute of elements in the `readingOrder` and `toc` sections.
+
+| Key   | Semantics | Type     | Values    | 
+| ----- | --------- | -------- | --------- | 
+| [start](#start) | Specifies the initial page of the PDF to display when displaying this resource  | Integer  | 1 to (page count of current resource)  | 
+
+### start
+
+In some cases a system may wish to display a PDF but skip certain pages that appear at the beginning of the file, including:
+- Skipping blank pages
+- Skipping repetitive or unnecessary front matter
+- Providing a direct link to a chapter, section or sub-section within a larger PDF resources
+
+The `start` parameter conveys this information in a way that aligns with other standards for displaying and consuming PDF resources. This parameter is indexed from 1 to match the mental model for most users.
+```
+https://example.com/example.pdf?start=1 # First page, equivalent to no parameter specification
+https://example.com/example.pdf?start=2 # Second page
+https://example.com/example.pdf?start=10 # Arbitrary page position
+```
