@@ -126,7 +126,7 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Packaging
 
-An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
+An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](https://readium.org/webpub-manifest/packaging.html).
 
 To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 
