@@ -36,14 +36,14 @@ To provide these alternate representations, an object may be used instead of a s
 In addition to the `title` element, the manifest <span class="rfc">may</span> also contain an optional `subtitle` element with exactly the same syntax.
 
 ```json
-"title": "Flatland",
+"title": "Flatland"
 "subtitle": "A Romance of Many Dimensions"
 ```
 
 The manifest <span class="rfc">may</span> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
-"title": "A Tale of Two Cities",
+"title": "A Tale of Two Cities"
 "sortAs": "Tale of Two Cities, A"
 ```
 
@@ -157,7 +157,7 @@ To provide even more details, it's also possible to use the `imprint` element th
 The most straightforward expression is through a simple string:
 
 ```json
-"publisher": "Literary Fiction Ltd.",
+"publisher": "Literary Fiction Ltd."
 "imprint": "World Literature"
 ```
 
@@ -300,14 +300,14 @@ To indicate the length of a publication, a manifest <span class="rfc">may</span>
 
 `duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
-```
-"duration": 5467,
+```json
+"duration": 5467
 "numberOfPages": 178
 ```
 
 In addition to these two properties, `abridged` is used to indicate an abridged edition of a publication. This is expressed using a boolean.
 
-```
+```json
 "abridged": true
 ```
 
