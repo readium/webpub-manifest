@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://readium.org/webpub-manifest/schema/extensions/divina/metadata.schema.json",
+  "title": "Divina - Metadata",
+  "type": "object",
+  "properties": {
+    "forceScroll": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

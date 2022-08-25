@@ -105,12 +105,8 @@
       "type": "string",
       "enum": [
         "rtl",
-        "ltr",
-        "ttb",
-        "btt",
-        "auto"
-      ],
-      "default": "auto"
+        "ltr"
+      ]
     },
     "description": {
       "type": "string"
@@ -141,6 +137,9 @@
   "allOf": [
     {
       "$ref": "extensions/epub/metadata.schema.json"
+    },
+    {
+      "$ref": "extensions/divina/metadata.schema.json"
     },
     {
       "$ref": "extensions/presentation/metadata.schema.json"

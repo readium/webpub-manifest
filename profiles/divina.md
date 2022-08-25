@@ -180,7 +180,15 @@ This current draft does not cover guided navigation over alternate versions of e
 ]
 ```
 
-## 5. Packaging
+## 5. Forced scrolling
+
+In order to support Divina publications where continuous scrolling is the only way to display the publication properly, this profile introduces a new publication-level metadata:
+
+| Key   | Semantics | Type     | Default |
+| ----- | --------- | -------- | ------- |
+| `forceScroll` | Suggested orientation for the device when displaying the linked resource.  | Boolean  | `false` |
+
+## 6. Packaging
 
 A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
@@ -197,12 +205,12 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
 ### Level 0
 
 * Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [presentation hints](../modules/presentation.md)
 * Support for [alternate resources](#3-alternate-resources)
 
 
 ### Level 1
 
+* Support for [Divina presentation hints](../modules/presentation.md)
 * Support for [guided navigation](#4-guided-navigation)
 * Support for [transitions](../modules/transitions.md)
 
@@ -221,11 +229,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
     "title": "Manga",
     "identifier": "https://example.com/manga",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "readingProgression": "rtl",
-    "presentation": {
-      "fit": "contain",
-      "spread": "landscape"
-    }
+    "readingProgression": "rtl"
   },
   "readingOrder": [
     {
@@ -257,12 +261,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
     "title": "Webtoon",
     "identifier": "https://example.com/webtoon",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "readingProgression": "ttb",
-    "presentation": {
-      "overflow": "scrolled",
-      "fit": "width",
-      "continuous": true
-    }
+    "forceScroll": true
   },
   "readingOrder": [
     {

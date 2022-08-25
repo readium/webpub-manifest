@@ -26,25 +26,6 @@
         "landscape", 
         "portrait"
       ]
-    },
-    "page": {
-      "description": "Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.",
-      "type": "string",
-      "enum": [
-        "left", 
-        "right", 
-        "center"
-      ]
-    },
-    "spread": {
-      "description": "Indicates the condition to be met for the linked resource to be rendered within a synthetic spread.",
-      "type": "string",
-      "enum": [
-        "auto",
-        "both",
-        "none",
-        "landscape"
-      ]
     }
   }
 }

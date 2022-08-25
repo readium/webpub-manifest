@@ -53,6 +53,7 @@ This profile defines additional Link properties:
 | ----- | --------- | -------- | --------- | 
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
 | [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
+| [page](#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads. | String  | `right`, `left` or `center`  | 
 
 ### contains
 
@@ -94,4 +95,30 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
     "layout": "fixed"
   }
 }
+```
+
+### page
+
+The `page` property is meant to provide a hint to Use Agents that rely on synthetic spreads to display more than a single resource at once.
+
+
+*In this example, the first page should be displayed of the left of a synthetic spread, the second page on the right.*
+
+```json
+"readingOrder": [
+  {
+    "href": "page1.jpg", 
+    "type": "image/jpeg",
+    "properties": {
+      "page": "left"
+    }
+  },
+  {
+    "href": "page2.jpg", 
+    "type": "image/jpeg",
+    "properties": {
+      "page": "right"
+    }
+  }
+]
 ```
