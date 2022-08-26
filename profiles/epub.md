@@ -96,29 +96,3 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
   }
 }
 ```
-
-### page
-
-The `page` property is meant to provide a hint to Use Agents that rely on synthetic spreads to display more than a single resource at once.
-
-
-*In this example, the first page should be displayed of the left of a synthetic spread, the second page on the right.*
-
-```json
-"readingOrder": [
-  {
-    "href": "page1.jpg", 
-    "type": "image/jpeg",
-    "properties": {
-      "page": "left"
-    }
-  },
-  {
-    "href": "page2.jpg", 
-    "type": "image/jpeg",
-    "properties": {
-      "page": "right"
-    }
-  }
-]
-```
