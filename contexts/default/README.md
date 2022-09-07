@@ -144,8 +144,7 @@ If a publication has more than one primary language (a bilingual edition for exa
 A Web Publication Manifest <span class="rfc">may</span> contain a description of the publication in plain text using the `description` element:
 
 ```json
-"description": "The story of two gnomes, discussing the meaning of life in a
-Scandivanian garden."
+"description": "The story of two gnomes, discussing the meaning of life in a Scandivanian garden."
 ```
 
 ## Publisher
