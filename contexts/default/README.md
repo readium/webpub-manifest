@@ -133,7 +133,7 @@ In order to indicate its primary language, a Web Publication Manifest <span clas
 "language": "en"
 ```
 
-If a publication has more than one primary language (a bilingual edition for example), the `language` element <span class="rfc">may</span> contain an array of BCP 47 language tags:
+If a publication has more than one primary language (a bilingual edition for example), the `language` element <span class="rfc">may</span> contain an array of values:
 
 ```json
 "language": ["en", "fr", "ja"]

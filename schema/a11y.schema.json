@@ -38,7 +38,7 @@
       }
     },
     "summary": {
-      "$ref": "language-map.schema.json"
+      "type": "string"
     },
     "accessMode": {
       "type": "array",
