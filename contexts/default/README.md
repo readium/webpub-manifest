@@ -173,7 +173,7 @@ This element also allows a more complex representation using an object and the f
 Multiple publishers can be listed in this element using the string or object representations.
 
 
-## Publication Date
+## Publication date
 
 A Web Publication Manifest <span class="rfc">may</span> contain a publication date using the `published` element. The publication date must be a valid ISO 8601 date.
 
@@ -181,7 +181,7 @@ A Web Publication Manifest <span class="rfc">may</span> contain a publication da
 "published": "2016-09-02"
 ```
 
-## Modification Date
+## Modification date
 
 Publications can be updated and to identify each specific version, the manifest <span class="rfc">should</span> also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
 
@@ -229,7 +229,7 @@ The `code` element is available to provide the string that identifies the subjec
 }
 ```
 
-## Collections & Series
+## Collections & series
 
 A Web Publication Manifest <span class="rfc">may</span> indicate that it belongs to one or multiple collections/series.
 
@@ -283,7 +283,7 @@ A position can be either an integer or a float where the value is greater than z
 }
 ```
 
-## Reading Progression Direction
+## Reading progression direction
 
 To properly browse through a publication, a User Agent needs to know its progression direction.
 
@@ -293,9 +293,9 @@ It allows the following values: `ltr` (left to right), `rtl` (right to left), `t
 
 It defaults to `auto` when no value is set.
 
-## Duration and Number of Pages
+## Duration and number of pages
 
-To indicate the length of a publication, a manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
+To indicate the length of a publication, a Web Publication Manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
 
 `duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
@@ -309,6 +309,52 @@ In addition to these two properties, `abridged` is used to indicate an abridged 
 ```json
 "abridged": true
 ```
+
+## Accessibility metadata
+
+In order to document its accessibility metadata, a Web Publication Manifest <span class="rfc">should</span> include an `accessibility` object.
+
+### Conformance
+
+`conformsTo` contains one or more URI, meant to convey that a publication conforms to a specific accessibility profile.
+
+This specification identifies the following profiles:
+
+| Profile | URI |
+| ------- | --- |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level A | <https://idpf.org/epub/a11y/accessibility-20170105.html#wcag-a> |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level AA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa> |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level AAA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa> |
+
+### Certification
+
+The `certification` object contains information about the certification process of a publication.
+
+`certifiedBy` identifies the person or the organization that conducted the certification.
+
+`credential` provides additional credentials regarding the ability of the certifier to conduct an accessibility report.
+
+`report` points to one or more accessibility reports for the publication, using a list of URL.
+
+```json
+"certification": {
+  "certifiedBy": "Tom Smith",
+  "report": "https://example.com/report/a11y",
+  "credential": "Certified by Benetech"
+}
+```
+
+### accessMode and accessModeSufficient
+
+…
+
+### Features and hazards
+
+…
+
+### Summary
+
+…
 
 ## Appendix A - JSON Schema
 
