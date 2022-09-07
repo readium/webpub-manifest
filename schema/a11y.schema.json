@@ -25,15 +25,7 @@
           "type": "string"
         },
         "report": {
-          "type": [
-            "string",
-            "array"
-          ],
-          "format": "uri",
-          "items": {
-            "type": "string",
-            "format": "uri"
-          }
+          "type": "string"
         }
       }
     },
