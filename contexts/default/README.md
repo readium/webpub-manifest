@@ -314,6 +314,8 @@ In addition to these two properties, `abridged` is used to indicate an abridged 
 
 In order to document its accessibility metadata, a Web Publication Manifest <span class="rfc">should</span> include an `accessibility` object.
 
+This `accessibility` object <span class="rfc">may</span> contain the following properties: `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
+
 ### Conformance
 
 `conformsTo` contains one or more URI, meant to convey that a publication conforms to a specific accessibility profile.
@@ -346,15 +348,60 @@ The `certification` object contains information about the certification process 
 
 ### accessMode and accessModeSufficient
 
-…
+`accessMode` and `accessModeSufficient` are meant to list the human sensory perceptual systems or cognitive faculties necessary to access a given publication.
+
+While `accessMode` provides a complete list, `accessModeSufficient` is focused on list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource.
+
+Both properties are controlled by external vocabularies maintained by the W3C.
+
+| Property | Controlled vocabulary |
+| -------- | --------------------- |
+| `accessMode` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode-vocabulary> |
+| `accessModeSufficient` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient-vocabulary> |
+
+```json
+"accessibility": {
+  "accessMode": ["textual", "visual"],
+  "accessModeSufficient": [
+    ["textual", "visual"],
+    "textual"
+  ],
+  "feature": ["alternativeText"]
+}
+```
+
 
 ### Features and hazards
 
-…
+`feature` and `hazard` provide a list of potential accessibility features or hazards for a publication.
+
+Both properties are controlled by external vocabularies maintained by the W3C.
+
+| Property | Controlled vocabulary |
+| -------- | --------------------- |
+| `feature` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature-vocabulary> |
+| `hazard` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard-vocabulary> |
+
+```json
+"accessibility": {
+  "feature": [
+    "alternativeText", 
+    "displayTransformability, 
+    "readingOrder",
+    "structuralNavigation",
+    "tableOfContents"
+  ],
+  "hazard": ["none"]
+}
+```
 
 ### Summary
 
-…
+`summary` is meant to convey additional information about the accessibility of a publication that cannot be expressed using `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature` or `hazard`.
+
+```json
+"summary": "The publication is recorded by a professional narrator."
+```
 
 ## Appendix A - JSON Schema
 
