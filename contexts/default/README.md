@@ -386,7 +386,7 @@ Both properties are controlled by external vocabularies maintained by the W3C.
 "accessibility": {
   "feature": [
     "alternativeText", 
-    "displayTransformability, 
+    "displayTransformability", 
     "readingOrder",
     "structuralNavigation",
     "tableOfContents"
