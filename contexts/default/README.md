@@ -324,7 +324,7 @@ This specification identifies the following profiles:
 
 | Profile | URI |
 | ------- | --- |
-| EPUB Accessibility 1.0 - WCAG 2.0 Level A | <https://idpf.org/epub/a11y/accessibility-20170105.html#wcag-a> |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level A | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a> |
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa> |
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AAA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa> |
 
