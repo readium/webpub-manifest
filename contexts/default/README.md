@@ -36,14 +36,14 @@ To provide these alternate representations, an object may be used instead of a s
 In addition to the `title` element, the manifest <span class="rfc">may</span> also contain an optional `subtitle` element with exactly the same syntax.
 
 ```json
-"title": "Flatland",
+"title": "Flatland"
 "subtitle": "A Romance of Many Dimensions"
 ```
 
 The manifest <span class="rfc">may</span> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
-"title": "A Tale of Two Cities",
+"title": "A Tale of Two Cities"
 "sortAs": "Tale of Two Cities, A"
 ```
 
@@ -133,7 +133,7 @@ In order to indicate its primary language, a Web Publication Manifest <span clas
 "language": "en"
 ```
 
-If a publication has more than one primary language (a bilingual edition for example), the `language` element <span class="rfc">may</span> contain an array of BCP 47 language tags:
+If a publication has more than one primary language (a bilingual edition for example), the `language` element <span class="rfc">may</span> contain an array of values:
 
 ```json
 "language": ["en", "fr", "ja"]
@@ -144,8 +144,7 @@ If a publication has more than one primary language (a bilingual edition for exa
 A Web Publication Manifest <span class="rfc">may</span> contain a description of the publication in plain text using the `description` element:
 
 ```json
-"description": "The story of two gnomes, discussing the meaning of life in a
-Scandivanian garden."
+"description": "The story of two gnomes, discussing the meaning of life in a Scandivanian garden."
 ```
 
 ## Publisher
@@ -157,7 +156,7 @@ To provide even more details, it's also possible to use the `imprint` element th
 The most straightforward expression is through a simple string:
 
 ```json
-"publisher": "Literary Fiction Ltd.",
+"publisher": "Literary Fiction Ltd."
 "imprint": "World Literature"
 ```
 
@@ -174,7 +173,7 @@ This element also allows a more complex representation using an object and the f
 Multiple publishers can be listed in this element using the string or object representations.
 
 
-## Publication Date
+## Publication date
 
 A Web Publication Manifest <span class="rfc">may</span> contain a publication date using the `published` element. The publication date must be a valid ISO 8601 date.
 
@@ -182,7 +181,7 @@ A Web Publication Manifest <span class="rfc">may</span> contain a publication da
 "published": "2016-09-02"
 ```
 
-## Modification Date
+## Modification date
 
 Publications can be updated and to identify each specific version, the manifest <span class="rfc">should</span> also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
 
@@ -230,7 +229,7 @@ The `code` element is available to provide the string that identifies the subjec
 }
 ```
 
-## Collections & Series
+## Collections & series
 
 A Web Publication Manifest <span class="rfc">may</span> indicate that it belongs to one or multiple collections/series.
 
@@ -284,7 +283,7 @@ A position can be either an integer or a float where the value is greater than z
 }
 ```
 
-## Reading Progression Direction
+## Reading progression direction
 
 To properly browse through a publication, a User Agent needs to know its progression direction.
 
@@ -294,21 +293,114 @@ It allows the following values: `ltr` (left to right), `rtl` (right to left), `t
 
 It defaults to `auto` when no value is set.
 
-## Duration and Number of Pages
+## Duration and number of pages
 
-To indicate the length of a publication, a manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
+To indicate the length of a publication, a Web Publication Manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
 
 `duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
-```
-"duration": 5467,
+```json
+"duration": 5467
 "numberOfPages": 178
 ```
 
 In addition to these two properties, `abridged` is used to indicate an abridged edition of a publication. This is expressed using a boolean.
 
-```
+```json
 "abridged": true
+```
+
+## Accessibility metadata
+
+In order to document its accessibility metadata, a Web Publication Manifest <span class="rfc">should</span> include an `accessibility` object.
+
+This `accessibility` object <span class="rfc">may</span> contain the following properties: `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
+
+### Conformance
+
+`conformsTo` contains one or more URI, meant to convey that a publication conforms to a specific accessibility profile.
+
+This specification identifies the following profiles:
+
+| Profile | URI |
+| ------- | --- |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level A | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a> |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level AA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa> |
+| EPUB Accessibility 1.0 - WCAG 2.0 Level AAA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa> |
+
+### Certification
+
+The `certification` object contains information about the certification process of a publication.
+
+`certifiedBy` identifies the person or the organization that conducted the certification.
+
+`credential` provides additional credentials regarding the ability of the certifier to conduct an accessibility report.
+
+`report` points to one or more accessibility reports for the publication, using a list of URL.
+
+```json
+"certification": {
+  "certifiedBy": "Tom Smith",
+  "report": "https://example.com/report/a11y",
+  "credential": "Certified by Benetech"
+}
+```
+
+### accessMode and accessModeSufficient
+
+`accessMode` and `accessModeSufficient` are meant to list the human sensory perceptual systems or cognitive faculties necessary to access a given publication.
+
+While `accessMode` provides a complete list, `accessModeSufficient` is focused on list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource.
+
+Both properties are controlled by external vocabularies maintained by the W3C.
+
+| Property | Controlled vocabulary |
+| -------- | --------------------- |
+| `accessMode` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessMode-vocabulary> |
+| `accessModeSufficient` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessModeSufficient-vocabulary> |
+
+```json
+"accessibility": {
+  "accessMode": ["textual", "visual"],
+  "accessModeSufficient": [
+    ["textual", "visual"],
+    "textual"
+  ],
+  "feature": ["alternativeText"]
+}
+```
+
+
+### Features and hazards
+
+`feature` and `hazard` provide a list of potential accessibility features or hazards for a publication.
+
+Both properties are controlled by external vocabularies maintained by the W3C.
+
+| Property | Controlled vocabulary |
+| -------- | --------------------- |
+| `feature` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityFeature-vocabulary> |
+| `hazard` | <https://www.w3.org/2021/a11y-discov-vocab/latest/#accessibilityHazard-vocabulary> |
+
+```json
+"accessibility": {
+  "feature": [
+    "alternativeText", 
+    "displayTransformability", 
+    "readingOrder",
+    "structuralNavigation",
+    "tableOfContents"
+  ],
+  "hazard": ["none"]
+}
+```
+
+### Summary
+
+`summary` is meant to convey additional information about the accessibility of a publication that cannot be expressed using `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature` or `hazard`.
+
+```json
+"summary": "The publication is recorded by a professional narrator."
 ```
 
 ## Appendix A - JSON Schema
