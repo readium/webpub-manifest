@@ -67,7 +67,7 @@
             "tactile",
             "textual",
             "visual"
-          ],
+          ]
         },
         "items": {
           "type": "string",
