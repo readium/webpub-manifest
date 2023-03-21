@@ -56,13 +56,13 @@ While EPUB itself allows SVG and other formats as long as an XHTML fallback is p
 | activeClass  | Author-defined CSS class name to apply to the currently-playing EPUB Content Document element. | CSS Class Name |
 | playbackActiveClass  | Author-defined CSS class name to apply to the EPUB Content Document's document element when playback is active. | CSS Class Name |
 
-The EPUB specification provides dedicated elements for Media Overlay for:
+The EPUB specification provides dedicated elements for Media Overlay with:
 
 - the total duration of a Media Overlay publication
 - the duration of specific SMIL files
 - and an optional narrator
 
-In the context of the Readium Web Publication Manifest, these dedicated elements are deprecated by:
+In the context of the Readium Web Publication Manifest, these dedicated elements are superseded by:
 
 - the use of [`duration`](../contexts/default/#duration-and-number-of-pages) in `metadata` for the total duration of a publication
 - the use of [`duration`](../#24-the-link-object) in Link Objects for the duration of specific resources (SMIL, SMIL-equivalent or media resources)

@@ -4,6 +4,19 @@
   "title": "EPUB Extension - Metadata",
   "type": "object",
   "properties": {
+    "mediaOverlay": {
+      "type": "object",
+      "properties": {
+        "activeClass": {
+          "description": "Author-defined CSS class name to apply to the currently-playing EPUB Content Document element.",
+          "type": "string"
+        },
+        "playbackActiveClass": {
+          "description": "Author-defined CSS class name to apply to the EPUB Content Document's document element when playback is active.",
+          "type": "string"
+        }
+      }
+    },
     "presentation": {
       "type": "object",
       "properties": {
