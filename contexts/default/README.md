@@ -5,7 +5,7 @@ The Readium Web Publication Manifest defines a shared external context document 
 This context is meant primarily to:
 
 - align the Web Publication Manifest with the Web by adopting schema.org and its extensions
-- provide compatibility with EPUB 3.2 by providing equivalent metadata elements based on schema.org
+- provide compatibility with EPUB 3 by providing equivalent metadata elements based on schema.org
 
 
 | Name  | URI | Description | Required? |
@@ -295,7 +295,7 @@ It defaults to `auto` when no value is set.
 
 ## Duration and number of pages
 
-To indicate the length of a publication, a Web Publication Manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
+To indicate the length of a publication, a Web Publication Manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` properties.
 
 `duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
