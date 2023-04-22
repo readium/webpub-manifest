@@ -1,12 +1,13 @@
 # Readium Web Publication Manifest
 
-The Readium Web Publication Manifest is a JSON-based document meant to represent and distribute publications over HTTPS.
+A Readium Web Publication Manifest is a JSON-based document meant to represent a publication distributed over HTTP(S).
 
-It is the primary exchange format used in the [Readium Architecture](https://readium.org/architecture) and serves as the main building block for [OPDS 2.0](https://drafts.opds.io/opds-2.0). 
+It is the primary exchange format used in the [Readium Architecture](https://readium.org/architecture). It also serves as the main building block for [OPDS 2.0](https://drafts.opds.io/opds-2.0). 
 
 **Editors:**
 
 * Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Laurent Le Meur ([EDRLab](http://www.edrlab.org))
 
 **Participate:**
 
@@ -20,6 +21,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
   + [1.1. Goals](#11-goals)
   + [1.2. Terminology](#12-terminology)
   + [1.3. Abstract Model](#13-abstract-model)
+  + [1.4. Profiles](#14-profiles)
 * [2. Syntax](#2-syntax)
   + [2.1. Sub-Collections](#21-sub-collections)
   + [2.2. Metadata](#22-metadata)
@@ -31,7 +33,8 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 * [6. Table of Contents](#6-table-of-contents)
 * [7. Cover](#7-cover)
 * [8. Extensibility](#8-extensibility)
-* [9. Packaging a Readium Web Publication](#9-packaging)
+* [9. Encryption and obfuscation](#9-encryption-and-obfuscation)
+* [10. Packaging a Readium Web Publication](#10-packaging)
 * [Appendix A. JSON Schema](#appendix-a-json-schema)
 
 ## Example
@@ -42,6 +45,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
   
   "metadata": {
     "@type": "http://schema.org/Book",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/epub",
     "title": "Moby-Dick",
     "author": "Herman Melville",
     "identifier": "urn:isbn:978031600000X",
@@ -52,7 +56,6 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
   "links": [
     {"rel": "self", "href": "https://example.com/manifest.json", "type": "application/webpub+json"},
     {"rel": "alternate", "href": "https://example.com/publication.epub", "type": "application/epub+zip"},
-    {"rel": "search", "href": "https://example.com/search{?query}", "type": "text/html", "templated": true}
   ],
   
   "readingOrder": [
@@ -74,20 +77,18 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 
 ### 1.1. Goals
 
-While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together can represent a publication.
+While the Web is the largest collection of interlinked documents ever created, it lacks a mechanism for expressing how a collection of resources, when grouped together, can represent a publication.
 
-Publication formats such as EPUB or CBZ/CBR group these documents together using a container format, making them easier to archive or transmit as a whole. But they also break an important promise of the Web: the resources of a publication are not available through HTTP to any client that would like to access them.
+Publication formats such as EPUB or CBZ/CBR group these documents together using a container format, making them easier to archive or transmit as a whole. But they also break an important promise of the Web: the discrete resources of a publication are not available through HTTP to any client that would like to access them.
 
 W3C has recently provided a definition for a [Web Publication](https://w3c.github.io/dpub-pwp-ucr/):
 
 > A **Web Publication (WP)** is a collection of one or more constituent resources, organized together in a uniquely identifiable grouping, and presented using standard Open Web Platform technologies.
 
 It also provides a definition for a manifest in the context of a Web Publication:
-> [...] **manifest** refers to an abstract means to contain information necessary to the proper management, rendering, and so on, of a publication. This is opposed to metadata that contains information on the content of the publication like author, publication date, and so on. The precise format of how such a manifest is stored is not considered in this document.
+> A **manifest** represents structured information about a publication, such as informative metadata, a list of resources, and a default reading order..
 
-The Readium Web Publication Manifest is an attempt to standardize a JSON based manifest format that follows both definitions.
-
-To facilitate the interoperability between EPUB and Web Publications, this document also defines a number of extension points to fully support EPUB specific features.
+The Readium Web Publication Manifest is an attempt to standardize a JSON based web publication manifest format that follows both definitions.
 
 ### 1.2. Terminology
 
@@ -100,6 +101,8 @@ To facilitate the interoperability between EPUB and Web Publications, this docum
  <dd>A collection that contains one or more links, but doesn't contain any metadata or sub-collections.</dd>
  <dt>Manifest</dt>
  <dd>A manifest is a full collection that represents structured information about a publication.</dd>
+ <dt id="profile">Profile</dt>
+ <dd>A profile is a set of additional metadata, collection roles, link properties and restrictions applied to the strucute of a manifest.</dd>
 </dl>
 
 ### 1.3. Abstract Model
@@ -112,6 +115,18 @@ Every Readium Web Publication Manifest is a [collection](#collection) that <stro
 - [links](#23-links)
 - a [reading order](#21-sub-collections)
 
+### 1.4 Profiles
+
+To extend the power of Readium Web Publications and adapt them to specific types of publications, this document defines a set of [profiles](#profile):
+
+| Name  |  Description |
+| ----- | ------------ |
+| [EPUB Profile](profiles/epub.md) | A dedicated profile for EPUB files tranformed to Web Publications. |
+| [Audiobook Profile](profiles/audiobook.md) |  A dedicated profile for Audiobooks. |
+| [Divina Profile](profiles/divina.md) | A dedicated profile for Digital Visual Narrative publications (comics, manga and bandes dessinées). |
+| [PDF Profile](profiles/pdf.md) | A dedicated profile for PDF documents referenced from Web Publications. |
+
+The complete list of profiles and their identifiers is also defined in a [registry of profiles](profiles/).
 
 ## 2. Syntax
 
@@ -151,8 +166,6 @@ All resources listed in `readingOrder` and `resources` <strong class="rfc">must<
 }
 ```
 
-
-
 ### 2.2. Metadata
 
 JSON-LD provides an easy and standard way to extend existing JSON document: through the addition of a context, we can associate keys in a document to Linked Data elements from various vocabularies.
@@ -171,14 +184,19 @@ Context documents are all defined and listed in the [Context Documents registry]
 
 The Readium Web Publication Manifest has a single requirement in terms of metadata: all publications <strong class="rfc">must</strong> include a [title](contexts/default/#title).
 
-In addition all publications <strong class="rfc">should</strong> include a `@type` key to describe the nature of the publication.
+In addition, publications <strong class="rfc">should</strong> include a `@type` key to declare the nature of the publication, and <strong class="rfc">should</strong> include a `conformsTo` key to declare the conformance with a specific [profile](#8-profiles). 
+
+> **Note**
+> `@type` indicates the nature of the publication and its values should be taken from the list of [schema.org Creative Works](https://schema.org/CreativeWork). The profiles currently defined are using `http://schema.org/Book`and `http://schema.org/Audiobook`. 
+> `conformsTo` identifies a profile and is used by reading toolkits to select the proper navigator module. 
 
 *Example 2: Minimal metadata*
 
 ```json
 "metadata": {
   "@type": "http://schema.org/Book",
-  "title": "Test Publication"
+  "conformsTo": "https://readium.org/webpub-manifest/profiles/epub",
+  "title": "Moby-Dick"
 }
 ```
 
@@ -199,7 +217,7 @@ A manifest <strong class="rfc">must</strong> contain at least one link using the
   }
 ]
 ```
-A manifest <strong class="rfc">may</strong> also contain other links, such as a `alternate` link to an EPUB 3.2 version of the publication for example.
+A manifest <strong class="rfc">may</strong> also contain other links, such as a `alternate` link to an EPUB 3 version of the publication for example.
 
 Link relations that are currently used in this specification and its extensions are listed in the [Link Relations registry](relationships.md).
 
@@ -224,8 +242,8 @@ This specification defines the following keys for this JSON object:
 | `duration`  | Duration of the linked resource in seconds | Float| No  |
 | `bitrate`  | Bit rate of the linked resource in kilobits per second | Float| No  |
 | `language`  | Expected language of the linked resource | One or more [BCP 47 Language Tag](https://tools.ietf.org/html/bcp47) | No  |
-| `alternate`  | Alternate resources for the linked resource | One or more [Link Objects](#24-the-link-object) | No |
-| `children`  | Resources that are children of the linked resource, in the context of a given collection role | One or more [Link Objects](#24-the-link-object) | No |
+| `alternate`  | Alternate resources for the linked resource | One or more Link Objects | No |
+| `children`  | Resources that are children of the linked resource, in the context of a given collection role | One or more Link Objects | No |
 
 ## 3. Resources in the Reading Order
 
@@ -335,24 +353,21 @@ This specification recommends using one of the following media types: `image/jpe
 
 ## 8. Extensibility
 
-The manifest provides multiple extension points:
+This specification provides multiple extension points:
 
-- additional collection roles using the [registry of roles](roles.md) or URIs
-- additional metadata using schema.org, terms from the [registry of context documents](contexts/) or URIs (for individual terms)
-- additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs
-- additional properties using the [registry of properties](properties.md)
+- additional collection roles using the [registry of roles](roles.md) or URIs.
+- additional metadata using schema.org, terms from the [registry of context documents](contexts/) or URIs (for individual terms).
+- additional link relations from the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) or URIs.
+- additional properties using the [registry of properties](properties.md).
+- additional modules used in different profiles, using the [registry of modules](modules).
 
-In addition to these extension points, this specification defines both a [profile registry](profiles/) and a [module registry](modules/) as well.
+## 9. Encryption and obfuscation
 
-The initial registry, contains the following profiles:
+Resources of a Readium Web Publication are encrypted when the publication is protected using the LCP DRM, and fonts may be obfuscated.  
 
-| Name  |  Description |
-| ----- | ------------ |
-| [Audiobook Profile](profiles/audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+In such a case, each encrypted or obfuscated resource gets additional keys, defined in the [encryption module](../modules/encryption.md).
 
-## 9. Packaging
+## 10. Packaging
 
 A Readium Web Publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
 
