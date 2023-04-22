@@ -2,9 +2,10 @@
 
 | Name  |  Description | URI |
 | ----- | ------------ | --- |
-| [Audiobook Profile](audiobook.md) | Defines a dedicated profile for audiobooks. | [https//readium.org/webpub-manifest/profiles/audiobook](https//readium.org/webpub-manifest/profiles/audiobook) |
-| [Digital Visual Narratives Profile](divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). | [https//readium.org/webpub-manifest/profiles/divina](https//readium.org/webpub-manifest/profiles/divina) |
-| [EPUB Profile](epub.md) | Additional metadata and collection roles for representing EPUB publications. |[https//readium.org/webpub-manifest/profiles/epub](https//readium.org/webpub-manifest/profiles/epub) |
+| [EPUB Profile](./epub.md) | Additional metadata and collection roles for representing EPUB publications. | https//readium.org/webpub-manifest/profiles/epub |
+| [Audiobook Profile](./audiobook.md) | A dedicated profile for audiobooks. | https//readium.org/webpub-manifest/profiles/audiobook |
+| [Divina Profile](./divina.md) | A dedicated profile for Digital Visual Narrative publications (comics, manga and bandes dessinées). | https//readium.org/webpub-manifest/profiles/divina |
+| [PDF Profile](./pdf.md) | A dedicated profile for PDF documents represented as Web Publications. | https//readium.org/webpub-manifest/profiles/pdf |
 
 
 ## Registering a profile
