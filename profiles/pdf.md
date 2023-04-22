@@ -62,7 +62,7 @@ To declare that it conforms to the PDF Profile, a Readium Web Publication Manife
 
 ## 2. Restrictions on resources in the reading order
 
-In addition to the normal requirements of a `readingOrder`, all Link Objects <strong class="rfc">must</strong> point strictly to PDF resources (with a media type media type of value `application/pdf`), with no fragment identifier. 
+In addition to the normal requirements of a `readingOrder`, all Link Objects <strong class="rfc">must</strong> point strictly to PDF resources, with no fragment identifier. 
 
 > **Note**
 > While this specification defines the possibility to insert several PDF files into the reading order, the current versions of the Readium toolkits only support one item.
