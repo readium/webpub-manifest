@@ -30,8 +30,7 @@
   },
 
   "links": [
-    {"rel": "self", "href": "http://example.org/manifest.audiobook-manifest", "type": "application/audiobook+json"},
-    {"rel": "alternate", "href": "http://example.org/audiobook.m3u", "type": "audio/mpegurl", "bitrate": 64}
+    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/audiobook+json"},
   ],
 
   "readingOrder": [
@@ -66,26 +65,34 @@
 
 ## Introduction
 
-The goal of this document is to provide an audiobook profile for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) that will cover the following requirements:
+The goal of this specification is to provide a profile of the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) specification dedicated to audiobooks.
 
-- provide metadata
-- list the different components of an audiobook
-- support multiple audio formats and means of accessing an audiobook (streaming or downloads)
+This profile relies on:
+
+* a specific [media type](#1-media-type)
+* a declaration of [conformance with this Profile](#2-declaring-conformance-with-the-audiobook-profile),
+* some [required metadata](#3-required-metadata),
+* some [restrictions on the resources of the reading order](#4-restrictions-on-the-resources-of-the-reading-order),
+* some [restrictions on the use of alternate resources](#5-alternate-resources)
+* specific [details on packaging](#6-packaging)
+* the use of [presentation hints](../modules/presentation.md) for specifying display constraints, 
+* the use of [transitions](../modules/transitions.md) to manage transitions between resources of the reading order.
+
+## 1. Media type
 
 While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with audio apps: `application/audiobook+json`.
 
-## 1. Metadata
+## 2. Declaring conformance with the Audiobook Profile
 
-The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
+To declare that it conforms to the Audiobook Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/audiobook` as value.
 
-- it <strong class="rfc">must</strong> include a `conformsTo` element that identifies the manifest as an audiobook: `https://readium.org/webpub-manifest/profiles/audiobook`
-- it <strong class="rfc">must</strong> include a `duration` element that provides the total duration of the audiobook in seconds
+## 3. Required Metadata
 
-The `duration` of an audiobook as expressed in `metadata` is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
+An Audiobook Manifest <strong class="rfc">must</strong> include a `duration` element that provides the total duration of the audiobook. It is expressed as a number of seconds.
 
-In addition to its duration, an audiobook <strong class="rfc">may</strong> indicate that it's an abridged edition using the `abridged` element.
+This informative duration is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
 
-## 2. Listing Audio Resources
+## 4. Restrictions on resources in the reading order
 
 An audiobook is divided into one or more audio resources, which are all listed in the `readingOrder` of the manifest.
 
@@ -96,9 +103,18 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
 
 In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` (in `kbps`) whenever possible.
 
-## 3. Alternate Audio Resources
+## 5. Alternate Resources
 
-In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key:
+To support multiple variants of the same audio content (using a different format or bitrate for instance), Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key:
+
+All Link Objects present in the `alternate` array:
+
+- <strong class="rfc">must</strong> indicate their media-type using `type`
+- <strong class="rfc">should</strong> indicate their bitrate using `bitrate`
+- <strong class="rfc">must</strong> reference audio resources of the same duration as the top-level Link Object
+- <strong class="rfc">must not</strong> include the following keys: `title`, `duration` or `templated`
+
+*Example 1: A resource available in mp3 and opus*
 
 ```json
 {
@@ -111,22 +127,15 @@ In order to support multiple variants of the same audiobook (using a different f
     {
       "href": "http://example.org/part1.opus", 
       "type": "audio/ogg", 
-      "bitrate": 32
+      "bitrate": 64
     }
   ]
 }
 ```
 
-All Link Objects present in the `alternate` array:
+## 6. Packaging
 
-- <strong class="rfc">must</strong> indicate their media-type using `type`
-- <strong class="rfc">should</strong> indicate their bitrate using `bitrate`
-- <strong class="rfc">must</strong> reference audio resources of the same duration as the top-level Link Object
-- <strong class="rfc">must not</strong> include the following keys: `title`, `duration` or `templated`
-
-## 4. Packaging
-
-An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](https://readium.org/webpub-manifest/packaging.html).
+An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](../packaging.md).
 
 To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 

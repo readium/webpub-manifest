@@ -17,9 +17,9 @@
   "@context": "http://readium.org/webpub-manifest/context.jsonld",
   
   "metadata": {
-    "title": "Objectif Lune",
-    "identifier": "urn:isbn:9782203001152",
+    "@type": "http://schema.org/Book",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
+    "title": "Objectif Lune",
     "author": "Hergé",
     "language": "fr",
     "publisher": "Casterman",
@@ -44,16 +44,22 @@
       "rel": "cover",
       "href": "http://example.org/cover.jpg", 
       "type": "image/jpeg",
+      "width": 600,
+      "height": 800,
       "properties": { "page": "center" }
     }, 
     {
       "href": "http://example.org/page1.jpg", 
       "type": "image/jpeg",
+      "width": 600,
+      "height": 800,
       "properties": { "page": "left" }
     }, 
     {
       "href": "http://example.org/page2.jpg", 
       "type": "image/jpeg",
+      "width": 600,
+      "height": 800,
       "properties": { "page": "right" }
     }
   ]
@@ -62,30 +68,36 @@
 
 ## Introduction
 
-The goal of this specification is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
+The goal of this specification is to provide a profile of the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) specification dedicated to digital Visual Narratives.
 
 This profile relies on:
 
+* a specific [media type](#1-media-type)
+* a declaration of [conformance with this Profile](#2-declaring-conformance-with-the-divina-profile),
+* some [restrictions on the resources of the reading order](#3-restrictions-on-the-resources-of-the-reading-order),
+* some [restrictions on the use of alternate resources](#4-alternate-resources)
+* the definition of a new collection type for implementing [guided navigation](#5-guided-navigation),
+* specific [details on packaging](#6-packaging)
 * the use of [presentation hints](../modules/presentation.md) for specifying display constraints, 
-* the definition of a new collection type for implementing [guided navigation](#4-guided-navigation),
-* the [transitions module](../modules/transitions.md) to manage transitions between resources of the reading order.
+* the use of [transitions](../modules/transitions.md) to manage transitions between resources of the reading order.
 
-While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
+## 1. Media type
 
+While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibility with dedicated apps: `application/divina+json`.
 
-## 2. Listing Resources
+## 2. Declaring conformance with the Divina Profile
 
-A visual narrative is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
+To declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as value.
 
-In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
- 
- - they <strong class="rfc">must</strong> point strictly to bitmap images
+## 3. Restrictions on resources in the reading order
+
+A Readium Web Publication Manifest that conforms to the Divina Profile <strong class="rfc">must</strong> strictly reference bitmap images in its `readingOrder`.
 
 In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource.
 
-## 3. Alternate Resources
+## 4. Alternate Resources
 
-In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
+To provide multiple variants of the same image content (using a different format or size for instance), Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
 
 All Link Objects present in the `alternate` array:
 
@@ -99,10 +111,14 @@ All Link Objects present in the `alternate` array:
 {
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg", 
+  "width": 600,
+  "height": 800,
   "alternate": [
     {
       "href": "http://example.org/page1.webp", 
-      "type": "image/webp"
+      "type": "image/webp",
+      "width": 600,
+      "height": 800
     }
   ]
 }
@@ -115,11 +131,15 @@ All Link Objects present in the `alternate` array:
   "href": "http://example.org/page1.jpeg", 
   "type": "image/jpeg",
   "language": "fr",
+  "width": 600,
+  "height": 800,
   "alternate": [
     {
       "href": "http://example.org/page1-jp.jpeg", 
       "type": "image/jpeg",
-      "language": "jp"
+      "language": "jp",
+      "width": 600,
+      "height": 800
     }
   ]
 }
@@ -144,7 +164,7 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
-## 4. Guided Navigation
+## 5. Guided Navigation
 
 In addition to having [a table of contents](https://readium.org/webpub-manifest/#6-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
 
@@ -180,16 +200,16 @@ This current draft does not cover guided navigation over alternate versions of e
 ]
 ```
 
-## 5. Packaging
+## 6. Packaging
 
-A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](./packaging.md).
+A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](../packaging.md).
 
 To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 
 - its file extension <strong class="rfc">must</strong> be `.divina`
 - its media type <strong class="rfc">must</strong> be `application/divina+zip`
 
-As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](./packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by transitions, guided navigation, sounds etc. accessible via Divina compliant applications.  
+As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](../packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by transitions, guided navigation, sounds etc. accessible via Divina compliant applications.  
 
 
 ## Appendix A. Compliance Levels
