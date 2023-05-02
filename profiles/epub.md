@@ -20,7 +20,8 @@ This profile relies on:
 * a declaration of [conformance with this Profile](#1-declaring-conformance-with-the-epub-profile),
 * some [restrictions on the resources of the readingOrder](#2-restrictions-on-the-resources-of-the readingorder),
 * the definition of additional [collection roles](#3-collection-roles),
-* the definition of additional [Link properties](#4-link-properties),
+* the definition of an additional [metadata property](#4-metadata-properties)
+* the definition of additional [Link properties](#5-link-properties),
 * the use of the [encryption module](../modules/encryption.md).
 
 ## 1. Declaring conformance with the EPUB Profile
@@ -44,8 +45,20 @@ While EPUB itself allows SVG and other formats as long as an XHTML fallback is p
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
+## 4. Metadata Properties
 
-## 4. Link Properties
+This profile defines one additional presentation hint in the Webpub metadata object: 
+
+| Key   | Semantics | Type     | Values    | 
+| ----- | --------- | -------- | --------- | 
+| [layout](#layout)  | Hint about the default layout for all resources in the publication.  | String  | `fixed` or `reflowable`  | 
+
+
+### layout
+
+The `layout` property defaults to `reflowable` for all publications conforming to the EPUB profile. Using `fixed` indicates that the document has a viewport with a fixed size. It can be overridden on a per-resource basis as well via the [link properties](#5-link-properties).
+
+## 5. Link Properties
 
 This profile defines additional Link properties: 
 
@@ -83,9 +96,7 @@ While the media type is the main way to identify the nature of a resource in a L
 
 ### layout
 
-The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
-
-Using `fixed` it can also indicate that an HTML document has a viewport with a fixed size.
+The `layout` property defaults to `reflowable` unless overridden for the whole publication via the `layout` presentation hint in the [metadata properties](#4-metadata-properties). Using `fixed` on an individual resource indicates that the document has a viewport with a fixed size.
 
 ```
 {
