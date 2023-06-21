@@ -64,12 +64,6 @@
 
 The goal of this specification is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
-This profile relies on:
-
-* the use of [presentation hints](../modules/presentation.md) for specifying display constraints, 
-* the definition of a new collection type for implementing [guided navigation](#4-guided-navigation),
-* the [transitions module](../modules/transitions.md) to manage transitions between resources of the reading order.
-
 While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
 
 
@@ -146,6 +140,8 @@ All Link Objects present in the `alternate` array:
 
 ## 4. Guided Navigation
 
+> Note: With on-going work on guided navigation for all Readium Web Publications, this section will most likely be replaced in the near future with an updated syntax in a separate document.
+
 In addition to having [a table of contents](https://readium.org/webpub-manifest/#6-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
 
 - pointing directly to a resource (`image1.jpg`)
@@ -197,30 +193,12 @@ To maximize compatibility with dedicated apps, such a package has its own file e
 - its file extension <strong class="rfc">must</strong> be `.divina`
 - its media type <strong class="rfc">must</strong> be `application/divina+zip`
 
-As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](./packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by transitions, guided navigation, sounds etc. accessible via Divina compliant applications.  
+As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](./packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by Divina features.
 
 
-## Appendix A. Compliance Levels
+## Appendix A. Examples
 
-### Level 0
-
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [alternate resources](#3-alternate-resources)
-
-
-### Level 1
-
-* Support for [Divina presentation hints](../modules/presentation.md)
-* Support for [guided navigation](#4-guided-navigation)
-* Support for [transitions](../modules/transitions.md)
-
-### Level 2
-
-* TBD
-
-## Appendix B. Examples
-
-*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+*Example 5: A manga is a Divina where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
 
 
 ```json
@@ -252,7 +230,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
 }
 ```
 
-*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+*Example 6: A webtoon is a Divina where images are scrolled in a single continuous strip of content*
 
 
 ```json
