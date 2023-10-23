@@ -65,7 +65,7 @@
     },
     "links": {
       "@container": "@set",
-      "@id": "https://www.w3.org/ns/pub-vocab/manifest-vocab/manifest#links"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest#links"
     },
     "href": "http://schema.org/url",
     "type": "http://schema.org/encodingFormat",
