@@ -59,7 +59,7 @@ A Package <strong class="rfc">must</strong> also include all resources within th
 
 These resource files <strong class="rfc">may</strong> be in any location descendant from the Root Directory, or in the Root Directory itself.
 
-Resource files <strong class="rfc">must</strong> be referenced via a relative path, which do not start with a drive letter (such as "C:"), use forward slashes instead of back slashes and do not end with a trailing slash.
+Resource files <strong class="rfc">must</strong> be referenced via a relative path, which does not start with a drive letter (such as "C:"), uses forward slashes instead of back slashes and does not end with a trailing slash.
 
 
 ## 6. Hybrid EPUB 3 + RPF Packages
