@@ -1,5 +1,9 @@
 # Transitions
 
+The Transitions Module defines transition effects that may appear between resources in a Divina publication.
+
+### transitionForward, transitionBackward
+
 In the reading order of a publication, Link Objects <strong class="rfc">may</strong> contain the following additional properties: 
 
 | Key   | Semantics | Type     | Values    | 
@@ -7,9 +11,7 @@ In the reading order of a publication, Link Objects <strong class="rfc">may</str
 | [transitionForward](#transitionForward-transitionBackward) | Describes the transition to be applied when moving FROM the previous resource TO current resource in reading order  | Transition Object | See [Transition Object](#the-transition-object)  | 
 | [transitionBackward](#transitionForward-transitionBackward) | Describes the transition to be applied when moving FROM the current resource TO the previous resource in reading order  | Transition Object | See [Transition Object](#the-transition-object)  | 
 
-### transitionForward, transitionBackward
-
-Keep in mind that a forward transition is placed on the TARGET resource of the transition.
+Note: Keep in mind that a forward transition is placed on the TARGET resource of the transition.
 
 ### The Transition Object
 
