@@ -214,20 +214,27 @@ Subjects can also be expressed using an object with the following elements: `nam
 }
 ```
 
-In many fields and territories, a number of controlled vocabularies are in use to identify subjects. For example THEMA is used in the publishing industry to provide an international subject scheme.
-
-To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` must be a URI.
-
 The `code` element is available to provide the string that identifies the subject in a given scheme:
 
 ```json
 "subject": {
   "name": "Manga: Shonen",
   "sortAs": "Shonen",
-  "scheme": "http://www.editeur.org/151/Thema/",
+  "scheme": "https://ns.editeur.org/thema/",
   "code": "XAMG"
 }
 ```
+
+To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` must be a URI.
+
+This document identifies the following subject schemes along with a recommended URI value for them:
+| Scheme | URI |
+| ------- | --- |
+| BIC | <https://bic.org.uk/> |
+| BISAC | <https://www.bisg.org/#bisac> |
+| CLIL | <http://clil.org/> |
+| Thema | <https://ns.editeur.org/thema/> |
+
 
 ## Collections & series
 
