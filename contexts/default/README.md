@@ -228,6 +228,7 @@ The `code` element is available to provide the string that identifies the subjec
 To indicate that a subject belongs to a particular scheme, the `scheme` element is available. The `scheme` must be a URI.
 
 This document identifies the following subject schemes along with a recommended URI value for them:
+
 | Scheme | URI |
 | ------- | --- |
 | BIC | <https://bic.org.uk/> |
