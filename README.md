@@ -6,7 +6,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 
 **Editors:**
 
-* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Hadrien Gardeur
 
 **Participate:**
 
