@@ -4,7 +4,7 @@ This specification defines a file format for packaging into a single-file contai
 
 **Editors:**
 
-* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Hadrien Gardeur
 * Laurent Le Meur ([EDRLab](http://www.edrlab.org))
 
 **Participate:**
