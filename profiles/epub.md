@@ -2,7 +2,7 @@
 
 **Editors:**
 
-* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Hadrien Gardeur
 
 **Participate:**
 
@@ -17,15 +17,14 @@ This profile is meant to facilitate backward compatibility with EPUB and ensure 
 
 This profile relies on:
 
-* a declaration of [conformance with this Profile](#1-declaring-conformance-with-the-epub-profile),
+* a declaration of [conformance](#1-declaring-conformance-with-the-epub-profile),
 * some [restrictions on the resources of the readingOrder](#2-restrictions-on-the-resources-of-the readingorder),
-* the definition of additional [collection roles](#3-collection-roles),
-* the definition of additional [Link properties](#4-link-properties),
+* the definition of additional [collection roles](#3-collection-roles), [metadata elements](#4-metadata) and [link properties](#5-link-properties),
 * the use of the [encryption module](../modules/encryption.md).
 
 ## 1. Declaring conformance with the EPUB Profile
 
-In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/epub` as value.
+In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` element that contains `https://readium.org/webpub-manifest/profiles/epub` as one of its values.
 
 ## 2. Restrictions on resources in the `readingOrder`
 
@@ -44,8 +43,33 @@ While EPUB itself allows SVG and other formats as long as an XHTML fallback is p
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
+## 4. Metadata
 
-## 4. Link Properties
+| Key   | Semantics | Type     |
+| ----- | --------- | -------- |
+| [mediaOverlay](#mediaoverlay)  | Contains optional Media Overlay specific metadata. | Media Overlay Object |
+
+### mediaOverlay
+
+| Key   | Semantics | Type     |
+| ----- | --------- | -------- |
+| activeClass  | Author-defined CSS class name to apply to the currently-playing EPUB Content Document element. | CSS Class Name |
+| playbackActiveClass  | Author-defined CSS class name to apply to the EPUB Content Document's document element when playback is active. | CSS Class Name |
+
+The EPUB specification provides dedicated elements for Media Overlay with:
+
+- the total duration of a Media Overlay publication
+- the duration of specific SMIL files
+- and an optional narrator
+
+In the context of the Readium Web Publication Manifest, these dedicated elements are superseded by:
+
+- the use of [`duration`](../contexts/default/#duration-and-number-of-pages) in `metadata` for the total duration of a publication
+- the use of [`duration`](../#24-the-link-object) in Link Objects for the duration of specific resources (SMIL, SMIL-equivalent or media resources)
+- and a dedicated element for [`narrator`](../contexts/default/#contributors)
+
+
+## 5. Link Properties
 
 This profile defines additional Link properties: 
 

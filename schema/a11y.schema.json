@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://readium.org/webpub-manifest/schema/a11y.schema.json",
+  "title": "Accessibility Object",
+  "type": "object",
+  "properties": {
+    "conformsTo": {
+      "type": [
+        "string",
+        "array"
+      ],
+      "format": "uri",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "certification": {
+      "type": "object",
+      "properties": {
+        "certifiedBy": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "report": {
+          "type": "string"
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "accessMode": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "auditory",
+          "chartOnVisual",
+          "chemOnVisual",
+          "colorDependent",
+          "diagramOnVisual",
+          "mathOnVisual",
+          "musicOnVisual",
+          "tactile",
+          "textOnVisual",
+          "textual",
+          "visual"
+        ]  
+      }
+    },
+    "accessModeSufficient": {
+      "type": "array",
+      "items": {
+        "type": [
+          "array",
+          "string"
+        ],
+        "if": {
+          "type": "string"
+        },
+        "then": {
+          "enum": [
+            "auditory",
+            "tactile",
+            "textual",
+            "visual"
+          ]
+        },
+        "items": {
+          "type": "string",
+          "enum": [
+            "auditory",
+            "tactile",
+            "textual",
+            "visual"
+          ]
+        }
+      }
+    },
+    "feature": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "annotations",
+          "ARIA",
+          "bookmarks",
+          "index",
+          "printPageNumbers",
+          "readingOrder",
+          "structuralNavigation",
+          "tableOfContents",
+          "taggedPDF",
+          "alternativeText",
+          "audioDescription",
+          "captions",
+          "describedMath",
+          "longDescription",
+          "rubyAnnotations",
+          "signLanguage",
+          "transcript",
+          "displayTransformability",
+          "synchronizedAudioText",
+          "timingControl",
+          "unlocked",
+          "ChemML",
+          "latex",
+          "MathML",
+          "ttsMarkup",
+          "highContrastAudio",
+          "highContrastDisplay",
+          "largePrint",
+          "braille",
+          "tactileGraphic",
+          "tactileObject",
+          "none"
+        ]
+      }
+    },
+    "hazard": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "flashing",
+          "noFlashingHazard",
+          "motionSimulation",
+          "noMotionSimulationHazard",
+          "sound",
+          "noSoundHazard",
+          "unknown",
+          "none"
+        ]
+      }
+    }
+  }
+}

@@ -28,10 +28,6 @@ The only allowed value for the compression property is currently:
 | --------- | --------- | 
 | `deflate` | Deflate algorithm, as defined by the Zip specification |
 
-### originalLength
-
-The `originalLength` property <strong class="rfc">should</strong> only be present if the `compression` property is present and has a non-null value. 
-
 
 ## LCP Encrypted Resource
 

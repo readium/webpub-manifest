@@ -4,7 +4,7 @@ This specification defines a file format for packaging into a single-file contai
 
 **Editors:**
 
-* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Hadrien Gardeur
 * Laurent Le Meur ([EDRLab](http://www.edrlab.org))
 
 **Participate:**
@@ -59,7 +59,23 @@ A Package <strong class="rfc">must</strong> also include all resources within th
 
 These resource files <strong class="rfc">may</strong> be in any location descendant from the Root Directory, or in the Root Directory itself.
 
-Contents within the Package <strong class="rfc">must</strong> reference these resources via [relative-URL strings](https://url.spec.whatwg.org/#relative-url-string).
+Resource files <strong class="rfc">must</strong> be referenced in the manifest via [path relative scheme-less url strings](https://url.spec.whatwg.org/#path-relative-scheme-less-url-string). The path must be relative to the Root Directory of the Package. 
+
+*Example 1: Reference to a Resource file in a Manifest file. Such reference does not start with a drive letter (such as "C:") or a slash, and it is URL encoded. In this example, the file is named "armanddurand chapter01.mp3" in the Package.*
+
+```json
+{
+  "readingOrder": [
+    {
+      "duration": 1176,
+      "type": "audio/mpeg",
+      "title": "01 - Chapter I",
+      "bitrate": 64,
+      "href": "audio/armanddurand%20chapter01.mp3"
+    }
+  ]
+}
+```
 
 
 ## 6. Hybrid EPUB 3 + RPF Packages
@@ -75,7 +91,7 @@ If a Readium Web Publication Manifest is included in an EPUB 3 file, the followi
 - - The EPUB 3 package document <strong class="rfc">must</strong> include in its `manifest` structure a reference to any resource (e.g. sound) used in the Readium Web Publication Manifest.
 
 
-*Example 1: Reference to a Manifest file in an EPUB 3 OPF structure*
+*Example 2: Reference to a Manifest file in an EPUB 3 OPF structure*
 
 ```xml
 <metadata>

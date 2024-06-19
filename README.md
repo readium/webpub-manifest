@@ -6,7 +6,7 @@ It is the primary exchange format used in the [Readium Architecture](https://rea
 
 **Editors:**
 
-* Hadrien Gardeur ([De Marque](http://www.demarque.com))
+* Hadrien Gardeur
 
 **Participate:**
 
@@ -348,9 +348,10 @@ The initial registry, contains the following profiles:
 
 | Name  |  Description |
 | ----- | ------------ |
-| [Audiobook Profile](profiles/audiobook.md) | Defines a dedicated profile for audiobooks. |
-| [Digital Visual Narratives Profile](profiles/divina.md) | Defines a dedicated profile for visual narratives (comics, manga and bandes dessinées). |
-| [EPUB Profile](profiles/epub.md) | Additional metadata and collection roles for representing EPUB publications. |
+| [EPUB Profile](profiles/epub.md) | A profile for EPUB content transformed to Web Publications. |
+| [Audiobook Profile](profiles/audiobook.md) |  A profile for Audiobooks. |
+| [Divina Profile](profiles/divina.md) | A profile for Digital Visual Narrative publications (comics, manga and bandes dessinées). |
+| [PDF Profile](profiles/pdf.md) | A profile for PDF documents integrated into Web Publications. |
 
 ## 9. Packaging
 

@@ -4,6 +4,7 @@
     "schema": "http://schema.org/",
     "metadata": "@nest",
     "identifier": "@id",
+    "conformsTo": "http://purl.org/dc/terms/conformsTo",
     "title": {
       "@id": "http://schema.org/name",
       "@container": "@language"
@@ -13,6 +14,12 @@
       "@container": "@language"
     },
     "sortAs": "http://schema.org/alternateName",
+    "accessibility": "@nest",
+    "summary": "http://schema.org/accessibilitySummary",
+    "accessMode": "http://schema.org/accessMode",
+    "accessModeSufficient": "http://schema.org/accessModeSufficient",
+    "feature": "http://schema.org/accessibilityFeature",
+    "hazard": "http://schema.org/accessibilityHazard",
     "author": "http://schema.org/author",
     "translator": "http://schema.org/translator",
     "editor": "http://schema.org/editor",
@@ -58,7 +65,7 @@
     },
     "links": {
       "@container": "@set",
-      "@id": "https://www.w3.org/ns/pub-vocab/manifest-vocab/manifest#links"
+      "@id": "https://www.w3.org/ns/pub-vocab/manifest#links"
     },
     "href": "http://schema.org/url",
     "type": "http://schema.org/encodingFormat",
