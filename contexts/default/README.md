@@ -290,8 +290,9 @@ To properly browse through a publication, a User Agent needs to know its progres
 
 A manifest <span class="rfc">may</span> express this information using `readingProgression`. 
 
-It allows the following values: `ltr` (left to right) and `rtl` (right to left)
+It allows the following values: `ltr` (left to right), `rtl` (right to left), `ttb` (top to bottom), `btt` (bottom to top) and `auto`.
 
+It defaults to `auto` when no value is set.
 
 ## Duration and Number of Pages
 

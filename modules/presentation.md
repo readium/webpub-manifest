@@ -1,4 +1,4 @@
-# Divina Presentation Hints
+# Advanced Divina Presentation Hints
 
 The Presentation Hints extension defines a number of hints for User Agents about the way content <strong class="rfc">should</strong> be presented to the user.
 
@@ -43,10 +43,8 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 "metadata": {
   "readingProgression": "ttb",
   "presentation": {
-    "continuous": false,
     "fit": "height",
     "clipped": true
-
   }
 }
 ```
@@ -85,7 +83,7 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 "metadata": {
   "readingProgression": "ttb",
   "presentation": {
-    "continuous": true,
+    "layout": "scrolled",
     "overflow": "scrolled",
     "fit": "width"
   }

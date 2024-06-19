@@ -139,9 +139,6 @@
       "$ref": "extensions/epub/metadata.schema.json"
     },
     {
-      "$ref": "extensions/divina/metadata.schema.json"
-    },
-    {
       "$ref": "extensions/presentation/metadata.schema.json"
     }
   ]
