@@ -68,8 +68,14 @@
 
 The goal of this specification is to provide a profile dedicated to digital visual narratives (Divina) for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
-While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
+## 1. Declaring conformance with the Divina profile
 
+In order to declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
+
+- include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as one of its values
+- use `application/divina+json` as its media type
+
+While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
 
 ## 2. Listing Resources
 
@@ -79,7 +85,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
  
  - they <strong class="rfc">must</strong> point strictly to bitmap images
 
-In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource.
+In addition, all Link Objects <strong class="rfc">should</strong> also include `width` and `height` to indicate the dimensions of each resource.
 
 ## 3. Alternate Resources
 
@@ -191,7 +197,7 @@ As an alternative, the manifest may also be included in:
 }
 ```
 
-*Example 6: A continuously scrolled publication is a Divina where images are displayed in a single continuous strip of content*
+*Example 6: A continuously scrolled publication (a "webtoon") is a Divina where images are displayed in a single continuous strip of content*
 
 
 ```json

@@ -105,8 +105,12 @@
       "type": "string",
       "enum": [
         "rtl",
-        "ltr"
-      ]
+        "ltr",
+        "ttb",
+        "btt",
+        "auto"
+      ],
+      "default": "auto"
     },
     "description": {
       "type": "string"

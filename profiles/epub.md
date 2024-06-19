@@ -52,7 +52,7 @@ This profile defines additional Link properties:
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
-| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  |  
+| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
 
 ### contains
 
