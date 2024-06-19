@@ -83,7 +83,7 @@ W3C has recently provided a definition for a [Web Publication](https://w3c.githu
 > A **Web Publication (WP)** is a collection of one or more constituent resources, organized together in a uniquely identifiable grouping, and presented using standard Open Web Platform technologies.
 
 It also provides a definition for a manifest in the context of a Web Publication:
-> [...] **manifest** refers to an abstract means to contain information necessary to the proper management, rendering, and so on, of a publication. This is opposed to metadata that contains information on the content of the publication like author, publication date, and so on. The precise format of how such a manifest is stored is not considered in this document.
+> [...] **manifest** refers to an abstract means to contain information necessary to the proper management, rendering, and so on, of a publication. 
 
 The Readium Web Publication Manifest is an attempt to standardize a JSON based manifest format that follows both definitions.
 
@@ -319,7 +319,7 @@ Link Objects in `readingOrder`, `resources` or `links` can be identified as such
 
 All Link Objects containing the `cover` link relation <strong class="rfc">must</strong> reference an image directly. They <strong class="rfc">should</strong> include a `height` and `width` to facilitate how they are processed by User Agents.
 
-This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif`, `image/webp` or `image/svg+xml`. 
+This specification recommends using one of the following media types: `image/jpeg`, `image/png`, `image/gif`, `image/avif` or `image/svg+xml`. 
 
 *Example 8: Reference to a cover*
 
@@ -348,10 +348,10 @@ The initial registry, contains the following profiles:
 
 | Name  |  Description |
 | ----- | ------------ |
-| [EPUB Profile](profiles/epub.md) | A profile for EPUB content transformed to Web Publications. |
 | [Audiobook Profile](profiles/audiobook.md) |  A profile for Audiobooks. |
 | [Divina Profile](profiles/divina.md) | A profile for Digital Visual Narrative publications (comics, manga and bandes dessinées). |
-| [PDF Profile](profiles/pdf.md) | A profile for PDF documents integrated into Web Publications. |
+| [EPUB Profile](profiles/epub.md) | A profile for EPUB publications served as Web Publications. |
+| [PDF Profile](profiles/pdf.md) | A profile for PDF documents served as Web Publications. |
 
 ## 9. Packaging
 

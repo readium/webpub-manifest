@@ -14,7 +14,6 @@ The Readium Web Publication Manifest specification defines the following roles f
 
 | Role  | Definition | Compact Collection? | Required? | Reference |
 | ----- | ---------- | ------------------- | --------- | --------- |
-| `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  | [Visual Narrative Profile](profiles/visual-narrative.md#4-guided-navigation) |
 | `landmarks`  | Identifies the collection that contains a list of points of interest.  | Yes  | No  | [EPUB Profile](profiles/epub.md#collection-roles) |
 | `loa`  | Identifies the collection that contains a list of audio resources.  | Yes  | No  | [EPUB Profile](profiles/epub.md#collection-roles) |
 | `loi`  | Identifies the collection that contains a list of illustrations.  | Yes  | No  | [EPUB Profile](profiles/epub.md#collection-roles) |
