@@ -25,7 +25,6 @@ The following elements <strong class="rfc">may</strong> be included in `properti
 - [`clipped`](#clipped)
 - [`fit`](#fit)
 - [`orientation`](#orientation)
-- [`page`](#page)
 
 ## 3. Properties
 
@@ -37,7 +36,7 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 | ----- | --------- | -------- | --------- | ------- |
 | `clipped` | Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.  | Boolean  | `true` or `false` | `false` |
 
-*In this example, resources are handled in a discontinuous way and each resource is scaled to fit the viewport height and clipped to fit different viewport widths. It behaves like turbomedia.*
+*In this example, all resources are scaled to fit the viewport height and clipped to fit different viewport widths. It behaves like turbomedia.*
 
 ```json
 "metadata": {
@@ -54,8 +53,8 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 ```json
 "readingOrder": [
   {
-    "href": "image1.webp",
-    "type": "image/webp",
+    "href": "image1.avif",
+    "type": "image/avif",
     "properties": {
       "fit": "width",
       "clipped": true
@@ -77,25 +76,13 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 | `width`  |  The content is centered and scaled to fit the viewport width. |
 | `height` |  The content is centered and scaled to fit the viewport height. |
 
-*In this example, resources are handled in a continuous way, the content is scrollable on the vertical axis and each resource fits the viewport width. It behaves like a webtoon.*
-
-```json
-"metadata": {
-  "readingProgression": "ttb",
-  "presentation": {
-    "layout": "scrolled",
-    "overflow": "scrolled",
-    "fit": "width"
-  }
-}
-```
 *In this example, a specific resource is scaled to fit the viewport.*
 
 ```json
 "readingOrder": [
   {
-    "href": "image1.webp",
-    "type": "image/webp",
+    "href": "image1.avif",
+    "type": "image/avif",
     "properties": {
       "fit": "contain"
     }
@@ -111,7 +98,7 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 
 The `orientation` property is mostly relevant for resources with fixed dimensions (images, videos), where the orientation has an actual impact on how the resource is displayed.
 
-*In this example, each resource should be displayed in portrait mode.*
+*In this example, all resources should be displayed in portrait mode.*
 
 ```json
 "metadata": {
