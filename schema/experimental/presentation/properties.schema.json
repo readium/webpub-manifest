@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://readium.org/webpub-manifest/schema/extensions/presentation/properties.schema.json",
+  "$id": "https://readium.org/webpub-manifest/schema/experimental/presentation/properties.schema.json",
   "title": "Presentation Hints - Link Properties",
   "type": "object",
   "properties": {

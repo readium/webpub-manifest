@@ -146,7 +146,7 @@
       "$ref": "extensions/epub/metadata.schema.json"
     },
     {
-      "$ref": "extensions/presentation/metadata.schema.json"
+      "$ref": "experimental/presentation/metadata.schema.json"
     }
   ]
 }

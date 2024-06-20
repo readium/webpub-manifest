@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://readium.org/webpub-manifest/schema/extensions/presentation/metadata.schema.json",
+  "$id": "https://readium.org/webpub-manifest/schema/experimental/presentation/metadata.schema.json",
   "title": "Presentation Hints - Metadata",
   "type": "object",
   "properties": {
