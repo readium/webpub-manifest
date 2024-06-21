@@ -15,7 +15,7 @@ Default Context | [https://readium.org/webpub-manifest/context.jsonld](https://r
 
 ## Title
 
-A Web Publication Manifest <span class="rfc">must</span> contain a single title using the `title` element:
+A Web Publication Manifest <strong class="rfc">must</strong> contain a single title using the `title` element:
 
 ```json
 "title": "Moby-Dick"
@@ -33,14 +33,14 @@ To provide these alternate representations, an object may be used instead of a s
 }
 ```
 
-In addition to the `title` element, the manifest <span class="rfc">may</span> also contain an optional `subtitle` element with exactly the same syntax.
+In addition to the `title` element, the manifest <strong class="rfc">may</strong> also contain an optional `subtitle` element with exactly the same syntax.
 
 ```json
 "title": "Flatland"
 "subtitle": "A Romance of Many Dimensions"
 ```
 
-The manifest <span class="rfc">may</span> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
+The manifest <strong class="rfc">may</strong> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
 "title": "A Tale of Two Cities"
@@ -49,7 +49,7 @@ The manifest <span class="rfc">may</span> also contain a `sortAs` element to pro
 
 ## Identifier
 
-A Web Publication Manifest <span class="rfc">should</span> contain an identifier. The identifier must be a valid URI:
+A Web Publication Manifest <strong class="rfc">should</strong> contain an identifier. The identifier must be a valid URI:
 
 ```json
 "identifier": "http://example.com/publication"
@@ -63,7 +63,7 @@ Publications come in all shapes and forms but when it comes to publications that
 - Fixed layout publications, where each resource is a "page" and may be presented side by side with another resource in a "spread".
 - Scrolled publications, where displaying the publication in a continuous scroll is meaningful and resources are usually fit to the width of the viewport
 
-In order to convey this information, a Web Publication Manifest <span class="rfc">may</span> include a `layout` property with one of the following values:
+In order to convey this information, a Web Publication Manifest <strong class="rfc">may</strong> include a `layout` property with one of the following values:
 
 | Value | Description | Formats |
 | ----- | ----------- | ------- |
@@ -75,7 +75,7 @@ To provide a number of affordances (taps, gestures, keyboard events), reading sy
 
 For scrolled publication, the reading progression is always from top to bottom. 
 
-For reflowable and fixed layout publications, a manifest <span class="rfc">may</span> express this information using `readingProgression`. 
+For reflowable and fixed layout publications, a manifest <strong class="rfc">may</strong> express this information using `readingProgression`. 
 
 It allows the following values: `ltr` (left to right, default value) and `rtl` (right to left).
 
@@ -85,7 +85,7 @@ The default context for the Web Publication Manifest provides a number of elemen
 
 In addition to these elements, it also provides a generic term for contributors: `contributor`.
 
-A Web Publication Manifest <span class="rfc">should</span> contain one or more contributors.
+A Web Publication Manifest <strong class="rfc">should</strong> contain one or more contributors.
 
 The most straightforward expression of a contributor is through a simple string:
 
@@ -136,7 +136,7 @@ ISNI (http://isni.org) is the preferred authority, but other sources may also be
 }
 ```
 
-If none of the elements available are specific enough, a `contributor` element <span class="rfc">may</span> be used instead. 
+If none of the elements available are specific enough, a `contributor` element <strong class="rfc">may</strong> be used instead. 
 
 The `contributor` element should be used with an object that contains a `role`. 
 All values for the `role` element should be based on [MARC relator codes](https://www.loc.gov/marc/relators/relaterm.html): 
@@ -150,13 +150,13 @@ All values for the `role` element should be based on [MARC relator codes](https:
 
 ## Language
 
-In order to indicate its primary language, a Web Publication Manifest <span class="rfc">should</span> use a `language` element. Its value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag.
+In order to indicate its primary language, a Web Publication Manifest <strong class="rfc">should</strong> use a `language` element. Its value must be a valid [BCP 47](https://tools.ietf.org/html/bcp47) language tag.
 
 ```json
 "language": "en"
 ```
 
-If a publication has more than one primary language (a bilingual edition for example), the `language` element <span class="rfc">may</span> contain an array of values:
+If a publication has more than one primary language (a bilingual edition for example), the `language` element <strong class="rfc">may</strong> contain an array of values:
 
 ```json
 "language": ["en", "fr", "ja"]
@@ -164,7 +164,7 @@ If a publication has more than one primary language (a bilingual edition for exa
 
 ## Description
 
-A Web Publication Manifest <span class="rfc">may</span> contain a description of the publication in plain text using the `description` element:
+A Web Publication Manifest <strong class="rfc">may</strong> contain a description of the publication in plain text using the `description` element:
 
 ```json
 "description": "The story of two gnomes, discussing the meaning of life in a Scandivanian garden."
@@ -172,7 +172,7 @@ A Web Publication Manifest <span class="rfc">may</span> contain a description of
 
 ## Publisher
 
-A Web Publication Manifest <span class="rfc">may</span> list one or more publishers using the `publisher` element.
+A Web Publication Manifest <strong class="rfc">may</strong> list one or more publishers using the `publisher` element.
 
 To provide even more details, it's also possible to use the `imprint` element that behaves exactly like `publisher` but provides a complementary information.
 
@@ -198,7 +198,7 @@ Multiple publishers can be listed in this element using the string or object rep
 
 ## Publication date
 
-A Web Publication Manifest <span class="rfc">may</span> contain a publication date using the `published` element. The publication date must be a valid ISO 8601 date.
+A Web Publication Manifest <strong class="rfc">may</strong> contain a publication date using the `published` element. The publication date must be a valid ISO 8601 date.
 
 ```json
 "published": "2016-09-02"
@@ -206,7 +206,7 @@ A Web Publication Manifest <span class="rfc">may</span> contain a publication da
 
 ## Modification date
 
-Publications can be updated and to identify each specific version, the manifest <span class="rfc">should</span> also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
+Publications can be updated and to identify each specific version, the manifest <strong class="rfc">should</strong> also contain a `modified` element containing the timestamp when the publication was last modified expressed as an ISO 8601 time and date:
 
 ```json
 "modified": "2016-02-22T11:31:38Z"
@@ -214,7 +214,7 @@ Publications can be updated and to identify each specific version, the manifest 
 
 ## Subjects
 
-A Web Publication Manifest <span class="rfc">may</span> also provide one or more subjects using the `subject` element:
+A Web Publication Manifest <strong class="rfc">may</strong> also provide one or more subjects using the `subject` element:
 
 ```json
 "subject": "Historical Fiction"
@@ -262,7 +262,7 @@ This document identifies the following subject schemes along with a recommended 
 
 ## Collections & series
 
-A Web Publication Manifest <span class="rfc">may</span> indicate that it belongs to one or multiple collections/series.
+A Web Publication Manifest <strong class="rfc">may</strong> indicate that it belongs to one or multiple collections/series.
 
 `collection` and `series` behave the same way, the most straightforward way to indicate that a publication belongs to a collection/series is through a simple string:
 
@@ -316,7 +316,7 @@ A position can be either an integer or a float where the value is greater than z
 
 ## Duration and number of pages
 
-To indicate the length of a publication, a Web Publication Manifest <span class="rfc">may</span> include the `duration` and `numberOfPages` terms.
+To indicate the length of a publication, a Web Publication Manifest <strong class="rfc">may</strong> include the `duration` and `numberOfPages` terms.
 
 `duration` is expressed in seconds using a float (number in JSON), while `numberOfPages` is an integer.
 
@@ -333,9 +333,9 @@ In addition to these two properties, `abridged` is used to indicate an abridged 
 
 ## Accessibility metadata
 
-In order to document its accessibility metadata, a Web Publication Manifest <span class="rfc">should</span> include an `accessibility` object.
+In order to document its accessibility metadata, a Web Publication Manifest <strong class="rfc">should</strong> include an `accessibility` object.
 
-This `accessibility` object <span class="rfc">may</span> contain the following properties: `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
+This `accessibility` object <strong class="rfc">may</strong> contain the following properties: `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
 
 ### Conformance
 

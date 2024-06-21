@@ -144,7 +144,75 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
-## 4. Packaging
+## 4. Layout
+
+### 4.1. Fixed layout
+
+By default, each publication that conforms to the Divina profile is handled like a fixed layout publications, which means that:
+
+- the publication is paginated by default, where each page is an image from the `readingOrder`
+- images are usually displayed with both dimensions fully contained in the viewport by default
+- reading systems can decide to display two images side by side in a spread, using the [`page`](../properties.md#page) property as a hint
+
+Reading systems are strongly encouraged to let the user decide if they prefer reading the publication:
+
+- paginated or scrolled
+- with or without spreads (for example, with spreads in landscape mode but without spreads in portrait mode)
+
+### 4.2. Scrolled publications
+
+For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
+
+In order to override the default behaviour of displaying all images from the `readingOrger` in a single continuous scroll, this profile also introduces a new property for Link Objects:
+
+<dl>
+  <dt>break-scroll-before</dt>
+  <dd>Specifies that an item in the reading order should break the current continuous scroll and start a new one.</dd>
+</dl>
+
+*Example 4: A scrolled publication with a break in its continuous scroll*
+
+```json
+{
+  "metadata": {
+    "title": "The Cat Collector",
+    "identifier": "https://example.com/cat-collector",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
+    "layout": "scrolled"
+  },
+  "readingOrder": [
+    {
+      "href": "episode1-image1.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode1-image2.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode1-image3.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode2-image1.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "break-scroll-before": true
+      }
+    },
+    {
+      "href": "episode2-image2.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode2-image3.jpg",
+      "type": "image/jpeg"
+    }
+  ]
+}
+```
+
+## 5. Packaging
 
 A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification relies on the [Readium Packaging Format](./packaging.md).
 
@@ -161,7 +229,7 @@ As an alternative, the manifest may also be included in:
 
 ## Appendix A. Examples
 
-*Example 5: A manga is a Divina where images are presented sequentially from right-to-left*
+*Example 5: A manga is a Divina where the reading progression is right-to-left*
 
 
 ```json
@@ -220,3 +288,13 @@ As an alternative, the manifest may also be included in:
   ]
 }
 ```
+
+## Appendix B. JSON Schema
+
+The following JSON Schemas for this profile is available under version control: 
+
+- Link Properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/divina/properties.schema.json>
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: 
+
+- <https://readium.org/webpub-manifest/schema/extensions/divina/properties.schema.json>

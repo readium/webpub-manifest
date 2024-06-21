@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json",
-  "title": "EPUB Extension - Metadata",
+  "title": "EPUB Profile - Metadata",
   "type": "object",
   "properties": {
     "mediaOverlay": {

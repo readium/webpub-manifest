@@ -13,7 +13,7 @@ This document is meant to provide an exhaustive list of properties that can be a
 
 ### page
 
-The `page` property is meant to provide a hint to Use Agents that rely on synthetic spreads to display more than a single resource at once.
+The `page` property is meant to provide a hint to reading systems that rely on synthetic spreads to display more than a single resource at once.
 
 
 *In this example, the first page should be displayed of the left of a synthetic spread, the second page on the right.*
