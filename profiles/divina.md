@@ -15,7 +15,6 @@
 ```json
 {
   "@context": "http://readium.org/webpub-manifest/context.jsonld",
-  
   "metadata": {
     "title": "Objectif Lune",
     "identifier": "urn:isbn:9782203001152",
@@ -26,7 +25,6 @@
     "published": "1953-12-30",
     "modified": "2018-12-10T18:21:18Z",
     "numberOfPages": 62,
-    "readingProgression": "ltr",
     "belongsTo": {
       "series": {
         "name": "Les Aventures de Tintin",
@@ -34,7 +32,6 @@
       }
     }
   },
-
   "links": [
     {
       "rel": "self", 
@@ -42,7 +39,6 @@
       "type": "application/divina+json"
     }
   ],
-
   "readingOrder": [
     {
       "rel": "cover",
@@ -68,7 +64,7 @@
 
 The goal of this specification is to provide a profile dedicated to digital visual narratives (Divina) for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
-## 1. Declaring conformance with the Divina profile
+## 1. Declaring conformance to the Divina profile
 
 In order to declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
 
@@ -206,9 +202,7 @@ As an alternative, the manifest may also be included in:
     "title": "Webtoon",
     "identifier": "https://example.com/webtoon",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "presentation": {
-      "layout": "scrolled"
-    }
+    "layout": "scrolled"
   },
   "readingOrder": [
     {

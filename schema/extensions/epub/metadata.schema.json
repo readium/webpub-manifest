@@ -16,20 +16,6 @@
           "type": "string"
         }
       }
-    },
-    "presentation": {
-      "type": "object",
-      "properties": {
-        "layout": {
-          "description": "Hints how the layout of the publication should be presented",
-          "type": "string",
-          "enum": [
-            "fixed", 
-            "reflowable",
-            "scrolled"
-          ]
-        }
-      }
     }
   }
 }

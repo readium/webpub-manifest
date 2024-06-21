@@ -14,6 +14,7 @@
       "@container": "@language"
     },
     "sortAs": "http://schema.org/alternateName",
+    "layout": "http://www.idpf.org/2013/rendition#layout",
     "accessibility": "@nest",
     "summary": "http://schema.org/accessibilitySummary",
     "accessMode": "http://schema.org/accessMode",

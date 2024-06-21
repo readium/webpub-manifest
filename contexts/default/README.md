@@ -55,6 +55,29 @@ A Web Publication Manifest <span class="rfc">should</span> contain an identifier
 "identifier": "http://example.com/publication"
 ```
 
+## Layout and reading progression
+
+Publications come in all shapes and forms but when it comes to publications that are primarily made of text and visuals, we can organize them in three main categories:
+
+- Reflowable publications, where users are free to change the text and layout however they prefer.
+- Fixed layout publications, where each resource is a "page" and may be presented side by side with another resource in a "spread".
+- Scrolled publications, where displaying the publication in a continuous scroll is meaningful and resources are usually fit to the width of the viewport
+
+In order to convey this information, a Web Publication Manifest <span class="rfc">may</span> include a `layout` property with one of the following values:
+
+| Value | Description | Formats |
+| ----- | ----------- | ------- |
+| `reflowable` | Reading systems are free to adapt text and layout entirely based on user preferences. | EPUB |
+| `fixed` | Each resource is a "page" where both dimensions are usually contained in the device's viewport. Based on user preferences, the reading system may also display two resources side by side in a spread. | Divina, Fixed Layout EPUB or PDF
+| `scrolled` | Resources are displayed in a continuous scroll by filling the width of the viewport, without any visible gap between between spine items. | Scrolled Divina |
+
+To provide a number of affordances (taps, gestures, keyboard events), reading systems also need to know the reading progression.
+
+For scrolled publication, the reading progression is always from top to bottom. 
+
+For reflowable and fixed layout publications, a manifest <span class="rfc">may</span> express this information using `readingProgression`. 
+
+It allows the following values: `ltr` (left to right, default value) and `rtl` (right to left).
 
 ## Contributors
 
@@ -290,16 +313,6 @@ A position can be either an integer or a float where the value is greater than z
   }
 }
 ```
-
-## Reading progression direction
-
-To properly browse through a publication, a User Agent needs to know its progression direction.
-
-A manifest <span class="rfc">may</span> express this information using `readingProgression`. 
-
-It allows the following values: `ltr` (left to right), `rtl` (right to left), `ttb` (top to bottom), `btt` (bottom to top) and `auto`.
-
-It defaults to `auto` when no value is set.
 
 ## Duration and number of pages
 
