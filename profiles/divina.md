@@ -163,7 +163,7 @@ Reading systems are strongly encouraged to let the user decide if they prefer re
 
 For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
 
-In order to override the default behaviour of displaying all images from the `readingOrger` in a single continuous scroll, this profile also introduces a new property for Link Objects:
+In order to override the default behaviour of displaying all images from the `readingOrder` in a single continuous scroll, this profile also introduces a new property for Link Objects:
 
 <dl>
   <dt>break-scroll-before</dt>
