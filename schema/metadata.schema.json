@@ -4,10 +4,6 @@
   "title": "Metadata",
   "type": "object",
   "properties": {
-    "identifier": {
-      "type": "string",
-      "format": "uri"
-    },
     "@type": {
       "type": "string",
       "format": "uri"
@@ -31,6 +27,13 @@
     },
     "subtitle": {
       "$ref": "language-map.schema.json"
+    },
+    "identifier": {
+      "type": "string",
+      "format": "uri"
+    },
+    "altIdentifier": {
+      "$ref": "altIdentifier.schema.json"
     },
     "accessibility": {
       "$ref": "a11y.schema.json"
