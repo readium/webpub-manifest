@@ -76,6 +76,14 @@ This element, can contain one or more alternate identifiers where each value is 
 }
 ```
 
+This document recommends using the following URN schemes when documenting an identifier for a publication:
+
+| URN Namespace | Reference | Example |
+| ------------- | --------- | ------- |
+| `doi` | <https://www.iana.org/assignments/urn-formal/doi> | `urn:doi:10.1000/456%23789` |
+| `isbn` | <https://www.iana.org/assignments/urn-formal/isbn> | `urn:isbn:9789510184356` |
+| `issn` | <https://www.iana.org/assignments/urn-formal/issn> | `urn:issn:1560-1560` |
+
 ## Contributors
 
 The default context for the Web Publication Manifest provides a number of elements to indicate the nature of a contributor: `author`, `translator`, `editor`, `artist`, `illustrator`, `letterer`, `penciler`, `colorist`, `inker` and `narrator`.
