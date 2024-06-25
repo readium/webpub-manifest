@@ -67,7 +67,7 @@ This element, can contain one or more alternate identifiers where each value is 
   "identifier": "urn:isbn:9780679760801",
   "altIdentifier": [
     "https://viaf.org/viaf/175580487/",
-    "https://example.com/identifer/12345",
+    "https://example.com/identifier/12345",
     {
       "value": "123456789",
       "scheme": "https://example.com/identifierScheme"
@@ -83,6 +83,7 @@ This document recommends using the following URN schemes when documenting an ide
 | `doi` | <https://www.iana.org/assignments/urn-formal/doi> | `urn:doi:10.1000/456%23789` |
 | `isbn` | <https://www.iana.org/assignments/urn-formal/isbn> | `urn:isbn:9789510184356` |
 | `issn` | <https://www.iana.org/assignments/urn-formal/issn> | `urn:issn:1560-1560` |
+| `uuid` | <https://www.rfc-editor.org/rfc/rfc9562.html> | `urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6` |
 
 ## Contributors
 
