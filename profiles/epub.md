@@ -119,3 +119,72 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
   }
 }
 ```
+
+## Appendix A - JSON Schema
+
+The following JSON Schema resources for this profile are available under version control: 
+
+- Metadata: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/metadata.schema.json>
+- Collection roles: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/subcollections.schema.json>
+- Link properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/properties.schema.json>
+
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resources: 
+
+- <https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json>
+- <https://readium.org/webpub-manifest/schema/extensions/epub/subcollections.schema.json>
+- <https://readium.org/webpub-manifest/schema/extensions/epub/properties.schema.json>
+
+## Appendix B - Deprecated properties
+
+### `layout` in a `presentation` object
+
+This specification was initially responsible for documenting the layout of an entire publication using either: `reflowable` or `fixed`.
+
+This was handled using a `layout` property in a `presentation` object. 
+
+```json
+"metadata": {
+  "title": "Bella the dragon",
+  "presentation": {
+    "layout": "fixed
+  }
+}
+```
+
+This is no longer supported by this profile because `layout` became a first-class metadata defined in the default context.
+
+```json
+"metadata": {
+  "title": "Bella the dragon",
+  "layout": "fixed
+}
+```
+
+### Orientation
+
+The EPUB specification allow content creators to specify the intended orientation of:
+
+- [an entire publication](https://www.w3.org/TR/epub-33/#orientation)
+- [or a specific resource](https://www.w3.org/TR/epub-33/#orientation-overrides)
+
+This was originally supported in this EPUB profile through:
+
+- an `orientation` property for the `presentation` object in `metadata` (for the entire publication)
+- and an `orientation` property in the `properties` of a Link Object (for a specific resource)
+
+This is no longer supported in Readium because forcing an orientation goes against the principles that we're trying to follow, where the user is always free to decide what feels best for them.
+
+### Spreads
+
+The EPUB specification allow content creators to specify when synthetic spreads should be presented to the user for a fixed layout document either for:
+
+- [an entire publication](https://www.w3.org/TR/epub-33/#spread)
+- [or a specific resource](https://www.w3.org/TR/epub-33/#spread-overrides)
+
+This was originally supported in this EPUB profile through:
+
+- a `spread` property for the `presentation` object in `metadata` (for the entire publication)
+- and a `spread` property in the `properties` of a Link Object (for a specific resource)
+
+This is no longer supported in Readium because forcing spreads goes against the principles that we're trying to follow, where the user is always free to decide what feels best for them.
