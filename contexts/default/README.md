@@ -69,11 +69,9 @@ In order to convey this information, a Web Publication Manifest <strong class="r
 | ----- | ----------- | ------- |
 | `reflowable` | Reading systems are free to adapt text and layout entirely based on user preferences. | EPUB |
 | `fixed` | Each resource is a "page" where both dimensions are usually contained in the device's viewport. Based on user preferences, the reading system may also display two resources side by side in a spread. | Divina, Fixed Layout EPUB or PDF
-| `scrolled` | Resources are displayed in a continuous scroll by filling the width of the viewport, without any visible gap between between spine items. | Scrolled Divina |
+| `scrolled` | Resources are displayed in a continuous scroll, usually by filling the width of the viewport, without any visible gap between between spine items. | Scrolled Divina |
 
 To provide a number of affordances (taps, gestures, keyboard events), reading systems also need to know the reading progression.
-
-For scrolled publication, the reading progression is always from top to bottom. 
 
 For reflowable and fixed layout publications, a manifest <strong class="rfc">may</strong> express this information using `readingProgression`. 
 
