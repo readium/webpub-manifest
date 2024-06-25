@@ -148,7 +148,7 @@ This was handled using a `layout` property in a `presentation` object.
 "metadata": {
   "title": "Bella the dragon",
   "presentation": {
-    "layout": "fixed
+    "layout": "fixed"
   }
 }
 ```
@@ -158,7 +158,7 @@ This is no longer supported by this profile because `layout` became a first-clas
 ```json
 "metadata": {
   "title": "Bella the dragon",
-  "layout": "fixed
+  "layout": "fixed"
 }
 ```
 
