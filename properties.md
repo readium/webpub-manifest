@@ -42,11 +42,8 @@ The `page` property is meant to provide a hint to reading systems that rely on s
 
 | Key   | Semantics | Type     | Values    | Reference |
 | ----- | --------- | -------- | --------- | --------- |
-| [`clipped`](/modules/presentation.md#clipped)  | Specifies whether or not the parts of a linked resource that flow out of the viewport are clipped.  | Boolean  | `true` or `false` | [Presentation Hints](/modules/presentation.md) |
 | [`contains`](/profiles/epub.md#contains) | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB Profile](/profiles/epub.md#properties) |
-| [`fit`](/modules/presentation.md#fit) | Specifies constraints for the presentation of a linked resource within the viewport.  | String  | `contain`, `cover`, `width` or `height` | [Presentation Hints](/modules/presentation.md) |
 | [`layout`](/profiles/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | [EPUB Profile](/profiles/epub.md#properties) |
-| [`orientation`](/modules/presentation.md#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  | [Presentation Hints](/modules/presentation.md) |
 | [`encrypted`](/modules/encryption.md)  | Indicates  how a given resource has been encrypted or obfuscated.  | [Encryption Object](/modules/encryption.md#encryption-object)  | See the definition of the Encryption Object | [Encryption Module](/modules/encryption.md) |
 
 ## OPDS 2.0

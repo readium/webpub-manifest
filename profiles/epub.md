@@ -15,12 +15,6 @@ While EPUB publications can mostly be converted directly to the Readium Web Publ
 
 This profile is meant to facilitate backward compatibility with EPUB and ensure that these specialized elements are not lost when converting to the Readium Web Publication Manifest.
 
-This profile relies on:
-
-* a declaration of [conformance](#1-declaring-conformance-with-the-epub-profile),
-* some [restrictions on the resources of the readingOrder](#2-restrictions-on-the-resources-of-the readingorder),
-* the definition of additional [collection roles](#3-collection-roles), [metadata elements](#4-metadata) and [link properties](#5-link-properties),
-* the use of the [encryption module](../modules/encryption.md).
 
 ## 1. Declaring conformance with the EPUB Profile
 
@@ -32,7 +26,15 @@ A Readium Web Publication Manifest that conforms to the EPUB Profile <strong cla
 
 While EPUB itself allows SVG and other formats as long as an XHTML fallback is provided, this is not the case for this profile, which requires to reverse the fallback chain.
 
-## 3. Collection Roles
+## 3. Layout
+
+The [`layout`](../contexts/default/README.md#layout-and-reading-progression) of a publication that conforms to the EPUB profile defaults to `reflowable`.
+
+This profile also supports fixed layout publications where the `layout` property is set to `fixed` for the entire publication.
+
+This behaviour can be overriden by specific resources in the reading order using the `layout` property, [as defined in this document](#layout).
+
+## 4. Collection Roles
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -43,7 +45,7 @@ While EPUB itself allows SVG and other formats as long as an XHTML fallback is p
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
-## 4. Metadata
+## 5. Metadata
 
 | Key   | Semantics | Type     |
 | ----- | --------- | -------- |
@@ -69,7 +71,7 @@ In the context of the Readium Web Publication Manifest, these dedicated elements
 - and a dedicated element for [`narrator`](../contexts/default/#contributors)
 
 
-## 5. Link Properties
+## 6. Link Properties
 
 This profile defines additional Link properties: 
 
@@ -107,9 +109,8 @@ While the media type is the main way to identify the nature of a resource in a L
 
 ### layout
 
-The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
+By default, each item in the `readingOrder` follows the `layout` specified in `metadata` but the EPUB profile allow content creators to override this behaviour using the `layout` property on specific resources.
 
-Using `fixed` it can also indicate that an HTML document has a viewport with a fixed size.
 
 ```
 {
