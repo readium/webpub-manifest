@@ -159,6 +159,67 @@ Reading systems are strongly encouraged to let the user decide if they prefer re
 - paginated or scrolled
 - with or without spreads (for example, with spreads in landscape mode but without spreads in portrait mode)
 
+Some publications may contain spreads where the user needs to navigate back and forth between both pages of the spread to read through the publication.
+
+In order to convey this information, this profile introduces a new property for Link Objects:
+
+<dl>
+  <dt>meaningful-spread</dt>
+  <dd>Hint that the current resource should be presented in a spread to fully convey the meaning of its content.</dd>
+</dl>
+
+*Example 4: Meaningful spread in a manga*
+
+```json
+{
+  "metadata": {
+    "title": "Kawaii Nekko",
+    "identifier": "https://example.com/kawaii-nekko",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
+    "readingProgression": "rtl"
+  },
+  "readingOrder": [
+    {
+      "href": "cover.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "page": "center"
+      }
+    },
+    {
+      "href": "page1.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "page": "right"
+      }
+    },
+    {
+      "href": "page2.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "page": "left"
+      }
+    },
+    {
+      "href": "page3.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "page": "right",
+        "meaningful-spread": true
+      }
+    },
+    {
+      "href": "page4.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "page": "left",
+        "meaningful-spread": true
+      }
+    }
+  ]
+}
+```
+
 ### 4.2. Scrolled publications
 
 For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
@@ -170,7 +231,7 @@ In order to override the default behaviour of displaying all images from the `re
   <dd>Specifies that an item in the reading order should break the current continuous scroll and start a new one.</dd>
 </dl>
 
-*Example 4: A scrolled publication with a break in its continuous scroll*
+*Example 5: A scrolled publication with a break in its continuous scroll*
 
 ```json
 {
@@ -226,70 +287,7 @@ As an alternative, the manifest may also be included in:
 - an EPUB 3 publication, as specified in the [Readium Packaging Format](./packaging.md#6-hybrid-epub-3--rpf-packages) specification
 - or dedicated formats for comics such as CBZ/CBR
 
-
-## Appendix A. Examples
-
-*Example 5: A manga is a Divina where the reading progression is right-to-left*
-
-
-```json
-{
-  "metadata": {
-    "title": "Manga",
-    "identifier": "https://example.com/manga",
-    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "readingProgression": "rtl"
-  },
-  "readingOrder": [
-    {
-      "rel": "cover",
-      "href": "cover.jpg", 
-      "type": "image/jpeg",
-      "properties": { "page": "center" }
-    }, 
-    {
-      "href": "page1.jpg", 
-      "type": "image/jpeg",
-      "properties": { "page": "right" }
-    }, 
-    {
-      "href": "page2.jpg", 
-      "type": "image/jpeg",
-      "properties": { "page": "left" }
-    }
-  ]
-}
-```
-
-*Example 6: A continuously scrolled publication (a "webtoon") is a Divina where images are displayed in a single continuous strip of content*
-
-
-```json
-{
-  "metadata": {
-    "title": "Webtoon",
-    "identifier": "https://example.com/webtoon",
-    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "layout": "scrolled"
-  },
-  "readingOrder": [
-    {
-      "href": "image1.jpg",
-      "type": "image/jpeg"
-    },
-    {
-      "href": "image2.jpg",
-      "type": "image/jpeg"
-    },
-    {
-      "href": "image3.jpg",
-      "type": "image/jpeg"
-    }
-  ]
-}
-```
-
-## Appendix B. JSON Schema
+## Appendix A. JSON Schema
 
 The following JSON Schemas for this profile is available under version control: 
 
