@@ -15,7 +15,6 @@
 ```json
 {
   "@context": "http://readium.org/webpub-manifest/context.jsonld",
-  
   "metadata": {
     "title": "Objectif Lune",
     "identifier": "urn:isbn:9782203001152",
@@ -26,7 +25,6 @@
     "published": "1953-12-30",
     "modified": "2018-12-10T18:21:18Z",
     "numberOfPages": 62,
-    "readingProgression": "ltr",
     "belongsTo": {
       "series": {
         "name": "Les Aventures de Tintin",
@@ -34,11 +32,13 @@
       }
     }
   },
-
   "links": [
-    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/divina+json"}
+    {
+      "rel": "self", 
+      "href": "http://example.org/manifest.json", 
+      "type": "application/divina+json"
+    }
   ],
-
   "readingOrder": [
     {
       "rel": "cover",
@@ -62,16 +62,16 @@
 
 ## Introduction
 
-The goal of this specification is to provide a profile dedicated to visual narratives for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
+The goal of this specification is to provide a profile dedicated to digital visual narratives (Divina) for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
-This profile relies on:
+## 1. Declaring conformance to the Divina profile
 
-* the use of [presentation hints](../modules/presentation.md) for specifying display constraints, 
-* the definition of a new collection type for implementing [guided navigation](#4-guided-navigation),
-* the [transitions module](../modules/transitions.md) to manage transitions between resources of the reading order.
+In order to declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
 
-While the Digital Visual Narrative Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with dedicated apps: `application/divina+json`.
+- include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as one of its values
+- use `application/divina+json` as its media type
 
+While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
 
 ## 2. Listing Resources
 
@@ -81,7 +81,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
  
  - they <strong class="rfc">must</strong> point strictly to bitmap images
 
-In addition, all Link Objects <strong class="rfc">should</strong> include `width` and `height` to indicate the dimensions of each resource.
+In addition, all Link Objects <strong class="rfc">should</strong> also include `width` and `height` to indicate the dimensions of each resource.
 
 ## 3. Alternate Resources
 
@@ -93,7 +93,7 @@ All Link Objects present in the `alternate` array:
 - <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`
 - <strong class="rfc">may</strong> target a different language using `language`
 
-*Example 1: A resource available in JPEG and WebP*
+*Example 1: A resource available in JPEG and AVIF*
 
 ```json
 {
@@ -101,8 +101,8 @@ All Link Objects present in the `alternate` array:
   "type": "image/jpeg", 
   "alternate": [
     {
-      "href": "http://example.org/page1.webp", 
-      "type": "image/webp"
+      "href": "http://example.org/page1.avif", 
+      "type": "image/avif"
     }
   ]
 }
@@ -144,75 +144,92 @@ All Link Objects present in the `alternate` array:
 }
 ```
 
-## 4. Guided Navigation
+## 4. Layout
 
-In addition to having [a table of contents](https://readium.org/webpub-manifest/#6-table-of-contents), a visual narrative <strong class="rfc">may</strong> also provide guided navigation where each reference is either:
+### 4.1. Fixed layout
 
-- pointing directly to a resource (`image1.jpg`)
-- or to a fragment of a resource using [Media Fragments](https://www.w3.org/TR/media-frags) (`image1.jpg#xywh=160,120,320,240`)
+By default, each publication that conforms to the Divina profile is handled like a fixed layout publications, which means that:
 
-This document introduces a new collection role to fulfill that goal:
+- the publication is paginated by default, where each page is an image from the `readingOrder`
+- images are usually displayed with both dimensions fully contained in the viewport by default
+- reading systems can decide to display two images side by side in a spread, using the [`page`](../properties.md#page) property as a hint
 
-| Role  | Definition | Compact Collection? | Required? |
-| ----- | ---------- | ------------------- | --------- |
-| `guided` | Identifies a collection containing guided navigation into a publication. | Yes  | No  |
+Reading systems are strongly encouraged to let the user decide if they prefer reading the publication:
 
-To avoid duplicating content between `readingOrder` and `guided`, Link Objects referenced in `guided` <strong class="rfc">must</strong> only contain `href` and `title`.
+- paginated or scrolled
+- with or without spreads (for example, with spreads in landscape mode but without spreads in portrait mode)
 
-This current draft does not cover guided navigation over alternate versions of each image resource.
+### 4.2. Scrolled publications
 
-*Example 4: Guided navigation with full page displayed before panels*
+For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
+
+In order to override the default behaviour of displaying all images from the `readingOrder` in a single continuous scroll, this profile also introduces a new property for Link Objects:
+
+<dl>
+  <dt>break-scroll-before</dt>
+  <dd>Specifies that an item in the reading order should break the current continuous scroll and start a new one.</dd>
+</dl>
+
+*Example 4: A scrolled publication with a break in its continuous scroll*
 
 ```json
-"guided": [
-  {
-    "href": "http://example.org/page1.jpeg",
-    "title": "Page 1"
+{
+  "metadata": {
+    "title": "The Cat Collector",
+    "identifier": "https://example.com/cat-collector",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
+    "layout": "scrolled"
   },
-  {
-    "href": "http://example.org/page1.jpeg#xywh=0,0,300,200",
-    "title": "Panel 1"
-  },
-  {
-    "href": "http://example.org/page1.jpeg#xywh=300,200,310,200",
-    "title": "Panel 2"
-  }
-]
+  "readingOrder": [
+    {
+      "href": "episode1-image1.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode1-image2.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode1-image3.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode2-image1.jpg",
+      "type": "image/jpeg",
+      "properties": {
+        "break-scroll-before": true
+      }
+    },
+    {
+      "href": "episode2-image2.jpg",
+      "type": "image/jpeg"
+    },
+    {
+      "href": "episode2-image3.jpg",
+      "type": "image/jpeg"
+    }
+  ]
+}
 ```
 
 ## 5. Packaging
 
-A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](../packaging.md).
+A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification relies on the [Readium Packaging Format](./packaging.md).
 
 To maximize compatibility with dedicated apps, such a package has its own file extension and media-type:
 
 - its file extension <strong class="rfc">must</strong> be `.divina`
 - its media type <strong class="rfc">must</strong> be `application/divina+zip`
 
-As an alternative, the manifest may also be included into an EPUB 3 publication, an hybrid solution also specified in the [Readium Packaging Format (RPF)](../packaging.md) specification. This approach allows a publisher to create EPUB 3 fixed layout comics which are enriched by transitions, guided navigation, sounds etc. accessible via Divina compliant applications.  
+As an alternative, the manifest may also be included in:
+
+- an EPUB 3 publication, as specified in the [Readium Packaging Format](./packaging.md#6-hybrid-epub-3--rpf-packages) specification
+- or dedicated formats for comics such as CBZ/CBR
 
 
-## Appendix A. Compliance Levels
+## Appendix A. Examples
 
-### Level 0
-
-* Support for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest) with bitmap images in `readingOrder`
-* Support for [presentation hints](../modules/presentation.md)
-* Support for [alternate resources](#3-alternate-resources)
-
-
-### Level 1
-
-* Support for [guided navigation](#4-guided-navigation)
-* Support for [transitions](../modules/transitions.md)
-
-### Level 2
-
-* TBD
-
-## Appendix B. Examples
-
-*Example 5: A manga is a DiViNa where images are presented sequentially from right-to-left with a discontinuity between images that are not in the same spread*
+*Example 5: A manga is a Divina where the reading progression is right-to-left*
 
 
 ```json
@@ -221,11 +238,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
     "title": "Manga",
     "identifier": "https://example.com/manga",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "readingProgression": "rtl",
-    "presentation": {
-      "fit": "contain",
-      "spread": "landscape"
-    }
+    "readingProgression": "rtl"
   },
   "readingOrder": [
     {
@@ -248,7 +261,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
 }
 ```
 
-*Example 6: A webtoon is a DiViNa where images are scrolled in a single continuous strip of content*
+*Example 6: A continuously scrolled publication (a "webtoon") is a Divina where images are displayed in a single continuous strip of content*
 
 
 ```json
@@ -257,12 +270,7 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
     "title": "Webtoon",
     "identifier": "https://example.com/webtoon",
     "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
-    "readingProgression": "ttb",
-    "presentation": {
-      "overflow": "scrolled",
-      "fit": "width",
-      "continuous": true
-    }
+    "layout": "scrolled"
   },
   "readingOrder": [
     {
@@ -280,3 +288,13 @@ As an alternative, the manifest may also be included into an EPUB 3 publication,
   ]
 }
 ```
+
+## Appendix B. JSON Schema
+
+The following JSON Schemas for this profile is available under version control: 
+
+- Link Properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/divina/properties.schema.json>
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: 
+
+- <https://readium.org/webpub-manifest/schema/extensions/divina/properties.schema.json>

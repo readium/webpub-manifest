@@ -1,4 +1,4 @@
-# DiViNa guidelines
+# Advanced Divina guidelines
 
 ## Guidelines relative to presentation hints
 

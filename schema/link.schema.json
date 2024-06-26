@@ -32,10 +32,24 @@
     },
     "properties": {
       "description": "Properties associated to the linked resource",
+      "type": "object",
+      "properties": {
+        "page": {
+          "description": "Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.",
+          "type": "string",
+          "enum": [
+            "left", 
+            "right", 
+            "center"
+            ]
+          }
+      },
       "allOf": [
-        { "$ref": "https://drafts.opds.io/schema/properties.schema.json" },
         { "$ref": "extensions/epub/properties.schema.json" },
-        { "$ref": "extensions/presentation/properties.schema.json" }
+        { "$ref": "extensions/encryption/properties.schema.json" },
+        { "$ref": "extensions/divina/properties.schema.json" },
+        { "$ref": "experimental/presentation/properties.schema.json" },
+        { "$ref": "https://drafts.opds.io/schema/properties.schema.json" }
       ]
     },
     "height": {

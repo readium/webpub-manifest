@@ -15,12 +15,6 @@ While EPUB publications can mostly be converted directly to the Readium Web Publ
 
 This profile is meant to facilitate backward compatibility with EPUB and ensure that these specialized elements are not lost when converting to the Readium Web Publication Manifest.
 
-This profile relies on:
-
-* a declaration of [conformance](#1-declaring-conformance-with-the-epub-profile),
-* some [restrictions on the resources of the readingOrder](#2-restrictions-on-the-resources-of-the readingorder),
-* the definition of additional [collection roles](#3-collection-roles), [metadata elements](#4-metadata) and [link properties](#5-link-properties),
-* the use of the [encryption module](../modules/encryption.md).
 
 ## 1. Declaring conformance with the EPUB Profile
 
@@ -32,7 +26,15 @@ A Readium Web Publication Manifest that conforms to the EPUB Profile <strong cla
 
 While EPUB itself allows SVG and other formats as long as an XHTML fallback is provided, this is not the case for this profile, which requires to reverse the fallback chain.
 
-## 3. Collection Roles
+## 3. Layout
+
+The [`layout`](../contexts/default/README.md#layout-and-reading-progression) of a publication that conforms to the EPUB profile defaults to `reflowable`.
+
+This profile also supports fixed layout publications where the `layout` property is set to `fixed` for the entire publication.
+
+This behaviour can be overriden by specific resources in the reading order using the `layout` property, [as defined in this document](#layout).
+
+## 4. Collection Roles
 
 | Role  | Semantics | Compact? | Required? |
 | ----- | --------- | -------- | --------- |
@@ -43,7 +45,7 @@ While EPUB itself allows SVG and other formats as long as an XHTML fallback is p
 | lov  | Identifies the collection that contains a list of videos.  | Yes  | No  |
 | pageList  | Identifies the collection that contains a list of pages.  | Yes  | No  |
 
-## 4. Metadata
+## 5. Metadata
 
 | Key   | Semantics | Type     |
 | ----- | --------- | -------- |
@@ -69,7 +71,7 @@ In the context of the Readium Web Publication Manifest, these dedicated elements
 - and a dedicated element for [`narrator`](../contexts/default/#contributors)
 
 
-## 5. Link Properties
+## 6. Link Properties
 
 This profile defines additional Link properties: 
 
@@ -107,9 +109,8 @@ While the media type is the main way to identify the nature of a resource in a L
 
 ### layout
 
-The `layout` property defaults to `reflowable` for text resources and `fixed` for images or videos.
+By default, each item in the `readingOrder` follows the `layout` specified in `metadata` but the EPUB profile allow content creators to override this behaviour using the `layout` property on specific resources.
 
-Using `fixed` it can also indicate that an HTML document has a viewport with a fixed size.
 
 ```
 {
@@ -119,3 +120,72 @@ Using `fixed` it can also indicate that an HTML document has a viewport with a f
   }
 }
 ```
+
+## Appendix A - JSON Schema
+
+The following JSON Schema resources for this profile are available under version control: 
+
+- Metadata: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/metadata.schema.json>
+- Collection roles: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/subcollections.schema.json>
+- Link properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/epub/properties.schema.json>
+
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resources: 
+
+- <https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json>
+- <https://readium.org/webpub-manifest/schema/extensions/epub/subcollections.schema.json>
+- <https://readium.org/webpub-manifest/schema/extensions/epub/properties.schema.json>
+
+## Appendix B - Deprecated properties
+
+### `layout` in a `presentation` object
+
+This specification was initially responsible for documenting the layout of an entire publication using either: `reflowable` or `fixed`.
+
+This was handled using a `layout` property in a `presentation` object. 
+
+```json
+"metadata": {
+  "title": "Bella the dragon",
+  "presentation": {
+    "layout": "fixed"
+  }
+}
+```
+
+This is no longer supported by this profile because `layout` became a first-class metadata defined in the default context.
+
+```json
+"metadata": {
+  "title": "Bella the dragon",
+  "layout": "fixed"
+}
+```
+
+### Orientation
+
+The EPUB specification allow content creators to specify the intended orientation of:
+
+- [an entire publication](https://www.w3.org/TR/epub-33/#orientation)
+- [or a specific resource](https://www.w3.org/TR/epub-33/#orientation-overrides)
+
+This was originally supported in this EPUB profile through:
+
+- an `orientation` property for the `presentation` object in `metadata` (for the entire publication)
+- and an `orientation` property in the `properties` of a Link Object (for a specific resource)
+
+This is no longer supported in Readium because forcing an orientation goes against the principles that we're trying to follow, where the user is always free to decide what feels best for them.
+
+### Spreads
+
+The EPUB specification allow content creators to specify when synthetic spreads should be presented to the user for a fixed layout document either for:
+
+- [an entire publication](https://www.w3.org/TR/epub-33/#spread)
+- [or a specific resource](https://www.w3.org/TR/epub-33/#spread-overrides)
+
+This was originally supported in this EPUB profile through:
+
+- a `spread` property for the `presentation` object in `metadata` (for the entire publication)
+- and a `spread` property in the `properties` of a Link Object (for a specific resource)
+
+This is no longer supported in Readium because forcing spreads goes against the principles that we're trying to follow, where the user is always free to decide what feels best for them.
