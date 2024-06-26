@@ -40,7 +40,7 @@ The `clipped` property is meant to adapt visual resources to any given viewport 
 
 ```json
 "metadata": {
-  "readingProgression": "ttb",
+  "layout": "scrolled",
   "presentation": {
     "fit": "height",
     "clipped": true
