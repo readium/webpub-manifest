@@ -4,16 +4,46 @@ Each Link Object may contain a Properties Object, containing a number of relevan
 
 This document is meant to provide an exhaustive list of properties that can be associated to a Link Object, along with their semantics and usage.
 
+
+## Core properties
+
+| Key   | Semantics | Type     | Values    |
+| ----- | --------- | -------- | --------- |
+| [`page`](#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  | 
+
+### page
+
+The `page` property is meant to provide a hint to reading systems that rely on synthetic spreads to display more than a single resource at once.
+
+
+*In this example, the first page should be displayed of the left of a synthetic spread, the second page on the right.*
+
+```json
+"readingOrder": [
+  {
+    "href": "page1.jpg", 
+    "type": "image/jpeg",
+    "properties": {
+      "page": "left"
+    }
+  },
+  {
+    "href": "page2.jpg", 
+    "type": "image/jpeg",
+    "properties": {
+      "page": "right"
+    }
+  }
+]
+```
+
+
 ## Extensions
 
 | Key   | Semantics | Type     | Values    | Reference |
 | ----- | --------- | -------- | --------- | --------- |
-| [`contains`](/profiles/epub.md#contains)  | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB Profile](/profiles/epub.md#properties) |
+| [`contains`](/profiles/epub.md#contains) | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB Profile](/profiles/epub.md#properties) |
 | [`layout`](/profiles/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | [EPUB Profile](/profiles/epub.md#properties) |
-| [`orientation`](/modules/presentation.md#orientation)  | Suggested orientation for the device when displaying the linked resource.  | String  | `auto`, `landscape` or `portrait`  | [Presentation Hints](/modules/presentation.md) |
-| [`overflow`](/modules/presentation.md#overflow)  | Suggested method for handling overflow while displaying the linked resource.  | String  | `auto`, `clipped`, `paginated` or `scrolled`  | [Presentation Hints](/modules/presentation.md) |
-| [`page`](/modules/presentation.md#page)  | Indicates how the linked resource should be displayed in a reading environment that displays synthetic spreads.  | String  | `left`, `right` or `center`  |  [Presentation Hints](/modules/presentation.md) |
-| [`spread`](/modules/presentation.md#spread)  | Indicates the condition to be met for the linked resource to be rendered within a synthetic spread. | String  | `auto`, `both`, `none` or `landscape`  | [Presentation Hints](/modules/epub.md#properties) |
 | [`encrypted`](/modules/encryption.md)  | Indicates  how a given resource has been encrypted or obfuscated.  | [Encryption Object](/modules/encryption.md#encryption-object)  | See the definition of the Encryption Object | [Encryption Module](/modules/encryption.md) |
 
 ## OPDS 2.0

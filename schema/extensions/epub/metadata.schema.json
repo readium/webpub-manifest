@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://readium.org/webpub-manifest/schema/extensions/epub/metadata.schema.json",
-  "title": "EPUB Extension - Metadata",
+  "title": "EPUB Profile - Metadata",
   "type": "object",
   "properties": {
     "mediaOverlay": {
@@ -14,19 +14,6 @@
         "playbackActiveClass": {
           "description": "Author-defined CSS class name to apply to the EPUB Content Document's document element when playback is active.",
           "type": "string"
-        }
-      }
-    },
-    "presentation": {
-      "type": "object",
-      "properties": {
-        "layout": {
-          "description": "Hints how the layout of the resource should be presented",
-          "type": "string",
-          "enum": [
-            "fixed", 
-            "reflowable"
-          ]
         }
       }
     }

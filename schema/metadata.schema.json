@@ -107,16 +107,22 @@
     "subject": {
       "$ref": "subject.schema.json"
     },
+    "layout": {
+      "description": "Hints how the layout of the publication should be presented",
+      "type": "string",
+      "enum": [
+        "fixed", 
+        "reflowable",
+        "scrolled"
+      ]
+    },
     "readingProgression": {
       "type": "string",
       "enum": [
         "rtl",
-        "ltr",
-        "ttb",
-        "btt",
-        "auto"
+        "ltr"
       ],
-      "default": "auto"
+      "default": "ltr"
     },
     "description": {
       "type": "string"
@@ -149,7 +155,7 @@
       "$ref": "extensions/epub/metadata.schema.json"
     },
     {
-      "$ref": "extensions/presentation/metadata.schema.json"
+      "$ref": "experimental/presentation/metadata.schema.json"
     }
   ]
 }
