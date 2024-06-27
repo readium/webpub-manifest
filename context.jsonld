@@ -4,6 +4,8 @@
     "schema": "http://schema.org/",
     "metadata": "@nest",
     "identifier": "@id",
+    "altIdentifier": "http://schema.org/identifier",
+    "value": "@nest",
     "conformsTo": "http://purl.org/dc/terms/conformsTo",
     "title": {
       "@id": "http://schema.org/name",
