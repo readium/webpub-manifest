@@ -19,7 +19,10 @@
               "type": "string",
               "format": "uri"
             }
-          }
+          },
+          "required": [
+            "value"
+          ]
         }
       ]
   },
