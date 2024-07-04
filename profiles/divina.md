@@ -164,7 +164,7 @@ Some publications may contain spreads where the user needs to navigate back and 
 In order to convey this information, this profile introduces a new property for Link Objects:
 
 <dl>
-  <dt>meaningful-spread</dt>
+  <dt>meaningfulSpread</dt>
   <dd>Hint that the current resource should be presented in a spread to fully convey the meaning of its content.</dd>
 </dl>
 
@@ -205,7 +205,7 @@ In order to convey this information, this profile introduces a new property for 
       "type": "image/jpeg",
       "properties": {
         "page": "right",
-        "meaningful-spread": true
+        "meaningfulSpread": true
       }
     },
     {
@@ -213,7 +213,7 @@ In order to convey this information, this profile introduces a new property for 
       "type": "image/jpeg",
       "properties": {
         "page": "left",
-        "meaningful-spread": true
+        "meaningfulSpread": true
       }
     }
   ]
@@ -227,7 +227,7 @@ For publications where a single continuous scroll is required to properly displa
 In order to override the default behaviour of displaying all images from the `readingOrder` in a single continuous scroll, this profile also introduces a new property for Link Objects:
 
 <dl>
-  <dt>break-scroll-before</dt>
+  <dt>breakScrollBefore</dt>
   <dd>Specifies that an item in the reading order should break the current continuous scroll and start a new one.</dd>
 </dl>
 
@@ -258,7 +258,7 @@ In order to override the default behaviour of displaying all images from the `re
       "href": "episode2-image1.jpg",
       "type": "image/jpeg",
       "properties": {
-        "break-scroll-before": true
+        "breakScrollBefore": true
       }
     },
     {

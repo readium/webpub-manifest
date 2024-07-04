@@ -4,12 +4,12 @@
   "title": "Divina Profile - Link Properties",
   "type": "object",
   "properties": {
-    "break-scroll-before": {
+    "breakScrollBefore": {
       "description": "Specifies that an item in the reading order should break the current continuous scroll and start a new one.",
       "type": "boolean",
       "default": false
     },
-    "meaningful-spread": {
+    "meaningfulSpread": {
       "description": "Hint that the current resource should be presented in a spread to fully convey the meaning of its content.",
       "type": "boolean",
       "default": false
