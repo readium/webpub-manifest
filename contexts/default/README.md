@@ -55,6 +55,36 @@ A Web Publication Manifest <strong class="rfc">should</strong> contain an identi
 "identifier": "http://example.com/publication"
 ```
 
+In addition to this primary identifier, it <strong class="rfc">may</strong> also provide alternate identifiers using `altIdentifier`.
+
+This element, can contain one or more alternate identifiers where each value is either a:
+
+* URI
+* or an Identifier Object where `scheme` identifies the identifier scheme using an URI and `value` contains the alternate identifier
+
+```json
+"metadata": {
+  "identifier": "urn:isbn:9780679760801",
+  "altIdentifier": [
+    "https://viaf.org/viaf/175580487/",
+    "https://example.com/identifier/12345",
+    {
+      "value": "123456789",
+      "scheme": "https://example.com/identifierScheme"
+    }
+  ]
+}
+```
+
+This document recommends using the following URN schemes when documenting an identifier for a publication:
+
+| URN Namespace | Reference | Example |
+| ------------- | --------- | ------- |
+| `doi` | <https://www.iana.org/assignments/urn-formal/doi> | `urn:doi:10.1000/456%23789` |
+| `isbn` | <https://www.iana.org/assignments/urn-formal/isbn> | `urn:isbn:9789510184356` |
+| `issn` | <https://www.iana.org/assignments/urn-formal/issn> | `urn:issn:1560-1560` |
+| `uuid` | <https://www.rfc-editor.org/rfc/rfc9562.html> | `urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6` |
+
 ## Layout and reading progression
 
 Publications come in all shapes and forms but when it comes to publications that are primarily made of text and visuals, we can organize them in three main categories:
@@ -97,9 +127,9 @@ Each element can also contain multiple contributors using a simple array:
 "artist": ["Shawn McManus", "Colleen Doran", "Bryan Talbot"]
 ```
 
-In addition to a simple string representation, each contributor can also be represented using an object using the following elements: `name`, `sortAs` and `identifier`.
+In addition to a simple string representation, each contributor <strong class="rfc">may</strong> also be represented using an object using the following elements: `name`, `sortAs` and `identifier`.
 
-When an object is used, it must contain at least `name`. 
+When an object is used, it <strong class="rfc">must</strong> contain at least `name`. 
 
 It behaves like the `title` element and allows either a simple strings, or representations in multiple languages and scripts of a contributor's name:
 
@@ -113,7 +143,7 @@ It behaves like the `title` element and allows either a simple strings, or repre
 }
 ```
 
-The contributor object may also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
+Each object <strong class="rfc">may</strong> also contain a `sortAs` element to provide a single sortable string, used by a client to organize a collection of publications:
 
 ```json
 "author": {
@@ -122,7 +152,7 @@ The contributor object may also contain a `sortAs` element to provide a single s
 }
 ```
 
-Finally, the object may also contain an `identifier`. The `identifier` must be a URI.
+Each object <strong class="rfc">may</strong> also contain an `identifier`. The `identifier` must be a URI.
 
 ISNI (http://isni.org) is the preferred authority, but other sources may also be used:
 
@@ -134,10 +164,23 @@ ISNI (http://isni.org) is the preferred authority, but other sources may also be
 }
 ```
 
-If none of the elements available are specific enough, a `contributor` element <strong class="rfc">may</strong> be used instead. 
+Finally, each object <strong class="rfc">may</strong> also contain alternate identifiers using the same object defined in the [identifier section](#identifier) of this document.
 
-The `contributor` element should be used with an object that contains a `role`. 
-All values for the `role` element should be based on [MARC relator codes](https://www.loc.gov/marc/relators/relaterm.html): 
+```json
+"author": {
+  "name": "Mikhail Bulgakov",
+  "identifier": "https://isni.org/isni/000000012144993X",
+  "altIdentifier": [
+    "http://viaf.org/viaf/99836700",
+    "http://id.loc.gov/authorities/n79056735"
+  ]
+}
+```
+
+If none of the elements available are fit to identify a given contributor's role, a `contributor` element <span class="rfc">may</span> be used instead. 
+
+The `contributor` element <strong class="rfc">should</strong> be used with an object that contains a `role`. 
+All values for the `role` element <strong class="rfc">should</strong> be based on [MARC relator codes](https://www.loc.gov/marc/relators/relaterm.html): 
 
 ```json
 "contributor": {
@@ -181,7 +224,7 @@ The most straightforward expression is through a simple string:
 "imprint": "World Literature"
 ```
 
-This element also allows a more complex representation using an object and the following elements: `name`, `sortAs`, `identifier`. The semantics and syntax are identical to contributors:
+This element also allows a more complex representation using an object and the following elements: `name`, `sortAs`, `identifier` and `altIdentifier`. The semantics and syntax are identical to contributors:
 
 ```json
 "publisher": {
@@ -271,7 +314,7 @@ A Web Publication Manifest <strong class="rfc">may</strong> indicate that it bel
 }
 ```
 
-In order to provide more information about a specific collection/series, an object can also be used instead of a string.
+In order to provide more information about a specific collection/series, an object <strong class="rfc">may</strong> also be used instead of a string.
 
 To provide a name and a sortable string, `collection` and `series` support both `name` and `sortAs`:
 
@@ -284,8 +327,7 @@ To provide a name and a sortable string, `collection` and `series` support both 
 }
 ```
 
-A collection/series can also have an identifier, provided using the `identifier`
-element. The identifier must be a URI:
+A collection/series <strong class="rfc">may</strong> also contain an identifier, provided using the `identifier` element. The identifier <strong class="rfc">must</strong> be a URI:
 
 ```json
 "belongsTo": {
@@ -296,6 +338,8 @@ element. The identifier must be a URI:
   }
 }
 ```
+
+It <strong class="rfc">may</strong> also contain alternate identifiers using the same object defined in the [identifier section](#identifier) of this document.
 
 Finally, series/collection can be ordered. To provide the position of the current publication in a series/collection, the `position` element can be used.
 
