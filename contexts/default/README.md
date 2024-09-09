@@ -391,23 +391,18 @@ This specification identifies the following profiles:
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa> |
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AAA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa> |
 
-### Certification
+### Exemption
 
-The `certification` object contains information about the certification process of a publication.
+`exemption` allows content creators to identify publications that do not meet conformance requirements but fall under exemptions in a given juridiction.
 
-`certifiedBy` identifies the person or the organization that conducted the certification.
+While this list is currently limited to exemptions covered by the European Accessibility Act, it will be extended to cover additional exemptions in the future.
 
-`credential` provides additional credentials regarding the ability of the certifier to conduct an accessibility report.
+| Value | Regulation |
+| ----- | ---------- |
+| `eaa-disproportionate-burden` | [Article 14](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#d1e2148-70-1), paragraph 1 of the European Accessibility Act states that its accessibility requirements shall apply only to the extent that compliance: … (b) does not result in the imposition of a disproportionate burden on the economic operators concerned  |
+| `eaa-fundamental-alteration` | [Article 14](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#d1e2148-70-1), paragraph 1 of the European Accessibility Act states that its accessibility requirements shall apply only to the extent that compliance: (a) does not require a significant change in a product or service that results in the fundamental alteration of its basic nature  |
+| `eaa-microenterprise` | [The European Accessibility Act](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882) defines a microenterprise as: an enterprise which employs fewer than 10 persons and which has an annual turnover not exceeding EUR 2 million or an annual balance sheet total not exceeding EUR 2 million.<br />It further states in [Article 4](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32019L0882#d1e1798-70-1), paragraph 5: Microenterprises providing services shall be exempt from complying with the accessibility requirements referred to in paragraph 3 of this Article and any obligations relating to the compliance with those requirements  |
 
-`report` points to one or more accessibility reports for the publication, using a list of URL.
-
-```json
-"certification": {
-  "certifiedBy": "Tom Smith",
-  "report": "https://example.com/report/a11y",
-  "credential": "Certified by Benetech"
-}
-```
 
 ### accessMode and accessModeSufficient
 
@@ -433,7 +428,6 @@ Both properties are controlled by external vocabularies maintained by the W3C.
 }
 ```
 
-
 ### Features and hazards
 
 `feature` and `hazard` provide a list of potential accessibility features or hazards for a publication.
@@ -455,6 +449,24 @@ Both properties are controlled by external vocabularies maintained by the W3C.
     "tableOfContents"
   ],
   "hazard": ["none"]
+}
+```
+
+### Certification
+
+The `certification` object contains information about the certification process of a publication.
+
+`certifiedBy` identifies the person or the organization that conducted the certification.
+
+`credential` provides additional credentials regarding the ability of the certifier to conduct an accessibility report.
+
+`report` points to one or more accessibility reports for the publication, using a list of URL.
+
+```json
+"certification": {
+  "certifiedBy": "Tom Smith",
+  "report": "https://example.com/report/a11y",
+  "credential": "Certified by Benetech"
 }
 ```
 
