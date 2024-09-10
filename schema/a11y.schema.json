@@ -140,13 +140,16 @@
         "type": "string",
         "enum": [
           "flashing",
-          "noFlashingHazard",
           "motionSimulation",
-          "noMotionSimulationHazard",
           "sound",
+          "none",
+          "noFlashingHazard",
+          "noMotionSimulationHazard",
           "noSoundHazard",
           "unknown",
-          "none"
+          "unknownFlashingHazard",
+          "unknownMotionSimulationHazard",
+          "unknownSoundHazard"
         ]
       }
     }
