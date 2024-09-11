@@ -130,7 +130,7 @@
           "withAdditionalWordSegmentation",
           "withoutAdditionalWordSegmentation",
           "none",
-          "uknown"
+          "unknown"
         ]
       }
     },
