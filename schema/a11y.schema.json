@@ -15,22 +15,13 @@
         "format": "uri"
       }
     },
-    "certification": {
-      "type": "object",
-      "properties": {
-        "certifiedBy": {
-          "type": "string"
-        },
-        "credential": {
-          "type": "string"
-        },
-        "report": {
-          "type": "string"
-        }
-      }
-    },
-    "summary": {
-      "type": "string"
+    "exemption": {
+      "format": "string",
+      "enum": [
+        "eaa-disproportionate-burden",
+        "eaa-fundamental-alteration",
+        "eaa-microenterprise"
+      ]
     },
     "accessMode": {
       "type": "array",
@@ -152,6 +143,23 @@
           "unknownSoundHazard"
         ]
       }
+    },
+    "certification": {
+      "type": "object",
+      "properties": {
+        "certifiedBy": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "report": {
+          "type": "string"
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
     }
   }
 }
