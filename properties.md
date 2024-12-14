@@ -42,11 +42,11 @@ The `page` property is meant to provide a hint to reading systems that rely on s
 
 | Key   | Semantics | Type     | Values    | Reference |
 | ----- | --------- | -------- | --------- | --------- |
-| [`breakScrollBefore`](/profiles/divina.md#42-scrolled-publications) | Hint that the current resource should be presented in a spread to fully convey the meaning of its content. | Boolean  | Defaults to `false`  | [Divina Profile](/profiles/divina.md) |
+| [`breakScrollBefore`](/profiles/divina.md#42-scrolled-publications) | Specifies that an item in the reading order should break the current continuous scroll and start a new one. | Boolean  | Defaults to `false`  | [Divina Profile](/profiles/divina.md) |
 | [`contains`](/profiles/epub.md#contains) | Indentifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | [EPUB Profile](/profiles/epub.md#properties) |
 | [`encrypted`](/modules/encryption.md)  | Indicates  how a given resource has been encrypted or obfuscated.  | [Encryption Object](/modules/encryption.md#encryption-object)  | See the definition of the Encryption Object | [Encryption Module](/modules/encryption.md) |
 | [`layout`](/profiles/epub.md#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | [EPUB Profile](/profiles/epub.md#properties) |
-| [`meaningfulSpread`](/profiles/divina.md#41-fixed-layout) | Specifies that an item in the reading order should break the current continuous scroll and start a new one. | Boolean  | Defaults to `false`  | [Divina Profile](/profiles/divina.md) |
+| [`meaningfulSpread`](/profiles/divina.md#41-fixed-layout) | Hint that the current resource should be presented in a spread to fully convey the meaning of its content. | Boolean  | Defaults to `false` | [Divina Profile](/profiles/divina.md) |
 
 ## OPDS 2.0
 
