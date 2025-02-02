@@ -145,6 +145,25 @@
           "$ref": "contributor.schema.json"
         }
       }
+    },
+    "tdm": {
+      "type": "object",
+      "required": [
+        "reservation"
+      ],
+      "properties": {
+        "reservation": {
+          "type": "string",
+          "enum": [
+            "all",
+            "none"
+          ]
+        },
+        "policy": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
     }
   },
   "required": [
