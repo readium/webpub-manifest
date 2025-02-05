@@ -478,6 +478,24 @@ The `certification` object contains information about the certification process 
 "summary": "The publication is recorded by a professional narrator."
 ```
 
+## Text and data mining
+
+Publications can indicate whether they allow third parties to use their content for text and data mining purposes using the [TDM Rep protocol](https://www.w3.org/community/tdmrep/), as defined in a [W3C Community Group Report](https://www.w3.org/community/reports/tdmrep/CG-FINAL-tdmrep-20240510/).
+
+To do so, they may include a `tdm` object that contains the following properties:
+
+| Property | Values |
+| -------- | ------ |
+| `reservation` | `all` or `none` |
+| `policy` | URI |
+
+For now, `reservation` only allows two values but may be extended in the future to refine the scope of a reservation and its associated policy:
+
+| Value | Description |
+| ----- | ----------- |
+| `all` | All TDM rights are reserved. If a TDM Policy is set, TDM Agents MAY use it to get information on how they can acquire from the rightsholder an authorization to mine the content. |
+| `none` | TDM rights are not reserved. TDM agents can mine the content for TDM purposes without having to contact the rightsholder. |
+
 ## Appendix A - JSON Schema
 
 The default context is implemented in the core JSON Schema for the Readium Web Publication Manifest and should be used as a reference as well.
