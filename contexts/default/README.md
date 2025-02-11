@@ -390,6 +390,15 @@ This specification identifies the following profiles:
 | EPUB Accessibility 1.0 - WCAG 2.0 Level A | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-a> |
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aa> |
 | EPUB Accessibility 1.0 - WCAG 2.0 Level AAA | <http://www.idpf.org/epub/a11y/accessibility-20170105.html#wcag-aaa> |
+| EPUB Accessibility 1.1 - WCAG 2.0 Level A | <https://www.w3.org/TR/epub-a11y-11#wcag-2.0-a> |
+| EPUB Accessibility 1.1 - WCAG 2.0 Level AA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.0-aa> |
+| EPUB Accessibility 1.1 - WCAG 2.0 Level AAA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.0-aaa> |
+| EPUB Accessibility 1.1 - WCAG 2.1 Level A | <https://www.w3.org/TR/epub-a11y-11#wcag-2.1-a> |
+| EPUB Accessibility 1.1 - WCAG 2.1 Level AA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.1-aa> |
+| EPUB Accessibility 1.1 - WCAG 2.1 Level AAA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.1-aaa> |
+| EPUB Accessibility 1.1 - WCAG 2.2 Level A | <https://www.w3.org/TR/epub-a11y-11#wcag-2.2-a> |
+| EPUB Accessibility 1.1 - WCAG 2.2 Level AA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.2-aa> |
+| EPUB Accessibility 1.1 - WCAG 2.2 Level AAA | <https://www.w3.org/TR/epub-a11y-11#wcag-2.2-aaa> |
 
 ### Exemption
 
