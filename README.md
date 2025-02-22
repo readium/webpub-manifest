@@ -221,6 +221,7 @@ This specification defines the following keys for this JSON object:
 | `properties`  | Properties associated to the linked resource  | [Properties Object](properties.md)  | No |
 | `height`  | Height of the linked resource in pixels | Integer  | No  |
 | `width`  | Width of the linked resource in pixels | Integer | No  |
+| `size`  | Original size of the resource in bytes, prior to any use of encryption or compression in an archive | Integer | No  |
 | `duration`  | Duration of the linked resource in seconds | Float| No  |
 | `bitrate`  | Bit rate of the linked resource in kilobits per second | Float| No  |
 | `language`  | Expected language of the linked resource | One or more [BCP 47 Language Tag](https://tools.ietf.org/html/bcp47) | No  |
