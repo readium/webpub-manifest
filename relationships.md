@@ -7,9 +7,12 @@ The Readium Web Publication Manifest specification and its extensions currently 
 | `alternate`   | Designates a substitute for the link's context | [HTML5](https://www.w3.org/TR/html5/links.html) |
 | `contents`   | Refers to a table of contents | [HTML4](https://www.w3.org/TR/html4/types.html#type-links) |
 | `cover`   | Refers to a publication's cover | [Readium Web Publication Manifest](https://github.com/readium/webpub-manifest) |
+| `first`   | Refers to the first resource in a collection of resources.  | [RFC8288](https://www.rfc-editor.org/rfc/rfc8288.html) |
+| `last`   | Refers to the last resource in a collection of resources.  | [RFC8288](https://www.rfc-editor.org/rfc/rfc8288.html) |
 | `manifest`   | Links to a manifest | [Web App Manifest](https://www.w3.org/TR/appmanifest/) |
 | `search`   | Refers to a URI or templated URI that will perform a search | [HTML5](https://www.w3.org/TR/html5/links.html) |
 | `self`   | Conveys an identifier for the link's context | [Atom Syndication Format](https://tools.ietf.org/html/rfc4287) |
+| `start`   | Refers to the first resource that's part of the main body of the publication.  | [HTML 4.0.1](https://www.w3.org/TR/html401/) |
 
 In addition to these relations, any term define in the [IANA link registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml) can also be used.
 
