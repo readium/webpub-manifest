@@ -163,7 +163,7 @@
           "type": "string",
           "format": "uri"
         }
-      },
+      }
     }
   },
   "required": [
