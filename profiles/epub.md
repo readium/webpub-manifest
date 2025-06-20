@@ -77,8 +77,7 @@ This profile defines additional Link properties:
 
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
-| [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  | 
-| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  | 
+| [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  |  
 
 ### contains
 
@@ -107,20 +106,6 @@ While the media type is the main way to identify the nature of a resource in a L
 }
 ```
 
-### layout
-
-By default, each item in the `readingOrder` follows the `layout` specified in `metadata` but the EPUB profile allow content creators to override this behaviour using the `layout` property on specific resources.
-
-
-```
-{
-  "href": "page1.html", "type": "text/html",
-  "properties": {
-    "layout": "fixed"
-  }
-}
-```
-
 ## Appendix A - JSON Schema
 
 The following JSON Schema resources for this profile are available under version control: 
@@ -138,7 +123,7 @@ For the purpose of validating a Readium Web Publication Manifest, use the follow
 
 ## Appendix B - Deprecated properties
 
-### `layout` in a `presentation` object
+### Layout in a `presentation` object in metadata
 
 This specification was initially responsible for documenting the layout of an entire publication using either: `reflowable` or `fixed`.
 
@@ -159,6 +144,23 @@ This is no longer supported by this profile because `layout` became a first-clas
 "metadata": {
   "title": "Bella the dragon",
   "layout": "fixed"
+}
+```
+
+### Layout as a property of a Link Object
+
+The EPUB specification allow content creators to specify the layout of individual resources either in the `readingOrder` or `resources`.
+
+This was originally supported in this EPUB profile through a `layout` property in `properties`.
+
+This is no longer supported in Readium because mixed publications provide an inconsistent user experience.
+
+```
+{
+  "href": "page1.html", "type": "text/html",
+  "properties": {
+    "layout": "fixed"
+  }
 }
 ```
 
