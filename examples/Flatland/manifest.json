@@ -2,11 +2,12 @@
   "@context": "https://readium.org/webpub-manifest/context.jsonld",
   "metadata": {
     "@type": "http://schema.org/Audiobook",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/audiobook",
     "identifier": "https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/",
     "title": "Flatland",
     "subtitle": "A Romance of Many Dimensions",
     "author": {"name": "Edwin Abbott Abbott", "sortAs": "Abbott, Abbott Edwin"},
-    "narrator": "Ruth Golding",
+    "narrator": {"name": "Ruth Golding", "sortAs": "Golding, Ruth"},
     "language": "en",
     "description": "Flatland: A Romance of Many Dimensions is an 1884 science fiction novella by the English schoolmaster Edwin Abbott Abbott. As a satire, Flatland offered pointed observations on the social hierarchy of Victorian culture. However, the novella's more enduring contribution is its examination of dimensions; in a foreword to one of the many publications of the novella, noted science writer Isaac Asimov described Flatland as \"The best introduction one can find into the manner of perceiving dimensions.\" As such, the novella is still popular amongst mathematics, physics and computer science students. (Summary by Wikipedia)",
     "publisher": "Librivox",
