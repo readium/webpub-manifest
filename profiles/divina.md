@@ -2,7 +2,7 @@
 
 **Editors:**
 
-* Hadrien Gardeur
+* Hadrien Gardeur ([EDRLab](https://www.edrlab.org))
 * Laurent Le Meur ([EDRLab](https://www.edrlab.org))
 
 **Participate:**
@@ -71,7 +71,7 @@ In order to declare that it conforms to the Divina Profile, a Readium Web Public
 - include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as one of its values
 - use `application/divina+json` as its media type
 
-While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
+While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that <strong class="rfc">must</strong> target comics/manga/webtoons exclusively.
 
 ## 2. Listing Resources
 
@@ -148,7 +148,7 @@ All Link Objects present in the `alternate` array:
 
 ### 4.1. Fixed layout
 
-By default, each publication that conforms to the Divina profile is handled like a fixed layout publications, which means that:
+By default, each publication that conforms to the Divina profile is handled like a fixed layout publication, which means that:
 
 - the publication is paginated by default, where each page is an image from the `readingOrder`
 - images are usually displayed with both dimensions fully contained in the viewport by default
@@ -161,7 +161,7 @@ Reading systems are strongly encouraged to let the user decide if they prefer re
 
 ### 4.2. Scrolled publications
 
-For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
+For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">must</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
 
 *Example 4: A scrolled publication that contains two episodes*
 
