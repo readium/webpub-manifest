@@ -242,7 +242,7 @@ These values are meant to be used in a table of contents (`toc`) with a nested s
     "rel": "cover"
   },
   {
-    "title": "Volume 1" - The Tests of the Ninja,
+    "title": "Volume 1 - The Tests of the Ninja",
     "href": "volume1.jpg",
     "type": "image/jpeg",
     "rel": "volume"
