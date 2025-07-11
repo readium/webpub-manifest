@@ -163,14 +163,7 @@ Reading systems are strongly encouraged to let the user decide if they prefer re
 
 For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">should</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
 
-In order to override the default behaviour of displaying all images from the `readingOrder` in a single continuous scroll, this profile also introduces a new property for Link Objects:
-
-<dl>
-  <dt>break-scroll-before</dt>
-  <dd>Specifies that an item in the reading order should break the current continuous scroll and start a new one.</dd>
-</dl>
-
-*Example 4: A scrolled publication with a break in its continuous scroll*
+*Example 4: A scrolled publication that contains two episodes*
 
 ```json
 {
@@ -195,10 +188,7 @@ In order to override the default behaviour of displaying all images from the `re
     },
     {
       "href": "episode2-image1.jpg",
-      "type": "image/jpeg",
-      "properties": {
-        "break-scroll-before": true
-      }
+      "type": "image/jpeg"
     },
     {
       "href": "episode2-image2.jpg",
@@ -208,11 +198,110 @@ In order to override the default behaviour of displaying all images from the `re
       "href": "episode2-image3.jpg",
       "type": "image/jpeg"
     }
+  ],
+  "toc": [
+    {
+      "title": "Episode 1",
+      "href": "episode1-image1.jpg",
+      "type": "image/jpeg",
+      "rel": "episode"
+    },
+    {
+      "title": "Episode 2",
+      "href": "episode2-image1.jpg",
+      "type": "image/jpeg",
+      "rel": "episode"
+    }
   ]
 }
 ```
 
-## 5. Packaging
+## 5. Structural semantics
+
+This profile introduces new `rel` values in order to indicate how a publication is structured.
+
+These values are meant to be used in a table of contents (`toc`) with a nested structure.
+
+| Value  | Example | 
+| ------ | ------- | 
+| `chapter` | Manga are usually divided into chapters, published weekly or monthly in manga magazines. <br /> They're often collected into volumes (Tankōbon in Japanse) at a later point. |
+| `episode` | Webtoons or scrolled comics are often distributed using individually episodes that may be grouped into seasons. |
+| `issue` | US comics are usually distributed as single issue publications, that are collected into volume at a later point. |
+| `part` | Graphic novels tend to follow more closely novels in how their content are subdivided, which means that a number of them are divided in parts in addition to chapters and volumes. |
+| `season` | A season usually collects multiple episodes for webtoons. |
+| `volume` | A volume usually collects multiple chapters, episodes or issues or a given series. |
+
+*Example 5: A collected edition with multiple volumes*
+
+```json
+"toc": [
+  {
+    "title": "Cover",
+    "href": "cover.jpg",
+    "type": "image/jpeg",
+    "rel": "cover"
+  },
+  {
+    "title": "Volume 1" - The Tests of the Ninja,
+    "href": "volume1.jpg",
+    "type": "image/jpeg",
+    "rel": "volume"
+    "children": [
+      {
+        "title": "Chapter 1 - Uzumaki Naruto!",
+        "href": "chapter1-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 2 - Konohamaru!",
+        "href": "chapter2-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 3 - Enter Sasuke!",
+        "href": "chapter3-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 4 - Hatake Kakashi!",
+        "href": "chapter4-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 5 - Pride Goeth Before a Fall",
+        "href": "chapter5-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 6 - Not Sasuke!",
+        "href": "chapter6-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      },
+      {
+        "title": "Chapter 7 - Kakashi's Decision",
+        "href": "chapter7-page1.jpg",
+        "type": "image/jpeg"
+        "rel": "chapter"
+      }
+    ]
+  },
+  {
+    "title": "Volume 2 - The Worst Client",
+    "href": "volume2.jpg",
+    "type": "image/jpeg",
+    "rel": "volume"
+  }
+]
+```
+
+
+## 6. Packaging
 
 A Divina publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification relies on the [Readium Packaging Format](./packaging.md).
 
@@ -226,10 +315,19 @@ As an alternative, the manifest may also be included in:
 - an EPUB 3 publication, as specified in the [Readium Packaging Format](./packaging.md#6-hybrid-epub-3--rpf-packages) specification
 - or dedicated formats for comics such as CBZ/CBR
 
+## Appendix A. JSON Schema
 
-## Appendix A. Examples
+The following JSON Schemas for this profile is available under version control: 
 
-*Example 5: A manga is a Divina where the reading progression is right-to-left*
+- Link Properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/divina/properties.schema.json>
+
+For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: 
+
+- <https://readium.org/webpub-manifest/schema/extensions/divina/properties.schema.json>
+
+## Appendix B. Examples
+
+*Example 6: A manga is a Divina where the reading progression is right-to-left*
 
 
 ```json
@@ -261,7 +359,7 @@ As an alternative, the manifest may also be included in:
 }
 ```
 
-*Example 6: A continuously scrolled publication (a "webtoon") is a Divina where images are displayed in a single continuous strip of content*
+*Example 7: A continuously scrolled publication (a "webtoon") is a Divina where images are displayed in a single continuous strip of content*
 
 
 ```json
@@ -288,13 +386,3 @@ As an alternative, the manifest may also be included in:
   ]
 }
 ```
-
-## Appendix B. JSON Schema
-
-The following JSON Schemas for this profile is available under version control: 
-
-- Link Properties: <https://github.com/readium/webpub-manifest/blob/master/schema/extensions/divina/properties.schema.json>
-
-For the purpose of validating a Readium Web Publication Manifest, use the following JSON Schema resource: 
-
-- <https://readium.org/webpub-manifest/schema/extensions/divina/properties.schema.json>
