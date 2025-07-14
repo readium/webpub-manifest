@@ -71,7 +71,7 @@ In order to declare that it conforms to the Divina Profile, a Readium Web Public
 - include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as one of its values
 - use `application/divina+json` as its media type
 
-While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that <strong class="rfc">must</strong> target comics/manga/webtoons exclusively.
+While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
 
 ## 2. Listing Resources
 
