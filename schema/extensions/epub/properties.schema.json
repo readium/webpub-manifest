@@ -19,14 +19,6 @@
         ]
       },
       "uniqueItems": true
-    },
-    "layout": {
-      "description": "Hints how the layout of a specific resource should be presented",
-      "type": "string",
-      "enum": [
-        "fixed", 
-        "reflowable"
-      ]
     }
   }
 }
