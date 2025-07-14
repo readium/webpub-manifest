@@ -172,9 +172,6 @@
   "allOf": [
     {
       "$ref": "extensions/epub/metadata.schema.json"
-    },
-    {
-      "$ref": "experimental/presentation/metadata.schema.json"
     }
   ]
 }
