@@ -47,7 +47,6 @@
       "allOf": [
         { "$ref": "extensions/epub/properties.schema.json" },
         { "$ref": "extensions/encryption/properties.schema.json" },
-        { "$ref": "extensions/divina/properties.schema.json" },
         { "$ref": "https://drafts.opds.io/schema/properties.schema.json" }
       ]
     },
