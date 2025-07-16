@@ -224,7 +224,7 @@ These values are meant to be used in a table of contents (`toc`) with a nested s
 
 | Value  | Example | 
 | ------ | ------- | 
-| `chapter` | Manga are usually divided into chapters, published weekly or monthly in manga magazines. <br /> They're often collected into volumes (Tankōbon in Japanse) at a later point. |
+| `chapter` | Manga are usually divided into chapters, published weekly or monthly in manga magazines. <br /> They're often collected into volumes (Tankōbon in Japanese) at a later point. |
 | `episode` | Webtoons or scrolled comics are often distributed using individually episodes that may be grouped into seasons. |
 | `issue` | US comics are usually distributed as single issue publications, that are collected into volume at a later point. |
 | `part` | Graphic novels tend to follow more closely novels in how their content are subdivided, which means that a number of them are divided in parts in addition to chapters and volumes. |
