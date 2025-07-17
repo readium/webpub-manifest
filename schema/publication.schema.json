@@ -19,29 +19,7 @@
       "items": {
         "$ref": "link.schema.json"
       },
-      "uniqueItems": true,
-      "contains": {
-        "type": "object",
-        "properties": {
-          "rel": {
-            "anyOf": [
-              {
-                "type": "string",
-                "const": "self"
-              },
-              {
-                "type": "array",
-                "contains": {
-                  "const": "self"
-                }
-              }
-            ]
-          }
-        },
-        "required": [
-          "rel"
-        ]
-      }
+      "uniqueItems": true
     },
     "readingOrder": {
       "type": "array",
