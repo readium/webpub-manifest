@@ -95,13 +95,15 @@ Publications come in all shapes and forms but when it comes to publications that
 
 In order to convey this information, a Web Publication Manifest <strong class="rfc">may</strong> include a `layout` property with one of the following values:
 
-| Value | Description | Formats |
-| ----- | ----------- | ------- |
-| `reflowable` | Reading systems are free to adapt text and layout entirely based on user preferences. | EPUB |
-| `fixed` | Each resource is a "page" where both dimensions are usually contained in the device's viewport. Based on user preferences, the reading system may also display two resources side by side in a spread. | Divina, Fixed Layout EPUB or PDF
-| `scrolled` | Resources are displayed in a continuous scroll, usually by filling the width of the viewport, without any visible gap between between spine items. | Scrolled Divina |
+| Value | Description |
+| ----- | ----------- |
+| `reflowable` | Reading systems are free to adapt text and layout entirely based on user preferences. |
+| `fixed` | Each resource is a "page" where both dimensions are usually contained in the device's viewport. <br />Based on user preferences, the reading system may also display two resources side by side in a spread. |
+| `scrolled` | Resources are displayed in a continuous scroll, usually by filling the width of the viewport, without any visible gap between between items in the reading order. |
 
-To provide a number of affordances (taps, gestures, keyboard events), reading systems also need to know the reading progression.
+Profiles <strong class="rfc">may</strong> restrict default and supported values for `layout`. That's currently the case for both the [EPUB](../../profiles/epub.md) and [Divina](../../profiles/divina.md) profiles.
+
+To provide a number of affordances (pagination, taps, gestures and keyboard events), reading systems also need to know the reading progression.
 
 For reflowable and fixed layout publications, a manifest <strong class="rfc">may</strong> express this information using `readingProgression`. 
 
