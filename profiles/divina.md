@@ -68,85 +68,21 @@ The goal of this specification is to provide a profile dedicated to digital visu
 
 In order to declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
 
-- include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/divina` as one of its values
+- include a `conformsTo` element in `metadata`, which contains `https://readium.org/webpub-manifest/profiles/divina` as one of its values
 - use `application/divina+json` as its media type
 
 While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
 
-## 2. Listing Resources
+## 2. Restrictions on resources in the `readingOrder`
 
 A visual narrative is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
  
  - they <strong class="rfc">must</strong> point strictly to bitmap images
+ - they <strong class="rfc">should</strong> also include `width` and `height` to indicate the dimensions of each resource
 
-In addition, all Link Objects <strong class="rfc">should</strong> also include `width` and `height` to indicate the dimensions of each resource.
-
-## 3. Alternate Resources
-
-In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
-
-All Link Objects present in the `alternate` array:
-
-- <strong class="rfc">must</strong> indicate their media-type using `type`
-- <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`
-- <strong class="rfc">may</strong> target a different language using `language`
-
-*Example 1: A resource available in JPEG and AVIF*
-
-```json
-{
-  "href": "http://example.org/page1.jpeg", 
-  "type": "image/jpeg", 
-  "alternate": [
-    {
-      "href": "http://example.org/page1.avif", 
-      "type": "image/avif"
-    }
-  ]
-}
-```
-
-*Example 2: A resource available in French and Japanese*
-
-```json
-{
-  "href": "http://example.org/page1.jpeg", 
-  "type": "image/jpeg",
-  "language": "fr",
-  "alternate": [
-    {
-      "href": "http://example.org/page1-jp.jpeg", 
-      "type": "image/jpeg",
-      "language": "jp"
-    }
-  ]
-}
-```
-
-*Example 3: A resource available in two different resolutions*
-
-```json
-{
-  "href": "http://example.org/page1.jpeg", 
-  "type": "image/jpeg",
-  "width": 546,
-  "height": 760,
-  "alternate": [
-    {
-      "href": "http://example.org/page1-high.jpeg", 
-      "type": "image/jpeg",
-      "width": 1092,
-      "height": 1520
-    }
-  ]
-}
-```
-
-## 4. Layout
-
-### 4.1. Fixed layout
+## 3. Layout
 
 By default, each publication that conforms to the Divina profile is handled like a fixed layout publication, which means that:
 
@@ -159,11 +95,9 @@ Reading systems are strongly encouraged to let the user decide if they prefer re
 - paginated or scrolled
 - with or without spreads (for example, with spreads in landscape mode but without spreads in portrait mode)
 
-### 4.2. Scrolled publications
-
 For publications where a single continuous scroll is required to properly display the publication (such as webtoons for example), content creators <strong class="rfc">must</strong> use the [`layout`](../contexts/default/README.md#layout-and-reading-progression) property with the `scrolled` value.
 
-*Example 4: A scrolled publication that contains two episodes*
+*Example 1: A scrolled publication that contains two episodes*
 
 ```json
 {
@@ -211,6 +145,67 @@ For publications where a single continuous scroll is required to properly displa
       "href": "episode2-image1.jpg",
       "type": "image/jpeg",
       "rel": "episode"
+    }
+  ]
+}
+```
+
+## 4. Alternate Resources
+
+In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
+
+All Link Objects present in the `alternate` array:
+
+- <strong class="rfc">must</strong> indicate their media-type using `type`
+- <strong class="rfc">should</strong> indicate their dimensions using `height` and `width`
+- <strong class="rfc">may</strong> target a different language using `language`
+
+*Example 2: A resource available in JPEG and AVIF*
+
+```json
+{
+  "href": "http://example.org/page1.jpeg", 
+  "type": "image/jpeg", 
+  "alternate": [
+    {
+      "href": "http://example.org/page1.avif", 
+      "type": "image/avif"
+    }
+  ]
+}
+```
+
+*Example 3: A resource available in French and Japanese*
+
+```json
+{
+  "href": "http://example.org/page1.jpeg", 
+  "type": "image/jpeg",
+  "language": "fr",
+  "alternate": [
+    {
+      "href": "http://example.org/page1-jp.jpeg", 
+      "type": "image/jpeg",
+      "language": "jp"
+    }
+  ]
+}
+```
+
+*Example 4: A resource available in two different resolutions*
+
+```json
+{
+  "href": "http://example.org/page1.jpeg", 
+  "type": "image/jpeg",
+  "width": 546,
+  "height": 760,
+  "alternate": [
+    {
+      "href": "http://example.org/page1-high.jpeg", 
+      "type": "image/jpeg",
+      "width": 1092,
+      "height": 1520
     }
   ]
 }
