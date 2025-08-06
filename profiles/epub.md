@@ -18,7 +18,9 @@ This profile is meant to facilitate backward compatibility with EPUB and ensure 
 
 ## 1. Declaring conformance with the EPUB Profile
 
-In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` element that contains `https://readium.org/webpub-manifest/profiles/epub` as one of its values.
+In order to declare that it conforms to the EPUB Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>: 
+
+- include a `conformsTo` element in `metadata`, which contains `https://readium.org/webpub-manifest/profiles/epub` as one of its values
 
 ## 2. Restrictions on resources in the `readingOrder`
 
