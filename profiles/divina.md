@@ -1,4 +1,4 @@
-# Digital Visual Narratives Profile
+# Divina Profile
 
 **Editors:**
 
@@ -64,7 +64,7 @@
 
 The goal of this specification is to provide a profile dedicated to digital visual narratives (Divina) for the [Readium Web Publication Manifest](https://readium.org/webpub-manifest).
 
-## 1. Declaring conformance to the Divina profile
+## 1. Declaring conformance to the Divina Profile
 
 In order to declare that it conforms to the Divina Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
 
@@ -73,7 +73,7 @@ In order to declare that it conforms to the Divina Profile, a Readium Web Public
 
 While the Divina Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target comics/manga specifically.
 
-## 2. Listing Resources
+## 2. Listing resources
 
 A visual narrative is divided into one or more images, which are all listed in the `readingOrder` of the manifest.
 
@@ -83,7 +83,7 @@ In addition to the normal requirements of a `readingOrder`, all Link Objects hav
 
 In addition, all Link Objects <strong class="rfc">should</strong> also include `width` and `height` to indicate the dimensions of each resource.
 
-## 3. Alternate Resources
+## 3. Alternate resources
 
 In order to provide multiple variants of the same resource, Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key.
 

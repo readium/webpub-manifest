@@ -56,10 +56,10 @@ This profile relies on:
 * a declaration of [conformance with this Profile](#1-declaring-conformance-with-the-pdf-profile),
 * a [restriction on the resources of the reading order](#2-restrictions-on-the-resources-of-the-reading-order),
 
-## 1. Declaring conformance with the PDF Profile
+## 1. Declaring conformance to the PDF Profile
 
 To declare that it conforms to the PDF Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong> include a `conformsTo` key in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/pdf` as one of its value.
 
-## 2. Restriction on resources in the reading order
+## 2. Listing resources
 
 In addition to the normal requirements of a `readingOrder`, all Link Objects <strong class="rfc">must</strong> point strictly to PDF resources, with no fragment identifier. 

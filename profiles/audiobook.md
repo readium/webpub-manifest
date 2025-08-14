@@ -72,31 +72,38 @@ The goal of this document is to provide an audiobook profile for the [Readium We
 - list the different components of an audiobook
 - support multiple audio formats and means of accessing an audiobook (streaming or downloads)
 
-While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, it has its own media type in order to maximize compatibilty with audio apps: `application/audiobook+json`.
+## 1. Declaring conformance to the Audiobook Profile
 
-## 1. Metadata
+In order to declare that it conforms to the Audiobook Profile, a Readium Web Publication Manifest <strong class="rfc">must</strong>:
 
-The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with the following additional requirements:
+- include a `conformsTo` property in its `metadata` section, with `https://readium.org/webpub-manifest/profiles/audiobook` as one of its values
+- use `application/audiobook+json` as its media type
 
-- it <strong class="rfc">must</strong> include a `conformsTo` element that identifies the manifest as an audiobook: `https://readium.org/webpub-manifest/profiles/audiobook`
+While the Audiobook Manifest is technically a profile of the Readium Web Publication Manifest, the use of its dedicated media type is recommended to maximize compatibility with applications that may target audiobooks exclusively.
+
+## 2. Listing resources
+
+A visual narrative is divided into one or audio resources, which are all listed in the `readingOrder` of the manifest.
+
+In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
+ 
+  - they <strong class="rfc">must</strong> point strictly to audio resources, with no fragment identifier in their URL
+ - they <strong class="rfc">must</strong> include a `duration` that provides the duration in seconds of each individual audio resource
+
+In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` (in `kbps`) whenever possible.
+
+## 3. Metadata
+
+The core metadata for the audiobook manifest are based on [the default context for the Readium Web Publication Manifest](https://readium.org/webpub-manifest/contexts/default/) with an additional requirement:
+
 - it <strong class="rfc">must</strong> include a `duration` element that provides the total duration of the audiobook in seconds
 
 The `duration` of an audiobook as expressed in `metadata` is purely a hint and <strong class="rfc">must not</strong> be used by the User Agent for anything else than informing the user.
 
-In addition to its duration, an audiobook <strong class="rfc">may</strong> indicate that it's an abridged edition using the `abridged` element.
+In addition to its duration, an audiobook <strong class="rfc">may</strong> indicate that it's an abridged edition with the `abridged` element (a boolean that defaults to `false`).
 
-## 2. Listing Audio Resources
 
-An audiobook is divided into one or more audio resources, which are all listed in the `readingOrder` of the manifest.
-
-In addition to the normal requirements of a `readingOrder`, all Link Objects have the following additional requirements:
- 
- - they <strong class="rfc">must</strong> point strictly to audio resources, with no fragment identifier. 
- - they <strong class="rfc">must</strong> include a `duration` term that provides the duration in seconds of each individual audio resource
-
-In addition, all Link Objects <strong class="rfc">should</strong> also include the `bitrate` (in `kbps`) whenever possible.
-
-## 3. Alternate Audio Resources
+## 4. Alternate resources
 
 In order to support multiple variants of the same audiobook (using a different format or bitrate for instance), Link Objects in the `readingOrder` <strong class="rfc">may</strong> rely on the `alternate` key:
 
@@ -124,7 +131,7 @@ All Link Objects present in the `alternate` array:
 - <strong class="rfc">must</strong> reference audio resources of the same duration as the top-level Link Object
 - <strong class="rfc">must not</strong> include the following keys: `title`, `duration` or `templated`
 
-## 4. Packaging
+## 5. Packaging
 
 An Audiobook publication may be distributed unpackaged on the Web, but it may also be packaged for easy distribution as a single file. To achieve this goal, this specification defines the [Readium Packaging Format (RPF)](https://readium.org/webpub-manifest/packaging.html).
 
@@ -133,11 +140,9 @@ To maximize compatibility with dedicated apps, such a package has its own file e
 - its file extension <strong class="rfc">must</strong> be `.audiobook`
 - its media type <strong class="rfc">must</strong> be `application/audiobook+zip`
 
-## Appendix A - Examples
+## Appendix A - Example
 
 A full example based on [the LibriVox edition of Flatland](https://librivox.org/flatland-a-romance-of-many-dimensions-by-edwin-abbott-abbott/) is available at: [https://readium.org/webpub-manifest/examples/Flatland/manifest.json](https://readium.org/webpub-manifest/examples/Flatland/manifest.json)
-
-Over 10,000+ audiobooks are also available in this format through [the Internet Archive OPDS Catalog](https://bookserver.archive.org/).
 
 ## Appendix B - Demo
 
