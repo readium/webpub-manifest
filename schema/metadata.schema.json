@@ -139,10 +139,39 @@
       "type": "object",
       "properties": {
         "collection": {
-          "$ref": "contributor.schema.json"
+          "$ref": "collection.schema.json"
+        },
+        "season": {
+          "$ref": "season.schema.json"
         },
         "series": {
-          "$ref": "contributor.schema.json"
+          "$ref": "series.schema.json"
+        },
+        "volume": {
+          "$ref": "volume.schema.json"
+        }
+      }
+    },
+    "contains": {
+      "type": "object",
+      "properties": {
+        "chapter": {
+          "$ref": "chapter.schema.json"
+        },
+        "episode": {
+          "$ref": "episode.schema.json"
+        },
+        "issue": {
+          "$ref": "issue.schema.json"
+        },
+        "season": {
+          "$ref": "season.schema.json"
+        },
+        "series": {
+          "$ref": "series.schema.json"
+        },
+        "volume": {
+          "$ref": "volume.schema.json"
         }
       }
     },
