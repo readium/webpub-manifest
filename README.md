@@ -186,7 +186,7 @@ In addition all publications <strong class="rfc">should</strong> include a `@typ
 
 Links are expressed using the `links` key that contains one or more [Link Objects](#24-the-link-object).
 
-A manifest <strong class="rfc">must</strong> contain at least one link using the `self` relationship where `href` is an absolute URI to the canonical location of the manifest.
+A manifest <strong class="rfc">should</strong> contain at least one link using the `self` relationship where `href` is an absolute URI to the canonical location of the manifest.
 
 *Example 3: Link to the canonical location of a manifest*
 
