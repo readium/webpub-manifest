@@ -141,6 +141,15 @@
         "collection": {
           "$ref": "collection.schema.json"
         },
+        "journal": {
+          "$ref": "periodical.schema.json"
+        },
+        "magazine": {
+          "$ref": "periodical.schema.json"
+        },
+        "newspaper": {
+          "$ref": "periodical.schema.json"
+        },
         "season": {
           "$ref": "season.schema.json"
         },
