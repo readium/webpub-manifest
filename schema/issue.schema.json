@@ -52,6 +52,9 @@
         "article": {
           "$ref": "article.schema.json"
         },
+        "chapter": {
+          "$ref": "chapter.schema.json"
+        }
       },
       "required": [
         "position"
