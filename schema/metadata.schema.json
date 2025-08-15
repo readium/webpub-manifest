@@ -164,6 +164,9 @@
     "contains": {
       "type": "object",
       "properties": {
+        "article": {
+          "$ref": "article.schema.json"
+        },
         "chapter": {
           "$ref": "chapter.schema.json"
         },

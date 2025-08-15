@@ -1,17 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://readium.org/webpub-manifest/schema/issue.schema.json",
-  "title": "Issue",
+  "$id": "https://readium.org/webpub-manifest/schema/article.schema.json",
+  "title": "Article",
   "anyOf": [
     {
-      "type": "number"
+      "type": "string"
     },
     {
       "type": "array",
       "items": {
         "anyOf": [
           {
-            "type": "number"
+            "type": "string"
           },
           {
             "$ref": "#/$defs/object"
@@ -40,6 +40,28 @@
         "sortAs": {
           "type": "string"
         },
+        "author": {
+          "$ref": "contributor.schema.json"
+        },
+        "translator": {
+          "$ref": "contributor.schema.json"
+        },
+        "editor": {
+          "$ref": "contributor.schema.json"
+        },
+        "artist": {
+          "$ref": "contributor.schema.json"
+        },
+        "illustrator": {
+          "$ref": "contributor.schema.json"
+        },
+        "description": {
+          "type": "string"
+        },
+        "numberOfPages": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
         "position": {
           "type": "number"
         },
@@ -48,13 +70,10 @@
           "items": {
             "$ref": "link.schema.json"
           }
-        },
-        "article": {
-          "$ref": "article.schema.json"
-        },
+        }
       },
       "required": [
-        "position"
+        "name"
       ]
     }
   }
