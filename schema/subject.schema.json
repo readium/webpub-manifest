@@ -14,13 +14,42 @@
             "type": "string"
           },
           {
-            "$ref": "subject-object.schema.json"
+            "$ref": "#/$defs/object"
           }
         ]
       }
     },
     {
-      "$ref": "subject-object.schema.json"
+      "$ref": "#/$defs/object"
     }
-  ]
+  ],
+  "$defs": {
+    "object": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "language-map.schema.json"
+        },
+        "sortAs": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string",
+          "format": "uri"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "link.schema.json"
+          }
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  }
 }
