@@ -1,17 +1,17 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://readium.org/webpub-manifest/schema/series.schema.json",
-  "title": "Series",
+  "$id": "https://readium.org/webpub-manifest/schema/storyArc.schema.json",
+  "title": "Story Arc",
   "anyOf": [
     {
-      "type": "string"
+      "type": "number"
     },
     {
       "type": "array",
       "items": {
         "anyOf": [
           {
-            "type": "string"
+            "type": "number"
           },
           {
             "$ref": "#/$defs/object"
@@ -57,15 +57,6 @@
         },
         "issue": {
           "$ref": "issue.schema.json"
-        },
-        "season": {
-          "$ref": "season.schema.json"
-        },
-        "storyArc": {
-          "$ref": "storyArc.schema.json"
-        },
-        "volume": {
-          "$ref": "volume.schema.json"
         }
       },
       "required": [

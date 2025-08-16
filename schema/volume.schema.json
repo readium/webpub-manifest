@@ -54,6 +54,9 @@
         },
         "issue": {
           "$ref": "issue.schema.json"
+        },
+        "storyArc": {
+          "$ref": "storyArc.schema.json"
         }
       },
       "required": [

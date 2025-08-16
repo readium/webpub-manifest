@@ -156,6 +156,9 @@
         "series": {
           "$ref": "series.schema.json"
         },
+        "storyArc": {
+          "$ref": "storyArc.schema.json"
+        },
         "volume": {
           "$ref": "volume.schema.json"
         }
@@ -181,6 +184,9 @@
         },
         "series": {
           "$ref": "series.schema.json"
+        },
+        "storyArc": {
+          "$ref": "storyArc.schema.json"
         },
         "volume": {
           "$ref": "volume.schema.json"
