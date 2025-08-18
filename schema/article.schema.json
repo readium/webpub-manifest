@@ -55,6 +55,9 @@
         "illustrator": {
           "$ref": "contributor.schema.json"
         },
+        "contributor": {
+          "$ref": "contributor.schema.json"
+        },
         "description": {
           "type": "string"
         },
