@@ -21,7 +21,8 @@
     "conformsTo": "https://readium.org/webpub-manifest/profiles/pdf",
     "title": "Moby-Dick",
     "author": "Herman Melville",
-    "language": "en"
+    "language": "en",
+    "numberOfPages": 102
   },
 
   "links": [
@@ -30,11 +31,7 @@
 
   "readingOrder": [
     {
-      "href": "http://example.org/mobydick-part1.pdf", 
-      "type": "application/pdf", 
-    },
-    {
-      "href": "http://example.org/mobydick-part2.pdf", 
+      "href": "http://example.org/mobydick.pdf", 
       "type": "application/pdf", 
     }
   ],
@@ -62,4 +59,6 @@ To declare that it conforms to the PDF Profile, a Readium Web Publication Manife
 
 ## 2. Restriction on resources in the reading order
 
-In addition to the normal requirements of a `readingOrder`, all Link Objects <strong class="rfc">must</strong> point strictly to PDF resources, with no fragment identifier. 
+In addition to the normal requirements of a `readingOrder`, all Link Objects <strong class="rfc">must</strong> point strictly to PDF resources, with no fragment identifier.
+
+Note: most Reading System implementation only support one PDF document in the reading order.  
