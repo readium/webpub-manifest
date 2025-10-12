@@ -16,7 +16,7 @@
       }
     },
     "exemption": {
-      "format": "string",
+      "type": "string",
       "enum": [
         "eaa-disproportionate-burden",
         "eaa-fundamental-alteration",
