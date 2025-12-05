@@ -30,7 +30,7 @@
   },
 
   "links": [
-    {"rel": "self", "href": "http://example.org/manifest.audiobook-manifest", "type": "application/audiobook+json"},
+    {"rel": "self", "href": "http://example.org/manifest.json", "type": "application/audiobook+json"},
     {"rel": "alternate", "href": "http://example.org/audiobook.m3u", "type": "audio/mpegurl", "bitrate": 64}
   ],
 
