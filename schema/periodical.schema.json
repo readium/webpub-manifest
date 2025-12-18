@@ -38,7 +38,7 @@
           "$ref": "altIdentifier.schema.json"
         },
         "sortAs": {
-          "type": "string"
+          "$ref": "language-map.schema.json"
         },
         "position": {
           "type": "number"
