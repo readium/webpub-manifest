@@ -16,7 +16,7 @@
       }
     },
     "exemption": {
-      "format": "string",
+      "type": "string",
       "enum": [
         "eaa-disproportionate-burden",
         "eaa-fundamental-alteration",
@@ -39,36 +39,35 @@
           "textOnVisual",
           "textual",
           "visual"
-        ]  
+        ]
       }
     },
     "accessModeSufficient": {
       "type": "array",
       "items": {
-        "type": [
-          "array",
-          "string"
-        ],
-        "if": {
-          "type": "string"
-        },
-        "then": {
-          "enum": [
-            "auditory",
-            "tactile",
-            "textual",
-            "visual"
-          ]
-        },
-        "items": {
-          "type": "string",
-          "enum": [
-            "auditory",
-            "tactile",
-            "textual",
-            "visual"
-          ]
-        }
+        "oneOf": [
+          {
+            "type": "string",
+            "enum": [
+              "auditory",
+              "tactile",
+              "textual",
+              "visual"
+            ]
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "auditory",
+                "tactile",
+                "textual",
+                "visual"
+              ]
+            }
+          }
+        ]
       }
     },
     "feature": {
@@ -94,8 +93,6 @@
           "describedMath",
           "longDescription",
           "openCaptions",
-          "signLanguage",
-          "transcript",
           "signLanguage",
           "transcript",
           "displayTransformability",

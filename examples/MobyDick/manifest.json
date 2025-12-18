@@ -7,11 +7,12 @@
     "author": "Herman Melville",
     "identifier": "urn:isbn:9780000000001",
     "language": "en",
-    "modified": "2015-09-29T17:00:00Z"
+    "accessibility": {
+      "feature": ["displayTransformability"]
+    }
   },
 
   "links": [
-    {"rel": "cover", "href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797}, 
     {"rel": "self", "href": "https://readium.org/webpub-manifest/examples/MobyDick/manifest.json", "type": "application/webpub+json"}
   ],
 
@@ -29,6 +30,7 @@
   ],
 
   "resources": [
+    {"rel": "cover", "href": "images/cover.jpg", "type": "image/jpeg", "height": 1253, "width": 797}, 
     {"href": "html/toc.html", "rel": "contents", "type": "text/html", "title": "Table of Contents"}, 
     {"href": "css/mobydick.css", "type": "text/css"},
     {"href": "fonts/STIXGeneral.otf", "type": "application/vnd.ms-opentype"},

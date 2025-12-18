@@ -81,7 +81,7 @@
     },
     "height": "http://schema.org/height",
     "width": "http://schema.org/width",
-    "size": https://schema.org/contentSize",
+    "size": "https://schema.org/contentSize",
     "bitrate": "http://schema.org/bitrate",
     "alternate": {
       "@container": "@set",
