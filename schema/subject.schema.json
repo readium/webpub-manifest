@@ -31,7 +31,7 @@
           "$ref": "language-map.schema.json"
         },
         "sortAs": {
-          "type": "string"
+          "$ref": "language-map.schema.json"
         },
         "code": {
           "type": "string"
