@@ -43,6 +43,9 @@
         "position": {
           "type": "number"
         },
+        "series": {
+          "$ref": "series.schema.json"
+        },
         "links": {
           "type": "array",
           "items": {
