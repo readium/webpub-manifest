@@ -139,10 +139,60 @@
       "type": "object",
       "properties": {
         "collection": {
-          "$ref": "contributor.schema.json"
+          "$ref": "collection.schema.json"
+        },
+        "journal": {
+          "$ref": "periodical.schema.json"
+        },
+        "magazine": {
+          "$ref": "periodical.schema.json"
+        },
+        "newspaper": {
+          "$ref": "periodical.schema.json"
+        },
+        "periodical": {
+          "$ref": "periodical.schema.json"
+        },
+        "season": {
+          "$ref": "season.schema.json"
         },
         "series": {
-          "$ref": "contributor.schema.json"
+          "$ref": "series.schema.json"
+        },
+        "storyArc": {
+          "$ref": "storyArc.schema.json"
+        },
+        "volume": {
+          "$ref": "volume.schema.json"
+        }
+      }
+    },
+    "contains": {
+      "type": "object",
+      "properties": {
+        "article": {
+          "$ref": "article.schema.json"
+        },
+        "chapter": {
+          "$ref": "chapter.schema.json"
+        },
+        "episode": {
+          "$ref": "episode.schema.json"
+        },
+        "issue": {
+          "$ref": "issue.schema.json"
+        },
+        "season": {
+          "$ref": "season.schema.json"
+        },
+        "series": {
+          "$ref": "series.schema.json"
+        },
+        "storyArc": {
+          "$ref": "storyArc.schema.json"
+        },
+        "volume": {
+          "$ref": "volume.schema.json"
         }
       }
     },
