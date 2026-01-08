@@ -3,12 +3,12 @@ name: Validate JSON Schema
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "schema/**/*.schema.json"
   pull_request:
     branches:
-      - main
+      - master
     paths:
       - "schema/**/*.schema.json"
   workflow_dispatch:
