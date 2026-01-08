@@ -150,6 +150,9 @@
         "newspaper": {
           "$ref": "periodical.schema.json"
         },
+        "periodical": {
+          "$ref": "periodical.schema.json"
+        },
         "season": {
           "$ref": "season.schema.json"
         },
