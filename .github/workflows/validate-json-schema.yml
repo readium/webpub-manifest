@@ -1,0 +1,28 @@
+name: Validate JSON Schema
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "schema/**/*.schema.json"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "schema/**/*.schema.json"
+  workflow_dispatch:
+
+jobs:
+  validate-json:
+    name: Validate JSON Schema
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON schema
+        uses: dsanders11/json-schema-validate-action@v1.4.0
+        with:
+          schema: "json-schema"
+          files: "schema/**/*.schema.json"
