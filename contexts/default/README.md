@@ -298,6 +298,8 @@ This document identifies the following subject schemes along with a recommended 
 | BIC | <https://bic.org.uk/> |
 | BISAC | <https://www.bisg.org/#bisac> |
 | CLIL | <http://clil.org/> |
+| LCC | <http://purl.org/dc/terms/LCC> |
+| LCSH | <http://purl.org/dc/terms/LCSH> |
 | Thema | <https://ns.editeur.org/thema/> |
 
 
