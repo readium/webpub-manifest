@@ -1,0 +1,99 @@
+{
+  "@context": "http://readium.org/webpub-manifest/context.jsonld",
+
+  "metadata": {
+    "title": "Pepper and Carrot - A Fresh Start",
+    "conformsTo": "https://readium.org/webpub-manifest/profiles/divina",
+    "@type": "http://schema.org/ComicStory",
+    "identifier": "https://www.peppercarrot.com/en/article377/episode-17-a-fresh-start",
+    "author": "David Revoy",
+    "artist": "David Revoy",
+    "translator": "Alex Gryson",
+    "contributor": {
+      "name": "Hadrien Gardeur",
+      "role": "trc"
+    },
+    "language": "en",
+    "numberOfPages": 8,
+    "readingProgression": "ltr",
+    "published": "2016-06-30",
+    "belongsTo": {
+      "series": {
+        "name": "Pepper & Carrot",
+        "position": 17
+      }
+    },
+    "accessibility": {
+      "accessMode": [
+        "visual"
+      ],
+      "accessModeSufficient": [
+        "visual"
+      ],
+      "feature": [
+        "readingOrder"
+      ],
+      "hazard": ["none"]
+    }
+  },
+
+  "links": [
+    {
+      "rel": "self",
+      "href": "manifest.json",
+      "type": "application/divina+json"
+    }
+  ],
+
+  "readingOrder": [
+    {
+      "rel":"cover",
+      "href": "page1.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page2.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page3.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page4.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page5.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page6.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page7.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1373"
+    },
+    {
+      "href": "page8.jpg",
+      "type": "image/jpeg",
+      "width": "992",
+      "height": "1772"
+    }
+  ]
+}
