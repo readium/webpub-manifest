@@ -76,6 +76,7 @@ This profile defines additional Link properties:
 | Key   | Semantics | Type     | Values    | 
 | ----- | --------- | -------- | --------- | 
 | [contains](#contains)  | Identifies content contained in the linked resource, that cannot be strictly identified using a media type.  | Array  | `mathml`, `onix`, `remote-resources`, `js`, `svg` or `xmp`  |  
+| [layout](#layout)  | Hint about the nature of the layout for the linked resources.  | String  | `fixed` or `reflowable`  |
 
 ### contains
 
@@ -86,7 +87,7 @@ While the media type is the main way to identify the nature of a resource in a L
 
 `contains` is meant to convey that information in the Properties Object using an array of string values.
 
-```
+```json
 {
   "href": "record.xml", "rel": "record", "type": "application/xml",
   "properties": {
@@ -95,11 +96,29 @@ While the media type is the main way to identify the nature of a resource in a L
 }
 ```
 
-```
+```json
 {
   "href": "chapter1.html", "type": "text/html",
   "properties": {
     "contains": ["svg", "remote-resources"]
+  }
+}
+```
+
+### layout
+
+EPUB allows individual resource to override the layout of the publication, allowing mixed layout publications. While EPUB 3.4 now contains three different types of layout, only two of them support overrides at a resource level:
+
+- `reflowable`
+- `fixed`
+
+
+```json
+{
+  "href": "page.html",
+  "type": "application/xhtml+xml",
+  "properties": {
+    "layout": "fixed"
   }
 }
 ```
@@ -142,23 +161,6 @@ This is no longer supported by this profile because `layout` became a first-clas
 "metadata": {
   "title": "Bella the dragon",
   "layout": "fixed"
-}
-```
-
-### Layout as a property of a Link Object
-
-The EPUB specification allow content creators to specify the layout of individual resources either in the `readingOrder` or `resources`.
-
-This was originally supported in this EPUB profile through a `layout` property in `properties`.
-
-This is no longer supported in Readium because mixed publications provide an inconsistent user experience.
-
-```
-{
-  "href": "page1.html", "type": "text/html",
-  "properties": {
-    "layout": "fixed"
-  }
 }
 ```
 

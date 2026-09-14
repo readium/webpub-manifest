@@ -19,6 +19,14 @@
         ]
       },
       "uniqueItems": true
+    },
+    "layout": {
+      "description": "Hint about the nature of the layout for the linked resources.",
+      "type": "string",
+      "enum": [
+        "reflowable", 
+        "fixed"
+      ]
     }
   }
 }
