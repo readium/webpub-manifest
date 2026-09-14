@@ -379,7 +379,7 @@ In addition to these two properties, `abridged` is used to indicate an abridged 
 
 In order to document its accessibility metadata, a Web Publication Manifest <strong class="rfc">should</strong> include an `accessibility` object.
 
-This `accessibility` object <strong class="rfc">may</strong> contain the following properties: `conformsTo`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
+This `accessibility` object <strong class="rfc">may</strong> contain the following properties: `conformsTo`, `exemption`, `certification`, `accessMode`, `accessModeSufficient`, `feature`, `hazard` and `summary`.
 
 ### Conformance
 
@@ -404,7 +404,7 @@ This specification identifies the following profiles:
 
 ### Exemption
 
-`exemption` allows content creators to identify publications that do not meet conformance requirements but fall under exemptions in a given juridiction. It can be expressed as a single value or an array of values.
+`exemption` allows content creators to identify publications that do not meet conformance requirements but fall under exemptions in a given jurisdiction. It can be expressed as a single value or an array of values.
 
 While this list is currently limited to exemptions covered by the European Accessibility Act, it will be extended to cover additional exemptions in the future.
 
