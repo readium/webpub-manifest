@@ -404,7 +404,7 @@ This specification identifies the following profiles:
 
 ### Exemption
 
-`exemption` allows content creators to identify publications that do not meet conformance requirements but fall under exemptions in a given juridiction.
+`exemption` allows content creators to identify publications that do not meet conformance requirements but fall under exemptions in a given juridiction. It can be expressed as a single value or an array of values.
 
 While this list is currently limited to exemptions covered by the European Accessibility Act, it will be extended to cover additional exemptions in the future.
 
@@ -419,7 +419,7 @@ While this list is currently limited to exemptions covered by the European Acces
 
 `accessMode` and `accessModeSufficient` are meant to list the human sensory perceptual systems or cognitive faculties necessary to access a given publication.
 
-While `accessMode` provides a complete list, `accessModeSufficient` is focused on list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource.
+While `accessMode` provides a complete list, `accessModeSufficient` is focused on list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource. `accessMode` can be expressed as a single value or an array of values.
 
 Both properties are controlled by external vocabularies maintained by the W3C.
 
@@ -441,7 +441,7 @@ Both properties are controlled by external vocabularies maintained by the W3C.
 
 ### Features and hazards
 
-`feature` and `hazard` provide a list of potential accessibility features or hazards for a publication.
+`feature` and `hazard` provide a list of potential accessibility features or hazards for a publication. Each can be expressed as a single value or an array of values.
 
 Both properties are controlled by external vocabularies maintained by the W3C.
 
@@ -459,7 +459,7 @@ Both properties are controlled by external vocabularies maintained by the W3C.
     "structuralNavigation",
     "tableOfContents"
   ],
-  "hazard": ["none"]
+  "hazard": "none"
 }
 ```
 
