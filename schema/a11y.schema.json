@@ -16,130 +16,72 @@
       }
     },
     "exemption": {
-      "type": "string",
-      "enum": [
-        "eaa-disproportionate-burden",
-        "eaa-fundamental-alteration",
-        "eaa-microenterprise"
+      "oneOf": [
+        {
+          "$ref": "#/$defs/exemption"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/exemption"
+          }
+        }
       ]
     },
     "accessMode": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "auditory",
-          "chartOnVisual",
-          "chemOnVisual",
-          "colorDependent",
-          "diagramOnVisual",
-          "mathOnVisual",
-          "musicOnVisual",
-          "tactile",
-          "textOnVisual",
-          "textual",
-          "visual"
-        ]
-      }
+      "oneOf": [
+        {
+          "$ref": "#/$defs/accessMode"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/accessMode"
+          }
+        }
+      ]
     },
     "accessModeSufficient": {
       "type": "array",
       "items": {
         "oneOf": [
           {
-            "type": "string",
-            "enum": [
-              "auditory",
-              "tactile",
-              "textual",
-              "visual"
-            ]
+            "$ref": "#/$defs/accessModeSufficient"
           },
           {
             "type": "array",
             "items": {
-              "type": "string",
-              "enum": [
-                "auditory",
-                "tactile",
-                "textual",
-                "visual"
-              ]
+              "$ref": "#/$defs/accessModeSufficient"
             }
           }
         ]
       }
     },
     "feature": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "annotations",
-          "ARIA",
-          "bookmarks",
-          "index",
-          "pageBreakMarkers",
-          "printPageNumbers",
-          "pageNavigation",
-          "readingOrder",
-          "structuralNavigation",
-          "tableOfContents",
-          "taggedPDF",
-          "alternativeText",
-          "audioDescription",
-          "closedCaptions",
-          "captions",
-          "describedMath",
-          "longDescription",
-          "openCaptions",
-          "signLanguage",
-          "transcript",
-          "displayTransformability",
-          "synchronizedAudioText",
-          "timingControl",
-          "unlocked",
-          "ChemML",
-          "latex",
-          "latex-chemistry",
-          "MathML",
-          "MathML-chemistry",
-          "ttsMarkup",
-          "highContrastAudio",
-          "highContrastDisplay",
-          "largePrint",
-          "braille",
-          "tactileGraphic",
-          "tactileObject",
-          "fullRubyAnnotations",
-          "horizontalWriting",
-          "rubyAnnotations",
-          "verticalWriting",
-          "withAdditionalWordSegmentation",
-          "withoutAdditionalWordSegmentation",
-          "none",
-          "unknown"
-        ]
-      }
+      "oneOf": [
+        {
+          "$ref": "#/$defs/feature"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/feature"
+          }
+        }
+      ]
     },
     "hazard": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "enum": [
-          "flashing",
-          "motionSimulation",
-          "sound",
-          "none",
-          "noFlashingHazard",
-          "noMotionSimulationHazard",
-          "noSoundHazard",
-          "unknown",
-          "unknownFlashingHazard",
-          "unknownMotionSimulationHazard",
-          "unknownSoundHazard"
-        ]
-      }
+      "oneOf": [
+        {
+          "$ref": "#/$defs/hazard"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hazard"
+          }
+        }
+      ]
     },
     "certification": {
       "type": "object",
@@ -157,6 +99,106 @@
     },
     "summary": {
       "type": "string"
+    }
+  },
+  "$defs": {
+    "exemption": {
+      "type": "string",
+      "enum": [
+        "eaa-disproportionate-burden",
+        "eaa-fundamental-alteration",
+        "eaa-microenterprise"
+      ]
+    },
+    "accessMode": {
+      "type": "string",
+      "enum": [
+        "auditory",
+        "chartOnVisual",
+        "chemOnVisual",
+        "colorDependent",
+        "diagramOnVisual",
+        "mathOnVisual",
+        "musicOnVisual",
+        "tactile",
+        "textOnVisual",
+        "textual",
+        "visual"
+      ]
+    },
+    "accessModeSufficient": {
+      "type": "string",
+      "enum": [
+        "auditory",
+        "tactile",
+        "textual",
+        "visual"
+      ]
+    },
+    "feature": {
+      "type": "string",
+      "enum": [
+        "annotations",
+        "ARIA",
+        "bookmarks",
+        "index",
+        "pageBreakMarkers",
+        "printPageNumbers",
+        "pageNavigation",
+        "readingOrder",
+        "structuralNavigation",
+        "tableOfContents",
+        "taggedPDF",
+        "alternativeText",
+        "audioDescription",
+        "closedCaptions",
+        "captions",
+        "describedMath",
+        "longDescription",
+        "openCaptions",
+        "signLanguage",
+        "transcript",
+        "displayTransformability",
+        "synchronizedAudioText",
+        "timingControl",
+        "unlocked",
+        "ChemML",
+        "latex",
+        "latex-chemistry",
+        "MathML",
+        "MathML-chemistry",
+        "ttsMarkup",
+        "highContrastAudio",
+        "highContrastDisplay",
+        "largePrint",
+        "braille",
+        "tactileGraphic",
+        "tactileObject",
+        "fullRubyAnnotations",
+        "horizontalWriting",
+        "rubyAnnotations",
+        "verticalWriting",
+        "withAdditionalWordSegmentation",
+        "withoutAdditionalWordSegmentation",
+        "none",
+        "unknown"
+      ]
+    },
+    "hazard": {
+      "type": "string",
+      "enum": [
+        "flashing",
+        "motionSimulation",
+        "sound",
+        "none",
+        "noFlashingHazard",
+        "noMotionSimulationHazard",
+        "noSoundHazard",
+        "unknown",
+        "unknownFlashingHazard",
+        "unknownMotionSimulationHazard",
+        "unknownSoundHazard"
+      ]
     }
   }
 }
